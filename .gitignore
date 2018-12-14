@@ -19,3 +19,12 @@ config/master.key
 /yarn-error.log
 
 .byebug_history
+
+/yarn-error.log
+
+node_modules/
+bundle.js
+bundle.js.map
+.byebug_history
+.DS_Store
+npm-debug.log
