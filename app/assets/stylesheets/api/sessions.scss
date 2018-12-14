@@ -1,0 +1,169 @@
+// Place all the styles related to the api/Sessions controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+h1 {
+    display: block;
+    font-size: 2em;
+    margin-block-start: 0.67em;
+    margin-block-end: 0.67em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}
+
+ .login-form-container {
+   position:relative;
+   background: rgba(277,350,250,0.8);
+   width: 522px;
+  //  border: 2px solid #53a318;
+   padding: 25px;
+   margin: auto;
+   font-family: -apple-system, 
+                BlinkMacSystemFont, 
+                "Segoe UI", 
+                Roboto, 
+                Oxygen-Sans, 
+                Ubuntu, 
+                Cantarell, 
+                "Helvetica Neue", 
+                sans-serif;
+  text-align: center;
+  line-height: 1.5;
+ }
+
+.login-form-box h1{
+// font-stretch: normal;
+  // font-style: normal;
+  white-space: nowrap;
+  font-weight: 300;
+
+}
+
+ .login-input {
+  //  background-color: white;
+    border: 1px solid black;
+    display: flex;
+    border-color: #d5d8db;
+    height: 56px;
+    margin: 0;
+    padding-left: 24px;
+    width: 95%;
+    text-align: left;
+    border-radius: 5PX;
+ }
+
+
+
+
+.input-container{
+  // background-color: white;
+  box-sizing: border-box;
+  margin-left:0;
+  width:600px;
+  height:80px;
+  display:flex;
+  justify-content: center;
+  align-items: center; 
+  // border: 1px solid black;
+}
+
+.session-submit {
+  background: #53a318;
+  color: white;
+  text-align: center;
+  border-radius: 4px;
+  height: 44px;
+  width: 100%;
+  margin: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  // padding: 0;
+  // border: 5px solid black;
+}
+
+.login-demo {
+  background: #4285f4;
+  // background: #53a318;
+  color: white;
+  text-align: center;
+  border-radius: 4px;
+  height: 44px;
+  width: 100%;
+  margin: 10px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+
+
+
+.or-text {
+    color: #75787b;
+    font-size: 14px;
+    font-stretch: normal;
+    font-style: italic;
+    font-weight: 600;
+    padding: 39px 0;
+    position: relative;
+    text-align: center;
+    margin-top: -10px;
+}
+
+.or-text:before {
+    background: #d5d8db;
+    content: "";
+    display: inline-block;
+    height: 1px;
+    left: 0;
+    position: absolute;
+    top: 49px;
+    width: 100%;
+    z-index: -1;
+}
+.or-text:after {
+    background: #fff;
+    content: "";
+    height: 40px;
+    left: 50%;
+    margin-left: -20px;
+    position: absolute;
+    top: 29px;
+    width: 40px;
+    z-index: -1;
+}
+
+.signUp-title {
+  display: flex;
+  width: 100%;
+  // border:1px solid red;
+
+}
+
+.signUp {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width:50%;
+  border-bottom: 4px solid rgb(184, 179, 179);
+  // border: 1px solid blue;
+
+  font-size: 18px;
+  font-stretch: normal;
+  font-style: normal;
+  font-weight: 400;
+  min-height: 36px;
+  padding-bottom: 13px;
+
+}
+
+.signUp.active {
+  border-bottom: 4px solid #53a318;
+}
+    // font-size: 14px;
+    // font-stretch: normal;
+    // font-style: normal;
+    // font-weight: 400;
+    // min-height: 36px;
+    // line-height: 1.29em;
+    // text-align: center;
+    // width: 245.5px;

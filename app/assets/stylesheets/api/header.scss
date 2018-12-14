@@ -1,0 +1,80 @@
+header {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  background-color: #53a318;
+  font-weight: bold;
+  color: white;
+  justify-content: space-between;
+  font-family: Open Sans,OpenSans,system,-apple-system,BlinkMacSystemFont,Roboto,Arial,FreeSans,sans-serif;
+  z-index: 20;
+  // height: 60px;
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+  height: 30px;
+  text-decoration-line: none;
+  color: white;
+  width:500px; 
+  // border: 1px solid black;
+}
+
+.search {
+  background-color: white;
+  padding-left: 6px;
+  width: 400px;
+  height: 40px;
+  color: black;
+  // margin-left: 10px;
+  // border: 1px solid black;
+}
+.location {
+  background-color: white;
+  padding-left: 6px;
+  width: 200px;
+  height: 40px;
+  margin-left: 10px;
+  color: black;
+  // border: 1px solid black;
+} 
+
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 30px;
+  text-decoration-line: none;
+  color: white;
+  width:70px; 
+  box-sizing: border-box;
+  // border: 1px solid black;
+}
+
+.button:hover {
+  color: white;
+  width: 70px;
+  height: 40px;
+  transition: color .5s linear;
+}
+
+.log-out-buttom:hover {
+    color: white;
+  width: 90px;
+  height: 40px;
+  transition: color .5s linear;
+  // background-color: black;
+}
+
+.login-signup {
+  margin: auto;
+  text-decoration: none;
+  font-size: 18px; 
+  line-height: 28px;
+  display: flex;
+  box-sizing: border-box;
+  // border: 1px solid black;
+}
+
