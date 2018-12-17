@@ -13,6 +13,7 @@
  *= require api/reset.scss
  *= require api/header.scss
  *= require api/index.scss
+ *= require api/products.scss
  *= require api/sessions.scss
  *= require_self
  */

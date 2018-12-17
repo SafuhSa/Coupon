@@ -1,8 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-
+  attr_reader :current_user
   helper_method :current_user, :logged_in?
-
 
   def current_user
     return nil unless session[:session_token]
