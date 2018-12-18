@@ -2,11 +2,33 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .create-edit-form {
-  // background-color: blue;
-  height: 600px;
+   position:relative;
+   background: rgba(277,350,250,0.8);
+   width: 522px;
+   border: 2px solid #53a318;
+   padding: 25px;
+   margin: auto;
+   font-family: -apple-system, 
+                BlinkMacSystemFont, 
+                "Segoe UI", 
+                Roboto, 
+                Oxygen-Sans, 
+                Ubuntu, 
+                Cantarell, 
+                "Helvetica Neue", 
+                sans-serif;
+  text-align: center;
+  line-height: 1.5;
 }
 
 .product-create-edit {
-  background-color: aliceblue;
-  border: 2px solid black;
+  border: 1px solid black;
+    display: flex;
+    border-color: #d5d8db;
+    height: 56px;
+    margin: 0;
+    padding-left: 24px;
+    width: 95%;
+    text-align: left;
+    border-radius: 5PX;
 }

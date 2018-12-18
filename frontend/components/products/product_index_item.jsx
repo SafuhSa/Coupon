@@ -16,3 +16,4 @@ const PostIndexItem = ({ product, deleteProduct }) => {
 };
 
 export default PostIndexItem;
+{/* <img src={product.photoUrl} /> */}

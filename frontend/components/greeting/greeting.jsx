@@ -31,8 +31,14 @@ class Greeting extends React.Component {
        <header>
          <Link to="/" className='logo'><h1>COUPON</h1> </Link>
          <div className="input-container">
-           <input className="search" type="text" placeholder='Search...' />
+           <form className="search" >
+             <span><i className="fas fa-search"></i> </span>
+           <input  type="text" placeholder='Search...' />
+          </form>
+
+           <form>
            <input className="location" type="text" placeholder='location...' />
+           </form>
          </div>  
          {result}
        </header>

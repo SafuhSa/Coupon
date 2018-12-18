@@ -38,7 +38,7 @@ class Api::ProductsController < ApplicationController
 
   def product_params
     snackcase_params
-    params.require(:product).permit(:product_name, :price, :dis_price, :description, :quantity, :category)
+    params.require(:product).permit(:product_name, :price, :dis_price, :description, :quantity, :category, :photo)
   end
 
   def snackcase_params

@@ -17,11 +17,18 @@
 class Product < ApplicationRecord
     validates :seller_id, :product_name, :price, :dis_price, :quantity, :category, presence: true
     
+    validate :ensure_photo
 
     belongs_to :seller,
         foreign_key: :seller_id,
         class_name: :User
 
+has_one_attached :photo
 
+    def ensure_photo
+        unless self.photo.attached?
+            errors[:photo] << 'Must be attached'
+        end
+    end
 
 end

@@ -170,9 +170,9 @@ var createProduct = function createProduct(product) {
     });
   };
 };
-var updateProduct = function updateProduct(product) {
+var updateProduct = function updateProduct(product, productId) {
   return function (dispatch) {
-    return _util_product_api_util__WEBPACK_IMPORTED_MODULE_0__["updateProduct"](product).then(function (product) {
+    return _util_product_api_util__WEBPACK_IMPORTED_MODULE_0__["updateProduct"](product, productId).then(function (product) {
       return dispatch(receiveProduct(product));
     }, function (err) {
       return dispatch(receiveErrors(err.responseJSON));
@@ -411,15 +411,18 @@ function (_React$Component) {
         className: "logo"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "COUPON"), " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "input-container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        className: "search",
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        className: "search"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fas fa-search"
+      }), " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         placeholder: "Search..."
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         className: "location",
         type: "text",
         placeholder: "location..."
-      })), result);
+      }))), result);
     }
   }]);
 
@@ -490,7 +493,9 @@ var msp = function msp(state) {
     disPrice: '',
     description: '',
     quantity: '',
-    category: ''
+    category: '',
+    photoFile: null,
+    photoUrl: null
   };
   var formType = 'Create Product';
   var errors = state.errors.product;
@@ -564,7 +569,7 @@ function (_React$Component) {
   _createClass(EditProductForm, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      this.props.requestProduct(this.props.match.params.postId);
+      this.props.requestProduct(this.props.match.params.productId);
     }
   }, {
     key: "render",
@@ -599,8 +604,8 @@ var mdp = function mdp(dispatch) {
     requestProduct: function requestProduct(id) {
       return dispatch(Object(_actions_product_actions__WEBPACK_IMPORTED_MODULE_2__["requestProduct"])(id));
     },
-    action: function action(product) {
-      return dispatch(Object(_actions_product_actions__WEBPACK_IMPORTED_MODULE_2__["updateProduct"])(product));
+    action: function action(product, productId) {
+      return dispatch(Object(_actions_product_actions__WEBPACK_IMPORTED_MODULE_2__["updateProduct"])(product, productId));
     }
   };
 };
@@ -661,6 +666,13 @@ function (_React$Component) {
   }
 
   _createClass(ProductForm, [{
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevProps) {
+      if (prevProps.product != this.props.product) {
+        this.setState(this.props.product);
+      }
+    }
+  }, {
     key: "update",
     value: function update(field) {
       var _this2 = this;
@@ -675,9 +687,46 @@ function (_React$Component) {
       var _this3 = this;
 
       e.preventDefault();
-      this.props.action(this.state).then(function () {
+      var formData = new FormData();
+      formData.append('product[productName]', this.state.productName);
+      formData.append('product[price]', this.state.price);
+      formData.append('product[disPrice]', this.state.disPrice);
+      formData.append('product[description]', this.state.description);
+      formData.append('product[quantity]', this.state.quantity);
+      formData.append('product[category]', this.state.category);
+
+      if (this.state.photoFile) {
+        formData.append('product[photo]', this.state.photoFile);
+      }
+
+      this.props.action(formData, this.props.match.params.productId).then(function () {
         return _this3.props.history.push('/');
       });
+    }
+  }, {
+    key: "handleFile",
+    value: function handleFile(e) {
+      var _this4 = this;
+
+      // this.setState({ photoFile: e.target.files[0] });
+      var reader = new FileReader();
+      var file = e.currentTarget.files[0];
+
+      reader.onloadend = function () {
+        return _this4.setState({
+          photoUrl: reader.result,
+          photoFile: file
+        });
+      };
+
+      if (file) {
+        reader.readAsDataURL(file);
+      } else {
+        this.setState({
+          photoUrl: "",
+          photoFile: null
+        });
+      }
     }
   }, {
     key: "renderErrors",
@@ -691,11 +740,18 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      if (!this.state) {
+        return null;
+      }
+
+      var preview = this.state.photoUrl ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: this.state.photoUrl
+      }) : null;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "create-edit-form"
       }, this.renderErrors(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         onSubmit: this.handleSubmit
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, " product_name", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, " product Name", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         className: "product-create-edit",
         onChange: this.update('productName'),
         value: this.state.productName,
@@ -732,6 +788,9 @@ function (_React$Component) {
         onChange: this.update('description'),
         value: this.state.description
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "file",
+        onChange: this.handleFile.bind(this)
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Image preview"), preview, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "submit",
         className: "session-submit",
         value: this.props.formType
@@ -887,6 +946,9 @@ var PostIndexItem = function PostIndexItem(_ref) {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (PostIndexItem);
+{
+  /* <img src={product.photoUrl} /> */
+}
 
 /***/ }),
 
@@ -955,7 +1017,9 @@ function (_React$Component) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Loading...");
       }
 
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, product.productName), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, product.price), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, product.disPrice), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, product.description), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, product.productName), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: product.photoUrl
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, product.price), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, product.disPrice), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, product.description), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/"
       }, "Back to Index"));
     }
@@ -1465,6 +1529,7 @@ document.addEventListener('DOMContentLoaded', function () {
     store = Object(_store_store__WEBPACK_IMPORTED_MODULE_2__["default"])();
   }
 
+  window.store = store;
   var root = document.getElementById('root');
   react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_root__WEBPACK_IMPORTED_MODULE_3__["default"], {
     store: store
@@ -1797,22 +1862,22 @@ var fetchProduct = function fetchProduct(id) {
     url: "api/products/".concat(id)
   });
 };
-var createProduct = function createProduct(product) {
+var createProduct = function createProduct(formData) {
   return $.ajax({
     method: 'POST',
     url: 'api/products',
-    data: {
-      product: product
-    }
+    data: formData,
+    contentType: false,
+    processData: false
   });
 };
-var updateProduct = function updateProduct(product) {
+var updateProduct = function updateProduct(formData, productId) {
   return $.ajax({
     method: 'PATCH',
-    url: "api/products/".concat(product.id),
-    data: {
-      product: product
-    }
+    url: "api/products/".concat(productId),
+    data: formData,
+    contentType: false,
+    processData: false
   });
 };
 var deletePorduct = function deletePorduct(id) {

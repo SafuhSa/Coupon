@@ -20,6 +20,7 @@ class ProductShow extends React.Component {
     return (
       <div>
         <h3>{product.productName}</h3>
+        <img src={product.photoUrl} />
         <p>{product.price}</p>
         <p>{product.disPrice}</p>
         <p>{product.description}</p>

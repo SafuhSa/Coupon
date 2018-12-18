@@ -8,6 +8,12 @@ class ProductForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+    componentDidUpdate(prevProps) {
+      if (prevProps.product != this.props.product) {
+        this.setState(this.props.product);
+      }
+    }
+
   update(field) {
     return (e) => {
       this.setState({ [field]: e.target.value });
@@ -16,7 +22,34 @@ class ProductForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.action(this.state).then(() => this.props.history.push('/'));
+    const formData = new FormData();
+    formData.append('product[productName]', this.state.productName);
+    formData.append('product[price]', this.state.price);
+    formData.append('product[disPrice]', this.state.disPrice);
+    formData.append('product[description]', this.state.description);
+    formData.append('product[quantity]', this.state.quantity);
+    formData.append('product[category]', this.state.category);
+
+    if (this.state.photoFile) {
+      formData.append('product[photo]', this.state.photoFile);
+    }
+
+    this.props.action(formData, this.props.match.params.productId).then(() => this.props.history.push('/'));
+  }
+
+  handleFile(e) {
+    // this.setState({ photoFile: e.target.files[0] });
+
+    const reader = new FileReader();
+    const file = e.currentTarget.files[0];
+    reader.onloadend = () =>
+      this.setState({ photoUrl: reader.result, photoFile: file });
+
+    if (file) {
+      reader.readAsDataURL(file);
+    } else {
+      this.setState({ photoUrl: "", photoFile: null });
+    }
   }
 
   renderErrors() {
@@ -33,12 +66,17 @@ class ProductForm extends React.Component {
   }
 
   render() {
+    if (!this.state) {
+      return null
+    }
 
+    const preview = this.state.photoUrl ? <img src={this.state.photoUrl}/> : null;
+    
     return (
       <div className='create-edit-form'>
         {this.renderErrors()}
         <form onSubmit={this.handleSubmit}>
-          <label > product_name
+          <label > product Name
           <input className="product-create-edit" onChange={this.update('productName')} value={this.state.productName} type="text" />
           </label>
           <label >price
@@ -61,6 +99,9 @@ class ProductForm extends React.Component {
           <label > description
           <textarea className="product-create-edit" onChange={this.update('description')} value={this.state.description}></textarea>
           </label>
+          <input type="file" onChange={this.handleFile.bind(this)}/>
+          <h3>Image preview</h3>
+          {preview}
           <input type="submit" className="session-submit" value={this.props.formType} />
         </form>
       </div>

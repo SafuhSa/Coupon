@@ -6,8 +6,9 @@ import ProductForm from './product_form';
 
 
 class EditProductForm extends React.Component {
+
   componentDidMount() {
-    this.props.requestProduct(this.props.match.params.postId);
+    this.props.requestProduct(this.props.match.params.productId);
   }
 
   render() {
@@ -34,7 +35,7 @@ const msp = (state, ownPorps) => {
 const mdp = dispatch => {
   return ({
     requestProduct: (id) => dispatch(requestProduct(id)),
-    action: (product) => dispatch(updateProduct(product))
+    action: (product, productId) => dispatch(updateProduct(product, productId))
   })
 }
 
