@@ -414,14 +414,18 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         className: "search"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fas fa-search"
+        className: "fa fa-search",
+        "aria-hidden": "true"
       }), " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
-        placeholder: "Search..."
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        className: "location",
+        placeholder: " Search Coupon"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        className: "location"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fa fa-map-marker"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
-        placeholder: "location..."
+        placeholder: " Near Me"
       }))), result);
     }
   }]);
@@ -696,7 +700,10 @@ function (_React$Component) {
       formData.append('product[category]', this.state.category);
 
       if (this.state.photoFile) {
-        formData.append('product[photo]', this.state.photoFile);
+        // formData.append('product[photo]', this.state.photoFile);
+        for (var i = 0; i < photos.length; i++) {
+          formData.append('post[photos][]', this.state.photoFile[i]);
+        }
       }
 
       this.props.action(formData, this.props.match.params.productId).then(function () {
@@ -710,24 +717,25 @@ function (_React$Component) {
 
       // this.setState({ photoFile: e.target.files[0] });
       var reader = new FileReader();
-      var file = e.currentTarget.files[0];
+      var files = e.target.files;
 
       reader.onloadend = function () {
         return _this4.setState({
           photoUrl: reader.result,
-          photoFile: file
+          photoFile: files
         });
       };
 
-      if (file) {
-        reader.readAsDataURL(file);
+      if (files) {
+        reader.readAsDataURL(files);
       } else {
         this.setState({
           photoUrl: "",
           photoFile: null
         });
       }
-    }
+    } // e => this.setState({ photos: e.target.files })
+
   }, {
     key: "renderErrors",
     value: function renderErrors() {
@@ -789,7 +797,8 @@ function (_React$Component) {
         value: this.state.description
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "file",
-        onChange: this.handleFile.bind(this)
+        onChange: this.handleFile.bind(this),
+        multiple: true
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Image preview"), preview, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "submit",
         className: "session-submit",

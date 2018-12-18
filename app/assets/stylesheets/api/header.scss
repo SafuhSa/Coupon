@@ -31,6 +31,7 @@ header {
   // border: 1px solid black;
 }
 .location {
+  display: flex;
   background-color: white;
   padding-left: 6px;
   width: 200px;
@@ -78,7 +79,13 @@ header {
   // border: 1px solid black;
 }
 
-.fas fa-search:before {
+.fa-search:before {
   content: '\f002';
-  font-size: 15px;
+  font-size: 30px;
+  color: rgb(190, 188, 188);
+}
+
+.fa-map-marker:before {
+  font-size: 34px;
+  color: rgb(190, 188, 188);
 }

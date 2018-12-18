@@ -29,9 +29,13 @@ class ProductForm extends React.Component {
     formData.append('product[description]', this.state.description);
     formData.append('product[quantity]', this.state.quantity);
     formData.append('product[category]', this.state.category);
-
+      
     if (this.state.photoFile) {
-      formData.append('product[photo]', this.state.photoFile);
+      // formData.append('product[photo]', this.state.photoFile);
+      for (let i = 0; i < photos.length; i++) {
+        formData.append('post[photos][]', this.state.photoFile[i]);
+      }
+
     }
 
     this.props.action(formData, this.props.match.params.productId).then(() => this.props.history.push('/'));
@@ -41,16 +45,18 @@ class ProductForm extends React.Component {
     // this.setState({ photoFile: e.target.files[0] });
 
     const reader = new FileReader();
-    const file = e.currentTarget.files[0];
+    const files = e.target.files;
     reader.onloadend = () =>
-      this.setState({ photoUrl: reader.result, photoFile: file });
+      this.setState({ photoUrl: reader.result, photoFile: files });
 
-    if (file) {
-      reader.readAsDataURL(file);
+    if (files) {
+      reader.readAsDataURL(files);
     } else {
       this.setState({ photoUrl: "", photoFile: null });
     }
   }
+
+  // e => this.setState({ photos: e.target.files })
 
   renderErrors() {
     
@@ -71,7 +77,7 @@ class ProductForm extends React.Component {
     }
 
     const preview = this.state.photoUrl ? <img src={this.state.photoUrl}/> : null;
-    
+
     return (
       <div className='create-edit-form'>
         {this.renderErrors()}
@@ -99,7 +105,7 @@ class ProductForm extends React.Component {
           <label > description
           <textarea className="product-create-edit" onChange={this.update('description')} value={this.state.description}></textarea>
           </label>
-          <input type="file" onChange={this.handleFile.bind(this)}/>
+          <input type="file" onChange={this.handleFile.bind(this)} multiple />
           <h3>Image preview</h3>
           {preview}
           <input type="submit" className="session-submit" value={this.props.formType} />
