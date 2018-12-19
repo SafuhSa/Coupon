@@ -972,20 +972,18 @@ var PostIndexItem = function PostIndexItem(_ref) {
       deleteProduct = _ref.deleteProduct;
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "index-item-container"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+    to: "/products/".concat(product.id)
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "index-item"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
     className: "index-pics",
     src: product.photoUrls[0]
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-    to: "/products/".concat(product.id)
-  }, product.productName), "\xA0", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-    to: "/products/".concat(product.id, "/edit")
-  }, "Edit"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, product.productName), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, product.price), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, product.disPrice), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, product.category), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, product.description), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     onClick: function onClick() {
       return deleteProduct(product.id);
     }
-  }, "Delete")));
+  }, "Delete"))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (PostIndexItem);
