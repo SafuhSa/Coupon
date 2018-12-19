@@ -17,10 +17,8 @@ class ProductIndex extends React.Component {
       );
     });
     return (
-      <div>
-        <ul>
+      <div className='index-items'>
           {products}
-        </ul>
       </div>
     );
   }

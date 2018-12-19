@@ -1,15 +1,7 @@
 // Place all the styles related to the api/Sessions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-h1 {
-    display: block;
-    font-size: 2em;
-    margin-block-start: 0.67em;
-    margin-block-end: 0.67em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-    font-weight: bold;
-}
+
 
  .login-form-container {
    position:relative;
@@ -55,17 +47,7 @@ h1 {
 
 
 
-.input-container{
-  // background-color: white;
-  box-sizing: border-box;
-  margin-left:0;
-  width:600px;
-  height:80px;
-  display:flex;
-  justify-content: center;
-  align-items: center; 
-  // border: 1px solid black;
-}
+
 
 .session-submit {
   background: #53a318;

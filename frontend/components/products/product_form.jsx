@@ -6,6 +6,7 @@ class ProductForm extends React.Component {
     super(props)
     this.state = this.props.product;
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.photos = []
   }
 
     componentDidUpdate(prevProps) {
@@ -22,6 +23,7 @@ class ProductForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
+
     const formData = new FormData();
     formData.append('product[productName]', this.state.productName);
     formData.append('product[price]', this.state.price);
@@ -29,34 +31,39 @@ class ProductForm extends React.Component {
     formData.append('product[description]', this.state.description);
     formData.append('product[quantity]', this.state.quantity);
     formData.append('product[category]', this.state.category);
-      
+
+
     if (this.state.photoFile) {
       // formData.append('product[photo]', this.state.photoFile);
-      for (let i = 0; i < photos.length; i++) {
-        formData.append('post[photos][]', this.state.photoFile[i]);
+
+      for (let i = 0; i < this.state.photoFile.length; i++) {
+        formData.append('product[photos][]', this.state.photoFile[i]);
       }
-
     }
-
     this.props.action(formData, this.props.match.params.productId).then(() => this.props.history.push('/'));
   }
 
   handleFile(e) {
-    // this.setState({ photoFile: e.target.files[0] });
-
-    const reader = new FileReader();
-    const files = e.target.files;
-    reader.onloadend = () =>
-      this.setState({ photoUrl: reader.result, photoFile: files });
-
-    if (files) {
-      reader.readAsDataURL(files);
+    let result = [e.target.files[0]]
+    if (this.state.photoFile) {
+      this.setState((state, props) => ({ photoFile: state.photoFile.concat(result) }))
     } else {
-      this.setState({ photoUrl: "", photoFile: null });
+      this.setState({photoFile: [e.target.files[0]] })
     }
+
+    // const files = e.target.files[0];
+    // const reader = new FileReader();
+
+    // reader.onloadend = () =>
+    //   this.setState({ photoUrl: reader.result, photoFile: e.target.files });
+    
+    // if (files) {
+      // reader.readAsDataURL(files);
+    // } else {
+    //   this.setState({ photoUrl: "", photoFile: null });
+    // }
   }
 
-  // e => this.setState({ photos: e.target.files })
 
   renderErrors() {
     
@@ -75,7 +82,6 @@ class ProductForm extends React.Component {
     if (!this.state) {
       return null
     }
-
     const preview = this.state.photoUrl ? <img src={this.state.photoUrl}/> : null;
 
     return (

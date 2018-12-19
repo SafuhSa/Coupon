@@ -1,4 +1,4 @@
-header {
+.header {
   position: relative;
   overflow: hidden;
   display: flex;
@@ -8,84 +8,139 @@ header {
   justify-content: space-between;
   font-family: Open Sans,OpenSans,system,-apple-system,BlinkMacSystemFont,Roboto,Arial,FreeSans,sans-serif;
   z-index: 20;
-  // height: 60px;
+  padding-left: 16%;
+  padding-right: 10%;
+  height: 54px;
 }
 
 .logo {
-  display: flex;
-  justify-content: center;
-  height: 30px;
-  text-decoration-line: none;
-  color: white;
-  width:500px; 
+  font-size: 2em;
+  font-weight: bold;
+  // margin-right: auto;
+  // display: flex;
+  // justify-content: center;
+  // // height: 30px;
+  // color: white;
+  // margin: 0px 70px 0px 0px;
+  // text-decoration-line: none;
   // border: 1px solid black;
 }
+
+// h1 {
+//     display: block;
+//     font-size: 2em;
+//     margin-block-start: 0.67em;
+//     margin-block-end: 0.67em;
+//     margin-inline-start: 0px;
+//     margin-inline-end: 0px;
+//     font-weight: bold;
+// }
 
 .search {
   background-color: white;
   padding-left: 6px;
-  width: 400px;
-  height: 40px;
   color: black;
+  margin: 0px 8px 0px 8px;
+  width: 400px;
+//   height: 40px;
   // margin-left: 10px;
   // border: 1px solid black;
 }
 .location {
-  display: flex;
-  background-color: white;
-  padding-left: 6px;
-  width: 200px;
-  height: 40px;
-  margin-left: 10px;
-  color: black;
+    background-color: white;
+    padding-left: 6px;
+    color: black;
+    width: 200px;
+//   height: 40px;
+//   margin-left: 10px;
   // border: 1px solid black;
 } 
+.input-container{
+  display:flex;
+  padding-bottom: 1.5%;
+  // background-color: white;
+   
+  // box-sizing: border-box;
+//   margin-left:0;
+//   width:600px;
+//   height:80px;
+//   justify-content: center;
+//   align-items: center; 
+  // border: 1px solid black;
+}
 
+.signin-name {
+  border: 1px solid black;
+    display:block;
+    padding-top:100px;
+    margin-top:-100px;
+}
 
 .button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 30px;
-  text-decoration-line: none;
-  color: white;
-  width:70px; 
-  box-sizing: border-box;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   height: 30px;
+//   text-decoration-line: none;
+//   color: white;
+//   width:70px; 
+//   box-sizing: border-box;
+  border: 1px solid black;
+}
+
+// .button:hover {
+//   color: white;
+//   width: 70px;
+//   height: 40px;
+//   transition: color .5s linear;
+// }
+
+// .log-out-buttom:hover {
+//     color: white;
+//   width: 90px;
+//   height: 40px;
+//   transition: color .5s linear;
+//   // background-color: black;
+// }
+
+// .login-signup {
+  // margin: auto;
+  // text-decoration: none;
+  // font-size: 18px; 
+  // line-height: 28px;
+  // display: flex;
+  // box-sizing: border-box;
   // border: 1px solid black;
-}
-
-.button:hover {
-  color: white;
-  width: 70px;
-  height: 40px;
-  transition: color .5s linear;
-}
-
-.log-out-buttom:hover {
-    color: white;
-  width: 90px;
-  height: 40px;
-  transition: color .5s linear;
-  // background-color: black;
-}
-
-.login-signup {
-  margin: auto;
-  text-decoration: none;
-  font-size: 18px; 
-  line-height: 28px;
-  display: flex;
-  box-sizing: border-box;
-  // border: 1px solid black;
-}
+// }
 
 .fa-search:before {
   content: '\f002';
   font-size: 30px;
   color: rgb(190, 188, 188);
 }
+.fa {
+  margin-top: 4px;
+}
 
 .fa-map-marker:before {
   font-size: 34px;
   color: rgb(190, 188, 188);
+}
+.upper-header {
+  display: flex;
+  background-color: #53a318;
+  color: white;
+  justify-content: flex-end;
+  font-family: Open Sans,OpenSans,system,-apple-system,BlinkMacSystemFont,Roboto,Arial,FreeSans,sans-serif;
+  padding-right: 13%;
+  font-size: 14px;
+  // position: relative;
+  // overflow: hidden;
+  // z-index: 20;
+  //  padding-left: 16%;
+  // height: 60px
+}
+
+.header-link {
+  margin: 7px 11px 5px 15px;
 }

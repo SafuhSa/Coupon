@@ -1,8 +1,10 @@
-body {
-  // background-color: blue;
-  // background: image_url("../../images/imgidx.jpg");
-  // background-image: url("https://i.ytimg.com/vi/bNciLyMjPQo/maxresdefault.jpg");
-  // background-position: center;
-  // background-repeat: no-repeat;
-  // background-size: cover;
+
+.index-items {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin: 0 auto;
+  width: 1065px;
+  padding-top: 10px;
+    // background-color: grey;
 }

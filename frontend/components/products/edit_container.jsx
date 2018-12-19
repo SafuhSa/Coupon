@@ -24,6 +24,7 @@ class EditProductForm extends React.Component {
 }
 
 const msp = (state, ownPorps) => {
+  
   let id = ownPorps.match.params.productId
   return ({
     product: state.entities.products[id],

@@ -17,7 +17,7 @@
 class Product < ApplicationRecord
     validates :seller_id, :product_name, :price, :dis_price, :quantity, :category, presence: true
     
-    validate :ensure_photo
+    validate :ensure_photos
 
     belongs_to :seller,
         foreign_key: :seller_id,
@@ -25,9 +25,9 @@ class Product < ApplicationRecord
 
     has_many_attached :photos
 
-    def ensure_photo
-        unless self.photo.attached?
-            errors[:photo] << 'Must be attached'
+    def ensure_photos
+        unless self.photos.attached?
+            errors[:photos] << 'Must be attached'
         end
     end
 

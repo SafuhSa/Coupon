@@ -5,31 +5,47 @@ import { Link } from 'react-router-dom';
 class Greeting extends React.Component {
   sessionLinks () {
     return (
-        <div className="login-signup">
-          <Link to="/login" className='button'>Sign In</Link>
-          &nbsp;|&nbsp;
-          <Link to="/signup" className='button'>Sign Up</Link>
+        <div className="signin-name">
+        <Link to="/login" >Sign In</Link>
+          {/* &nbsp;|&nbsp; */}
+          {/* <Link to="/signup" className='button'>Sign Up</Link> */}
         </div>
       );
    }
   personalGreeting() {
     let name = this.props.currentUser.fullName.split(' ')[0];
     return(
-      <div className="login-signup">
-          <h2 className="header-name">Hi, {name} !</h2>
-          &nbsp;  --  &nbsp;
-          <button className='log-out-buttom' onClick={this.props.logout}>Log Out</button>
+      <div className="signin-name">
+          <h2>{name} !</h2>
+          {/* &nbsp;  --  &nbsp; */}
+          {/* <button className='log-out-buttom' onClick={this.props.logout}>Log Out</button> */}
         </div>
       );
    }
 
    
    render() {
-    // debugger
-     let result = this.props.currentUser ? this.personalGreeting() : this.sessionLinks();
+     let result = '';
+     let result2 = '';
+     if (this.props.currentUser) {
+       result = this.personalGreeting()
+       result2 = <button onClick={this.props.logout}>Log Out</button>
+      } else {
+       result = this.sessionLinks();
+       result2 = <Link to="/signup">Sign Up</Link>
+      }
+    //  let result = this.props.currentUser ? this.personalGreeting() : this.sessionLinks();
      return (
        <header>
-         <Link to="/" className='logo'><h1>COUPON</h1> </Link>
+         <div className='upper-header'>
+           <Link to="/" className='header-link'>Recently Viewed</Link>
+           <Link to="/" className='header-link'>Cart </Link>
+           <Link to="/product/new" className='header-link'>sell</Link>
+           <Link to="/" className='header-link'>Help </Link>
+           <Link to="/signup" className='header-link'>{result2}</Link>
+         </div>
+         <div className='header'>
+         <Link to="/" className='logo'>COUPON</Link>
          <div className="input-container">
            <form className="search" >
              <span><i className="fa fa-search" aria-hidden="true"></i> </span>
@@ -42,6 +58,7 @@ class Greeting extends React.Component {
            </form>
          </div>  
          {result}
+         </div>
        </header>
      )
   }
