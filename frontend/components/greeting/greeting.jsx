@@ -16,7 +16,7 @@ class Greeting extends React.Component {
     let name = this.props.currentUser.fullName.split(' ')[0];
     return(
       <div className="signin-name">
-          <h2>{name} !</h2>
+          {name} !
           {/* &nbsp;  --  &nbsp; */}
           {/* <button className='log-out-buttom' onClick={this.props.logout}>Log Out</button> */}
         </div>
@@ -32,14 +32,16 @@ class Greeting extends React.Component {
        result2 = <button onClick={this.props.logout}>Log Out</button>
       } else {
        result = this.sessionLinks();
-       result2 = <Link to="/signup">Sign Up</Link>
+       result2 = 'Sign Up'
       }
     //  let result = this.props.currentUser ? this.personalGreeting() : this.sessionLinks();
      return (
        <header>
          <div className='upper-header'>
            <Link to="/" className='header-link'>Recently Viewed</Link>
-           <Link to="/" className='header-link'>Cart </Link>
+           <Link to="/" className='header-link'>
+           <span> <i className="fas fa-shopping-cart"></i></span>
+           Cart </Link>
            <Link to="/product/new" className='header-link'>sell</Link>
            <Link to="/" className='header-link'>Help </Link>
            <Link to="/signup" className='header-link'>{result2}</Link>
@@ -57,9 +59,9 @@ class Greeting extends React.Component {
                 <form className="location">
                   <span><i className="fa fa-map-marker"></i></span>
                     <input className='input-location' type="text"  placeholder=' Near Me' />
-
                 </form>
-
+                
+               <button className='button-search' ><span><i className="fa fa-search search-button" aria-hidden="true"></i></span></button>
               </div>  
               {result}
             </div>

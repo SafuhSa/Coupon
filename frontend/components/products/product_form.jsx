@@ -45,23 +45,31 @@ class ProductForm extends React.Component {
 
   handleFile(e) {
     let result = [e.target.files[0]]
-    if (this.state.photoFile) {
-      this.setState((state, props) => ({ photoFile: state.photoFile.concat(result) }))
-    } else {
-      this.setState({photoFile: [e.target.files[0]] })
+    // if (this.state.photoFile) {
+    //   this.setState((state, props) => ({ photoFile: state.photoFile.concat(result) }))
+    // } else {
+    //   this.setState({photoFile: [e.target.files[0]] })
+    // }
+
+    const files = e.target.files;
+    const reader = new FileReader();
+
+    reader.onloadend = () => {
+      if (this.state.photoFile) {
+        this.setState((state, props) => ({ photoUrl: reader.result, photoFile: state.photoFile.concat(result)}));
+      } else {
+        this.setState({ photoFile: result })
+      }
     }
 
-    // const files = e.target.files[0];
-    // const reader = new FileReader();
 
-    // reader.onloadend = () =>
-    //   this.setState({ photoUrl: reader.result, photoFile: e.target.files });
-    
-    // if (files) {
-      // reader.readAsDataURL(files);
-    // } else {
-    //   this.setState({ photoUrl: "", photoFile: null });
-    // }
+    if (files) {
+      for (let i = 0; i < files.length; i++) {
+        reader.readAsDataURL(files[i]);
+      }
+    } else {
+      this.setState({ photoUrl: "", photoFile: null });
+    }
   }
 
 

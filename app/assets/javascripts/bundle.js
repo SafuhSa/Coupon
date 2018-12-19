@@ -390,7 +390,7 @@ function (_React$Component) {
       var name = this.props.currentUser.fullName.split(' ')[0];
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "signin-name"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, name, " !"));
+      }, name, " !");
     }
   }, {
     key: "render",
@@ -405,9 +405,7 @@ function (_React$Component) {
         }, "Log Out");
       } else {
         result = this.sessionLinks();
-        result2 = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-          to: "/signup"
-        }, "Sign Up");
+        result2 = 'Sign Up';
       } //  let result = this.props.currentUser ? this.personalGreeting() : this.sessionLinks();
 
 
@@ -419,7 +417,9 @@ function (_React$Component) {
       }, "Recently Viewed"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/",
         className: "header-link"
-      }, "Cart "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fas fa-shopping-cart"
+      })), "Cart "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/product/new",
         className: "header-link"
       }, "sell"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
@@ -454,7 +454,12 @@ function (_React$Component) {
         className: "input-location",
         type: "text",
         placeholder: " Near Me"
-      }))), result)));
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "button-search"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fa fa-search search-button",
+        "aria-hidden": "true"
+      })))), result)));
     }
   }]);
 
@@ -742,28 +747,42 @@ function (_React$Component) {
   }, {
     key: "handleFile",
     value: function handleFile(e) {
-      var result = [e.target.files[0]];
+      var _this4 = this;
 
-      if (this.state.photoFile) {
-        this.setState(function (state, props) {
-          return {
-            photoFile: state.photoFile.concat(result)
-          };
-        });
-      } else {
-        this.setState({
-          photoFile: [e.target.files[0]]
-        });
-      } // const files = e.target.files[0];
-      // const reader = new FileReader();
-      // reader.onloadend = () =>
-      //   this.setState({ photoUrl: reader.result, photoFile: e.target.files });
-      // if (files) {
-      // reader.readAsDataURL(files);
+      var result = [e.target.files[0]]; // if (this.state.photoFile) {
+      //   this.setState((state, props) => ({ photoFile: state.photoFile.concat(result) }))
       // } else {
-      //   this.setState({ photoUrl: "", photoFile: null });
+      //   this.setState({photoFile: [e.target.files[0]] })
       // }
 
+      var files = e.target.files;
+      var reader = new FileReader();
+
+      reader.onloadend = function () {
+        if (_this4.state.photoFile) {
+          _this4.setState(function (state, props) {
+            return {
+              photoUrl: reader.result,
+              photoFile: state.photoFile.concat(result)
+            };
+          });
+        } else {
+          _this4.setState({
+            photoFile: result
+          });
+        }
+      };
+
+      if (files) {
+        for (var i = 0; i < files.length; i++) {
+          reader.readAsDataURL(files[i]);
+        }
+      } else {
+        this.setState({
+          photoUrl: "",
+          photoFile: null
+        });
+      }
     }
   }, {
     key: "renderErrors",
