@@ -429,6 +429,8 @@ function (_React$Component) {
         to: "/signup",
         className: "header-link"
       }, result2)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "header-cover"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "header"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/",
@@ -440,7 +442,8 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fa fa-search",
         "aria-hidden": "true"
-      }), " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "input-location",
         type: "text",
         placeholder: " Search Coupon"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
@@ -448,9 +451,10 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fa fa-map-marker"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "input-location",
         type: "text",
         placeholder: " Near Me"
-      }))), result));
+      }))), result)));
     }
   }]);
 

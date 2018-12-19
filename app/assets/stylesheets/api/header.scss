@@ -1,21 +1,28 @@
+.header-cover {
+  background-color: black;
+  background-color: #53a318;
+}
+
 .header {
   position: relative;
   overflow: hidden;
   display: flex;
-  background-color: #53a318;
   font-weight: bold;
   color: white;
   justify-content: space-between;
   font-family: Open Sans,OpenSans,system,-apple-system,BlinkMacSystemFont,Roboto,Arial,FreeSans,sans-serif;
   z-index: 20;
-  padding-left: 16%;
-  padding-right: 10%;
+  // padding-left: 16%;
+  // padding-right: 10%;
+  margin: 0 auto;
   height: 54px;
+  width: fit-content;
 }
 
 .logo {
   font-size: 2em;
   font-weight: bold;
+  padding-left: 1vw;
   // margin-right: auto;
   // display: flex;
   // justify-content: center;
@@ -26,17 +33,9 @@
   // border: 1px solid black;
 }
 
-// h1 {
-//     display: block;
-//     font-size: 2em;
-//     margin-block-start: 0.67em;
-//     margin-block-end: 0.67em;
-//     margin-inline-start: 0px;
-//     margin-inline-end: 0px;
-//     font-weight: bold;
-// }
 
 .search {
+  display: flex;
   background-color: white;
   padding-left: 6px;
   color: black;
@@ -47,17 +46,29 @@
   // border: 1px solid black;
 }
 .location {
+  display: flex;
     background-color: white;
     padding-left: 6px;
     color: black;
-    width: 200px;
+    width: 208px;
 //   height: 40px;
 //   margin-left: 10px;
   // border: 1px solid black;
 } 
+
+.input-location {
+  padding-left: 6px;
+  padding-right: 12px;
+  width: 100%;
+}
+
 .input-container{
   display:flex;
   padding-bottom: 1.5%;
+  font-weight: 400;
+  font-size: 17px;
+  padding-left: 1vw;
+  padding-right: 1vw;
   // background-color: white;
    
   // box-sizing: border-box;

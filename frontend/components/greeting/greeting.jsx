@@ -44,21 +44,26 @@ class Greeting extends React.Component {
            <Link to="/" className='header-link'>Help </Link>
            <Link to="/signup" className='header-link'>{result2}</Link>
          </div>
-         <div className='header'>
-         <Link to="/" className='logo'>COUPON</Link>
-         <div className="input-container">
-           <form className="search" >
-             <span><i className="fa fa-search" aria-hidden="true"></i> </span>
-           <input  type="text" placeholder=' Search Coupon' />
-          </form>
+          <div className='header-cover'>
+            <div className='header'>
+              <Link to="/" className='logo'>COUPON</Link>
+              <div className="input-container">
 
-           <form className="location">
-             <span><i className="fa fa-map-marker"></i></span>
-           <input  type="text" placeholder=' Near Me' />
-           </form>
-         </div>  
-         {result}
-         </div>
+                <form className="search" >
+                  <span><i className="fa fa-search" aria-hidden="true"></i></span>
+                    <input className='input-location' type="text" placeholder=' Search Coupon' />
+                </form>
+
+                <form className="location">
+                  <span><i className="fa fa-map-marker"></i></span>
+                    <input className='input-location' type="text"  placeholder=' Near Me' />
+
+                </form>
+
+              </div>  
+              {result}
+            </div>
+          </div>
        </header>
      )
   }

@@ -5,9 +5,7 @@
 
  .login-form-container {
    position:relative;
-   background: rgba(277,350,250,0.8);
    width: 522px;
-  //  border: 2px solid #53a318;
    padding: 25px;
    margin: auto;
    font-family: -apple-system, 
@@ -29,6 +27,15 @@
   white-space: nowrap;
   font-weight: 300;
 
+}
+h1 {
+    // display: block;
+    font-size: 2em;
+    margin-block-start: 0.67em;
+    margin-block-end: 0.67em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
 }
 
  .login-input {
