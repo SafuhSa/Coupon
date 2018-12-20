@@ -35,7 +35,7 @@ gem 'jquery-rails'
 gem "aws-sdk-s3"
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-
+gem 'ez_download', '~> 0.2.0'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 

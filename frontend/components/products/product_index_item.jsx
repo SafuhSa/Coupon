@@ -20,7 +20,7 @@ const PostIndexItem = ({ product, deleteProduct }) => {
             <div className='description'>{product.description}</div>
         </div>
           
-        {/* <button onClick={() => deleteProduct(product.id)}>Delete</button> */}
+        <button onClick={() => deleteProduct(product.id)}>Delete</button>
       </div>
         </Link>
     </div>);
