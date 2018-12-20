@@ -811,7 +811,7 @@ function (_React$Component) {
       if (this.state.photoUrl) {
         for (var i = 0; i < this.state.photoUrl.length; i++) {
           var el = this.state.photoUrl[i];
-          preview.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          preview.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
             className: "image-preview",
             key: i
           }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
@@ -822,7 +822,9 @@ function (_React$Component) {
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "create-edit-product-container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Generate more sales list your products"), this.renderErrors(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Generate more sales list your products"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
+        className: "errors"
+      }, this.renderErrors()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         onSubmit: this.handleSubmit
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "product-label"
@@ -889,7 +891,7 @@ function (_React$Component) {
         htmlFor: "file"
       }, "Choose a file")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "images-preview-container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, preview)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }, preview), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "submit",
         className: "session-submit",
         value: this.props.formType
@@ -1131,13 +1133,15 @@ function (_React$Component) {
       var result = [];
 
       for (var i = 0; i < product.photoUrls.length; i++) {
-        result.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        result.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
           key: i,
           src: product.photoUrls[i]
-        }));
+        })));
       }
 
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, product.productName), result, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, product.price), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, product.disPrice), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, product.description), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, product.productName), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, result[0]), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, result.slice(1)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, product.price), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, product.disPrice), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, product.description), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: "/products/".concat(product.id, "/edit")
+      }, "Edit"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/"
       }, "Back to Index"));
     }
@@ -1472,7 +1476,9 @@ function (_React$Component) {
         className: "signUp active"
       }, "I HAVE AN ACCOUNT"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "signUp"
-      }, this.props.navLink)), this.renderErrors(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, this.props.navLink)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
+        className: "errors"
+      }, this.renderErrors()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "login-form"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",

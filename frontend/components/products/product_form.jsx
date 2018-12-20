@@ -95,14 +95,14 @@ class ProductForm extends React.Component {
     if (this.state.photoUrl) {
       for (let i = 0; i < this.state.photoUrl.length; i++) {
         const el = this.state.photoUrl[i];
-        preview.push(<li className='image-preview' key={i}><img  src={el} /></li> )
+        preview.push(<ul className='image-preview' key={i}><img  src={el} /></ul> )
       }
     }
 
     return (
       <div className='create-edit-product-container'>
         <h1>Generate more sales list your products</h1>
-        {this.renderErrors()}
+        <h4 className='errors'>{this.renderErrors()}</h4>
         <form onSubmit={this.handleSubmit}>
           <label className='product-label'> <h3>Product Title:</h3>
           <input className="product-create-edit-input" onChange={this.update('productName')} value={this.state.productName} type="text" />
@@ -135,9 +135,9 @@ class ProductForm extends React.Component {
             <label htmlFor="file">Choose a file</label>
           </label>
           <div className='images-preview-container'>
-          <ul>
+
             {preview}
-          </ul>
+
           </div>
           <input type="submit" className="session-submit" value={this.props.formType} />
         </form>

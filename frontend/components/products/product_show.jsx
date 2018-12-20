@@ -23,17 +23,23 @@ class ProductShow extends React.Component {
     let result = []
 
     for (let i = 0; i < product.photoUrls.length; i++) {
-      result.push( <img key={i} src={product.photoUrls[i]} />)
+      result.push(<ul> <img key={i} src={product.photoUrls[i]} /></ul>)
     }
 
 
     return (
       <div>
         <h3>{product.productName}</h3>
-        {result}
+        <div>
+          {result[0]}
+        </div>
+        <div>
+        {result.slice(1)}
+        </div>
         <p>{product.price}</p>
         <p>{product.disPrice}</p>
         <p>{product.description}</p>
+        <Link to={`/products/${product.id}/edit`}>Edit</Link>
         <Link to="/">Back to Index</Link>
       </div>
     );

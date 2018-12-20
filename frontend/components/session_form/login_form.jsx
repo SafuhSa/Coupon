@@ -55,7 +55,7 @@ class LoginForm extends React.Component {
             </div>
 
           </div>
-          {this.renderErrors()}
+          <h4 className='errors'>{this.renderErrors()}</h4>
           <div className="login-form">
             <br />
             <label>
