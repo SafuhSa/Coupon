@@ -32,6 +32,7 @@ class ProductShow extends React.Component {
     let result = []
     
     for (let i = 0; i < product.photoUrls.length; i++) {
+      // debugger
       result.push(<ul className='image-show' key={i}><img key={i} src={product.photoUrls[i]} onClick={() => this.setState({ mainImage: < ul className='image-show' ><img  src={product.photoUrls[i]} /></ul>})}/></ul>)
     }
     

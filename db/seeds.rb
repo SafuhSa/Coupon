@@ -7,11 +7,14 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 #  product1 = Product.new(title: 'Talk To me', artist_id: artist1.id)
-#  file = EzDownload.open('https://s3.amazonaws.com/sonorise-dev/02+Talk+to+Me.mp3')
-#  track2.audio.attach(io: file, filename: '02_Talk_to_Me.mp3')
+#  file = Ezxudio.attach(io: file, filename: '02_Talk_to_Me.mp3')
 #  track2.save!
+Product.destroy_all
+User.destroy_all
 
-product1 = Product.new(product_name: "John's Incredible Pizza Company", price: 73, dis_price: 26, description: 'Visitors can enjoy unlimited food and drinks along with video games and rides like the boogie bump, Air IncrediBear, and more', quantity: 1000, category: 'Restaurants', seller_id: 4)
+user = User.create(username: 'SafuhSa', password: "password", email:'email@email.com', full_name: "Safuh Saray")
+
+product1 = Product.new(product_name: "John's Incredible Pizza Company", price: 73, dis_price: 26, description: 'Visitors can enjoy unlimited food and drinks along with video games and rides like the boogie bump, Air IncrediBear, and more', quantity: 1000, category: 'Restaurants', seller_id: user.id)
 file = EzDownload.open('https://s3-us-west-1.amazonaws.com/coupon-div/PizzaCompany1.jpg')
 product1.photos.attach(io: file, filename: 'PizzaCompany1.jpg')
 file1 = EzDownload.open('https://s3-us-west-1.amazonaws.com/coupon-div/Pizza+Company2.jpg')
