@@ -28,7 +28,7 @@ class ProductShow extends React.Component {
       return <div>Loading...</div>;
     }
 
-    
+    let num = Math.ceil((product.quantity /3) * 2)
     let result = []
     
     for (let i = 0; i < product.photoUrls.length; i++) {
@@ -41,35 +41,68 @@ class ProductShow extends React.Component {
     
     return (
       <div className='show-container'>
+        <div className='show-title'>
+              <div  >
+                <h2>{product.productName}</h2>
+              </div>
 
-        <div className='left-show-container'>
-          <h2>{product.productName}</h2>
-          <div className='main-picture'>
-            {this.state.mainImage}
+              <div className='title-rating'>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star"></span>({num} ratings)
+              </div>
+            </div>
+
+            <div className='inside-show-container'>
+              <div className='left-show-container'>
+                <div className='main-picture'>
+                  {this.state.mainImage}
+                </div>
+                <div className='show-images'>
+                {result}
+                </div>
+                {/* <p>{product.price}</p>
+                <p>{product.disPrice}</p> */}
+                <div className='product_description'>
+                  <h3>Highlights</h3>
+                  <hr />
+                  <p>{product.description}</p>
+                </div>
+                <h3>Customer Reviews</h3>
+                <hr />
+                <div>
+
+                </div>
+                <Link to={`/products/${product.id}/edit`}>Edit</Link>
+                <Link to="/">Back to Index</Link>
+              </div>
+
+              <div className='right-show-container'>
+                <div className='rating-bought'>
+
+                  <div className= 'clc-eye-star'>
+                    <i class="far fa-clock"></i>
+                  <p>Limited Time Remaining!</p>
+                  </div>
+
+                  <div className='clc-eye-star'>
+                    <i class="far fa-eye"></i>
+                    <p>{product.quantity}+ viewed</p>
+                  </div>
+
+                  <div className='clc-eye-star'>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star"></span>
+                  <p>{num} ratings</p>
+                  </div>
+                </div>
+              </div>
           </div>
-          <div className='show-images'>
-          {result}
-          </div>
-          {/* <p>{product.price}</p>
-          <p>{product.disPrice}</p> */}
-          <div className='product_description'>
-            <h3>Highlights</h3>
-            <hr />
-            <p>{product.description}</p>
-          </div>
-          <h3>Customer Reviews</h3>
-          <hr />
-          <div>
-
-          </div>
-          <Link to={`/products/${product.id}/edit`}>Edit</Link>
-          <Link to="/">Back to Index</Link>
-        </div>
-
-        <div className='right-show-container'>
-
-        </div>
-
       </div>
     );
   }

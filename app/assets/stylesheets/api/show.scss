@@ -1,18 +1,39 @@
 .show-container {
   margin: 0 auto;
   width: fit-content;
+  // display: flex;
+  // flex-direction: row;x
+}
+.inside-show-container {
   display: flex;
-  flex-direction: row;
+  flex-direction: row
 }
 
 .show-container h2 {
-      display: block;
-    font-size: 1.5em;
-    margin-block-start: 1em;
-    margin-block-end: 1em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-    font-weight: bold;
+  display: block;
+  font-size: 1.5em;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  font-weight: bold;
+}
+
+.right-show-container {
+  border: 2px solid black;
+  width: 33.33%;
+  // height: 100px;
+  display: flex;
+  flex-direction: column;
+      padding-right: 0;
+    padding-left: 20px;
+}
+
+.left-show-container {
+  border-right: 1px solid #e6e7e8;
+  width: 600px;
+    margin-right: 0;
+    padding-right: 20px;
 }
 
 .main-picture {
@@ -45,15 +66,54 @@ hr {
     border-bottom: 1px solid#afb1b3;
 }
 
-.right-show-container {
-  border: 2px solid black;
-  width: 100px;
-  height: 100px;
+.rating-bought {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
 }
 
-.left-show-container {
-  border-right: 1px solid #e6e7e8;
-  width: 600px;
-    margin-right: 0;
-    padding-right: 20px;
+.fa-star {
+  color: rgb(133, 124, 124);
+  font-size: 15px;
+}
+
+.checked {
+  color: orange;
+}
+
+.clc-eye-star {
+  width: 33%;
+  padding: 13px;
+  padding-left: 0px;
+  text-align: center;
+}
+
+.show-title {
+  display: flex;
+  
+  flex-direction: row;
+  text-align: center;
+}
+.title-rating {
+  padding-top: 3%;
+  padding-left: 3px;
+  // text-align: center;
+    //   display: block;
+    // font-size: 1.5em;
+    // margin-block-start: 1em;
+    // margin-block-end: 1em;
+    // margin-inline-start: 0px;
+    // margin-inline-end: 0px;
+    // font-weight: bold;
+    font-size: 1em;
+    // padding-top: 1.7em;
+    // text-align: center;
+
+    // margin-block-start: 1em;
+}
+
+.title-rating .fa-star {
+  font-size: 20px;
+  padding: 2px;
+  line-height: 71%;
 }

@@ -1150,6 +1150,7 @@ function (_React$Component) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Loading...");
       }
 
+      var num = Math.ceil(product.quantity / 3 * 2);
       var result = [];
 
       var _loop = function _loop(i) {
@@ -1182,8 +1183,24 @@ function (_React$Component) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "show-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "show-title"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, product.productName)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "title-rating"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        class: "fa fa-star checked"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        class: "fa fa-star checked"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        class: "fa fa-star checked"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        class: "fa fa-star checked"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        class: "fa fa-star"
+      }), "(", num, " ratings)")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "inside-show-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "left-show-container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, product.productName), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "main-picture"
       }, this.state.mainImage), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "show-images"
@@ -1195,7 +1212,29 @@ function (_React$Component) {
         to: "/"
       }, "Back to Index")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "right-show-container"
-      }));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "rating-bought"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "clc-eye-star"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        class: "far fa-clock"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Limited Time Remaining!")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "clc-eye-star"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        class: "far fa-eye"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, product.quantity, "+ viewed")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "clc-eye-star"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        class: "fa fa-star checked"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        class: "fa fa-star checked"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        class: "fa fa-star checked"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        class: "fa fa-star checked"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        class: "fa fa-star"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, num, " ratings"))))));
     }
   }]);
 
