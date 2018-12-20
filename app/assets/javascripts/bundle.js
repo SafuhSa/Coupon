@@ -1103,10 +1103,16 @@ var ProductShow =
 function (_React$Component) {
   _inherits(ProductShow, _React$Component);
 
-  function ProductShow() {
+  function ProductShow(props) {
+    var _this;
+
     _classCallCheck(this, ProductShow);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(ProductShow).apply(this, arguments));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(ProductShow).call(this, props));
+    _this.state = {
+      mainImage: ''
+    };
+    return _this;
   }
 
   _createClass(ProductShow, [{
@@ -1122,8 +1128,22 @@ function (_React$Component) {
       }
     }
   }, {
+    key: "updateImage",
+    value: function updateImage() {
+      var url = this.props.product.photoUrls[0];
+      this.setState({
+        mainImage: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+          className: "image-show"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          src: url
+        }))
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
+      var _this2 = this;
+
       var product = this.props.product;
 
       if (!product) {
@@ -1132,18 +1152,50 @@ function (_React$Component) {
 
       var result = [];
 
-      for (var i = 0; i < product.photoUrls.length; i++) {
-        result.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+      var _loop = function _loop(i) {
+        result.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+          className: "image-show",
+          key: i
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
           key: i,
-          src: product.photoUrls[i]
+          src: product.photoUrls[i],
+          onClick: function onClick() {
+            return _this2.setState({
+              mainImage: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+                className: "image-show"
+              }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+                src: product.photoUrls[i]
+              }))
+            });
+          }
         })));
+      };
+
+      for (var i = 0; i < product.photoUrls.length; i++) {
+        _loop(i);
       }
 
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, product.productName), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, result[0]), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, result.slice(1)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, product.price), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, product.disPrice), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, product.description), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      if (!this.state.mainImage) {
+        this.updateImage();
+      }
+
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "show-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "left-show-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, product.productName), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "main-picture"
+      }, this.state.mainImage), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "show-images"
+      }, result), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "product_description"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Highlights"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, product.description)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Customer Reviews"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/products/".concat(product.id, "/edit")
       }, "Edit"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/"
-      }, "Back to Index"));
+      }, "Back to Index")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "right-show-container"
+      }));
     }
   }]);
 
