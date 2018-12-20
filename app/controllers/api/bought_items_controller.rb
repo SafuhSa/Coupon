@@ -20,7 +20,7 @@ class Api::BoughtItemsController < ApplicationController
     if @bought_item.save
       render "api/carts/show"
     else
-      render json: @product.errors.full_messages, status: 422
+      render json: @bought_item.errors.full_messages, status: 422
     end
   end
 
@@ -29,12 +29,20 @@ class Api::BoughtItemsController < ApplicationController
     @bought_item = BoughtItem.find(params[:id])
     price = Product.find_by(id: @bought_item.product_id)
     total = @bought_item.quantity * price
-    cart = Cart.find_by(id: @bought_item.cart_id)
-    cart.purchase_total -= total
-    cart.update(cart)
-
-    @bought_item.destroy
-    render "api/carts/show"
+    @cart = Cart.find_by(id: @bought_item.cart_id)
+    @cart.purchase_total -= total
+    @cart.update(cart)
+    
+    if @cart.purchase_total.zero? 
+      @bought_item.destroy
+      @cart.destroy
+      @products = Product.all
+      redner 'api/products/index'
+    else
+      @bought_item.destroy
+      render "api/carts/show"
+    end
+    
   end
 
 
@@ -42,5 +50,3 @@ class Api::BoughtItemsController < ApplicationController
     params.require(:bought_item).permit(:product_id, :quantity, :cart_id)
   end
 end
-
-# params.require(:user).permit(:username, :password, :email, :full_name)

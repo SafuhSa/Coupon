@@ -1158,7 +1158,6 @@ function (_React$Component) {
       var result = [];
 
       var _loop = function _loop(i) {
-        // debugger
         result.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
           className: "image-show",
           key: i
@@ -1192,15 +1191,15 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, product.productName)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "title-rating"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        class: "fa fa-star checked"
+        className: "fa fa-star checked"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        class: "fa fa-star checked"
+        className: "fa fa-star checked"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        class: "fa fa-star checked"
+        className: "fa fa-star checked"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        class: "fa fa-star checked"
+        className: "fa fa-star checked"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        class: "fa fa-star"
+        className: "fa fa-star"
       }), "(", num, " ratings)")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "inside-show-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1222,23 +1221,23 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "clc-eye-star"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        class: "far fa-clock"
+        className: "far fa-clock"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Limited Time Remaining!")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "clc-eye-star"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        class: "far fa-eye"
+        className: "far fa-eye"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, product.quantity, "+ viewed")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "clc-eye-star"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        class: "fa fa-star checked"
+        className: "fa fa-star checked"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        class: "fa fa-star checked"
+        className: "fa fa-star checked"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        class: "fa fa-star checked"
+        className: "fa fa-star checked"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        class: "fa fa-star checked"
+        className: "fa fa-star checked"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        class: "fa fa-star"
+        className: "fa fa-star"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, num, " ratings"))))));
     }
   }]);
@@ -2056,7 +2055,7 @@ var configureStore = function configureStore() {
 /*!*******************************************!*\
   !*** ./frontend/util/product_api_util.js ***!
   \*******************************************/
-/*! exports provided: fetchProducts, fetchProduct, createProduct, updateProduct, deletePorduct */
+/*! exports provided: fetchProducts, fetchProduct, createProduct, updateProduct, deletePorduct, boughtItem, deleteBoughtItem, fetchCart */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2066,6 +2065,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createProduct", function() { return createProduct; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateProduct", function() { return updateProduct; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deletePorduct", function() { return deletePorduct; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "boughtItem", function() { return boughtItem; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteBoughtItem", function() { return deleteBoughtItem; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchCart", function() { return fetchCart; });
 // GET / api / products /: id - returns product
 // POST / api / products - creates a product
 // PATCH / api / products /: id - edit a product
@@ -2104,6 +2106,27 @@ var deletePorduct = function deletePorduct(id) {
   return $.ajax({
     method: 'DELETE',
     url: "api/products/".concat(id)
+  });
+};
+var boughtItem = function boughtItem(item) {
+  return $.ajax({
+    method: 'POST',
+    url: 'api/boughtitems',
+    data: {
+      item: item
+    }
+  });
+};
+var deleteBoughtItem = function deleteBoughtItem(id) {
+  return $.ajax({
+    method: 'DELETE',
+    url: "api/boughtitems/".concat(id)
+  });
+};
+var fetchCart = function fetchCart(id) {
+  return $.ajax({
+    method: 'GET',
+    url: "api/boughtitems/".concat(id)
   });
 };
 

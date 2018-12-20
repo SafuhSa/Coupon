@@ -26,7 +26,7 @@ class BoughtItem < ApplicationRecord
 
 
 
-    belongs_to :product_id,
+    belongs_to :product,
       foreign_key: :product_id,
       class_name: :Product
 

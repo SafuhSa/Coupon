@@ -32,7 +32,6 @@ class ProductShow extends React.Component {
     let result = []
     
     for (let i = 0; i < product.photoUrls.length; i++) {
-      // debugger
       result.push(<ul className='image-show' key={i}><img key={i} src={product.photoUrls[i]} onClick={() => this.setState({ mainImage: < ul className='image-show' ><img  src={product.photoUrls[i]} /></ul>})}/></ul>)
     }
     
@@ -48,11 +47,11 @@ class ProductShow extends React.Component {
               </div>
 
               <div className='title-rating'>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star"></span>({num} ratings)
+                <span className="fa fa-star checked"></span>
+                <span className="fa fa-star checked"></span>
+                <span className="fa fa-star checked"></span>
+                <span className="fa fa-star checked"></span>
+                <span className="fa fa-star"></span>({num} ratings)
               </div>
             </div>
 
@@ -84,21 +83,21 @@ class ProductShow extends React.Component {
                 <div className='rating-bought'>
 
                   <div className= 'clc-eye-star'>
-                    <i class="far fa-clock"></i>
+                    <i className="far fa-clock"></i>
                   <p>Limited Time Remaining!</p>
                   </div>
 
                   <div className='clc-eye-star'>
-                    <i class="far fa-eye"></i>
+                    <i className="far fa-eye"></i>
                     <p>{product.quantity}+ viewed</p>
                   </div>
 
                   <div className='clc-eye-star'>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star"></span>
+                    <span className="fa fa-star checked"></span>
+                    <span className="fa fa-star checked"></span>
+                    <span className="fa fa-star checked"></span>
+                    <span className="fa fa-star checked"></span>
+                    <span className="fa fa-star"></span>
                   <p>{num} ratings</p>
                   </div>
                 </div>
