@@ -56,9 +56,9 @@ class ProductForm extends React.Component {
 
     reader.onloadend = () => {
       if (this.state.photoFile) {
-        this.setState((state, props) => ({ photoUrl: reader.result, photoFile: state.photoFile.concat(result)}));
+        this.setState({ photoUrl: this.state.photoUrl.concat([reader.result]), photoFile: this.state.photoFile.concat(result)});
       } else {
-        this.setState({ photoFile: result })
+        this.setState({ photoUrl: [reader.result], photoFile: result })
       }
     }
 
@@ -66,10 +66,10 @@ class ProductForm extends React.Component {
     if (files) {
       for (let i = 0; i < files.length; i++) {
         reader.readAsDataURL(files[i]);
-      }
-    } else {
-      this.setState({ photoUrl: "", photoFile: null });
-    }
+      }}
+    // } else {
+    //   this.setState({ photoUrl: "", photoFile: null });
+    // }
   }
 
 
@@ -90,38 +90,55 @@ class ProductForm extends React.Component {
     if (!this.state) {
       return null
     }
-    const preview = this.state.photoUrl ? <img src={this.state.photoUrl}/> : null;
+     
+    let preview = [];
+    if (this.state.photoUrl) {
+      for (let i = 0; i < this.state.photoUrl.length; i++) {
+        const el = this.state.photoUrl[i];
+        preview.push(<li className='image-preview' key={i}><img  src={el} /></li> )
+      }
+    }
 
     return (
-      <div className='create-edit-form'>
+      <div className='create-edit-product-container'>
+        <h1>Generate more sales list your products</h1>
         {this.renderErrors()}
         <form onSubmit={this.handleSubmit}>
-          <label > product Name
-          <input className="product-create-edit" onChange={this.update('productName')} value={this.state.productName} type="text" />
+          <label className='product-label'> <h3>Product Title:</h3>
+          <input className="product-create-edit-input" onChange={this.update('productName')} value={this.state.productName} type="text" />
           </label>
-          <label >price
-          <input className="product-create-edit" onChange={this.update('price')} value={this.state.price} type="text" />
+          <label className='product-label'><h3>Original Price:</h3>
+          <input className="product-create-edit-input" onChange={this.update('price')} value={this.state.price} type="text" />
           </label>
-          <label >dis_price
-          <input className="product-create-edit" onChange={this.update('disPrice')} value={this.state.disPrice} type="text" />
+          <label className='product-label'><h3 >DIS Price:</h3>
+          <input className="product-create-edit-input" onChange={this.update('disPrice')} value={this.state.disPrice} type="text" />
           </label>
   
-          <label >quantity
-          <input className="product-create-edit" onChange={this.update('quantity')} value={this.state.quantity} type="text" />
+          <label className='product-label'><h3>Quantity Aval:</h3>
+          <input className="product-create-edit-input" onChange={this.update('quantity')} value={this.state.quantity} type="text" />
           </label>
-          <select onChange={this.update('category')}>
+          <label className='product-label'><h3>Description:</h3>
+          <textarea className="product-create-edit-input" onChange={this.update('description')} value={this.state.description}></textarea>
+          </label>
+          <label className='product-label'><h3>category:</h3>
+            <select className="category-selector"  onChange={this.update('category') }>
+              <option value="" disabled selected hidden>Please Choose...</option>
             <option value="restaurants">Restaurants</option>
             <option value="electronic">Electronic</option>
             <option value="clothing">Clothing</option>
             <option value="FoodDrink ">Food & Drink</option>
             <option value="entertainment ">Entertainment</option>
           </select>
-          <label > description
-          <textarea className="product-create-edit" onChange={this.update('description')} value={this.state.description}></textarea>
           </label>
-          <input type="file" onChange={this.handleFile.bind(this)} multiple />
-          <h3>Image preview</h3>
-          {preview}
+          <label className='product-label'><h3>Images:</h3>
+            <input className='images-upload' type="file" onChange={this.handleFile.bind(this)} multiple />
+            <label htmlFor="file">Choose a file</label>
+          </label>
+          <div className='images-preview-container'>
+          <ul>
+            {preview}
+          </ul>
+          </div>
           <input type="submit" className="session-submit" value={this.props.formType} />
         </form>
       </div>

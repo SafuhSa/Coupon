@@ -380,9 +380,13 @@ function (_React$Component) {
     value: function sessionLinks() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "signin-name"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "far fa-bell"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/login"
-      }, "Sign In"));
+      }, "Sign In"), "\xA0 | \xA0", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: "/login"
+      }, "My Stuff"));
     }
   }, {
     key: "personalGreeting",
@@ -390,7 +394,13 @@ function (_React$Component) {
       var name = this.props.currentUser.fullName.split(' ')[0];
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "signin-name"
-      }, name, " !");
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "far fa-bell"
+      })), name, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "arrow down"
+      }), "\xA0 | \xA0", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: "/login"
+      }, "My Stuff"));
     }
   }, {
     key: "render",
@@ -406,8 +416,7 @@ function (_React$Component) {
       } else {
         result = this.sessionLinks();
         result2 = 'Sign Up';
-      } //  let result = this.props.currentUser ? this.personalGreeting() : this.sessionLinks();
-
+      }
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "upper-header"
@@ -760,14 +769,13 @@ function (_React$Component) {
 
       reader.onloadend = function () {
         if (_this4.state.photoFile) {
-          _this4.setState(function (state, props) {
-            return {
-              photoUrl: reader.result,
-              photoFile: state.photoFile.concat(result)
-            };
+          _this4.setState({
+            photoUrl: _this4.state.photoUrl.concat([reader.result]),
+            photoFile: _this4.state.photoFile.concat(result)
           });
         } else {
           _this4.setState({
+            photoUrl: [reader.result],
             photoFile: result
           });
         }
@@ -777,12 +785,10 @@ function (_React$Component) {
         for (var i = 0; i < files.length; i++) {
           reader.readAsDataURL(files[i]);
         }
-      } else {
-        this.setState({
-          photoUrl: "",
-          photoFile: null
-        });
-      }
+      } // } else {
+      //   this.setState({ photoUrl: "", photoFile: null });
+      // }
+
     }
   }, {
     key: "renderErrors",
@@ -800,36 +806,69 @@ function (_React$Component) {
         return null;
       }
 
-      var preview = this.state.photoUrl ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: this.state.photoUrl
-      }) : null;
+      var preview = [];
+
+      if (this.state.photoUrl) {
+        for (var i = 0; i < this.state.photoUrl.length; i++) {
+          var el = this.state.photoUrl[i];
+          preview.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+            className: "image-preview",
+            key: i
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+            src: el
+          })));
+        }
+      }
+
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "create-edit-form"
-      }, this.renderErrors(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        className: "create-edit-product-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Generate more sales list your products"), this.renderErrors(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         onSubmit: this.handleSubmit
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, " product Name", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        className: "product-create-edit",
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "product-label"
+      }, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Product Title:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "product-create-edit-input",
         onChange: this.update('productName'),
         value: this.state.productName,
         type: "text"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "price", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        className: "product-create-edit",
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "product-label"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Original Price:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "product-create-edit-input",
         onChange: this.update('price'),
         value: this.state.price,
         type: "text"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "dis_price", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        className: "product-create-edit",
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "product-label"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "DIS Price:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "product-create-edit-input",
         onChange: this.update('disPrice'),
         value: this.state.disPrice,
         type: "text"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "quantity", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        className: "product-create-edit",
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "product-label"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Quantity Aval:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "product-create-edit-input",
         onChange: this.update('quantity'),
         value: this.state.quantity,
         type: "text"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "product-label"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Description:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
+        className: "product-create-edit-input",
+        onChange: this.update('description'),
+        value: this.state.description
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "product-label"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "category:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+        className: "category-selector",
         onChange: this.update('category')
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "",
+        disabled: true,
+        selected: true,
+        hidden: true
+      }, "Please Choose..."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
         value: "restaurants"
       }, "Restaurants"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
         value: "electronic"
@@ -839,15 +878,18 @@ function (_React$Component) {
         value: "FoodDrink "
       }, "Food & Drink"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
         value: "entertainment "
-      }, "Entertainment")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, " description", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
-        className: "product-create-edit",
-        onChange: this.update('description'),
-        value: this.state.description
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }, "Entertainment"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "product-label"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Images:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "images-upload",
         type: "file",
         onChange: this.handleFile.bind(this),
         multiple: true
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Image preview"), preview, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        htmlFor: "file"
+      }, "Choose a file")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "images-preview-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, preview)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "submit",
         className: "session-submit",
         value: this.props.formType

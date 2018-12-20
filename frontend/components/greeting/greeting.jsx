@@ -6,7 +6,8 @@ class Greeting extends React.Component {
   sessionLinks () {
     return (
         <div className="signin-name">
-        <Link to="/login" >Sign In</Link>
+        <span><i className="far fa-bell"></i></span>
+        <Link to="/login" >Sign In</Link>&nbsp; | &nbsp;<Link to="/login" >My Stuff</Link>
           {/* &nbsp;|&nbsp; */}
           {/* <Link to="/signup" className='button'>Sign Up</Link> */}
         </div>
@@ -16,7 +17,8 @@ class Greeting extends React.Component {
     let name = this.props.currentUser.fullName.split(' ')[0];
     return(
       <div className="signin-name">
-          {name} !
+        <span><i className="far fa-bell"></i></span>
+        {name}<i className="arrow down"></i>&nbsp; | &nbsp;<Link to="/login" >My Stuff</Link>
           {/* &nbsp;  --  &nbsp; */}
           {/* <button className='log-out-buttom' onClick={this.props.logout}>Log Out</button> */}
         </div>
@@ -34,7 +36,7 @@ class Greeting extends React.Component {
        result = this.sessionLinks();
        result2 = 'Sign Up'
       }
-    //  let result = this.props.currentUser ? this.personalGreeting() : this.sessionLinks();
+
      return (
        <header>
          <div className='upper-header'>

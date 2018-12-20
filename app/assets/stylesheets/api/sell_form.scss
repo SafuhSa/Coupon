@@ -1,0 +1,76 @@
+.create-edit-product-container {
+  position:relative;
+   width: 522px;
+  //  border: 2px solid #53a318;
+   padding: 25px;
+   margin: auto;
+   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif; text-align: center;
+  line-height: 1.5;
+}
+.create-edit-product-container h1 {
+  white-space: nowrap;
+  font-weight: 300;
+}
+
+.product-label {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 300;
+}
+.product-create-edit-input {
+    border: 1px solid black;
+    border-color: #d5d8db;
+    height: 56px;
+    width: 70%;
+    text-align: left;
+    padding-left: 24px;
+    border-radius: 5PX;
+}
+
+.category-selector {
+    height: 56px;
+    width: 75%;
+    font-size: large;
+    background-color: #d5d8db;
+    // border-color: #d5d8db;
+}
+
+.images-upload {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+.images-upload + label {
+    font-size: 1.25em;
+    font-weight: 400;
+    background-color: #d5d8db;
+    height: 36px;
+    width: 73%;
+    text-align: left;
+    padding-left: 7px;
+    padding-bottom: 5px;
+    // padding: 1px 0 17px 0px;
+    border-radius: 5PX;
+    border: 1px solid lightslategray;
+    line-height: 2.5;
+    margin: auto 0;
+}
+
+.images-upload:focus + label,
+.images-upload + label:hover {
+  background-color: #4285f4;
+}
+
+.images-preview-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.image-preview {
+  width: 30%;
+}
