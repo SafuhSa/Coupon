@@ -14,7 +14,7 @@ User.destroy_all
 
 user = User.create(username: 'SafuhSa', password: "password", email:'email@email.com', full_name: "Safuh Saray")
 
-product1 = Product.new(product_name: "John's Incredible Pizza Company", price: 73, dis_price: 26, description: 'Visitors can enjoy unlimited food and drinks along with video games and rides like the boogie bump, Air IncrediBear, and more', quantity: 1000, category: 'Restaurants', seller_id: user.id)
+product1 = Product.new(product_name: "John's Incredible Pizza Company", price: 73, dis_price: 26, description: 'Visitors can enjoy unlimited food and drinks along with video games and rides like the boogie bump, Air IncrediBear, and more', quantity: 1000, category: 'Entertainment', seller_id: user.id)
 file = EzDownload.open('https://s3-us-west-1.amazonaws.com/coupon-div/PizzaCompany1.jpg')
 product1.photos.attach(io: file, filename: 'PizzaCompany1.jpg')
 file1 = EzDownload.open('https://s3-us-west-1.amazonaws.com/coupon-div/Pizza+Company2.jpg')
@@ -39,6 +39,12 @@ product2.photos.attach(io: file4, filename: 'IndigoGrill4.jpg')
 product2.save!
 
 
+
+
+product3 = Product.new(product_name: 'P2K Range', price: 65, dis_price: 41, description: 'Shooting-range package includes rental handguns and hands-on assistance while on range', quantity: 10000, category: 'Entertainment', seller_id: user.id)
+file = EzDownload.open('https://s3-us-west-1.amazonaws.com/coupon-div/P2KRange.jpg')
+product3.photos.attach(io: file, filename: 'P2KRange.jpg')
+product3.save!
 
 
 # product1 = Product.new(product_name: '', price: '', dis_price: '', description: '', quantity: '', category: '', seller_id: 4)
