@@ -2042,9 +2042,9 @@ var productsReducer = function productsReducer() {
     // return merge({}, action.payload)
 
     case _actions_product_actions__WEBPACK_IMPORTED_MODULE_1__["REMOVE_BOUGHT_PRODUCT"]:
-      var newSatae = lodash_merge__WEBPACK_IMPORTED_MODULE_0___default()({}, state);
-      delete newSatae[action.boughtProductId];
-      return newSatae;
+      var newState = lodash_merge__WEBPACK_IMPORTED_MODULE_0___default()({}, state);
+      delete newState[action.boughtProductId];
+      return newState;
 
     default:
       return state;
@@ -2557,7 +2557,7 @@ var login = function login(user) {
 var signup = function signup(user) {
   return $.ajax({
     method: 'POST',
-    url: '/api/user',
+    url: '/api/users',
     data: {
       user: user
     }

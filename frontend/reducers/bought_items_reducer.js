@@ -15,9 +15,9 @@ const productsReducer = (state = {}, action) => {
       return merge({}, state, { [action.payload.cart.id]: action.payload.boughtItems  })
     // return merge({}, action.payload)
     case REMOVE_BOUGHT_PRODUCT:
-      let newSatae = merge({}, state)
-      delete newSatae[action.boughtProductId]
-      return newSatae;
+      let newState = merge({}, state)
+      delete newState[action.boughtProductId]
+      return newState;
     default:
       return state;
   }
