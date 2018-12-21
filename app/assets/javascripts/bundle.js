@@ -687,10 +687,36 @@ function (_React$Component) {
       for (var i = 0; i < this.props.cart.productIds.length; i++) {
         var id = this.props.cart.productIds[i];
         var item = this.props.boughtProducts[id];
-        result.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, item.productName), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        var num = Math.ceil(item.quantity * 100 + 200);
+        var priceoff = 100 - Math.floor(item.disPrice / item.price * 100);
+        var totalprice = item.quantity * item.disPrice;
+        result.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "boghtItem"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+          className: "title"
+        }, item.productName), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "img-decs"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          className: "show-image",
           src: item.photoUrls[0],
           alt: ""
-        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, item.price), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, item.disPrice)));
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
+          className: "cart-description"
+        }, "Description: ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), " ", item.description, " ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "cart-item-prices"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "quantity"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Quantity: ", item.quantity)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "purchasePrice-container"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Total Price"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "$", totalprice)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "prices"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          className: "price"
+        }, "$", item.price), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          className: "disPrice"
+        }, "$", item.disPrice)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          className: "price-off"
+        }, " ", priceoff, "% OFF"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Over ", num, "+bought")));
       }
 
       return result;
@@ -702,7 +728,9 @@ function (_React$Component) {
         return null;
       }
 
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "This is your Cart"), this.getItems(), this.props.cart.id);
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "cart-show-container"
+      }, this.getItems(), this.props.cart.id);
     }
   }]);
 

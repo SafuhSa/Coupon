@@ -16,13 +16,40 @@ class CartShow extends React.Component {
     for (let i = 0; i < this.props.cart.productIds.length; i++) {
       const id = this.props.cart.productIds[i];
       const item = this.props.boughtProducts[id]
+      let num = Math.ceil((item.quantity * 100) + 200)
+      let priceoff = 100 - Math.floor((item.disPrice / item.price) * 100)
+      let totalprice = item.quantity * item.disPrice
+
       
-      result.push(<div>
-        <h1>{item.productName}</h1>
-        < img src={item.photoUrls[0]} alt="" />
-        <h3>{item.price}</h3>
-        <h3>{item.disPrice}</h3>
-      </div>)
+      result.push(
+      <div className='boghtItem'>
+        <h1 className='title'>{item.productName}</h1>
+
+        <div className= 'img-decs'>
+        < img className='show-image' src={item.photoUrls[0]} alt="" />
+            <h4 className='cart-description'>Description: <br/> <br/> {item.description} </h4>
+        </div>
+        
+            <div className='cart-item-prices'>
+            <div className='quantity' >
+              <p>Quantity: {item.quantity}</p>
+            </div>
+
+            <div className='purchasePrice-container'>
+                <p>Total Price</p>
+                <p>${totalprice}</p>
+              </div>
+              <div>
+                <div className='prices'>
+                  <p className='price'>${item.price}</p>
+                  <p className='disPrice'>${item.disPrice}</p>
+                </div>
+                <p className='price-off'> {priceoff}% OFF</p>
+              </div>
+            </div>
+                <p>Over {num}+bought</p>
+      </div>
+      )
     }
 
     return result
@@ -35,8 +62,7 @@ class CartShow extends React.Component {
     
 
     return (
-      <div>
-        <h4>This is your Cart</h4>
+      <div className='cart-show-container' >
         {this.getItems()}
         {this.props.cart.id}
       </div>

@@ -15,6 +15,7 @@
  *= require api/index.scss
  *= require api/item_index.scss
  *= require api/show.scss
+ *= require api/carts.scss
  *= require api/sell_form.scss
  *= require api/products.scss
  *= require api/sessions.scss

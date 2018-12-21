@@ -4,7 +4,7 @@ class Api::BoughtitemsController < ApplicationController
     @bought_item = BoughtItem.new(bought_item_params)
     product = Product.find_by(id: @bought_item.product_id)
     
-    total = @bought_item.quantity * product.price
+    total = @bought_item.quantity * product.dis_price
     
     if current_user.cart
       @cart = current_user.cart
@@ -12,7 +12,7 @@ class Api::BoughtitemsController < ApplicationController
     else
       @cart = Cart.new({ buyer_id: current_user.id, purchase_total: total })
     end
-    
+
     @cart.save
     @bought_item.cart_id = @cart.id
 
@@ -27,8 +27,8 @@ class Api::BoughtitemsController < ApplicationController
 
   def destroy
     @bought_item = BoughtItem.find(params[:id])
-    price = Product.find_by(id: @bought_item.product_id)
-    total = @bought_item.quantity * price
+    item = Product.find_by(id: @bought_item.product_id)
+    total = @bought_item.quantity * item.dis_price
     @cart = Cart.find_by(id: @bought_item.cart_id)
     @cart.purchase_total -= total
     @cart.update(cart)

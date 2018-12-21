@@ -3,3 +3,51 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 // json.photoUrl url_for(bought_item.product.photos[0])
+
+.cart-show-container {
+  display: flex;
+  flex-direction: column;
+  width: 1035px;
+  margin-left: 10vw;
+}
+
+.boghtItem {
+  // border: 2px solid black;
+  padding: 20px;
+
+
+  .title {
+    font-weight: 300;
+  }
+  
+  .show-image {
+    width: 45%;
+  }
+}
+
+.img-decs {
+  display: flex;
+  justify-content: space-between;
+}
+.cart-description {
+  width: 50%;
+}
+
+.cart-item-prices {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+   
+
+  .purchasePrice-container {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .quantity{
+    padding-top: 13px;
+    font-size: 22px;
+    padding-top: 20px;
+  }
+}

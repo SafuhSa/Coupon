@@ -9,6 +9,7 @@ json.bought_items do
       json.product_name bought_item.product.product_name
       json.price  bought_item.product.price
       json.dis_price  bought_item.product.dis_price
+      json.description  bought_item.product.description
 
       if bought_item.product.photos.attached?
         json.photoUrls bought_item.product.photos.map { |file| url_for(file) }
