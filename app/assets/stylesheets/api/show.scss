@@ -1,6 +1,7 @@
 .show-container {
   margin: 0 auto;
   width: fit-content;
+  margin-bottom: 60px;
   // display: flex;
   // flex-direction: row;x
 }
@@ -20,7 +21,7 @@
 }
 
 .right-show-container {
-  border: 2px solid black;
+  // border: 2px solid black;
   width: 33.33%;
   // height: 100px;
   display: flex;
@@ -123,6 +124,8 @@ hr {
     display: flex;
     flex-direction: column;
     width: 90%;
+    border-bottom: 2px solid #e6e7e8;
+    padding-bottom: 25px;
 }
 
 .show-submit {
@@ -151,4 +154,74 @@ a.show-submit {
 
     padding-left: 7px;
     padding-top: 11px;
+    margin-bottom: 25px;
 }
+
+.quantity-prices {
+  display: flex;
+  justify-content: space-between;
+    border-bottom: 2px solid #e6e7e8;
+    margin: 0 auto;
+    padding-top: 13px;
+    font-size: 22px;
+    height: 10%;
+
+    .prices{
+      font-size: 31px;
+
+      .disPrice {
+        margin: 0 13px;
+      }
+    }
+}
+
+.price-off {
+  background-color: #ddedd1;
+  width: fit-content;
+  font-size: 21px;
+  font-weight: 400;
+  color: green;
+  margin: 0 auto;
+}
+
+    // background-color: #ddedd1;
+    // border: 0;
+    // border-radius: 4px;
+    // font-size: 12px;
+    // font-weight: 700;
+    // line-height: 1;
+    // padding: 6px 8px;
+    // text-transform: uppercase;
+
+
+.quantity-prices input{
+  border: 1px solid #d5d8db;
+  display: flex;
+    padding-left: 7px;
+    padding-top: 11px;
+  border-radius: 5px;
+    width: 16%;
+    margin: 7px;
+}
+
+.purchasePrice-container {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 13px;
+  font-size: 22px;
+  margin-bottom: 15px;
+  
+  .statepurchasePrice {
+        color: #53a318;
+        font-size: 22px;
+  }
+
+}
+
+
+    // border: 1px solid #d5d8db;
+    // border-radius: 5px;
+    // width: 95%;
+    // display: flex;
+    // padding-left: 7px;
+    // padding-top: 11px;

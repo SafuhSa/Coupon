@@ -4,8 +4,9 @@ import { Link } from 'react-router-dom';
 class ProductShow extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { mainImage: ''}
+    this.state = { mainImage: '', quantity: '', purchasePrice: 0}
     this.addItemToCart = this.addItemToCart.bind(this)
+    this.updateQuantity = this.updateQuantity.bind(this)
   }
   componentDidMount() {
     this.props.requestProduct(this.props.match.params.productId);
@@ -23,9 +24,14 @@ class ProductShow extends React.Component {
     this.setState({ mainImage: <ul className='image-show'><img  src={url}/></ul> })
   }
 
+updateQuantity(e) {
+  let total = e.target.value * this.props.product.disPrice
+  this.setState({ quantity: e.target.value, purchasePrice: total })
+}
+
   addItemToCart() {
 
-    let item = {productId: this.props.product.id, quantity: 2}
+    let item = {productId: this.props.product.id, quantity: this.state.quantity}
     this.props.createBoughtItem(item)
   }
 
@@ -36,6 +42,7 @@ class ProductShow extends React.Component {
     }
 
     let num = Math.ceil((product.quantity /3) * 2)
+    let priceoff = 100 - Math.floor((product.disPrice /product.price) * 100)
     let result = []
     
     for (let i = 0; i < product.photoUrls.length; i++) {
@@ -106,16 +113,32 @@ class ProductShow extends React.Component {
                   </div>
                 </div>
 
-            <div className='prices'>
-              <p className='price'>{product.price}</p>
-              <p className='disPrice'>{product.disPrice}</p>
+              <div className='quantity-prices'>
+                  <label htmlFor=""> Quantity 
+                    <input type="text" onChange={this.updateQuantity} />
+                </label>
 
+                <div>
+                  <div className='prices'>
+                    <p className='price'>${product.price}</p>
+                    <p className='disPrice'>${product.disPrice}</p>
+                  </div>
+                  <p className='price-off'> {priceoff}% OFF</p>
+              </div>
                 </div>
 
                 <div className='show-buttons'>
-                  <label htmlFor=""> quantity 
-                  <input type="text"/>
-                  </label>
+
+              <div className='purchasePrice-container'>
+                  <div>
+                      Total Purchase Price:
+                  </div>
+
+                <div className='statepurchasePrice'>
+                     ${this.state.purchasePrice}
+                  </div>
+                </div>
+              
                   <button className='show-submit' onClick={() => this.addItemToCart()}>Add item to Cart</button>
             <Link className='show-submit' to={`/products/${product.id}/edit`}>Edit</Link>
             <Link className='show-submit' to="/">Home page</Link>

@@ -608,9 +608,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
-  debugger;
   return {
-    cart: state.entities.cart[ownProps.match.params.cartId]
+    cart: state.entities.cart[ownProps.match.params.cartId],
+    boughtProducts: state.entities.boughtProducts
   };
 };
 
@@ -648,13 +648,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 
 
@@ -665,9 +665,13 @@ function (_React$Component) {
   _inherits(CartShow, _React$Component);
 
   function CartShow(props) {
+    var _this;
+
     _classCallCheck(this, CartShow);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(CartShow).call(this, props));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(CartShow).call(this, props));
+    _this.getItems = _this.getItems.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    return _this;
   }
 
   _createClass(CartShow, [{
@@ -676,15 +680,29 @@ function (_React$Component) {
       this.props.requestCart(this.props.match.params.cartId);
     }
   }, {
+    key: "getItems",
+    value: function getItems() {
+      var result = [];
+
+      for (var i = 0; i < this.props.cart.productIds.length; i++) {
+        var id = this.props.cart.productIds[i];
+        var item = this.props.boughtProducts[id];
+        result.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, item.productName), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          src: item.photoUrls[0],
+          alt: ""
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, item.price), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, item.disPrice)));
+      }
+
+      return result;
+    }
+  }, {
     key: "render",
     value: function render() {
-      debugger;
-
       if (!this.props.cart) {
         return null;
       }
 
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "This is your Cart"), this.props.cart.id);
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "This is your Cart"), this.getItems(), this.props.cart.id);
     }
   }]);
 
@@ -1293,9 +1311,12 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(ProductShow).call(this, props));
     _this.state = {
-      mainImage: ''
+      mainImage: '',
+      quantity: '',
+      purchasePrice: 0
     };
     _this.addItemToCart = _this.addItemToCart.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    _this.updateQuantity = _this.updateQuantity.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     return _this;
   }
 
@@ -1324,11 +1345,20 @@ function (_React$Component) {
       });
     }
   }, {
+    key: "updateQuantity",
+    value: function updateQuantity(e) {
+      var total = e.target.value * this.props.product.disPrice;
+      this.setState({
+        quantity: e.target.value,
+        purchasePrice: total
+      });
+    }
+  }, {
     key: "addItemToCart",
     value: function addItemToCart() {
       var item = {
         productId: this.props.product.id,
-        quantity: 2
+        quantity: this.state.quantity
       };
       this.props.createBoughtItem(item);
     }
@@ -1344,6 +1374,7 @@ function (_React$Component) {
       }
 
       var num = Math.ceil(product.quantity / 3 * 2);
+      var priceoff = 100 - Math.floor(product.disPrice / product.price * 100);
       var result = [];
 
       var _loop = function _loop(i) {
@@ -1427,18 +1458,27 @@ function (_React$Component) {
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "fa fa-star"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, num, " ratings"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "quantity-prices"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        htmlFor: ""
+      }, " Quantity", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
+        onChange: this.updateQuantity
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "prices"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "price"
-      }, product.price), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+      }, "$", product.price), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "disPrice"
-      }, product.disPrice)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "$", product.disPrice)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "price-off"
+      }, " ", priceoff, "% OFF"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "show-buttons"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        htmlFor: ""
-      }, " quantity", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "text"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "purchasePrice-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Total Purchase Price:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "statepurchasePrice"
+      }, "$", this.state.purchasePrice)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "show-submit",
         onClick: function onClick() {
           return _this2.addItemToCart();

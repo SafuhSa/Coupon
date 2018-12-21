@@ -30,7 +30,6 @@ class Greeting extends React.Component {
      let result = '';
      let result2 = '';
      let cart = '';
-
       if (this.props.currentUser && this.props.currentUser.cart) {
           let id = this.props.currentUser.cart.id
         cart = <Link to={`/cart/${id}`} className='header-link'>

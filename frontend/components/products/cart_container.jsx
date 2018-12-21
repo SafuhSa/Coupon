@@ -3,9 +3,11 @@ import CartShow from './cart_show';
 import { requestCart } from '../../actions/product_actions';
 
 const mapStateToProps = (state, ownProps) => {
-  debugger
+
   return ({
-    cart: state.entities.cart[ownProps.match.params.cartId]
+    cart: state.entities.cart[ownProps.match.params.cartId],
+    boughtProducts: state.entities.boughtProducts
+
   });
 }
 
