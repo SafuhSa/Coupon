@@ -70,8 +70,6 @@ class ProductShow extends React.Component {
                 <div className='show-images'>
                 {result}
                 </div>
-                {/* <p>{product.price}</p>
-                <p>{product.disPrice}</p> */}
                 <div className='product_description'>
                   <h3>Highlights</h3>
                   <hr />
@@ -79,13 +77,10 @@ class ProductShow extends React.Component {
                 </div>
                 <h3>Customer Reviews</h3>
                 <hr />
+                <textarea placeholder='Write a review........' className='review-input'/>
                 <div>
 
                 </div>
-              <button onClick={() => this.addItemToCart()}>Add item to Cart</button>
-
-                <Link to={`/products/${product.id}/edit`}>Edit</Link>
-                <Link to="/">Back to Index</Link>
               </div>
 
               <div className='right-show-container'>
@@ -110,6 +105,22 @@ class ProductShow extends React.Component {
                   <p>{num} ratings</p>
                   </div>
                 </div>
+
+            <div className='prices'>
+              <p className='price'>{product.price}</p>
+              <p className='disPrice'>{product.disPrice}</p>
+
+                </div>
+
+                <div className='show-buttons'>
+                  <label htmlFor=""> quantity 
+                  <input type="text"/>
+                  </label>
+                  <button className='show-submit' onClick={() => this.addItemToCart()}>Add item to Cart</button>
+            <Link className='show-submit' to={`/products/${product.id}/edit`}>Edit</Link>
+            <Link className='show-submit' to="/">Home page</Link>
+            </div>
+
               </div>
           </div>
       </div>

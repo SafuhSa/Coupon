@@ -471,7 +471,7 @@ function (_React$Component) {
       var result2 = '';
       var cart = '';
 
-      if (this.props.currentUser) {
+      if (this.props.currentUser && this.props.currentUser.cart) {
         var id = this.props.currentUser.cart.id;
         cart = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
           to: "/cart/".concat(id),
@@ -1399,15 +1399,10 @@ function (_React$Component) {
         className: "show-images"
       }, result), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "product_description"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Highlights"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, product.description)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Customer Reviews"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        onClick: function onClick() {
-          return _this2.addItemToCart();
-        }
-      }, "Add item to Cart"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        to: "/products/".concat(product.id, "/edit")
-      }, "Edit"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        to: "/"
-      }, "Back to Index")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Highlights"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, product.description)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Customer Reviews"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
+        placeholder: "Write a review........",
+        className: "review-input"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "right-show-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "rating-bought"
@@ -1431,7 +1426,30 @@ function (_React$Component) {
         className: "fa fa-star checked"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "fa fa-star"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, num, " ratings"))))));
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, num, " ratings"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "prices"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "price"
+      }, product.price), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "disPrice"
+      }, product.disPrice)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "show-buttons"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        htmlFor: ""
+      }, " quantity", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "show-submit",
+        onClick: function onClick() {
+          return _this2.addItemToCart();
+        }
+      }, "Add item to Cart"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        className: "show-submit",
+        to: "/products/".concat(product.id, "/edit")
+      }, "Edit"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        className: "show-submit",
+        to: "/"
+      }, "Home page")))));
     }
   }]);
 

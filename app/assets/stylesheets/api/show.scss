@@ -70,6 +70,7 @@ hr {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
+  border-bottom: 2px solid #e6e7e8;
 }
 
 .fa-star {
@@ -116,4 +117,38 @@ hr {
   font-size: 20px;
   padding: 2px;
   line-height: 71%;
+}
+
+.show-buttons {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+}
+
+.show-submit {
+  background: #53a318;
+  color: white;
+  text-align: center;
+  border-radius: 4px;
+  height: 44px;
+  width: 100%;
+  margin: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  // padding: 0;
+  // border: 5px solid black;
+}
+
+a.show-submit {
+  line-height: 45px;
+}
+
+.review-input {
+    border: 1px solid #d5d8db;
+    border-radius: 5px;
+    width: 95%;
+    display: flex;
+
+    padding-left: 7px;
+    padding-top: 11px;
 }
