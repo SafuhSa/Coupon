@@ -29,21 +29,35 @@ class Greeting extends React.Component {
    render() {
      let result = '';
      let result2 = '';
+     let cart = '';
+
+      if (this.props.currentUser ) {
+          let id = this.props.currentUser.cart.id
+        cart = <Link to={`/cart/${id}`} className='header-link'>
+          <span> <i className="fas fa-shopping-cart"></i></span>
+          Cart </Link>
+      } else {
+
+        cart = <Link to='/login' className='header-link'>
+          <span> <i className="fas fa-shopping-cart"></i></span>
+          Cart </Link>;
+      }
+
      if (this.props.currentUser) {
        result = this.personalGreeting()
        result2 = <button onClick={this.props.logout}>Log Out</button>
+       
       } else {
        result = this.sessionLinks();
-       result2 = 'Sign Up'
+       result2 = 'Sign Up';
+
       }
 
      return (
        <header>
          <div className='upper-header'>
            <Link to="/" className='header-link'>Recently Viewed</Link>
-           <Link to="/" className='header-link'>
-           <span> <i className="fas fa-shopping-cart"></i></span>
-           Cart </Link>
+            {cart}
            <Link to="/product/new" className='header-link'>sell</Link>
            <Link to="/" className='header-link'>Help </Link>
            <Link to="/signup" className='header-link'>{result2}</Link>

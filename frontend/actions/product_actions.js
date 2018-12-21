@@ -5,6 +5,9 @@ export const RECEIVE_PRODUCT = "RECEIVE_PRODUCT";
 export const REMOVE_PRODUCT = "REMOVE_PRODUCT";
 export const RECEIVE_SESSION_ERRORS = 'RECEIVE_SESSION_ERRORS';
 export const CLEAR_ERRORS = 'CLEAR_ERRORS';
+export const RECEIVE_CART = 'RECEIVE_CART';
+export const RECEIVE_BOUGHT_PRODUCT = 'RECEIVE_BOUGHT_PRODUCT';
+export const REMOVE_BOUGHT_PRODUCT = 'REMOVE_BOUGHT_PRODUCT';
 
 export const receiveProducts = (products) => ({
   type: RECEIVE_PRODUCTS,
@@ -61,4 +64,45 @@ export const deleteProduct = (id) => dispatch => {
   return ProductAPIUtil.deletePorduct(id).then((product) =>
     dispatch(removeProduct(product.id)));
 };
+
+// -----------------------------------------
+export const receiveCart = (payload) => ({
+  type: RECEIVE_CART,
+  payload
+});
+
+export const requestCart = (id) => dispatch => {
+  return ProductAPIUtil.fetchCart(id).then((cart) =>
+    dispatch(receiveCart(cart)));
+};
+
+// -----------------------------------------
+export const receiveBoughtItem = (payload) => ({
+  type: RECEIVE_BOUGHT_PRODUCT,
+  payload
+});
+
+export const createBoughtItem = (item) => dispatch => {
+
+  return ProductAPIUtil.boughtItem(item)
+    .then((item) => dispatch(receiveBoughtItem(item)),
+     err => (
+      dispatch(receiveErrors(err.responseJSON))
+    ));
+};
+
+
+// -----------------------------------------
+
+export const removeBoughtItem = (boughtProductId) => ({
+  type: REMOVE_BOUGHT_PRODUCT,
+  boughtProductId
+});
+
+export const deleteBoughtItem = (id) => dispatch => {
+  return ProductAPIUtil.deleteBoughtItem(id).then((item) =>
+    dispatch(removeBoughtItem(item.id)));
+};
+
+
 

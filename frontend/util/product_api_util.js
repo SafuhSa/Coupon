@@ -47,13 +47,15 @@ export const deletePorduct = (id) => (
 
 
 
-export const boughtItem = (item) => (
+export const boughtItem = (boughtItem) => {
+  return (
   $.ajax({
     method: 'POST',
     url: 'api/boughtitems',
-    data: { item }
+    data: { boughtItem }
   })
-);
+  )
+};
 
 export const deleteBoughtItem = (id) => (
   $.ajax({
@@ -65,6 +67,6 @@ export const deleteBoughtItem = (id) => (
 export const fetchCart = (id) => {
   return $.ajax({
     method: 'GET',
-    url: `api/boughtitems/${id}`
+    url: `api/carts/${id}`
   })
 };

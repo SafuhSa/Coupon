@@ -21,12 +21,14 @@ class User < ApplicationRecord
 
   after_initialize :ensure_session_token
 
-  # has_many :reviews,
-  #   foreign_key: :author_id
-    
+
   has_many :products,
     foreign_key: :seller_id,
     class_name: :Product
+
+  has_one :cart,
+    foreign_key: :buyer_id,
+    class_name: :Cart
 
   def self.find_by_credentials(username, password)
     user = User.find_by(username: username)

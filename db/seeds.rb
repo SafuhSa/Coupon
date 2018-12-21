@@ -27,15 +27,22 @@ product1.save!
 
 
 
-# product1 = Product.new(product_name: 'Indigo Grill', price: 50, dis_price: 25, description: 'Indigo Grill - Little Italy’s Modern Latin restaurant - Diners enjoy modern spins on Latin food such as ceviche, tortilla soup, or tlayuda', quantity: 510, category: 'Restaurants', seller_id: 4)
-# file = EzDownload.open('')
-# product1.photos.attach(io: file, filename: '')
-# product1.save!
+product2 = Product.new(product_name: 'Indigo Grill', price: 50, dis_price: 25, description: 'Indigo Grill - Little Italy’s Modern Latin restaurant - Diners enjoy modern spins on Latin food such as ceviche, tortilla soup, or tlayuda', quantity: 510, category: 'Restaurants', seller_id: user.id)
+file1 = EzDownload.open('https://s3-us-west-1.amazonaws.com/coupon-div/IndigoGrill.jpg')
+file2 = EzDownload.open('https://s3-us-west-1.amazonaws.com/coupon-div/IndigoGrill2.jpg')
+file3 = EzDownload.open('https://s3-us-west-1.amazonaws.com/coupon-div/IndigoGrill3.jpg')
+file4 = EzDownload.open('https://s3-us-west-1.amazonaws.com/coupon-div/IndigoGrill4.jpg')
+product2.photos.attach(io: file1, filename: 'IndigoGrill.jpg')
+product2.photos.attach(io: file3, filename: 'IndigoGrill2.jpg')
+product2.photos.attach(io: file3, filename: 'IndigoGrill3.jpg')
+product2.photos.attach(io: file4, filename: 'IndigoGrill4.jpg')
+product2.save!
 
 
 
 
 # product1 = Product.new(product_name: '', price: '', dis_price: '', description: '', quantity: '', category: '', seller_id: 4)
 # file = EzDownload.open('https://s3-us-west-1.amazonaws.com/coupon-div/PizzaCompany1.jpg')
+# file = EzDownload.open('')
 # product1.photos.attach(io: file, filename: 'PizzaCompany1.jpg')
 # product1.save!

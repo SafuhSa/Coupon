@@ -13,9 +13,13 @@ class Cart < ApplicationRecord
 
   validates :buyer_id, :purchase_total, presence: true
   
+  # has_many :products,
+  #   foreign_key: :product_id,
+  #   class_name: :BoughtItem
+
   has_many :products,
-    foreign_key: :product_id,
-    class_name: :bought_items
+    foreign_key: :cart_id,
+    class_name: :BoughtItem
 
   belongs_to :buyer,
       foreign_key: :buyer_id,

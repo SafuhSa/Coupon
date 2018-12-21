@@ -5,6 +5,7 @@ class ProductShow extends React.Component {
   constructor(props) {
     super(props)
     this.state = { mainImage: ''}
+    this.addItemToCart = this.addItemToCart.bind(this)
   }
   componentDidMount() {
     this.props.requestProduct(this.props.match.params.productId);
@@ -20,6 +21,12 @@ class ProductShow extends React.Component {
   updateImage() {
     let url = this.props.product.photoUrls[0]
     this.setState({ mainImage: <ul className='image-show'><img  src={url}/></ul> })
+  }
+
+  addItemToCart() {
+
+    let item = {productId: this.props.product.id, quantity: 2}
+    this.props.createBoughtItem(item)
   }
 
   render() {
@@ -75,6 +82,8 @@ class ProductShow extends React.Component {
                 <div>
 
                 </div>
+              <button onClick={() => this.addItemToCart()}>Add item to Cart</button>
+
                 <Link to={`/products/${product.id}/edit`}>Edit</Link>
                 <Link to="/">Back to Index</Link>
               </div>
