@@ -1646,6 +1646,7 @@ function (_React$Component) {
       fullName: ''
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    _this.handleDemo = _this.handleDemo.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     return _this;
   }
 
@@ -1671,6 +1672,16 @@ function (_React$Component) {
       this.props.action(user);
     }
   }, {
+    key: "handleDemo",
+    value: function handleDemo(e) {
+      e.preventDefault();
+      var demo = {
+        username: "SafuhSa",
+        password: "password"
+      };
+      this.props.demoAction(demo);
+    }
+  }, {
     key: "renderErrors",
     value: function renderErrors() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, this.props.errors.map(function (error, i) {
@@ -1682,12 +1693,6 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this3 = this;
-
-      var demo = {
-        username: "SafuhSa",
-        password: "password"
-      };
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "login-form-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
@@ -1699,31 +1704,33 @@ function (_React$Component) {
         className: "signUp"
       }, this.props.navLink), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "signUp active"
-      }, "I'M A NEW CUSTOMER")), this.renderErrors(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "I'M A NEW CUSTOMER")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
+        className: "errors"
+      }, this.renderErrors()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "login-form"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         placeholder: "Full name",
         value: this.state.fullName,
-        onChange: this.update('fullName'),
+        onChange: this.update("fullName"),
         className: "login-input"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         placeholder: "Email",
         value: this.state.email,
-        onChange: this.update('email'),
+        onChange: this.update("email"),
         className: "login-input"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         placeholder: "Username",
         value: this.state.username,
-        onChange: this.update('username'),
+        onChange: this.update("username"),
         className: "login-input"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "password",
         placeholder: "Password",
         value: this.state.password,
-        onChange: this.update('password'),
+        onChange: this.update("password"),
         className: "login-input"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         className: "session-submit",
@@ -1734,9 +1741,7 @@ function (_React$Component) {
       }, "or"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "submit",
         className: "login-demo",
-        onClick: function onClick() {
-          return _this3.props.demoAction(demo);
-        },
+        onClick: this.handleDemo,
         value: "Demo User Sign In"
       }))));
     }
@@ -1800,6 +1805,7 @@ function (_React$Component) {
       password: ''
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    _this.handleDemo = _this.handleDemo.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     return _this;
   }
 
@@ -1825,6 +1831,16 @@ function (_React$Component) {
       this.props.action(user);
     }
   }, {
+    key: "handleDemo",
+    value: function handleDemo(e) {
+      e.preventDefault();
+      var demo = {
+        username: "SafuhSa",
+        password: "password"
+      };
+      this.props.action(demo);
+    }
+  }, {
     key: "renderErrors",
     value: function renderErrors() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, this.props.errors.map(function (error, i) {
@@ -1836,12 +1852,6 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this3 = this;
-
-      var demo = {
-        username: "SafuhSa",
-        password: "password"
-      };
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "login-form-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
@@ -1878,9 +1888,7 @@ function (_React$Component) {
       }, "or"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "submit",
         className: "login-demo",
-        onClick: function onClick() {
-          return _this3.props.action(demo);
-        },
+        onClick: this.handleDemo,
         value: "Demo User"
       }))));
     }

@@ -9,6 +9,7 @@ class LoginForm extends React.Component {
       password: ''
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleDemo = this.handleDemo.bind(this);
   }
 
   componentDidMount() {
@@ -26,6 +27,13 @@ class LoginForm extends React.Component {
     const user = Object.assign({}, this.state);
     this.props.action(user);
   }
+  
+  handleDemo(e) {
+    e.preventDefault();
+    let demo = { username: "SafuhSa", password: "password" }
+    this.props.action(demo);
+  }
+
 
   renderErrors() {
     return (
@@ -40,7 +48,6 @@ class LoginForm extends React.Component {
   }
 
   render() {
-    let demo = { username: "SafuhSa", password: "password" }
     return (
       <div className="login-form-container">
         <form onSubmit={this.handleSubmit} className="login-form-box">
@@ -80,7 +87,7 @@ class LoginForm extends React.Component {
               <div className="or-text">
                 or
               </div>
-              <input type='submit' className="login-demo" onClick={() => this.props.action(demo)} value='Demo User' />
+              <input type='submit' className="login-demo" onClick={this.handleDemo} value='Demo User' />
           </div>
         </form>
       </div>
