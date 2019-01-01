@@ -3,8 +3,10 @@ import ProductShow from './product_show';
 import { requestProduct, createBoughtItem } from '../../actions/product_actions';
 
 const mapStateToProps = (state, ownProps) => {
+
 return ({
-  product: state.entities.products[ownProps.match.params.productId]
+  product: state.entities.products[ownProps.match.params.productId],
+  userId: state.session.id
 });
 }
 

@@ -8,8 +8,6 @@ class Greeting extends React.Component {
         <div className="signin-name">
         <span><i className="far fa-bell"></i></span>
         <Link to="/login" >Sign In</Link>&nbsp; | &nbsp;<Link to="/login" >My Stuff</Link>
-          {/* &nbsp;|&nbsp; */}
-          {/* <Link to="/signup" className='button'>Sign Up</Link> */}
         </div>
       );
    }
@@ -19,8 +17,6 @@ class Greeting extends React.Component {
       <div className="signin-name">
         <span><i className="far fa-bell"></i></span>
         {name}<i className="arrow down"></i>&nbsp; | &nbsp;<Link to="/login" >My Stuff</Link>
-          {/* &nbsp;  --  &nbsp; */}
-          {/* <button className='log-out-buttom' onClick={this.props.logout}>Log Out</button> */}
         </div>
       );
    }
@@ -29,18 +25,6 @@ class Greeting extends React.Component {
    render() {
      let result = '';
      let result2 = '';
-     let cart = '';
-      if (this.props.currentUser && this.props.currentUser.cart) {
-          let id = this.props.currentUser.cart.id
-        cart = <Link to={`/cart/${id}`} className='header-link'>
-          <span> <i className="fas fa-shopping-cart"></i></span>
-          Cart </Link>
-      } else {
-
-        cart = <Link to='/login' className='header-link'>
-          <span> <i className="fas fa-shopping-cart"></i></span>
-          Cart </Link>;
-      }
 
      if (this.props.currentUser) {
        result = this.personalGreeting()
@@ -56,7 +40,9 @@ class Greeting extends React.Component {
        <header>
          <div className='upper-header'>
            <Link to="/" className='header-link'>Recently Viewed</Link>
-            {cart}
+           <Link to={'/cart'} className='header-link'>
+             <span> <i className="fas fa-shopping-cart"></i></span>
+             Cart </Link>
            <Link to="/product/new" className='header-link'>sell</Link>
            <Link to="/" className='header-link'>Help </Link>
            <Link to="/signup" className='header-link'>{result2}</Link>

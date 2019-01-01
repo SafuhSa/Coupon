@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 class ProductShow extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { mainImage: '', quantity: '', purchasePrice: 0}
+    this.state = { mainImage: '', quantity: 1, purchasePrice: 0}
     this.addItemToCart = this.addItemToCart.bind(this)
     this.updateQuantity = this.updateQuantity.bind(this)
   }
@@ -29,10 +29,14 @@ updateQuantity(e) {
   this.setState({ quantity: e.target.value, purchasePrice: total })
 }
 
-  addItemToCart() {
-
-    let item = {productId: this.props.product.id, quantity: this.state.quantity}
-    this.props.createBoughtItem(item)
+  addItemToCart(e) {
+    e.preventDefault();
+    if (this.props.userId) {
+      let item = {productId: this.props.product.id, quantity: this.state.quantity}
+      this.props.createBoughtItem(item).then(this.props.history.push('/cart'));
+    } else {
+      this.props.history.push("/login");
+    }
   }
 
   render() {
@@ -40,6 +44,12 @@ updateQuantity(e) {
     if (!product) {
       return <div>Loading...</div>;
     }
+    let purchasePrice;
+    if (this.state.purchasePrice === 0) {
+       purchasePrice =  product.disPrice
+     } else {
+      purchasePrice = this.state.purchasePrice
+     }
 
     let num = Math.ceil((product.quantity /3) * 2)
     let priceoff = 100 - Math.floor((product.disPrice /product.price) * 100)
@@ -53,101 +63,96 @@ updateQuantity(e) {
       this.updateImage()
     }
     
-    return (
-      <div className='show-container'>
-        <div className='show-title'>
-              <div  >
-                <h2>{product.productName}</h2>
-              </div>
-
-              <div className='title-rating'>
-                <span className="fa fa-star checked"></span>
-                <span className="fa fa-star checked"></span>
-                <span className="fa fa-star checked"></span>
-                <span className="fa fa-star checked"></span>
-                <span className="fa fa-star"></span>({num} ratings)
-              </div>
-            </div>
-
-            <div className='inside-show-container'>
-              <div className='left-show-container'>
-                <div className='main-picture'>
-                  {this.state.mainImage}
-                </div>
-                <div className='show-images'>
-                {result}
-                </div>
-                <div className='product_description'>
-                  <h3>Highlights</h3>
-                  <hr />
-                  <p>{product.description}</p>
-                </div>
-                <h3>Customer Reviews</h3>
-                <hr />
-                <textarea placeholder='Write a review........' className='review-input'/>
-                <div>
-
-                </div>
-              </div>
-
-              <div className='right-show-container'>
-                <div className='rating-bought'>
-
-                  <div className= 'clc-eye-star'>
-                    <i className="far fa-clock"></i>
-                  <p>Limited Time Remaining!</p>
-                  </div>
-
-                  <div className='clc-eye-star'>
-                    <i className="far fa-eye"></i>
-                    <p>{product.quantity}+ viewed</p>
-                  </div>
-
-                  <div className='clc-eye-star'>
-                    <span className="fa fa-star checked"></span>
-                    <span className="fa fa-star checked"></span>
-                    <span className="fa fa-star checked"></span>
-                    <span className="fa fa-star checked"></span>
-                    <span className="fa fa-star"></span>
-                  <p>{num} ratings</p>
-                  </div>
-                </div>
-
-              <div className='quantity-prices'>
-                  <label htmlFor=""> Quantity 
-                    <input type="text" onChange={this.updateQuantity} />
-                </label>
-
-                <div>
-                  <div className='prices'>
-                    <p className='price'>${product.price}</p>
-                    <p className='disPrice'>${product.disPrice}</p>
-                  </div>
-                  <p className='price-off'> {priceoff}% OFF</p>
-              </div>
-                </div>
-
-                <div className='show-buttons'>
-
-              <div className='purchasePrice-container'>
-                  <div>
-                      Total Purchase Price:
-                  </div>
-
-                <div className='statepurchasePrice'>
-                     ${this.state.purchasePrice}
-                  </div>
-                </div>
-              
-                  <button className='show-submit' onClick={() => this.addItemToCart()}>Add item to Cart</button>
-            <Link className='show-submit' to={`/products/${product.id}/edit`}>Edit</Link>
-            <Link className='show-submit' to="/">Home page</Link>
-            </div>
-
-              </div>
+    return <div className="show-container">
+        <div className="show-title">
+          <div>
+            <h2>{product.productName}</h2>
           </div>
-      </div>
-    );
+
+          <div className="title-rating">
+            <span className="fa fa-star checked" />
+            <span className="fa fa-star checked" />
+            <span className="fa fa-star checked" />
+            <span className="fa fa-star checked" />
+            <span className="fa fa-star" />({num} ratings)
+          </div>
+        </div>
+
+        <div className="inside-show-container">
+          <div className="left-show-container">
+            <div className="main-picture">{this.state.mainImage}</div>
+            <div className="show-images">{result}</div>
+            <div className="product_description">
+              <h3>Highlights</h3>
+              <hr />
+              <p>{product.description}</p>
+            </div>
+            <h3>Customer Reviews</h3>
+            <hr />
+            <textarea placeholder="Write a review........" className="review-input" />
+            <div />
+          </div>
+
+          <div className="right-show-container">
+            <div className="rating-bought">
+              <div className="clc-eye-star">
+                <i className="far fa-clock" />
+                <p>Limited Time Remaining!</p>
+              </div>
+
+              <div className="clc-eye-star">
+                <i className="far fa-eye" />
+                <p>{product.quantity}+ viewed</p>
+              </div>
+
+              <div className="clc-eye-star">
+                <span className="fa fa-star checked" />
+                <span className="fa fa-star checked" />
+                <span className="fa fa-star checked" />
+                <span className="fa fa-star checked" />
+                <span className="fa fa-star" />
+                <p>{num} ratings</p>
+              </div>
+            </div>
+
+            <div className="quantity-prices">
+              <label htmlFor="">
+                {" "}
+                Quantity
+                <input min='1' type="number" defaultValue={this.state.quantity} onChange={this.updateQuantity}  />
+              </label>
+
+              <div>
+                <div className="prices">
+                  <p className="price">${product.price}</p>
+                  <p className="disPrice">${product.disPrice}</p>
+                </div>
+                <p className="price-off"> {priceoff}% OFF</p>
+              </div>
+            </div>
+
+            <div className="show-buttons">
+              <div className="purchasePrice-container">
+                <div>Total Purchase Price:</div>
+
+                <div className="statepurchasePrice">
+                ${purchasePrice}
+                </div>
+              </div>
+
+              <button className="show-submit" onClick={this.addItemToCart}>
+                Add item to Cart
+              </button>
+              <Link className="show-submit" to={`/products/${product.id}/edit`}>
+                Edit
+              </Link>
+              <Link className="show-submit" to="/">
+                Home page
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>;
   }
 }
 

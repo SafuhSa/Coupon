@@ -7,12 +7,13 @@ class CartShow extends React.Component {
     this.getItems = this.getItems.bind(this)
   }
   componentDidMount() {
-    this.props.requestCart(this.props.match.params.cartId);
+    // this.props.requestCart(this.props.match.params.cartId);
+    this.props.requestCart();
   }
 
   getItems() {
     let result = []
-
+      debugger
     for (let i = 0; i < this.props.cart.productIds.length; i++) {
       const id = this.props.cart.productIds[i];
       const item = this.props.boughtProducts[id]
@@ -22,7 +23,7 @@ class CartShow extends React.Component {
 
       
       result.push(
-      <div className='boghtItem'>
+      <div key={i} className='boghtItem'>
         <h1 className='title'>{item.productName}</h1>
 
         <div className= 'img-decs'>

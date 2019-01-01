@@ -21,10 +21,10 @@ const App = () => (
     <Route exact path="/" component={ProductIndexContainer} />
     <AuthRoute exact path="/login" component={LogInFormContainer} />
     <AuthRoute exact path="/signup" component={SignUpFormContainer} />
-    <Route exact path="/product/new" component={CreateProductContainer} />
+    <ProtectedRoute exact path="/product/new" component={CreateProductContainer} />
       <Route exact path="/products/:productId" component={ProductShowContainer} />
-    <Route exact path="/cart/:cartId" component={CartShowContainer} />
-    <Route path="/products/:productId/edit" component={EditProductContainer} />
+    <ProtectedRoute exact path="/cart" component={CartShowContainer} />
+    <ProtectedRoute path="/products/:productId/edit" component={EditProductContainer} />
     {/* </Switch> */}
   </div>
 );

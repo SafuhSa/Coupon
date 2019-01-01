@@ -71,8 +71,8 @@ export const receiveCart = (payload) => ({
   payload
 });
 
-export const requestCart = (id) => dispatch => {
-  return ProductAPIUtil.fetchCart(id).then((cart) =>
+export const requestCart = () => dispatch => {
+  return ProductAPIUtil.fetchCart().then((cart) =>
     dispatch(receiveCart(cart)));
 };
 

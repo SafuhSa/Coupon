@@ -5,7 +5,8 @@ import { requestCart } from '../../actions/product_actions';
 const mapStateToProps = (state, ownProps) => {
 
   return ({
-    cart: state.entities.cart[ownProps.match.params.cartId],
+    // cart: state.entities.cart[ownProps.match.params.cartId],
+    cart: state.entities.cart[Object.keys(state.entities.cart)[0]],
     boughtProducts: state.entities.boughtProducts
 
   });
