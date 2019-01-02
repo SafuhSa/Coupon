@@ -13,7 +13,7 @@ class CartShow extends React.Component {
 
   getItems() {
     let result = []
-      debugger
+
     for (let i = 0; i < this.props.cart.productIds.length; i++) {
       const id = this.props.cart.productIds[i];
       const item = this.props.boughtProducts[id]

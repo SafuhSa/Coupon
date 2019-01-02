@@ -221,8 +221,8 @@ var receiveBoughtItem = function receiveBoughtItem(payload) {
 };
 var createBoughtItem = function createBoughtItem(item) {
   return function (dispatch) {
-    return _util_product_api_util__WEBPACK_IMPORTED_MODULE_0__["boughtItem"](item).then(function (item) {
-      return dispatch(receiveBoughtItem(item));
+    return _util_product_api_util__WEBPACK_IMPORTED_MODULE_0__["boughtItem"](item).then(function (item1) {
+      return dispatch(receiveBoughtItem(item1));
     }, function (err) {
       return dispatch(receiveErrors(err.responseJSON));
     });
@@ -595,6 +595,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
+  debugger;
   return {
     // cart: state.entities.cart[ownProps.match.params.cartId],
     cart: state.entities.cart[Object.keys(state.entities.cart)[0]],
@@ -672,7 +673,6 @@ function (_React$Component) {
     key: "getItems",
     value: function getItems() {
       var result = [];
-      debugger;
 
       for (var i = 0; i < this.props.cart.productIds.length; i++) {
         var id = this.props.cart.productIds[i];
@@ -2081,7 +2081,6 @@ var productsReducer = function productsReducer() {
 
     case _actions_product_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_BOUGHT_PRODUCT"]:
       return lodash_merge__WEBPACK_IMPORTED_MODULE_0___default()({}, state, _defineProperty({}, action.payload.cart.id, action.payload.boughtItems));
-    // return merge({}, action.payload)
 
     case _actions_product_actions__WEBPACK_IMPORTED_MODULE_1__["REMOVE_BOUGHT_PRODUCT"]:
       var newState = lodash_merge__WEBPACK_IMPORTED_MODULE_0___default()({}, state);
@@ -2504,7 +2503,7 @@ var deleteBoughtItem = function deleteBoughtItem(id) {
     url: "api/boughtitems/".concat(id)
   });
 };
-var fetchCart = function fetchCart(id) {
+var fetchCart = function fetchCart() {
   return $.ajax({
     method: 'GET',
     url: 'api/cart' // url: `api/carts/${id}`

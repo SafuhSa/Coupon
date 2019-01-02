@@ -64,7 +64,7 @@ export const deleteBoughtItem = (id) => (
   })
 );
 
-export const fetchCart = (id) => {
+export const fetchCart = () => {
   return $.ajax({
     method: 'GET',
     url: 'api/cart'

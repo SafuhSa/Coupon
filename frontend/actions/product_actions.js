@@ -85,7 +85,7 @@ export const receiveBoughtItem = (payload) => ({
 export const createBoughtItem = (item) => dispatch => {
 
   return ProductAPIUtil.boughtItem(item)
-    .then((item) => dispatch(receiveBoughtItem(item)),
+    .then((item1) => dispatch(receiveBoughtItem(item1)),
      err => (
       dispatch(receiveErrors(err.responseJSON))
     ));

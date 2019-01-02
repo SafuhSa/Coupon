@@ -32,6 +32,7 @@ updateQuantity(e) {
   addItemToCart(e) {
     e.preventDefault();
     if (this.props.userId) {
+
       let item = {productId: this.props.product.id, quantity: this.state.quantity}
       this.props.createBoughtItem(item).then(this.props.history.push('/cart'));
     } else {

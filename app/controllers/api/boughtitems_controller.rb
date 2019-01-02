@@ -6,7 +6,7 @@ class Api::BoughtitemsController < ApplicationController
   
     total = @bought_item.quantity * product.dis_price
 
-    if (current_user.cart)
+    if current_user.cart
       @cart = current_user.cart
       @cart.purchase_total += total
 
@@ -21,10 +21,10 @@ class Api::BoughtitemsController < ApplicationController
       @cart = Cart.new({ buyer_id: current_user.id, purchase_total: total })
     end
 
+    
     @cart.save
     @bought_item.cart_id = @cart.id
 
-    
     if @bought_item.save
 
       render "api/carts/show"
