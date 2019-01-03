@@ -1274,11 +1274,7 @@ var PostIndexItem = function PostIndexItem(_ref) {
     className: "disPrice"
   }, " $", product.disPrice)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "description"
-  }, product.description)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    onClick: function onClick() {
-      return deleteProduct(product.id);
-    }
-  }, "Delete"))));
+  }, product.description)))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (PostIndexItem);
