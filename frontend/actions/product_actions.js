@@ -100,8 +100,8 @@ export const removeBoughtItem = (boughtProductId) => ({
 });
 
 export const deleteBoughtItem = (id) => dispatch => {
-  return ProductAPIUtil.deleteBoughtItem(id).then((item) =>
-    dispatch(removeBoughtItem(item.id)));
+  return ProductAPIUtil.deleteBoughtItem(id).then(() =>
+    dispatch(removeBoughtItem(id)));
 };
 
 

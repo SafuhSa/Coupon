@@ -40,15 +40,14 @@ class Api::BoughtitemsController < ApplicationController
     item = Product.find_by(id: @bought_item.product_id)
     total = @bought_item.quantity * item.dis_price
     @cart = Cart.find_by(id: @bought_item.cart_id)
-    cart = @cart
-    cart.purchase_total -= total
-    @cart.update(cart)
+    @cart.purchase_total -= total
+    @cart.save
     
     if @cart.purchase_total.zero? 
       @bought_item.destroy
       @cart.destroy
       @products = Product.all
-      redner 'api/products/index'
+      render 'api/products/index'
     else
       @bought_item.destroy
       render "api/carts/show"

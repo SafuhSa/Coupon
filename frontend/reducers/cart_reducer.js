@@ -1,4 +1,4 @@
-import { RECEIVE_CART } from '../actions/product_actions';
+import { RECEIVE_CART, REMOVE_BOUGHT_PRODUCT } from '../actions/product_actions';
 import merge from 'lodash/merge';
 
 const cartsReducer = (state = {}, action) => {
@@ -8,7 +8,6 @@ const cartsReducer = (state = {}, action) => {
     case RECEIVE_CART:
       return merge({}, state, {[action.payload.cart.id]: action.payload.cart});
 
-    
     default:
       return state;
   }
