@@ -19,7 +19,7 @@
 3. __buy__
     - Users can list products to the website
     - Each user have a unique cart to store their products
-4. __search (by location & category) __
+4. __search (by location & category)__
     - Coming soon!!
 5. __Bonus: Credit card payments (12/21/2018, 1 day)__
     - comming soon!!
