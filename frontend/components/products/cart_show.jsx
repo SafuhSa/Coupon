@@ -10,10 +10,13 @@ class CartShow extends React.Component {
     // this.props.requestCart(this.props.match.params.cartId);
     this.props.requestCart();
   }
+  // componentDidUpdate() {
+  //   // this.props.requestCart(this.props.match.params.cartId);
+  //   this.props.requestCart();
+  // }
 
   getItems() {
     let result = []
-
     for (let i = 0; i < this.props.cart.productIds.length; i++) {
       const id = this.props.cart.productIds[i];
       const item = this.props.boughtProducts[id];
@@ -58,10 +61,10 @@ class CartShow extends React.Component {
   }
 
   render() {
+    // debugger
     if (!this.props.cart) {
       return null;
     }
-    
 
     return (
       <div className='cart-show-container' >

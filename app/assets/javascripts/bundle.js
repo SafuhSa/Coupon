@@ -670,7 +670,11 @@ function (_React$Component) {
     value: function componentDidMount() {
       // this.props.requestCart(this.props.match.params.cartId);
       this.props.requestCart();
-    }
+    } // componentDidUpdate() {
+    //   // this.props.requestCart(this.props.match.params.cartId);
+    //   this.props.requestCart();
+    // }
+
   }, {
     key: "getItems",
     value: function getItems() {
@@ -730,6 +734,7 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      // debugger
       if (!this.props.cart) {
         return null;
       }
