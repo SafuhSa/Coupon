@@ -49,7 +49,7 @@ class Greeting extends React.Component {
          </div>
           <div className='header-cover'>
             <div className='header'>
-             <Link to="/" className='logo'>COUPON</Link>
+             <Link to="/" className='logo'>COUPON</Link> 
               <div className="input-container">
                <SearchContainer />
             
