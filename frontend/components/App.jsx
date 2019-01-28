@@ -17,15 +17,17 @@ const App = () => (
   <div>
       <GreetingContainer />
 
-    {/* <Switch>  */}
-    <Route exact path="/" component={ProductIndexContainer} />
+    <Switch> 
     <AuthRoute exact path="/login" component={LogInFormContainer} />
     <AuthRoute exact path="/signup" component={SignUpFormContainer} />
     <ProtectedRoute exact path="/product/new" component={CreateProductContainer} />
       <Route exact path="/products/:productId" component={ProductShowContainer} />
     <ProtectedRoute exact path="/cart" component={CartShowContainer} />
-    <ProtectedRoute path="/products/:productId/edit" component={EditProductContainer} />
-    {/* </Switch> */}
+    <ProtectedRoute exact path="/products/:productId/edit" component={EditProductContainer} />
+    
+
+    <Route path="/" component={ProductIndexContainer} />
+    </Switch>
   </div>
 );
 

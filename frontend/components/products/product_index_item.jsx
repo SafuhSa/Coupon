@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 
-const PostIndexItem = ({ product, deleteProduct }) => {
+const ProductIndexItem = ({ product, deleteProduct }) => {
   return (
     <div className='index-item-container'>
         <Link to={`/products/${product.id}`}>
@@ -26,4 +26,4 @@ const PostIndexItem = ({ product, deleteProduct }) => {
     </div>);
 };
 
-export default PostIndexItem;
+export default ProductIndexItem;

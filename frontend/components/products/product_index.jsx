@@ -5,9 +5,11 @@ class ProductIndex extends React.Component {
 
   componentDidMount() {
     this.props.requestProducts();
+    // debugger
   }
 
   render() {
+
     const products = this.props.products.map(product => {
       return (
         <ProductIndexItem
@@ -17,7 +19,9 @@ class ProductIndex extends React.Component {
       );
     });
     return (
+
       <div className='index-items'>
+      {products.length}
           {products}
       </div>
     );

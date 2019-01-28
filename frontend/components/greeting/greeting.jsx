@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
+import SearchContainer from "./search_container";
 
 class Greeting extends React.Component {
   sessionLinks () {
@@ -49,13 +49,10 @@ class Greeting extends React.Component {
          </div>
           <div className='header-cover'>
             <div className='header'>
-              <Link to="/" className='logo'>COUPON</Link>
+             <Link to="/" className='logo'>COUPON</Link>
               <div className="input-container">
-
-                <form className="search" >
-                  <span><i className="fa fa-search" aria-hidden="true"></i></span>
-                    <input className='input-location' type="text" placeholder=' Search Coupon' />
-                </form>
+               <SearchContainer />
+            
 
                 <form className="location">
                   <span><i className="fa fa-map-marker"></i></span>

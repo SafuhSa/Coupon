@@ -10,6 +10,12 @@ export const fetchProducts = () => (
   })
 );
 
+export const search = str => $.ajax({
+           method: "GET",
+           url: "api/search",
+           data: {search: str}
+         });
+
 export const fetchProduct = (id) => {
   return $.ajax({
     method: 'GET',

@@ -65,7 +65,7 @@ export const deleteProduct = (id) => dispatch => {
     dispatch(removeProduct(product.id)));
 };
 
-// -----------------------------------------
+// ----------------Cart-------------------------
 export const receiveCart = (payload) => ({
   type: RECEIVE_CART,
   payload
@@ -76,7 +76,7 @@ export const requestCart = () => dispatch => {
     dispatch(receiveCart(cart)));
 };
 
-// -----------------------------------------
+// -----------
 export const receiveBoughtItem = (payload) => ({
   type: RECEIVE_BOUGHT_PRODUCT,
   payload
@@ -92,7 +92,7 @@ export const createBoughtItem = (item) => dispatch => {
 };
 
 
-// -----------------------------------------
+// ----------
 
 export const removeBoughtItem = (boughtProductId) => ({
   type: REMOVE_BOUGHT_PRODUCT,
@@ -105,4 +105,18 @@ export const deleteBoughtItem = (id) => dispatch => {
 };
 
 
+//--------------search-------
 
+
+// export const receiveProduct = (product) => ({
+//   type: RECEIVE_PRODUCT,
+//   product
+// });
+
+export const search = (str) => dispatch => {
+  return ProductAPIUtil.search(str).then(product =>
+    dispatch(receiveProducts(product))
+  );
+};
+
+//---------------------------

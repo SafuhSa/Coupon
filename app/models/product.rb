@@ -31,4 +31,11 @@ class Product < ApplicationRecord
         end
     end
 
+    def self.search_results(str)
+        return Product.all if str == ""
+        param = "%" + str.downcase + '%'
+        
+        products = Product.where('lower(category) LIKE ?', param).to_a
+    end
+
 end
