@@ -36,6 +36,9 @@ class Product < ApplicationRecord
         param = "%" + str.downcase + '%'
         
         products = Product.where('lower(category) LIKE ?', param).to_a
+        products_name = Product.where('lower(product_name) LIKE ?', param).to_a
+        products_des = Product.where('lower(description) LIKE ?', param).to_a
+        (products + products_name + products_des).slice(0, 10)
     end
 
 end
