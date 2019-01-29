@@ -14,6 +14,7 @@ class ProductShow extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
+    debugger
     if (prevProps.product && (prevProps.product.id != this.props.match.params.productId)) {
       this.props.requestProduct(this.props.match.params.productId);
     }

@@ -1856,6 +1856,8 @@ function (_React$Component) {
   }, {
     key: "componentDidUpdate",
     value: function componentDidUpdate(prevProps) {
+      debugger;
+
       if (prevProps.product && prevProps.product.id != this.props.match.params.productId) {
         this.props.requestProduct(this.props.match.params.productId);
       }
@@ -2073,6 +2075,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     },
     createBoughtItem: function createBoughtItem(item) {
       return dispatch(Object(_actions_product_actions__WEBPACK_IMPORTED_MODULE_2__["createBoughtItem"])(item));
+    },
+    createrecentView: function createrecentView(product) {
+      return dispatch(Object(_actions_product_actions__WEBPACK_IMPORTED_MODULE_2__["createrecentView"])(product));
     }
   };
 };
@@ -2655,6 +2660,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _products_reducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./products_reducer */ "./frontend/reducers/products_reducer.js");
 /* harmony import */ var _bought_items_reducer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./bought_items_reducer */ "./frontend/reducers/bought_items_reducer.js");
 /* harmony import */ var _cart_reducer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./cart_reducer */ "./frontend/reducers/cart_reducer.js");
+/* harmony import */ var _recent_view_reducer__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./recent_view_reducer */ "./frontend/reducers/recent_view_reducer.js");
+
 
 
 
@@ -2668,7 +2675,8 @@ __webpack_require__.r(__webpack_exports__);
   users: _users_reducer__WEBPACK_IMPORTED_MODULE_1__["default"],
   products: _products_reducer__WEBPACK_IMPORTED_MODULE_2__["default"],
   boughtProducts: _bought_items_reducer__WEBPACK_IMPORTED_MODULE_3__["default"],
-  cart: _cart_reducer__WEBPACK_IMPORTED_MODULE_4__["default"]
+  cart: _cart_reducer__WEBPACK_IMPORTED_MODULE_4__["default"],
+  recentViewReducer: _recent_view_reducer__WEBPACK_IMPORTED_MODULE_5__["default"]
 }));
 
 /***/ }),
@@ -2771,6 +2779,41 @@ var productsReducer = function productsReducer() {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (productsReducer);
+
+/***/ }),
+
+/***/ "./frontend/reducers/recent_view_reducer.js":
+/*!**************************************************!*\
+  !*** ./frontend/reducers/recent_view_reducer.js ***!
+  \**************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _actions_product_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/product_actions */ "./frontend/actions/product_actions.js");
+/* harmony import */ var lodash_merge__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! lodash/merge */ "./node_modules/lodash/merge.js");
+/* harmony import */ var lodash_merge__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(lodash_merge__WEBPACK_IMPORTED_MODULE_1__);
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+
+var recentViewReducer = function recentViewReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(state);
+
+  switch (action.type) {
+    case _actions_product_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_RECENT_VIEW"]:
+      return lodash_merge__WEBPACK_IMPORTED_MODULE_1___default()({}, state, _defineProperty({}, action.recentview.id, action.recentview));
+
+    default:
+      return state;
+  }
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (recentViewReducer);
 
 /***/ }),
 
