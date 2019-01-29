@@ -5,7 +5,6 @@ class ProductIndex extends React.Component {
 
   componentDidMount() {
     this.props.requestProducts();
-    // debugger
   }
 
   render() {
@@ -21,7 +20,6 @@ class ProductIndex extends React.Component {
     return (
 
       <div className='index-items'>
-      {products.length}
           {products}
       </div>
     );

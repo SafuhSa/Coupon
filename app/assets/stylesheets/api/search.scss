@@ -1,0 +1,84 @@
+.search-page {
+  // border: 2px solid green;
+  width: 1065px;
+  margin: auto;
+  height: 90vh;
+  color: #373636;
+  padding: 3px;
+}
+.search-header {
+  border-bottom: dashed;
+  border-color: gray;
+  margin-top: 67px;
+  font-size: 35px;
+}
+
+.search-item-container {
+    width: 100%;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-color: #e6e7e8;
+    margin-top: 12px;
+    padding: 10px 10px 20px 5px;
+}
+
+.search-item {
+  padding: 3px;
+  display: flex;
+  flex-direction: row;
+}
+
+.search-pics {
+    height: 260px;
+    width: 468px;
+    margin-right: 20px;
+}
+
+// .search-prod-left {
+//   position: relative;
+// }
+
+.searchproductName {
+  font-size: 35px;
+  font-weight: 500;
+  margin-bottom: 2px;
+}
+
+.searchcategory {
+    color: #75787b !important;
+    font-size: 25px;
+}
+
+.searchdescription {
+  font-size: 13px;
+  font-size: 22px;
+  margin-top: 35px;
+  width: 82%;
+}
+.searchview {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 10px;
+  // border: 2px solid black;
+}
+
+.searchviewbutton {
+  font-size: 20px;
+  color: white;
+  background-color: #53a318;
+  border-radius: 8px;
+  padding: 7px;
+}
+
+.searchprices {
+  // border: 2px solid blue;
+  font-size: 30px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+
+.searchdisPrice {
+      color: #53a318;
+      margin: 0 10px;
+    }
