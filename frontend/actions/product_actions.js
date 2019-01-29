@@ -116,9 +116,9 @@ export const search = (str) => dispatch => {
 
 //----------------recentview-----------
 
-export const recentView = (recentview) => ({
+export const recentView = (payload) => ({
   type: RECEIVE_RECENT_VIEW,
-  recentview
+  payload
 });
 
 export const requestRecentView = () => dispatch => {
@@ -129,6 +129,7 @@ export const requestRecentView = () => dispatch => {
 
 
 export const createrecentView = (product) => dispatch => {
-  return ProductAPIUtil.fetchrecentView(product).then((recentview) => 
-    dispatch(recentView(recentview)));
+  return ProductAPIUtil.createrecentView(product).then(recentview =>
+    dispatch(recentView(recentview))
+  );
 };

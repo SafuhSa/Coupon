@@ -47,5 +47,4 @@ class Api::ProductsController < ApplicationController
   def snackcase_params
     params[:product] = params[:product].transform_keys(&:underscore)
   end
-
 end

@@ -78,14 +78,23 @@ export const fetchCart = () => {
   })
 };
 
-fetchrecentView;
 
-export const fetchrecentView = (product) => {
+export const createrecentView = (product) => {
+  let idk = product.id
   return (
     $.ajax({
       method: 'POST',
-      url: 'api/boughtitems',
-      data: {product}
+      url: '/api/recentview',
+      data: { idk }
+    })
+  )
+};
+
+export const fetchrecentView = () => {
+  return (
+    $.ajax({
+      method: 'GET',
+      url: '/api/recentview'
     })
   )
 };

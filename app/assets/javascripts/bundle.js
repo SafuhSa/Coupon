@@ -257,10 +257,10 @@ var search = function search(str) {
   };
 }; //----------------recentview-----------
 
-var recentView = function recentView(recentview) {
+var recentView = function recentView(payload) {
   return {
     type: RECEIVE_RECENT_VIEW,
-    recentview: recentview
+    payload: payload
   };
 };
 var requestRecentView = function requestRecentView() {
@@ -272,7 +272,7 @@ var requestRecentView = function requestRecentView() {
 };
 var createrecentView = function createrecentView(product) {
   return function (dispatch) {
-    return _util_product_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchrecentView"](product).then(function (recentview) {
+    return _util_product_api_util__WEBPACK_IMPORTED_MODULE_0__["createrecentView"](product).then(function (recentview) {
       return dispatch(recentView(recentview));
     });
   };
@@ -668,25 +668,23 @@ function (_React$Component) {
       queryString: ""
     };
     return _this;
-  } // componentDidMount() {
-  //   let queryString = this.props.location.search.split("=")[1];
-  //   this.props.search(queryString);
-  // }
-
+  }
 
   _createClass(RecentView, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.props.requestRecentView();
+    }
+  }, {
     key: "render",
     value: function render() {
-      if (!this.props.products.length) {
+      if (!this.props.products.length || !this.props.products[0]) {
         // let img = new img
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "search-page"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "search-header"
-        }, "Sorry, no recent viewed item yet"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-          src: "./app/assets/images/Sad_Face.jpg",
-          alt: ""
-        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        }, "Sorry, no recently viewed item yet"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
           className: "search-homepage",
           to: "/"
         }, "Back to Home page"));
@@ -728,7 +726,7 @@ function (_React$Component) {
           className: "search-page"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "search-header"
-        }, "recent views for '", this.props.location.search.split("=")[1], "'"), products)
+        }, "Recently Viewed"), products)
       );
     }
   }]);
@@ -760,14 +758,14 @@ __webpack_require__.r(__webpack_exports__);
 
 var mapStateToProps = function mapStateToProps(state, ownprops) {
   return {
-    products: Object.values(state.session.recent)
+    products: Object.values(state.entities.recentView)
   };
 };
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
-    search: function search(str) {
-      return dispatch(Object(_actions_product_actions__WEBPACK_IMPORTED_MODULE_3__["search"])(str));
+    requestRecentView: function requestRecentView() {
+      return dispatch(Object(_actions_product_actions__WEBPACK_IMPORTED_MODULE_3__["requestRecentView"])());
     }
   };
 };
@@ -1224,7 +1222,6 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      // debugger
       if (!this.props.cart) {
         return null;
       }
@@ -1691,7 +1688,8 @@ function (_React$Component) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_product_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
           key: product.id,
           product: product,
-          deleteProduct: _this.props.deleteProduct
+          deleteProduct: _this.props.deleteProduct,
+          createrecentView: _this.props.createrecentView
         });
       });
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1737,6 +1735,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     },
     deleteProduct: function deleteProduct(id) {
       return dispatch(Object(_actions_product_actions__WEBPACK_IMPORTED_MODULE_2__["deleteProduct"])(id));
+    },
+    createrecentView: function createrecentView(product) {
+      return dispatch(Object(_actions_product_actions__WEBPACK_IMPORTED_MODULE_2__["createrecentView"])(product));
     }
   };
 };
@@ -1762,11 +1763,15 @@ __webpack_require__.r(__webpack_exports__);
 
 var ProductIndexItem = function ProductIndexItem(_ref) {
   var product = _ref.product,
-      deleteProduct = _ref.deleteProduct;
+      deleteProduct = _ref.deleteProduct,
+      createrecentView = _ref.createrecentView;
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "index-item-container"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-    to: "/products/".concat(product.id)
+    to: "/products/".concat(product.id),
+    onClick: function onClick() {
+      return createrecentView(product);
+    }
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "index-item"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
@@ -1840,9 +1845,6 @@ function (_React$Component) {
       quantity: 1,
       purchasePrice: 0
     };
-
-    _this.props.recent.push(_this.props.product);
-
     _this.addItemToCart = _this.addItemToCart.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     _this.updateQuantity = _this.updateQuantity.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     return _this;
@@ -1856,8 +1858,6 @@ function (_React$Component) {
   }, {
     key: "componentDidUpdate",
     value: function componentDidUpdate(prevProps) {
-      debugger;
-
       if (prevProps.product && prevProps.product.id != this.props.match.params.productId) {
         this.props.requestProduct(this.props.match.params.productId);
       }
@@ -2075,9 +2075,6 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     },
     createBoughtItem: function createBoughtItem(item) {
       return dispatch(Object(_actions_product_actions__WEBPACK_IMPORTED_MODULE_2__["createBoughtItem"])(item));
-    },
-    createrecentView: function createrecentView(product) {
-      return dispatch(Object(_actions_product_actions__WEBPACK_IMPORTED_MODULE_2__["createrecentView"])(product));
     }
   };
 };
@@ -2676,7 +2673,7 @@ __webpack_require__.r(__webpack_exports__);
   products: _products_reducer__WEBPACK_IMPORTED_MODULE_2__["default"],
   boughtProducts: _bought_items_reducer__WEBPACK_IMPORTED_MODULE_3__["default"],
   cart: _cart_reducer__WEBPACK_IMPORTED_MODULE_4__["default"],
-  recentViewReducer: _recent_view_reducer__WEBPACK_IMPORTED_MODULE_5__["default"]
+  recentView: _recent_view_reducer__WEBPACK_IMPORTED_MODULE_5__["default"]
 }));
 
 /***/ }),
@@ -2794,19 +2791,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_product_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/product_actions */ "./frontend/actions/product_actions.js");
 /* harmony import */ var lodash_merge__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! lodash/merge */ "./node_modules/lodash/merge.js");
 /* harmony import */ var lodash_merge__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(lodash_merge__WEBPACK_IMPORTED_MODULE_1__);
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 
 
 
 var recentViewReducer = function recentViewReducer() {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
   var action = arguments.length > 1 ? arguments[1] : undefined;
   Object.freeze(state);
 
   switch (action.type) {
     case _actions_product_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_RECENT_VIEW"]:
-      return lodash_merge__WEBPACK_IMPORTED_MODULE_1___default()({}, state, _defineProperty({}, action.recentview.id, action.recentview));
+      return action.payload;
 
     default:
       return state;
@@ -2989,7 +2984,7 @@ var configureStore = function configureStore() {
 /*!*******************************************!*\
   !*** ./frontend/util/product_api_util.js ***!
   \*******************************************/
-/*! exports provided: fetchProducts, search, fetchProduct, createProduct, updateProduct, deletePorduct, boughtItem, deleteBoughtItem, fetchCart, fetchrecentView */
+/*! exports provided: fetchProducts, search, fetchProduct, createProduct, updateProduct, deletePorduct, boughtItem, deleteBoughtItem, fetchCart, createrecentView, fetchrecentView */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3003,6 +2998,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "boughtItem", function() { return boughtItem; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteBoughtItem", function() { return deleteBoughtItem; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchCart", function() { return fetchCart; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createrecentView", function() { return createrecentView; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchrecentView", function() { return fetchrecentView; });
 // GET / api / products /: id - returns product
 // POST / api / products - creates a product
@@ -3075,14 +3071,20 @@ var fetchCart = function fetchCart() {
 
   });
 };
-fetchrecentView;
-var fetchrecentView = function fetchrecentView(product) {
+var createrecentView = function createrecentView(product) {
+  var idk = product.id;
   return $.ajax({
     method: 'POST',
-    url: 'api/boughtitems',
+    url: '/api/recentview',
     data: {
-      product: product
+      idk: idk
     }
+  });
+};
+var fetchrecentView = function fetchrecentView() {
+  return $.ajax({
+    method: 'GET',
+    url: '/api/recentview'
   });
 };
 

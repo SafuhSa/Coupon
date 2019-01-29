@@ -52,7 +52,6 @@ class Api::BoughtitemsController < ApplicationController
       @bought_item.destroy
       render "api/carts/show"
     end
-    
   end
 
 

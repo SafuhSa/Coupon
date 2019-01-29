@@ -9,25 +9,24 @@ class RecentView extends React.Component {
     this.state = { queryString: "" };
   }
 
-  // componentDidMount() {
-  //   let queryString = this.props.location.search.split("=")[1];
-  //   this.props.search(queryString);
-  // }
+  componentDidMount() {
+    this.props.requestRecentView();
+  }
 
   render() {
-    if (!this.props.products.length) {
+    if (!this.props.products.length || !this.props.products[0] ) {
       // let img = new img
       return (
         <div className="search-page">
-          <div className="search-header">Sorry, no recent viewed item yet</div>
-          <img src='./app/assets/images/Sad_Face.jpg' alt="" />
+          <div className="search-header">Sorry, no recently viewed item yet</div>
+          {/* <img src='./app/assets/images/Sad_Face.jpg' alt="" /> */}
           <Link className="search-homepage" to="/">
             Back to Home page
           </Link>
         </div>
       )
     }
-    
+
     const products = this.props.products.map((product, i) => {
       return (
         <div key={i} className="search-item-container">
@@ -60,7 +59,7 @@ class RecentView extends React.Component {
     return (
       /// className='index-items'
       <div className="search-page">
-        <div className="search-header">recent views for '{this.props.location.search.split("=")[1]}'</div>
+        <div className="search-header">Recently Viewed</div>
         {products}
       </div>
     );

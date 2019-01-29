@@ -14,7 +14,8 @@ class ProductIndex extends React.Component {
         <ProductIndexItem
           key={product.id}
           product={product}
-          deleteProduct={this.props.deleteProduct} />
+          deleteProduct={this.props.deleteProduct} 
+          createrecentView={this.props.createrecentView}/>
       );
     });
     return (

@@ -61,7 +61,6 @@ class CartShow extends React.Component {
   }
 
   render() {
-    // debugger
     if (!this.props.cart) {
       return null;
     }

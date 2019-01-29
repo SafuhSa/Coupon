@@ -41,4 +41,16 @@ class Product < ApplicationRecord
         (products + products_name + products_des).slice(0, 10)
     end
 
+    def self.recently_viewed
+        products =  Product.where('recentlyviewed = true').to_a.sort_by(&:updated_at).reverse
+        # .order("updated_at DESC")
+        
+        until products.length <= 3
+            products.last.recentlyviewed = false
+            products.last.save
+            products.pop
+        end
+        products
+    end
+
 end
