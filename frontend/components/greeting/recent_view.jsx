@@ -3,18 +3,31 @@ import { Link } from 'react-router-dom';
 import { withRouter } from "react-router-dom";
 // import Sadface from '../../../app/assets/images/Sad_Face.jpg';  
 
-class SearchResult extends React.Component {
+class RecentView extends React.Component {
   constructor(props) {
     super(props);
     this.state = { queryString: "" };
   }
 
-  componentDidMount() {
-    let queryString = this.props.location.search.split("=")[1];
-    this.props.search(queryString);
-  }
+  // componentDidMount() {
+  //   let queryString = this.props.location.search.split("=")[1];
+  //   this.props.search(queryString);
+  // }
 
   render() {
+    if (!this.props.products.length) {
+      // let img = new img
+      return (
+        <div className="search-page">
+          <div className="search-header">Sorry, no recent viewed item yet</div>
+          <img src='./app/assets/images/Sad_Face.jpg' alt="" />
+          <Link className="search-homepage" to="/">
+            Back to Home page
+          </Link>
+        </div>
+      )
+    }
+    
     const products = this.props.products.map((product, i) => {
       return (
         <div key={i} className="search-item-container">
@@ -42,28 +55,17 @@ class SearchResult extends React.Component {
         </div>
       );
     });
-    if (!this.props.products.length) {
-      // let img = new img
-      return (
-        <div className="search-page">
-          <div className="search-header">Sorry, no results found for '{this.props.location.search.split("=")[1]}'</div>
-          <img src='./app/assets/images/Sad_Face.jpg' alt=""/>
-          <Link className="search-homepage" to="/">
-            Back to Home page
-          </Link>
-        </div>
-      )
-    }
+
 
     return (
       /// className='index-items'
       <div className="search-page">
-        <div className="search-header">results for '{this.props.location.search.split("=")[1]}'</div>
+        <div className="search-header">recent views for '{this.props.location.search.split("=")[1]}'</div>
         {products}
       </div>
     );
   }
 }
 
-export default SearchResult;
+export default RecentView;
 // export default withRouter(Search);

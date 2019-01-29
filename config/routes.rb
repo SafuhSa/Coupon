@@ -9,5 +9,6 @@ Rails.application.routes.draw do
     resources :boughtitems, only: [:show, :create, :destroy]
     resource :cart, only: [:show]
     resources :search, only: [:index]
+    resources :recentview, only: [:show]
   end
 end

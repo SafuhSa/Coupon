@@ -39,7 +39,7 @@ class Greeting extends React.Component {
      return (
        <header>
          <div className='upper-header'>
-           <Link to="/" className='header-link'>Recently Viewed</Link>
+           <Link to="/recentViews" className='header-link'>Recently Viewed</Link>
            <Link to={'/cart'} className='header-link'>
              <span> <i className="fas fa-shopping-cart"></i></span>
              Cart </Link>

@@ -8,6 +8,8 @@ export const CLEAR_ERRORS = 'CLEAR_ERRORS';
 export const RECEIVE_CART = 'RECEIVE_CART';
 export const RECEIVE_BOUGHT_PRODUCT = 'RECEIVE_BOUGHT_PRODUCT';
 export const REMOVE_BOUGHT_PRODUCT = 'REMOVE_BOUGHT_PRODUCT';
+export const RECEIVE_RECENT_VIEW = 'RECEIVE_RECENT_VIEW';
+
 
 export const receiveProducts = (products) => ({
   type: RECEIVE_PRODUCTS,
@@ -106,17 +108,27 @@ export const deleteBoughtItem = (id) => dispatch => {
 
 
 //--------------search-------
-
-
-// export const receiveProduct = (product) => ({
-//   type: RECEIVE_PRODUCT,
-//   product
-// });
-
 export const search = (str) => dispatch => {
   return ProductAPIUtil.search(str).then(product =>
     dispatch(receiveProducts(product))
   );
 };
 
-//---------------------------
+//----------------recentview-----------
+
+export const recentView = (recentview) => ({
+  type: RECEIVE_RECENT_VIEW,
+  recentview
+});
+
+export const requestRecentView = () => dispatch => {
+  return ProductAPIUtil.fetchrecentView().then(recentview =>
+    dispatch(recentView(recentview))
+  );
+};
+
+
+export const createrecentView = (product) => dispatch => {
+  return ProductAPIUtil.fetchrecentView(product).then((recentview) => 
+    dispatch(recentView(recentview)));
+};

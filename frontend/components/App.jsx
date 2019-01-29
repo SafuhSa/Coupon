@@ -8,6 +8,7 @@ import EditProductContainer from './products/edit_container';
 import CreateProductContainer from './products/create_container';
 import CartShowContainer from './products/cart_container';
 import SearchResultContainer from './greeting/search_result_container';
+import RecentViewsContainer from "./greeting/recent_view_container";
 
 import { Provider } from 'react-redux';
 import { Route, Redirect, Switch, Link, HashRouter } from 'react-router-dom';
@@ -27,6 +28,7 @@ const App = () => (
     <ProtectedRoute exact path="/products/:productId/edit" component={EditProductContainer} />
       <Route exact path="/search" component={SearchResultContainer} />
     <Route exact path="/" component={ProductIndexContainer} />
+      <Route exact path="/recentViews" component={RecentViewsContainer} />
 
 
     </Switch>

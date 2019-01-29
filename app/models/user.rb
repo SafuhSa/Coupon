@@ -21,6 +21,9 @@ class User < ApplicationRecord
 
   after_initialize :ensure_session_token
 
+  has_one :recentview,
+      foreign_key: :user_id,
+      class_name: :RecentView
 
   has_many :products,
     foreign_key: :seller_id,
