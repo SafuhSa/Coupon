@@ -4,7 +4,8 @@ import { Link } from 'react-router-dom';
 class ProductShow extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { mainImage: '', quantity: 1, purchasePrice: 0}
+    let url = this.props.product.photoUrls[0];
+    this.state = { mainImage: <ul className='image-show'><img src={url} /></ul>, quantity: 1, purchasePrice: 0}
     this.addItemToCart = this.addItemToCart.bind(this)
     this.updateQuantity = this.updateQuantity.bind(this)
   }
@@ -18,10 +19,10 @@ class ProductShow extends React.Component {
     }
   }
 
-  updateImage() {
-    let url = this.props.product.photoUrls[0]
-    this.setState({ mainImage: <ul className='image-show'><img  src={url}/></ul> })
-  }
+  // updateImage() {
+  //   let url = this.props.product.photoUrls[0]
+  //   this.setState({ mainImage: <ul className='image-show'><img  src={url}/></ul> })
+  // }
 
 updateQuantity(e) {
   let total = e.target.value * this.props.product.disPrice
@@ -59,9 +60,9 @@ updateQuantity(e) {
       result.push(<ul className='image-show' key={i}><img key={i} src={product.photoUrls[i]} onClick={() => this.setState({ mainImage: < ul className='image-show' ><img  src={product.photoUrls[i]} /></ul>})}/></ul>)
     }
     
-    if (!this.state.mainImage) {
-      this.updateImage()
-    }
+    // if (!this.state.mainImage) {
+    //   this.updateImage()
+    // }
     
     return <div className="show-container">
         <div className="show-title">

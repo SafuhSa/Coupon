@@ -44,29 +44,51 @@ class ProductForm extends React.Component {
   }
 
   handleFile(e) {
-    let result = [e.target.files[0]]
+    // debugger
+    // let result = [e.target.files[0]]
+    let result = Object.values(e.target.files);
+
     // if (this.state.photoFile) {
     //   this.setState((state, props) => ({ photoFile: state.photoFile.concat(result) }))
     // } else {
     //   this.setState({photoFile: [e.target.files[0]] })
     // }
 
-    const files = e.target.files;
-    const reader = new FileReader();
+    var files = e.target.files;
+    let that = this
+    for (var i = 0; i < files.length; i++) {
+      let file = files[i];
+      let reader = new FileReader();
 
-    reader.onloadend = () => {
-      if (this.state.photoFile) {
-        this.setState({ photoUrl: this.state.photoUrl.concat([reader.result]), photoFile: this.state.photoFile.concat(result)});
-      } else {
-        this.setState({ photoUrl: [reader.result], photoFile: result })
-      }
+      reader.onload = function (e) {
+       // if (that.state.photoFile) { // that.state.photoFile.concat(result)
+          that.setState({ photoUrl: that.state.photoUrl.concat([reader.result]), photoFile: result });
+      //  } //else {
+          //that.setState({ photoUrl: [reader.result], photoFile: result })
+        //}
+      };
+      // Read in the image file as a data URL.
+      reader.readAsDataURL(file);
     }
 
 
-    if (files) {
-      for (let i = 0; i < files.length; i++) {
-        reader.readAsDataURL(files[i]);
-      }}
+    // const files = e.target.files;
+    // const reader = new FileReader();
+
+    // reader.onloadend = () => {
+    //   debugger
+    //   if (this.state.photoFile) {
+    //     this.setState({ photoUrl: this.state.photoUrl.concat([reader.result]), photoFile: this.state.photoFile.concat(result)});
+    //   } else {
+    //     this.setState({ photoUrl: [reader.result], photoFile: result })
+    //   }
+    // }
+
+
+    // if (files) {
+    //   for (let i = 0; i < files.length; i++) {
+    //     reader.readAsDataURL(files[i]);
+    //   }}
     // } else {
     //   this.setState({ photoUrl: "", photoFile: null });
     // }
@@ -121,8 +143,8 @@ class ProductForm extends React.Component {
           <textarea className="product-create-edit-input" onChange={this.update('description')} value={this.state.description}></textarea>
           </label>
           <label className='product-label'><h3>category:</h3>
-            <select className="category-selector"  onChange={this.update('category') }>
-              <option value="" disabled selected hidden>Please Choose...</option>
+            <select className="category-selector" onChange={this.update('category')}>
+              <option value="" hidden>Please Choose...</option>
             <option value="restaurants">Restaurants</option>
             <option value="electronic">Electronic</option>
             <option value="clothing">Clothing</option>
@@ -130,10 +152,15 @@ class ProductForm extends React.Component {
             <option value="entertainment ">Entertainment</option>
           </select>
           </label>
+
           <label className='product-label'><h3>Images:</h3>
-            <input className='images-upload' type="file" onChange={this.handleFile.bind(this)} multiple />
-            <label htmlFor="file">Choose a file</label>
+
+            <label htmlFor="file" className='images-label'>&nbsp; Choose a file
+            <input className='images-input' type="file" onChange={this.handleFile.bind(this)} multiple />
+             </label>
+
           </label>
+
           <div className='images-preview-container'>
 
             {preview}

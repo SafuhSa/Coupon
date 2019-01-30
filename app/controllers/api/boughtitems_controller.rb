@@ -19,13 +19,15 @@ class Api::BoughtitemsController < ApplicationController
 
     else
       @cart = Cart.new({ buyer_id: current_user.id, purchase_total: total })
+      @cart.save
     end
 
     
-    @cart.save
-    @bought_item.cart_id = @cart.id
 
+    @bought_item.cart_id = @cart.id
+    
     if @bought_item.save
+      @cart.save
 
       render "api/carts/show"
     else
@@ -41,7 +43,7 @@ class Api::BoughtitemsController < ApplicationController
     total = @bought_item.quantity * item.dis_price
     @cart = Cart.find_by(id: @bought_item.cart_id)
     @cart.purchase_total -= total
-    @cart.save
+    
     
     if @cart.purchase_total.zero? 
       @bought_item.destroy
@@ -50,6 +52,7 @@ class Api::BoughtitemsController < ApplicationController
       render 'api/products/index'
     else
       @bought_item.destroy
+      @cart.save
       render "api/carts/show"
     end
   end

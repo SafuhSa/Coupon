@@ -39,33 +39,34 @@
     // border-color: #d5d8db;
 }
 
-.images-upload {
-    width: 0.1px;
-    height: 0.1px;
-    opacity: 0;
-    overflow: hidden;
+
+.images-label {
+  // border: 2px solid green;
+  position: relative;
+  font-size: 1.25em;
+  font-weight: 400;
+  background-color: #d5d8db;
+  height: 36px;
+  width: 75%;
+  text-align: left;
+  padding-bottom: 5px;
+  padding: 1px 0 17px 0px;
+  border-radius: 5PX;
+  border: 1px solid lightslategray;
+  line-height: 2.5;
+  margin: auto 0;
+}
+.images-input {
+    // background-color: blue;
     position: absolute;
-    z-index: -1;
+    top: 0;
+    right: 0px;
+    width: 100%;
+    opacity: 0;
+    // overflow: hidden;
+    // z-index: -1;
 }
-
-.images-upload + label {
-    font-size: 1.25em;
-    font-weight: 400;
-    background-color: #d5d8db;
-    height: 36px;
-    width: 73%;
-    text-align: left;
-    padding-left: 7px;
-    padding-bottom: 5px;
-    // padding: 1px 0 17px 0px;
-    border-radius: 5PX;
-    border: 1px solid lightslategray;
-    line-height: 2.5;
-    margin: auto 0;
-}
-
-.images-upload:focus + label,
-.images-upload + label:hover {
+images-label:focus, .images-label:hover {
   background-color: #4285f4;
 }
 

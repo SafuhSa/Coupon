@@ -1264,7 +1264,7 @@ var msp = function msp(state) {
     quantity: '',
     category: '',
     photoFile: null,
-    photoUrl: null
+    photoUrl: []
   };
   var formType = 'Create Product';
   var errors = state.errors.product;
@@ -1479,36 +1479,52 @@ function (_React$Component) {
   }, {
     key: "handleFile",
     value: function handleFile(e) {
-      var _this4 = this;
-
-      var result = [e.target.files[0]]; // if (this.state.photoFile) {
+      // debugger
+      // let result = [e.target.files[0]]
+      var result = Object.values(e.target.files); // if (this.state.photoFile) {
       //   this.setState((state, props) => ({ photoFile: state.photoFile.concat(result) }))
       // } else {
       //   this.setState({photoFile: [e.target.files[0]] })
       // }
 
       var files = e.target.files;
-      var reader = new FileReader();
+      var that = this;
 
-      reader.onloadend = function () {
-        if (_this4.state.photoFile) {
-          _this4.setState({
-            photoUrl: _this4.state.photoUrl.concat([reader.result]),
-            photoFile: _this4.state.photoFile.concat(result)
-          });
-        } else {
-          _this4.setState({
-            photoUrl: [reader.result],
+      var _loop = function _loop() {
+        var file = files[i];
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+          // if (that.state.photoFile) { // that.state.photoFile.concat(result)
+          that.setState({
+            photoUrl: that.state.photoUrl.concat([reader.result]),
             photoFile: result
-          });
-        }
+          }); //  } //else {
+          //that.setState({ photoUrl: [reader.result], photoFile: result })
+          //}
+        }; // Read in the image file as a data URL.
+
+
+        reader.readAsDataURL(file);
       };
 
-      if (files) {
-        for (var i = 0; i < files.length; i++) {
-          reader.readAsDataURL(files[i]);
-        }
-      } // } else {
+      for (var i = 0; i < files.length; i++) {
+        _loop();
+      } // const files = e.target.files;
+      // const reader = new FileReader();
+      // reader.onloadend = () => {
+      //   debugger
+      //   if (this.state.photoFile) {
+      //     this.setState({ photoUrl: this.state.photoUrl.concat([reader.result]), photoFile: this.state.photoFile.concat(result)});
+      //   } else {
+      //     this.setState({ photoUrl: [reader.result], photoFile: result })
+      //   }
+      // }
+      // if (files) {
+      //   for (let i = 0; i < files.length; i++) {
+      //     reader.readAsDataURL(files[i]);
+      //   }}
+      // } else {
       //   this.setState({ photoUrl: "", photoFile: null });
       // }
 
@@ -1590,8 +1606,6 @@ function (_React$Component) {
         onChange: this.update('category')
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
         value: "",
-        disabled: true,
-        selected: true,
         hidden: true
       }, "Please Choose..."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
         value: "restaurants"
@@ -1605,14 +1619,15 @@ function (_React$Component) {
         value: "entertainment "
       }, "Entertainment"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "product-label"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Images:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        className: "images-upload",
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Images:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        htmlFor: "file",
+        className: "images-label"
+      }, "\xA0 Choose a file", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "images-input",
         type: "file",
         onChange: this.handleFile.bind(this),
         multiple: true
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        htmlFor: "file"
-      }, "Choose a file")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "images-preview-container"
       }, preview), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "submit",
@@ -1789,7 +1804,11 @@ var ProductIndexItem = function ProductIndexItem(_ref) {
     className: "disPrice"
   }, " $", product.disPrice)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "description"
-  }, product.description)))));
+  }, product.description)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    onClick: function onClick() {
+      return deleteProduct(product.id);
+    }
+  }, "Delete"))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (ProductIndexItem);
@@ -1840,8 +1859,13 @@ function (_React$Component) {
     _classCallCheck(this, ProductShow);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(ProductShow).call(this, props));
+    var url = _this.props.product.photoUrls[0];
     _this.state = {
-      mainImage: '',
+      mainImage: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        className: "image-show"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: url
+      })),
       quantity: 1,
       purchasePrice: 0
     };
@@ -1861,19 +1885,11 @@ function (_React$Component) {
       if (prevProps.product && prevProps.product.id != this.props.match.params.productId) {
         this.props.requestProduct(this.props.match.params.productId);
       }
-    }
-  }, {
-    key: "updateImage",
-    value: function updateImage() {
-      var url = this.props.product.photoUrls[0];
-      this.setState({
-        mainImage: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-          className: "image-show"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-          src: url
-        }))
-      });
-    }
+    } // updateImage() {
+    //   let url = this.props.product.photoUrls[0]
+    //   this.setState({ mainImage: <ul className='image-show'><img  src={url}/></ul> })
+    // }
+
   }, {
     key: "updateQuantity",
     value: function updateQuantity(e) {
@@ -1942,11 +1958,10 @@ function (_React$Component) {
 
       for (var i = 0; i < product.photoUrls.length; i++) {
         _loop(i);
-      }
+      } // if (!this.state.mainImage) {
+      //   this.updateImage()
+      // }
 
-      if (!this.state.mainImage) {
-        this.updateImage();
-      }
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "show-container"
@@ -2577,12 +2592,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var lodash_merge__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash/merge */ "./node_modules/lodash/merge.js");
 /* harmony import */ var lodash_merge__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash_merge__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _actions_product_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actions/product_actions */ "./frontend/actions/product_actions.js");
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
 
-
-var productsReducer = function productsReducer() {
+var boughtitemsReducer = function boughtitemsReducer() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   var action = arguments.length > 1 ? arguments[1] : undefined;
   Object.freeze(state);
@@ -2592,7 +2605,7 @@ var productsReducer = function productsReducer() {
       return lodash_merge__WEBPACK_IMPORTED_MODULE_0___default()({}, state, action.payload.boughtItems);
 
     case _actions_product_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_BOUGHT_PRODUCT"]:
-      return lodash_merge__WEBPACK_IMPORTED_MODULE_0___default()({}, state, _defineProperty({}, action.payload.cart.id, action.payload.boughtItems));
+      return lodash_merge__WEBPACK_IMPORTED_MODULE_0___default()({}, state, action.payload.boughtItems);
 
     case _actions_product_actions__WEBPACK_IMPORTED_MODULE_1__["REMOVE_BOUGHT_PRODUCT"]:
       var newState = lodash_merge__WEBPACK_IMPORTED_MODULE_0___default()({}, state);
@@ -2604,7 +2617,7 @@ var productsReducer = function productsReducer() {
   }
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (productsReducer);
+/* harmony default export */ __webpack_exports__["default"] = (boughtitemsReducer);
 
 /***/ }),
 
@@ -2628,11 +2641,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 var cartsReducer = function cartsReducer() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   var action = arguments.length > 1 ? arguments[1] : undefined;
-  Object.freeze(state);
+  Object.freeze(state); // debugger
 
   switch (action.type) {
+    case _actions_product_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_BOUGHT_PRODUCT"]:
+      return lodash_merge__WEBPACK_IMPORTED_MODULE_1___default()({}, _defineProperty({}, action.payload.cart.id, action.payload.cart));
+
     case _actions_product_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_CART"]:
-      return lodash_merge__WEBPACK_IMPORTED_MODULE_1___default()({}, state, _defineProperty({}, action.payload.cart.id, action.payload.cart));
+      return lodash_merge__WEBPACK_IMPORTED_MODULE_1___default()({}, _defineProperty({}, action.payload.cart.id, action.payload.cart));
 
     default:
       return state;
