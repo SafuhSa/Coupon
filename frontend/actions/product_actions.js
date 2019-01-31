@@ -9,6 +9,7 @@ export const RECEIVE_CART = 'RECEIVE_CART';
 export const RECEIVE_BOUGHT_PRODUCT = 'RECEIVE_BOUGHT_PRODUCT';
 export const REMOVE_BOUGHT_PRODUCT = 'REMOVE_BOUGHT_PRODUCT';
 export const RECEIVE_RECENT_VIEW = 'RECEIVE_RECENT_VIEW';
+export const RECEIVE_LOCATION = 'RECEIVE_LOCATION';
 
 
 export const receiveProducts = (products) => ({
@@ -131,5 +132,18 @@ export const requestRecentView = () => dispatch => {
 export const createrecentView = (product) => dispatch => {
   return ProductAPIUtil.createrecentView(product).then(recentview =>
     dispatch(recentView(recentview))
+  );
+};
+
+//--------------getlocation--------------
+
+export const receivelocation = (payload) => ({
+  type: RECEIVE_LOCATION,
+  payload
+});
+
+export const getlocation = () => dispatch => {
+  return ProductAPIUtil.getlocation().then(location =>
+    dispatch(receivelocation(location))
   );
 };

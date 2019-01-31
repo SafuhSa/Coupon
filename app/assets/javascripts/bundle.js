@@ -90,7 +90,7 @@
 /*!*********************************************!*\
   !*** ./frontend/actions/product_actions.js ***!
   \*********************************************/
-/*! exports provided: RECEIVE_PRODUCTS, RECEIVE_PRODUCT, REMOVE_PRODUCT, RECEIVE_SESSION_ERRORS, CLEAR_ERRORS, RECEIVE_CART, RECEIVE_BOUGHT_PRODUCT, REMOVE_BOUGHT_PRODUCT, RECEIVE_RECENT_VIEW, receiveProducts, receiveProduct, removeProduct, receiveErrors, clearErrors, requestProducts, requestProduct, createProduct, updateProduct, deleteProduct, receiveCart, requestCart, receiveBoughtItem, createBoughtItem, removeBoughtItem, deleteBoughtItem, search, recentView, requestRecentView, createrecentView */
+/*! exports provided: RECEIVE_PRODUCTS, RECEIVE_PRODUCT, REMOVE_PRODUCT, RECEIVE_SESSION_ERRORS, CLEAR_ERRORS, RECEIVE_CART, RECEIVE_BOUGHT_PRODUCT, REMOVE_BOUGHT_PRODUCT, RECEIVE_RECENT_VIEW, RECEIVE_LOCATION, receiveProducts, receiveProduct, removeProduct, receiveErrors, clearErrors, requestProducts, requestProduct, createProduct, updateProduct, deleteProduct, receiveCart, requestCart, receiveBoughtItem, createBoughtItem, removeBoughtItem, deleteBoughtItem, search, recentView, requestRecentView, createrecentView, receivelocation, getlocation */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -104,6 +104,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_BOUGHT_PRODUCT", function() { return RECEIVE_BOUGHT_PRODUCT; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "REMOVE_BOUGHT_PRODUCT", function() { return REMOVE_BOUGHT_PRODUCT; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_RECENT_VIEW", function() { return RECEIVE_RECENT_VIEW; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_LOCATION", function() { return RECEIVE_LOCATION; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveProducts", function() { return receiveProducts; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveProduct", function() { return receiveProduct; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "removeProduct", function() { return removeProduct; });
@@ -124,6 +125,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "recentView", function() { return recentView; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "requestRecentView", function() { return requestRecentView; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createrecentView", function() { return createrecentView; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receivelocation", function() { return receivelocation; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getlocation", function() { return getlocation; });
 /* harmony import */ var _util_product_api_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/product_api_util */ "./frontend/util/product_api_util.js");
 
 var RECEIVE_PRODUCTS = "RECEIVE_PRODUCTS";
@@ -135,6 +138,7 @@ var RECEIVE_CART = 'RECEIVE_CART';
 var RECEIVE_BOUGHT_PRODUCT = 'RECEIVE_BOUGHT_PRODUCT';
 var REMOVE_BOUGHT_PRODUCT = 'REMOVE_BOUGHT_PRODUCT';
 var RECEIVE_RECENT_VIEW = 'RECEIVE_RECENT_VIEW';
+var RECEIVE_LOCATION = 'RECEIVE_LOCATION';
 var receiveProducts = function receiveProducts(products) {
   return {
     type: RECEIVE_PRODUCTS,
@@ -274,6 +278,20 @@ var createrecentView = function createrecentView(product) {
   return function (dispatch) {
     return _util_product_api_util__WEBPACK_IMPORTED_MODULE_0__["createrecentView"](product).then(function (recentview) {
       return dispatch(recentView(recentview));
+    });
+  };
+}; //--------------getlocation--------------
+
+var receivelocation = function receivelocation(payload) {
+  return {
+    type: RECEIVE_LOCATION,
+    payload: payload
+  };
+};
+var getlocation = function getlocation() {
+  return function (dispatch) {
+    return _util_product_api_util__WEBPACK_IMPORTED_MODULE_0__["getlocation"]().then(function (location) {
+      return dispatch(receivelocation(location));
     });
   };
 };
@@ -515,6 +533,11 @@ function (_React$Component) {
       }, "My Stuff"));
     }
   }, {
+    key: "handlelocation",
+    value: function handlelocation() {
+      this.props.getlocation();
+    }
+  }, {
     key: "render",
     value: function render() {
       var result = '';
@@ -567,7 +590,8 @@ function (_React$Component) {
         type: "text",
         placeholder: " Near Me"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "button-search"
+        className: "button-search",
+        onClick: this.handlelocation.bind(this)
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fa fa-search search-button",
         "aria-hidden": "true"
@@ -594,7 +618,9 @@ function (_React$Component) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/session_actions */ "./frontend/actions/session_actions.js");
-/* harmony import */ var _greeting__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./greeting */ "./frontend/components/greeting/greeting.jsx");
+/* harmony import */ var _actions_product_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/product_actions */ "./frontend/actions/product_actions.js");
+/* harmony import */ var _greeting__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./greeting */ "./frontend/components/greeting/greeting.jsx");
+
 
 
 
@@ -609,13 +635,16 @@ var mapStateToProps = function mapStateToProps(_ref) {
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
+    getlocation: function getlocation() {
+      return dispatch(Object(_actions_product_actions__WEBPACK_IMPORTED_MODULE_2__["getlocation"])());
+    },
     logout: function logout() {
       return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_1__["logout"])());
     }
   };
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(_greeting__WEBPACK_IMPORTED_MODULE_2__["default"]));
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(_greeting__WEBPACK_IMPORTED_MODULE_3__["default"]));
 
 /***/ }),
 
@@ -3011,7 +3040,7 @@ var configureStore = function configureStore() {
 /*!*******************************************!*\
   !*** ./frontend/util/product_api_util.js ***!
   \*******************************************/
-/*! exports provided: fetchProducts, search, fetchProduct, createProduct, updateProduct, deletePorduct, boughtItem, deleteBoughtItem, fetchCart, createrecentView, fetchrecentView */
+/*! exports provided: fetchProducts, search, fetchProduct, createProduct, updateProduct, deletePorduct, boughtItem, deleteBoughtItem, fetchCart, createrecentView, fetchrecentView, getlocation */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3027,6 +3056,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchCart", function() { return fetchCart; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createrecentView", function() { return createrecentView; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchrecentView", function() { return fetchrecentView; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getlocation", function() { return getlocation; });
 // GET / api / products /: id - returns product
 // POST / api / products - creates a product
 // PATCH / api / products /: id - edit a product
@@ -3112,6 +3142,13 @@ var fetchrecentView = function fetchrecentView() {
   return $.ajax({
     method: 'GET',
     url: '/api/recentview'
+  });
+};
+var getlocation = function getlocation() {
+  debugger;
+  return $.ajax({
+    method: 'GET',
+    url: '/api/location'
   });
 };
 

@@ -98,3 +98,14 @@ export const fetchrecentView = () => {
     })
   )
 };
+
+export const getlocation = () => {
+  debugger
+  return (
+    $.ajax({
+      method: 'GET',
+      url: '/api/location'
+    })
+  )
+};
+

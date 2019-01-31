@@ -20,7 +20,9 @@ class Greeting extends React.Component {
         </div>
       );
    }
-
+handlelocation() {
+  this.props.getlocation();
+}
    
    render() {
      let result = '';
@@ -59,7 +61,7 @@ class Greeting extends React.Component {
                     <input className='input-location' type="text"  placeholder=' Near Me' />
                 </form>
                 
-               <button className='button-search' ><span><i className="fa fa-search search-button" aria-hidden="true"></i></span></button>
+               <button className='button-search' onClick={this.handlelocation.bind(this)} ><span><i className="fa fa-search search-button" aria-hidden="true"></i></span></button>
               </div>  
               {result}
             </div>
