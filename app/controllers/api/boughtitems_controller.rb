@@ -19,15 +19,15 @@ class Api::BoughtitemsController < ApplicationController
 
     else
       @cart = Cart.new({ buyer_id: current_user.id, purchase_total: total })
-      @cart.save
     end
-
     
-
+    
+    
+    @cart.save
     @bought_item.cart_id = @cart.id
     
     if @bought_item.save
-      @cart.save
+      # @cart.save
 
       render "api/carts/show"
     else
