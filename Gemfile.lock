@@ -106,6 +106,7 @@ GEM
     ez_download (0.2.0)
       rails (~> 5.2.0)
     ffi (1.9.25)
+    geocoder (1.5.1)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
     i18n (1.2.0)
@@ -246,6 +247,7 @@ DEPENDENCIES
   chromedriver-helper
   coffee-rails (~> 4.2)
   ez_download (~> 0.2.0)
+  geocoder (~> 1.5, >= 1.5.1)
   jbuilder (~> 2.5)
   jquery-rails
   listen (>= 3.0.5, < 3.2)

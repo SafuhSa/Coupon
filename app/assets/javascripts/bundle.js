@@ -1263,7 +1263,7 @@ var msp = function msp(state) {
     description: '',
     quantity: '',
     category: '',
-    photoFile: null,
+    photoFile: [],
     photoUrl: []
   };
   var formType = 'Create Product';
@@ -1465,7 +1465,7 @@ function (_React$Component) {
       formData.append('product[quantity]', this.state.quantity);
       formData.append('product[category]', this.state.category);
 
-      if (this.state.photoFile) {
+      if (this.state.photoFile.length) {
         // formData.append('product[photo]', this.state.photoFile);
         for (var i = 0; i < this.state.photoFile.length; i++) {
           formData.append('product[photos][]', this.state.photoFile[i]);
@@ -1481,35 +1481,35 @@ function (_React$Component) {
     value: function handleFile(e) {
       // debugger
       // let result = [e.target.files[0]]
-      var result = Object.values(e.target.files); // if (this.state.photoFile) {
-      //   this.setState((state, props) => ({ photoFile: state.photoFile.concat(result) }))
-      // } else {
-      //   this.setState({photoFile: [e.target.files[0]] })
-      // }
-
+      var result = Object.values(e.target.files);
       var files = e.target.files;
       var that = this;
 
-      var _loop = function _loop() {
+      var _loop = function _loop(i) {
         var file = files[i];
         var reader = new FileReader();
 
         reader.onload = function (e) {
-          // if (that.state.photoFile) { // that.state.photoFile.concat(result)
+          //that.state.photoFile.concat(result)
+          var phtfile;
+
+          if (i === 0) {
+            phtfile = that.state.photoFile.concat(result);
+          } else {
+            phtfile = that.state.photoFile;
+          }
+
           that.setState({
             photoUrl: that.state.photoUrl.concat([reader.result]),
-            photoFile: result
-          }); //  } //else {
-          //that.setState({ photoUrl: [reader.result], photoFile: result })
-          //}
-        }; // Read in the image file as a data URL.
-
+            photoFile: phtfile
+          });
+        };
 
         reader.readAsDataURL(file);
       };
 
       for (var i = 0; i < files.length; i++) {
-        _loop();
+        _loop(i);
       } // const files = e.target.files;
       // const reader = new FileReader();
       // reader.onloadend = () => {
@@ -1773,6 +1773,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
+var _this = undefined;
+
 
 
 
@@ -1806,7 +1808,9 @@ var ProductIndexItem = function ProductIndexItem(_ref) {
     className: "description"
   }, product.description)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     onClick: function onClick() {
-      return deleteProduct(product.id);
+      return deleteProduct(product.id).then(function () {
+        return _this.props.history.push('/login')();
+      });
     }
   }, "Delete"))));
 };
@@ -1859,13 +1863,8 @@ function (_React$Component) {
     _classCallCheck(this, ProductShow);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(ProductShow).call(this, props));
-    var url = _this.props.product.photoUrls[0];
     _this.state = {
-      mainImage: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-        className: "image-show"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: url
-      })),
+      mainImage: '',
       quantity: 1,
       purchasePrice: 0
     };
@@ -1877,7 +1876,19 @@ function (_React$Component) {
   _createClass(ProductShow, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      this.props.requestProduct(this.props.match.params.productId);
+      var _this2 = this;
+
+      this.props.requestProduct(this.props.match.params.productId).then(function () {
+        var url = _this2.props.product.photoUrls[0];
+
+        _this2.setState({
+          mainImage: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+            className: "image-show"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+            src: url
+          }))
+        });
+      });
     }
   }, {
     key: "componentDidUpdate",
@@ -1917,7 +1928,7 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this2 = this;
+      var _this3 = this;
 
       var product = this.props.product;
 
@@ -1945,7 +1956,7 @@ function (_React$Component) {
           key: i,
           src: product.photoUrls[i],
           onClick: function onClick() {
-            return _this2.setState({
+            return _this3.setState({
               mainImage: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
                 className: "image-show"
               }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {

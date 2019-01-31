@@ -23,6 +23,7 @@ gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
+gem 'geocoder', '~> 1.5', '>= 1.5.1'
 gem 'bcrypt'
 gem 'better_errors'
 gem 'binding_of_caller'

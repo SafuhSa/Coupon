@@ -4,13 +4,15 @@ import { Link } from 'react-router-dom';
 class ProductShow extends React.Component {
   constructor(props) {
     super(props)
-    let url = this.props.product.photoUrls[0];
-    this.state = { mainImage: <ul className='image-show'><img src={url} /></ul>, quantity: 1, purchasePrice: 0}
+    this.state = { mainImage: '', quantity: 1, purchasePrice: 0 }
     this.addItemToCart = this.addItemToCart.bind(this)
     this.updateQuantity = this.updateQuantity.bind(this)
   }
   componentDidMount() {
-    this.props.requestProduct(this.props.match.params.productId);
+    this.props.requestProduct(this.props.match.params.productId).then(() => {
+      let url = this.props.product.photoUrls[0];
+      this.setState({ mainImage: <ul className='image-show'><img src={url} /></ul>})
+    } )
   }
 
   componentDidUpdate(prevProps) {

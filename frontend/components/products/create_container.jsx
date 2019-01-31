@@ -3,7 +3,7 @@ import { createProduct } from '../../actions/product_actions';
 import ProductForm from './product_form';
 
 const msp = state => {
-  const product = { productName: '', price: '', disPrice: '', description: '', quantity: '', category: '', photoFile: null, photoUrl: [] }
+  const product = { productName: '', price: '', disPrice: '', description: '', quantity: '', category: '', photoFile: [], photoUrl: [] }
   const formType = 'Create Product';
   const errors = state.errors.product
   return { product, formType, errors }

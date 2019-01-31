@@ -34,7 +34,7 @@ class Api::ProductsController < ApplicationController
   def destroy
     @product = Product.find(params[:id])
     @product.destroy
-    render :show
+    render :index
   end
 
   private

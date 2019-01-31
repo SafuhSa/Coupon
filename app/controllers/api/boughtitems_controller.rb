@@ -28,7 +28,7 @@ class Api::BoughtitemsController < ApplicationController
     
     if @bought_item.save
       # @cart.save
-
+      @cart.reload
       render "api/carts/show"
     else
       render json: @bought_item.errors.full_messages, status: 422

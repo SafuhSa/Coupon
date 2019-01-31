@@ -20,7 +20,7 @@ const ProductIndexItem = ({ product, deleteProduct, createrecentView }) => {
             <div className="description">{product.description}</div>
           </div>
 
-          <button onClick={() => deleteProduct(product.id)}>Delete</button>
+          <button onClick={() => deleteProduct(product.id).then(() => this.props.history.push('/login')())}>Delete</button>
         </div>
       </Link>
     </div>

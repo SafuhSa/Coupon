@@ -33,7 +33,7 @@ class ProductForm extends React.Component {
     formData.append('product[category]', this.state.category);
 
 
-    if (this.state.photoFile) {
+    if (this.state.photoFile.length) {
       // formData.append('product[photo]', this.state.photoFile);
 
       for (let i = 0; i < this.state.photoFile.length; i++) {
@@ -48,26 +48,23 @@ class ProductForm extends React.Component {
     // let result = [e.target.files[0]]
     let result = Object.values(e.target.files);
 
-    // if (this.state.photoFile) {
-    //   this.setState((state, props) => ({ photoFile: state.photoFile.concat(result) }))
-    // } else {
-    //   this.setState({photoFile: [e.target.files[0]] })
-    // }
-
     var files = e.target.files;
     let that = this
-    for (var i = 0; i < files.length; i++) {
+    
+    for (let i = 0; i < files.length; i++) {
       let file = files[i];
       let reader = new FileReader();
+      reader.onload = function (e) { //that.state.photoFile.concat(result)
 
-      reader.onload = function (e) {
-       // if (that.state.photoFile) { // that.state.photoFile.concat(result)
-          that.setState({ photoUrl: that.state.photoUrl.concat([reader.result]), photoFile: result });
-      //  } //else {
-          //that.setState({ photoUrl: [reader.result], photoFile: result })
-        //}
+        let phtfile
+        if(i === 0) {
+          phtfile = that.state.photoFile.concat(result)
+        } else  {
+          phtfile = that.state.photoFile
+        }
+        
+        that.setState({ photoUrl: that.state.photoUrl.concat([reader.result]), photoFile: phtfile});
       };
-      // Read in the image file as a data URL.
       reader.readAsDataURL(file);
     }
 
