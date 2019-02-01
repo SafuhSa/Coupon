@@ -5,12 +5,12 @@ class Api::RecentviewController < ApplicationController
         product.recentlyviewed = true
         product.save
 
+        @products = Product.recently_viewed
         render "api/recentview/show"
       end
 
       
       def index
-
         @products = Product.recently_viewed
         render "api/products/index"
       end

@@ -71,12 +71,12 @@ ActiveRecord::Schema.define(version: 2019_01_29_200703) do
     t.index ["seller_id"], name: "index_products_on_seller_id"
   end
 
-  create_table "recent_views", force: :cascade do |t|
-    t.text "recent", default: [], array: true
-    t.integer "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
+  # create_table "recent_views", force: :cascade do |t|
+  #   t.text "recent", default: [], array: true
+  #   t.integer "user_id"
+  #   t.datetime "created_at", null: false
+  #   t.datetime "updated_at", null: false
+  # end
 
   create_table "users", force: :cascade do |t|
     t.string "username"
