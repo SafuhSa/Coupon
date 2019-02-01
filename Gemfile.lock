@@ -247,7 +247,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  IPinfo
+  IPinfo (~> 0.1.2)
   annotate
   aws-sdk-s3
   bcrypt
