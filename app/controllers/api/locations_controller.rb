@@ -1,4 +1,4 @@
-require "net/http"
+# require "net/http"
 # require 'IPinfo'
 class Api::LocationsController < ApplicationController
 
