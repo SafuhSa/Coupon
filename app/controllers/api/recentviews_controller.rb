@@ -1,4 +1,4 @@
-class Api::RecentviewController < ApplicationController
+class Api::RecentviewsController < ApplicationController
 
     def create
       product = Product.find(params[:idk])

@@ -84,7 +84,7 @@ export const createrecentView = (product) => {
   return (
     $.ajax({
       method: 'POST',
-      url: '/api/recentview',
+      url: '/api/recentviews',
       data: { idk }
     })
   )
@@ -94,7 +94,7 @@ export const fetchrecentView = () => {
   return (
     $.ajax({
       method: 'GET',
-      url: '/api/recentview'
+      url: '/api/recentviews'
     })
   )
 };

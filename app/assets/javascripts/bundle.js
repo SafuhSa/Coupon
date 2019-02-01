@@ -3162,7 +3162,7 @@ var createrecentView = function createrecentView(product) {
   var idk = product.id;
   return $.ajax({
     method: 'POST',
-    url: '/api/recentview',
+    url: '/api/recentviews',
     data: {
       idk: idk
     }
@@ -3171,7 +3171,7 @@ var createrecentView = function createrecentView(product) {
 var fetchrecentView = function fetchrecentView() {
   return $.ajax({
     method: 'GET',
-    url: '/api/recentview'
+    url: '/api/recentviews'
   });
 };
 var getlocation = function getlocation() {
