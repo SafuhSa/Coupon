@@ -143,7 +143,12 @@ export const receivelocation = (payload) => ({
 });
 
 export const getlocation = () => dispatch => {
-  return ProductAPIUtil.getlocation().then(location =>
-    dispatch(receivelocation(location))
-  );
+  return ProductAPIUtil.getlocation().then(res => {
+    localStorage.setItem('city', res.city);
+    localStorage.setItem('loc', res.loc);
+    debugger
+    dispatch(receivelocation(location));
+  }).catch(err => (
+    dispatch(receiveErrors(err.responseJSON))
+  ))
 };

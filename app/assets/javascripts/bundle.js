@@ -290,8 +290,13 @@ var receivelocation = function receivelocation(payload) {
 };
 var getlocation = function getlocation() {
   return function (dispatch) {
-    return _util_product_api_util__WEBPACK_IMPORTED_MODULE_0__["getlocation"]().then(function (location) {
-      return dispatch(receivelocation(location));
+    return _util_product_api_util__WEBPACK_IMPORTED_MODULE_0__["getlocation"]().then(function (res) {
+      localStorage.setItem('city', res.city);
+      localStorage.setItem('loc', res.loc);
+      debugger;
+      dispatch(receivelocation(location));
+    }).catch(function (err) {
+      return dispatch(receiveErrors(err.responseJSON));
     });
   };
 };
@@ -1925,11 +1930,19 @@ function (_React$Component) {
       if (prevProps.product && prevProps.product.id != this.props.match.params.productId) {
         this.props.requestProduct(this.props.match.params.productId);
       }
-    } // updateImage() {
-    //   let url = this.props.product.photoUrls[0]
-    //   this.setState({ mainImage: <ul className='image-show'><img  src={url}/></ul> })
-    // }
-
+    }
+  }, {
+    key: "updateImage",
+    value: function updateImage() {
+      var url = this.props.product.photoUrls[0];
+      this.setState({
+        mainImage: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+          className: "image-show"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          src: url
+        }))
+      });
+    }
   }, {
     key: "updateQuantity",
     value: function updateQuantity(e) {
@@ -2587,7 +2600,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _store_store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./store/store */ "./frontend/store/store.js");
 /* harmony import */ var _components_root__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/root */ "./frontend/components/root.jsx");
+/* harmony import */ var lodash_merge__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! lodash/merge */ "./node_modules/lodash/merge.js");
+/* harmony import */ var lodash_merge__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(lodash_merge__WEBPACK_IMPORTED_MODULE_4__);
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -2595,12 +2611,22 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 document.addEventListener('DOMContentLoaded', function () {
   var store;
+  var location;
+
+  if (localStorage.loc) {
+    location = {
+      'city': localStorage.city,
+      'loc': localStorage.loc
+    };
+  } else {
+    location = {};
+  }
 
   if (window.currentUser) {
     var preloadedState = {
-      session: {
+      session: lodash_merge__WEBPACK_IMPORTED_MODULE_4___default()({
         id: window.currentUser.id
-      },
+      }, location),
       entities: {
         users: _defineProperty({}, window.currentUser.id, window.currentUser)
       }
@@ -2608,7 +2634,10 @@ document.addEventListener('DOMContentLoaded', function () {
     store = Object(_store_store__WEBPACK_IMPORTED_MODULE_2__["default"])(preloadedState);
     delete window.currentUser;
   } else {
-    store = Object(_store_store__WEBPACK_IMPORTED_MODULE_2__["default"])();
+    var _preloadedState = {
+      session: lodash_merge__WEBPACK_IMPORTED_MODULE_4___default()(location)
+    };
+    store = Object(_store_store__WEBPACK_IMPORTED_MODULE_2__["default"])(_preloadedState);
   }
 
   window.store = store;
@@ -2938,12 +2967,16 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/session_actions */ "./frontend/actions/session_actions.js");
+/* harmony import */ var lodash_merge__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash/merge */ "./node_modules/lodash/merge.js");
+/* harmony import */ var lodash_merge__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash_merge__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actions/session_actions */ "./frontend/actions/session_actions.js");
+/* harmony import */ var _actions_product_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../actions/product_actions */ "./frontend/actions/product_actions.js");
+
+
 
 
 var _nullUser = Object.freeze({
-  id: null,
-  recent: []
+  id: null
 });
 
 var sessionReducer = function sessionReducer() {
@@ -2952,13 +2985,15 @@ var sessionReducer = function sessionReducer() {
   Object.freeze(state);
 
   switch (action.type) {
-    case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_CURRENT_USER"]:
-      return {
+    case _actions_session_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_CURRENT_USER"]:
+      return lodash_merge__WEBPACK_IMPORTED_MODULE_0___default()({}, state, {
         id: action.currentUser.id
-      };
+      });
+    // case RECEIVE_LOCATION:
+    //   return merge { [city]: action.payload} );
 
-    case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["LOGOUT_CURRENT_USER"]:
-      return _nullUser;
+    case _actions_session_actions__WEBPACK_IMPORTED_MODULE_1__["LOGOUT_CURRENT_USER"]:
+      return lodash_merge__WEBPACK_IMPORTED_MODULE_0___default()({}, state, _nullUser);
 
     default:
       return state;
@@ -3145,9 +3180,8 @@ var fetchrecentView = function fetchrecentView() {
   });
 };
 var getlocation = function getlocation() {
-  debugger;
   return $.ajax({
-    method: 'GET',
+    method: 'POST',
     url: '/api/location'
   });
 };

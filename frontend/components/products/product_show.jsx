@@ -21,10 +21,10 @@ class ProductShow extends React.Component {
     }
   }
 
-  // updateImage() {
-  //   let url = this.props.product.photoUrls[0]
-  //   this.setState({ mainImage: <ul className='image-show'><img  src={url}/></ul> })
-  // }
+  updateImage() {
+    let url = this.props.product.photoUrls[0]
+    this.setState({ mainImage: <ul className='image-show'><img  src={url}/></ul> })
+  }
 
 updateQuantity(e) {
   let total = e.target.value * this.props.product.disPrice

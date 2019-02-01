@@ -100,10 +100,9 @@ export const fetchrecentView = () => {
 };
 
 export const getlocation = () => {
-  debugger
   return (
     $.ajax({
-      method: 'GET',
+      method: 'POST',
       url: '/api/location'
     })
   )
