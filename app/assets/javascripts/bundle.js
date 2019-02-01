@@ -293,7 +293,6 @@ var getlocation = function getlocation() {
     return _util_product_api_util__WEBPACK_IMPORTED_MODULE_0__["getlocation"]().then(function (res) {
       localStorage.setItem('city', res.city);
       localStorage.setItem('loc', res.loc);
-      debugger;
       dispatch(receivelocation(location));
     }).catch(function (err) {
       return dispatch(receiveErrors(err.responseJSON));
@@ -1513,7 +1512,6 @@ function (_React$Component) {
   }, {
     key: "handleFile",
     value: function handleFile(e) {
-      // debugger
       // let result = [e.target.files[0]]
       var result = Object.values(e.target.files);
       var files = e.target.files;
@@ -1547,7 +1545,6 @@ function (_React$Component) {
       } // const files = e.target.files;
       // const reader = new FileReader();
       // reader.onloadend = () => {
-      //   debugger
       //   if (this.state.photoFile) {
       //     this.setState({ photoUrl: this.state.photoUrl.concat([reader.result]), photoFile: this.state.photoFile.concat(result)});
       //   } else {
@@ -2710,7 +2707,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 var cartsReducer = function cartsReducer() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   var action = arguments.length > 1 ? arguments[1] : undefined;
-  Object.freeze(state); // debugger
+  Object.freeze(state);
 
   switch (action.type) {
     case _actions_product_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_BOUGHT_PRODUCT"]:

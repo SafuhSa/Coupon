@@ -44,7 +44,6 @@ class ProductForm extends React.Component {
   }
 
   handleFile(e) {
-    // debugger
     // let result = [e.target.files[0]]
     let result = Object.values(e.target.files);
 
@@ -73,7 +72,6 @@ class ProductForm extends React.Component {
     // const reader = new FileReader();
 
     // reader.onloadend = () => {
-    //   debugger
     //   if (this.state.photoFile) {
     //     this.setState({ photoUrl: this.state.photoUrl.concat([reader.result]), photoFile: this.state.photoFile.concat(result)});
     //   } else {
