@@ -147,7 +147,5 @@ export const getlocation = () => dispatch => {
     localStorage.setItem('city', res.city);
     localStorage.setItem('loc', res.loc);
     dispatch(receivelocation(location));
-  }).catch(err => (
-    dispatch(receiveErrors(err.responseJSON))
-  ))
+  })
 };

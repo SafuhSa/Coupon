@@ -294,8 +294,6 @@ var getlocation = function getlocation() {
       localStorage.setItem('city', res.city);
       localStorage.setItem('loc', res.loc);
       dispatch(receivelocation(location));
-    }).catch(function (err) {
-      return dispatch(receiveErrors(err.responseJSON));
     });
   };
 };
