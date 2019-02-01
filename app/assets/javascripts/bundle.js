@@ -2875,7 +2875,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var recentViewReducer = function recentViewReducer() {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   var action = arguments.length > 1 ? arguments[1] : undefined;
   Object.freeze(state);
 

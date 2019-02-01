@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const ProductIndexItem = ({ product, deleteProduct, createrecentView }) => {
   return (
     <div className="index-item-container">
-      <Link to={`/products/${product.id}`} onClick={() =>createrecentView(product)}>
+      <Link to={`/products/${product.id}`} onClick={() => createrecentView(product)}>
         <div className="index-item">
           <div>
             <img className="index-pics" src={product.photoUrls[0]} />
