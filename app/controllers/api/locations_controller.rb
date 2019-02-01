@@ -1,5 +1,5 @@
-require "net/http";
-require 'IPinfo';
+require "net/http"
+require 'IPinfo'
 class Api::LocationsController < ApplicationController
 
   def create
