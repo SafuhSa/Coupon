@@ -1,28 +1,59 @@
-.header-cover {
-  background-color: black;
+.header-color{
+  border: 2px solid #53a318;
   background-color: #53a318;
 }
+.whole-header {
+  // border: 2px solid black;
+  width: 1100px;
+  margin: auto
+}
+
+.upper-header {
+  display: flex;
+  color: white;
+  justify-content: flex-end;
+  font-family: Open Sans,OpenSans,system,-apple-system,BlinkMacSystemFont,Roboto,Arial,FreeSans,sans-serif;
+  font-size: 14px;
+  // background-color: #53a318;
+}
+
+
+.upper-header-width {
+  // border: 2px solid blue;
+  min-width: fit-content;
+  display: flex;
+  justify-content: space-between;
+  width: 37%;
+}
+
+.header-link {
+  // padding-left: 1em;
+  padding: 0.4em;
+}
+
 
 .header {
-  position: relative;
-  overflow: hidden;
+  // border: 2px solid yellow;
   display: flex;
+  justify-content: space-between;
   font-weight: bold;
   color: white;
-  justify-content: space-between;
   font-family: Open Sans,OpenSans,system,-apple-system,BlinkMacSystemFont,Roboto,Arial,FreeSans,sans-serif;
-  z-index: 20;
+  // position: relative;
+  // overflow: hidden;
+  // z-index: 20;
   // padding-left: 16%;
   // padding-right: 10%;
-  margin: 0 auto;
-  height: 54px;
-  width: fit-content;
+  // margin: 0 auto;
+  // height: 54px;
+  // width: fit-content;
 }
 
 .logo {
   font-size: 2em;
   font-weight: bold;
-  padding-left: 1vw;
+  padding: 0.4em;
+  // padding-left: 1vw;
   // margin-right: auto;
   // display: flex;
   // justify-content: center;
@@ -33,24 +64,51 @@
   // border: 1px solid black;
 }
 
+.input-container{
+  display:flex;
+  font-weight: 400;
+  font-size: 17px;
+  padding: 0.4em;
+  display: flex;
+  justify-content: space-between;
+   
+  // box-sizing: border-box;
+//   margin-left:0;
+//   width:600px;
+//   height:80px;
+//   justify-content: center;
+//   align-items: center; 
+  // border: 2px solid black;
+}
+
 
 .search {
   display: flex;
   background-color: white;
-  padding-left: 6px;
+  border-radius: 5px;
   color: black;
-  margin: 0px 8px 0px 8px;
   width: 400px;
-//   height: 40px;
-  // margin-left: 10px;
-  // border: 1px solid black;
+  height: 40px;
+  margin: auto 0;
+  padding-left: 6px;
+  margin-right: 15px;
 }
+.fa-search {
+  // content: '\f002';
+  font-size: 30px;
+  color: rgb(190, 188, 188);
+  padding-top: 0.1em;
+}
+
 .location {
   display: flex;
-    background-color: white;
-    padding-left: 6px;
-    color: black;
-    width: 208px;
+  background-color: white;
+  border-radius: 5px;
+  padding-left: 6px;
+  color: black;
+  width: 208px;
+  height: 40px;
+  margin: auto 0;
 //   height: 40px;
 //   margin-left: 10px;
   // border: 1px solid black;
@@ -80,23 +138,6 @@
   width: 100%;
 }
 
-.input-container{
-  display:flex;
-  padding-bottom: 1.5%;
-  font-weight: 400;
-  font-size: 17px;
-  padding-left: 1vw;
-  padding-right: 1vw;
-  // background-color: white;
-   
-  // box-sizing: border-box;
-//   margin-left:0;
-//   width:600px;
-//   height:80px;
-//   justify-content: center;
-//   align-items: center; 
-  // border: 1px solid black;
-}
 
 .signin-name {
     text-align: center;
@@ -140,38 +181,14 @@
   // border: 1px solid black;
 // }
 
-.fa-search:before {
-  content: '\f002';
-  font-size: 30px;
-  color: rgb(190, 188, 188);
-}
-.fa {
-  margin-top: 4px;
-}
+
+
 
 .fa-map-marker:before {
   font-size: 34px;
   color: rgb(190, 188, 188);
 }
-.upper-header {
-  display: flex;
-  background-color: #53a318;
-  color: white;
-  justify-content: flex-end;
-  font-family: Open Sans,OpenSans,system,-apple-system,BlinkMacSystemFont,Roboto,Arial,FreeSans,sans-serif;
-  padding-right: 7vw;
-  // padding-right: 13%;
-  font-size: 14px;
-  // position: relative;
-  // overflow: hidden;
-  // z-index: 20;
-  //  padding-left: 16%;
-  // height: 60px
-}
 
-.header-link {
-    margin: 1vh 1vw
-}
 .fa-shopping-cart {
     font-size: 13px;
     margin-right: 5px;

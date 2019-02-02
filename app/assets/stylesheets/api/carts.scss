@@ -7,9 +7,16 @@
 .cart-show-container {
   display: flex;
   flex-direction: column;
-  width: 1035px;
-  margin-left: 10vw;
+  // width: 1035px;
+  // margin-left: 10vw;
 }
+
+.cart-header {
+    font-size: 2.4rem;
+    font-weight: 400;
+
+}
+
 
 .boghtItem {
   // border: 2px solid black;

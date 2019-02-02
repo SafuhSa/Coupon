@@ -39,8 +39,10 @@ handlelocation() {
       }
 
      return (
-       <header>
+       <header className='header-color'>
+         <div className='whole-header' >
          <div className='upper-header'>
+          <div className='upper-header-width'>
            <Link to="/recentViews" className='header-link'>Recently Viewed</Link>
            <Link to={'/cart'} className='header-link'>
              <span> <i className="fas fa-shopping-cart"></i></span>
@@ -48,8 +50,10 @@ handlelocation() {
            <Link to="/product/new" className='header-link'>sell</Link>
            <Link to="/" className='header-link'>Help </Link>
            <Link to="/signup" className='header-link'>{result2}</Link>
+          </div>
          </div>
-          <div className='header-cover'>
+
+
             <div className='header'>
              <Link to="/" className='logo'>COUPON</Link> 
               <div className="input-container">

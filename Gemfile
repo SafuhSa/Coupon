@@ -23,7 +23,6 @@ gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
-# gem 'sinatra', '1.0'
 gem 'IPinfo', '~> 0.1.2'
 gem 'geocoder', '~> 1.5', '>= 1.5.1'
 

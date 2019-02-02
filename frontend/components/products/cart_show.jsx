@@ -64,10 +64,28 @@ class CartShow extends React.Component {
     if (!this.props.cart) {
       return null;
     }
+    let result = this.getItems()
+    if (!result.length) {
+      return(
+        <div className='cart-show-container '>
+          <div className='cart-header'>
+            Your cart is empty!{this.props.cart.id}
+          </div>
+          <div>
+            Please add some items to your cart
+            <button>Continue Shopping</button>
+          </div>
+          
+        </div>
+      )
+
+      
+    } 
+
 
     return (
       <div className='cart-show-container' >
-        {this.getItems()}
+        {result}
         {this.props.cart.id}
       </div>
     );

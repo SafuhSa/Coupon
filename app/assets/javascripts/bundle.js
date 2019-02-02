@@ -555,8 +555,14 @@ function (_React$Component) {
         result2 = 'Sign Up';
       }
 
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", {
+        className: "header-color"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "whole-header"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "upper-header"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "upper-header-width"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/recentViews",
         className: "header-link"
@@ -574,9 +580,7 @@ function (_React$Component) {
       }, "Help "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/signup",
         className: "header-link"
-      }, result2)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "header-cover"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, result2))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "header"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/",
@@ -1257,9 +1261,19 @@ function (_React$Component) {
         return null;
       }
 
+      var result = this.getItems();
+
+      if (!result.length) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "cart-show-container "
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "cart-header"
+        }, "Your cart is empty!", this.props.cart.id), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Please add some items to your cart", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "Continue Shopping")));
+      }
+
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "cart-show-container"
-      }, this.getItems(), this.props.cart.id);
+      }, result, this.props.cart.id);
     }
   }]);
 

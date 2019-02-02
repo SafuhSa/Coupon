@@ -3,10 +3,10 @@
 class Api::LocationsController < ApplicationController
 
   def create
+    ip_address = Net::HTTP.get(URI("https://api.ipify.org"))
     access_token = '8ad192f4b825fa'
     handler = IPinfo::create(access_token)
-    ip_address = Net::HTTP.get(URI("https://api.ipify.org"))
-
+    
     details = handler.details(ip_address)
     @city = details.city # Emeryville
     @loc = details.loc # 37.8342,-122.2900
