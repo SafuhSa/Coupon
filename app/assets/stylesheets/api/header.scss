@@ -1,5 +1,4 @@
 .header-color{
-  border: 2px solid #53a318;
   background-color: #53a318;
 }
 .whole-header {
@@ -9,12 +8,12 @@
 }
 
 .upper-header {
+  // background-color: #53a318;
   display: flex;
   color: white;
   justify-content: flex-end;
   font-family: Open Sans,OpenSans,system,-apple-system,BlinkMacSystemFont,Roboto,Arial,FreeSans,sans-serif;
   font-size: 14px;
-  // background-color: #53a318;
 }
 
 
@@ -27,8 +26,8 @@
 }
 
 .header-link {
-  // padding-left: 1em;
   padding: 0.4em;
+  padding-bottom: 0.1em;
 }
 
 
@@ -39,29 +38,13 @@
   font-weight: bold;
   color: white;
   font-family: Open Sans,OpenSans,system,-apple-system,BlinkMacSystemFont,Roboto,Arial,FreeSans,sans-serif;
-  // position: relative;
-  // overflow: hidden;
-  // z-index: 20;
-  // padding-left: 16%;
-  // padding-right: 10%;
-  // margin: 0 auto;
-  // height: 54px;
-  // width: fit-content;
 }
 
 .logo {
   font-size: 2em;
   font-weight: bold;
   padding: 0.4em;
-  // padding-left: 1vw;
-  // margin-right: auto;
-  // display: flex;
-  // justify-content: center;
-  // // height: 30px;
-  // color: white;
-  // margin: 0px 70px 0px 0px;
-  // text-decoration-line: none;
-  // border: 1px solid black;
+  padding-top: 0.1em;
 }
 
 .input-container{
@@ -69,26 +52,18 @@
   font-weight: 400;
   font-size: 17px;
   padding: 0.4em;
-  display: flex;
+  padding-top: 0.1em;
   justify-content: space-between;
-   
-  // box-sizing: border-box;
-//   margin-left:0;
-//   width:600px;
-//   height:80px;
-//   justify-content: center;
-//   align-items: center; 
-  // border: 2px solid black;
+  min-width: min-content;
 }
 
 
 .search {
   display: flex;
   background-color: white;
-  border-radius: 5px;
+  border-radius: 2px;
   color: black;
   width: 400px;
-  height: 40px;
   margin: auto 0;
   padding-left: 6px;
   margin-right: 15px;
@@ -101,38 +76,29 @@
 }
 
 .location {
-  display: flex;
-  background-color: white;
-  border-radius: 5px;
-  padding-left: 6px;
-  color: black;
-  width: 208px;
-  height: 40px;
-  margin: auto 0;
-//   height: 40px;
-//   margin-left: 10px;
   // border: 1px solid black;
+  display: flex;
+  border-radius: 2px;
+  color: black;
+  margin: auto 0;
 } 
-
-
-.fa.fa-search.search-button:before {
-  color:rgba(244, 239, 239, 0.97);
+.button-search {
   border: 2px solid white;
-  margin: auto 0.5vw;
-  padding: 0.38vw;
-  padding-top: 0.20vw;
-  font-size: 1.5vw;
+  margin-left: 8px;
+  width: 40px;
+  border-radius: 3px;
   text-align: center;
-  line-height: 50%;
-
 }
 
-
-.button-search button:hover {
-  background-color: yellow;
+.fa-search.search-button {
+  color:rgba(244, 239, 239, 0.97);
+  font-size: 1.3em;
+  padding: 0.09em;
 }
+
 
 .input-location {
+  background-color: white;
   padding-left: 6px;
   padding-right: 12px;
   width: 100%;
@@ -140,54 +106,23 @@
 
 
 .signin-name {
-    text-align: center;
-    padding-top: 0.5%;
+    // border: 1px solid black;
+    margin: auto;
+    padding: 0.4em;
+    padding-top: 0.1em;
+    min-width: fit-content;
+    min-height: fit-content;
+    // text-align: center;
+    // padding-top: 0.5%;
 }
 
-.button {
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   height: 30px;
-//   text-decoration-line: none;
-//   color: white;
-//   width:70px; 
-//   box-sizing: border-box;
-  border: 1px solid black;
+.fa-map-marker {
+background-color: white;
+font-size: 34px;
+color: rgb(190, 188, 188);
 }
 
-// .button:hover {
-//   color: white;
-//   width: 70px;
-//   height: 40px;
-//   transition: color .5s linear;
-// }
 
-// .log-out-buttom:hover {
-//     color: white;
-//   width: 90px;
-//   height: 40px;
-//   transition: color .5s linear;
-//   // background-color: black;
-// }
-
-// .login-signup {
-  // margin: auto;
-  // text-decoration: none;
-  // font-size: 18px; 
-  // line-height: 28px;
-  // display: flex;
-  // box-sizing: border-box;
-  // border: 1px solid black;
-// }
-
-
-
-
-.fa-map-marker:before {
-  font-size: 34px;
-  color: rgb(190, 188, 188);
-}
 
 .fa-shopping-cart {
     font-size: 13px;
@@ -195,8 +130,8 @@
 }
 
 .fa-bell {
-  margin: auto 1vw;
-  font-size: x-large;
+  padding-right: 0.5em;
+  font-size: 19px;
 }
 
 .down {

@@ -60,12 +60,12 @@ handlelocation() {
                <SearchContainer />
             
 
-                <form className="location">
+               <form className="location" onSubmit={this.handlelocation.bind(this)} >
                   <span><i className="fa fa-map-marker"></i></span>
                     <input className='input-location' type="text"  placeholder=' Near Me' />
+                <button className='button-search'  ><span><i className="fa fa-search search-button" aria-hidden="true"></i></span></button>
                 </form>
-                
-               <button className='button-search' onClick={this.handlelocation.bind(this)} ><span><i className="fa fa-search search-button" aria-hidden="true"></i></span></button>
+               {/* onClick={this.handlelocation.bind(this)} */}
               </div>  
               {result}
             </div>

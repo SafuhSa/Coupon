@@ -588,20 +588,20 @@ function (_React$Component) {
       }, "COUPON"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "input-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_search_container__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-        className: "location"
+        className: "location",
+        onSubmit: this.handlelocation.bind(this)
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fa fa-map-marker"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         className: "input-location",
         type: "text",
         placeholder: " Near Me"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "button-search",
-        onClick: this.handlelocation.bind(this)
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "button-search"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fa fa-search search-button",
         "aria-hidden": "true"
-      })))), result)));
+      }))))), result)));
     }
   }]);
 
