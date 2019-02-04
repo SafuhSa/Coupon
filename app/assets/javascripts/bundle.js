@@ -1213,38 +1213,38 @@ function (_React$Component) {
           var num = Math.ceil(item.quantity * 100 + 200);
           var priceoff = 100 - Math.floor(item.disPrice / item.price * 100);
           var totalprice = item.quantity * item.disPrice;
+          var saveprice = (item.price - item.disPrice).toFixed(2);
           result.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             key: i,
             className: "boghtItem"
-          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
-            className: "title"
-          }, item.productName), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-            className: "img-decs"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+            to: "/products/".concat(item.productId)
           }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-            className: "show-image",
+            className: "cart-item-image",
             src: item.photoUrls[0],
             alt: ""
-          }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
+          })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+            to: "/products/".concat(item.productId)
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
             className: "cart-description"
-          }, "Description: ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), " ", item.description, " ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-            className: "cart-item-prices"
-          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-            className: "quantity"
-          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Quantity: ", item.quantity)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-            className: "purchasePrice-container"
-          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Total Price"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "$", totalprice)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-            className: "prices"
+          }, item.description)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Qty: ", item.quantity), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "price-end"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+            to: "/products/".concat(item.productId),
+            className: "realPrice"
+          }, "$", item.disPrice.toFixed(2)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+            to: "/products/".concat(item.productId),
+            className: "org-save-price"
           }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
             className: "price"
-          }, "$", item.price), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-            className: "disPrice"
-          }, "$", item.disPrice)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-            className: "price-off"
-          }, " ", priceoff, "% OFF"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          }, "$", item.price.toFixed(2)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+            className: "save-price"
+          }, "\xA0You Save $", saveprice)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+            className: "remove-button",
             onClick: function onClick() {
               return _this2.props.deleteItem(item.id);
             }
-          }, " Delete"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Over ", num, "+bought")));
+          }, " ", "Remove"))));
         }
       };
 
@@ -1266,14 +1266,39 @@ function (_React$Component) {
       if (!result.length) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "cart-show-container "
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "cart-header"
-        }, "Your cart is empty!", this.props.cart.id), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Please add some items to your cart", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "Continue Shopping")));
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+          className: "cart-header-empty"
+        }, " Your cart is empty! (", this.props.cart.id, ") "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "cart-empty-body"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+          className: "fas fa-shopping-cart icon-goods"
+        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+          className: "empty-cart-mess"
+        }, " Please add some items to your cart "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+          to: "/",
+          className: "empty-cart-button"
+        }, "Continue Shopping")));
       }
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "cart-page"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "cart-show-container"
-      }, result, this.props.cart.id);
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+        className: "cart-header-info"
+      }, "Is all your information correct?"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+        className: "check-billing-info"
+      }, "Please check your billing information and item contents before finalizing your order(", this.props.cart.id, ")"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "cart-body"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "cart-items"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+        className: "your-items"
+      }, "Your Items"), result), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "order-summary-total"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+        className: "order-summary-title"
+      }, "Order Summary")))));
     }
   }]);
 
@@ -2082,7 +2107,7 @@ function (_React$Component) {
         className: "quantity-prices"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         htmlFor: ""
-      }, " ", "Quantity", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }, "Quantity", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         min: "1",
         type: "number",
         defaultValue: this.state.quantity,

@@ -24,36 +24,37 @@ class CartShow extends React.Component {
         let num = Math.ceil((item.quantity * 100) + 200)
         let priceoff = 100 - Math.floor((item.disPrice / item.price) * 100)
         let totalprice = item.quantity * item.disPrice
+        let saveprice = (item.price - item.disPrice).toFixed(2);
 
 
         result.push(<div key={i} className="boghtItem">
-            <h1 className="title">{item.productName}</h1>
-            <div className="img-decs">
-              <img className="show-image" src={item.photoUrls[0]} alt="" />
-              <h4 className="cart-description">
-                Description: <br /> <br /> {item.description}{" "}
-              </h4>
+            <Link to={`/products/${item.productId}`}>
+              <img className="cart-item-image" src={item.photoUrls[0]} alt="" />
+            </Link>
+            <div>
+              <Link to={`/products/${item.productId}`}>
+                <h2 className="cart-description">{item.description}</h2>
+              </Link>
+              <br />
+              Qty: {item.quantity}
             </div>
-            <div className="cart-item-prices">
-              <div className="quantity">
-                <p>Quantity: {item.quantity}</p>
-              </div>
-
-              <div className="purchasePrice-container">
-                <p>Total Price</p>
-                <p>${totalprice}</p>
-              </div>
-              <div>
-                <div className="prices">
-                  <p className="price">${item.price}</p>
-                  <p className="disPrice">${item.disPrice}</p>
-                </div>
-                <p className="price-off"> {priceoff}% OFF</p>
-              </div>
+            <div className="price-end">
+              <Link to={`/products/${item.productId}`} className="realPrice">
+                ${item.disPrice.toFixed(2)}
+              </Link>
+            <Link to={`/products/${item.productId}`} className="org-save-price">
+                <p className="price">${item.price.toFixed(2)}</p>
+                <p className="save-price">
+                  &nbsp;You Save ${saveprice}
+                </p>
+              </Link>
+              <button className="remove-button" onClick={() => this.props.deleteItem(item.id)}>
+                {" "}
+                Remove
+              </button>
             </div>
-          <button onClick={() => this.props.deleteItem(item.id) }> Delete</button>
-          {/* <input type="submit" value='delete' onClick={() => this.props.deleteItem(item.id)}/> */}
-            <p>Over {num}+bought</p>
+            {/* <input type="submit" value='delete' onClick={() => this.props.deleteItem(item.id)}/> */}
+            {/* <p>Over {num}+bought</p> */}
           </div>);
       }
     }
@@ -68,28 +69,34 @@ class CartShow extends React.Component {
     if (!result.length) {
       return(
         <div className='cart-show-container '>
-          <div className='cart-header'>
-            Your cart is empty!{this.props.cart.id}
+          <h1 className='cart-header-empty'> Your cart is empty! ({this.props.cart.id}) </h1>
+          <div className='cart-empty-body'>
+            <span><i className="fas fa-shopping-cart icon-goods"></i></span>
+            <h2 className='empty-cart-mess'> Please add some items to your cart </h2>
+            <Link to='/' className='empty-cart-button'>Continue Shopping</Link>
           </div>
-          <div>
-            Please add some items to your cart
-            <button>Continue Shopping</button>
-          </div>
-          
         </div>
-      )
-
-      
+      )  
     } 
 
 
     return (
-      <div className='cart-show-container' >
-        {result}
-        {this.props.cart.id}
+      <div className='cart-page' >
+        <div className="cart-show-container">
+          <h1 className='cart-header-info'>Is all your information correct?</h1>
+          <h2 className='check-billing-info'>Please check your billing information and item contents before finalizing your order({this.props.cart.id})</h2>
+          <div className='cart-body'>
+            <div className='cart-items'>
+              <h1 className='your-items'>Your Items</h1>
+                {result}
+            </div>
+            <div className='order-summary-total'>
+              <h1 className='order-summary-title'>Order Summary</h1>
+            </div>
+          </div>          
+        </div>
       </div>
-    );
-  }
+      )}
 }
 
 export default CartShow;

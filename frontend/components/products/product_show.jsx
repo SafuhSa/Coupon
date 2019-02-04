@@ -120,7 +120,6 @@ updateQuantity(e) {
 
             <div className="quantity-prices">
               <label htmlFor="">
-                {" "}
                 Quantity
                 <input min='1' type="number" defaultValue={this.state.quantity} onChange={this.updateQuantity}  />
               </label>
