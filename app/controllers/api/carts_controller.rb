@@ -10,6 +10,8 @@ class Api::CartsController < ApplicationController
       @cart = Cart.new({ buyer_id: current_user.id, purchase_total: 0 })
       @cart.save
     end
+
+     render "api/carts/show"
   end
 
 end

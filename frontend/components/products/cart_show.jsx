@@ -21,6 +21,7 @@ class CartShow extends React.Component {
   getItems() {
     let result = []
     let orderSummary = []
+    let total = 0;
     for (let i = 0; i < this.props.cart.productIds.length; i++) {
       const id = this.props.cart.productIds[i];
       const item = this.props.boughtProducts[id];
@@ -29,7 +30,7 @@ class CartShow extends React.Component {
         let priceoff = 100 - Math.floor((item.disPrice / item.price) * 100)
         let totalprice = item.quantity * item.disPrice
         let saveprice = (item.price - item.disPrice).toFixed(2);
-
+        total += totalprice
         result.push(<div key={i} className="boghtItem">
             <Link to={`/products/${item.productId}`}>
               <img className="cart-item-image" src={item.photoUrls[0]} alt="" />
@@ -59,7 +60,6 @@ class CartShow extends React.Component {
             {/* <p>Over {num}+bought</p> */}
           </div>);
 
-        // { id: 344, productId: 79, quantity: 1, cartId: 192, productName: "Indigo Grill", … }
         orderSummary.push(
           <div key={i}>
             <div className='subtotal-prod-name'>{item.productName}</div>
@@ -71,15 +71,17 @@ class CartShow extends React.Component {
         );
       }
     }
-    return [result, orderSummary]
+    return [result, orderSummary, total];
   }
 
   render() {
     if (!this.props.cart) {
       return null;
     }
-    let result = this.getItems()[0]
-    let orderSummary = this.getItems()[1]
+    let result;// = this.getItems()[0]
+    let orderSummary;// = this.getItems()[1]
+    let total;// = this.getItems()[2]
+    [result, orderSummary, total] = this.getItems()
     if (!result.length) {
       return(
         <div className='cart-show-container '>
@@ -112,7 +114,7 @@ class CartShow extends React.Component {
               </div>
               <div className="cart-items">
                 <h1 className="your-items">Payment Method</h1>
-                <form action="" className="payment-container">
+                <form className="payment-container">
                   <div>
                     <input name='payment' className='input-radio' value="credit-cart" type="radio" /> Credit Card <br /> <i className="far fa-credit-card"></i>
                   </div>
@@ -130,7 +132,7 @@ class CartShow extends React.Component {
                 <br />
                 <div className="order-total">
                   <h2>Order Total:</h2>
-                  <h2>$38.00</h2>
+                  <h2>${total.toFixed(2)}</h2>
                 </div>
                 <p className="order-agree-term">
                   By clicking below I accept the current Terms of Use,

@@ -1154,6 +1154,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArrayLimit(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -1210,6 +1218,7 @@ function (_React$Component) {
     value: function getItems() {
       var result = [];
       var orderSummary = [];
+      var total = 0;
 
       for (var i = 0; i < this.props.cart.productIds.length; i++) {
         var id = this.props.cart.productIds[i];
@@ -1220,6 +1229,7 @@ function (_React$Component) {
           var priceoff = 100 - Math.floor(item.disPrice / item.price * 100);
           var totalprice = item.quantity * item.disPrice;
           var saveprice = (item.price - item.disPrice).toFixed(2);
+          total += totalprice;
           result.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             key: i,
             className: "boghtItem"
@@ -1248,8 +1258,7 @@ function (_React$Component) {
           }, "\xA0You Save $", saveprice)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
             className: "remove-button",
             onClick: this.handleDelete.bind(this)(item.id)
-          }, "Remove")))); // { id: 344, productId: 79, quantity: 1, cartId: 192, productName: "Indigo Grill", … }
-
+          }, "Remove"))));
           orderSummary.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             key: i
           }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1260,7 +1269,7 @@ function (_React$Component) {
         }
       }
 
-      return [result, orderSummary];
+      return [result, orderSummary, total];
     }
   }, {
     key: "render",
@@ -1269,8 +1278,19 @@ function (_React$Component) {
         return null;
       }
 
-      var result = this.getItems()[0];
-      var orderSummary = this.getItems()[1];
+      var result; // = this.getItems()[0]
+
+      var orderSummary; // = this.getItems()[1]
+
+      var total; // = this.getItems()[2]
+
+      var _this$getItems = this.getItems();
+
+      var _this$getItems2 = _slicedToArray(_this$getItems, 3);
+
+      result = _this$getItems2[0];
+      orderSummary = _this$getItems2[1];
+      total = _this$getItems2[2];
 
       if (!result.length) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1310,7 +1330,6 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
         className: "your-items"
       }, "Payment Method"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-        action: "",
         className: "payment-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         name: "payment",
@@ -1334,7 +1353,7 @@ function (_React$Component) {
         className: "order-summary-body"
       }, orderSummary, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "order-total"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Order Total:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "$38.00")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Order Total:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "$", total.toFixed(2))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "order-agree-term"
       }, "By clicking below I accept the current Terms of Use, Refund Policy and Privacy Statement."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "place-order-button"

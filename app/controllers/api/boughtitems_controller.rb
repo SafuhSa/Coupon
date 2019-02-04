@@ -33,7 +33,6 @@ class Api::BoughtitemsController < ApplicationController
     else
       render json: @bought_item.errors.full_messages, status: 422
     end
-
   end
 
 
