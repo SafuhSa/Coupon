@@ -78,21 +78,23 @@
   padding-right: 4em;
   padding-top: 2.5em;
 
-  // height: -webkit-fill-available;
 }
+.cart-left-side {
+  width: 66%;
 
+}
 .cart-items{
   border: 1px solid #d5d8db;
   background-color: white;
-  // height: -webkit-fill-available;
-  width: 66%;
+  height: fit-content;
+  margin-bottom: 3em;
 }
 
 .order-summary-total {
   border: 1px solid #d5d8db;
   background-color: white;
+  height: fit-content;
 
-  // height: -webkit-fill-available;
   width: 30%
 }
 
@@ -121,23 +123,13 @@
   flex-direction: row;
   justify-content: space-between;
   padding: 2em;
-  // border: 1px solid red;
-
-  // .title {
-  //   font-weight: 300;
-  // }
-  
-  // .show-image {
-  //   width: 45%;
-  // }
 }
 .image-div {
   border: 1px solid black;
 }
 
 .cart-item-image {
-  // margin: auto;
-    // border-radius: 3px;
+    border-radius: 3px;
     width: 200px;
     height: 120px;
     padding-right: 2em;
@@ -183,29 +175,74 @@
   color: red;
 }
 
-// .img-decs {
-//   display: flex;
-//   justify-content: space-between;
-// }
-// .cart-description {
-//   width: 50%;
-// }
+.order-summary-body {
+  padding: 1.5em;
+}
 
-// .cart-item-prices {
-//   display: flex;
-//   flex-direction: row;
-//   justify-content: space-between;
-   
+.subtotal {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
 
-//   .purchasePrice-container {
-//     display: flex;
-//     flex-direction: column;
-//     text-align: center;
-//   }
+.subtotal-prod-name {
+  // font-weight: 550;
+  color: #696a6c;
+  padding: 0.4em;
+  width: 70%;
+  padding-left: 0;
+}
 
-//   .quantity{
-//     padding-top: 13px;
-//     font-size: 22px;
-//     padding-top: 20px;
-//   }
-// }
+.subtotal{
+  padding-bottom: 0.5em;
+}
+
+.order-total {
+  border-top: 1px solid #d5d8db;
+  display: flex;
+  justify-content: space-between;
+  color: #333;
+  size: 18px;
+  font-weight: 700;
+  padding: 1.5em 0
+}
+
+
+.order-agree-term {
+  font: 700 11px OpenSans;
+  color: #a5a8ab;
+  padding-bottom: 1em;
+}
+
+.place-order-button {
+  color: white;
+  background-color: #53a318;
+  font-size: 23px;
+  border-radius: 3px;
+  padding: 0.5em;
+  width: -webkit-fill-available;
+  text-align: center;
+
+}
+
+
+.payment-container {
+  display: flex;
+  flex-direction: column;
+  padding: 1em;
+  font: 400 18px OpenSans;
+}
+
+.input-radio {
+  color: blue;
+}
+
+.fa-credit-card {
+  font-size: 35px;
+  padding-left: 0.5em;
+}
+
+.fa-cc-paypal {
+  font-size: 35px;
+  padding-left: 0.5em;
+}

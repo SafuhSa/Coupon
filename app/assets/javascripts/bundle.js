@@ -1193,22 +1193,27 @@ function (_React$Component) {
     value: function componentDidMount() {
       // this.props.requestCart(this.props.match.params.cartId);
       this.props.requestCart();
-    } // componentDidUpdate() {
-    //   // this.props.requestCart(this.props.match.params.cartId);
-    //   this.props.requestCart();
-    // }
+    }
+  }, {
+    key: "handleDelete",
+    value: function handleDelete(id) {
+      var _this2 = this;
 
+      return function (e) {
+        e.preventDefault();
+
+        _this2.props.deleteItem(id);
+      };
+    }
   }, {
     key: "getItems",
     value: function getItems() {
-      var _this2 = this;
-
       var result = [];
       var orderSummary = [];
 
-      var _loop = function _loop(i) {
-        var id = _this2.props.cart.productIds[i];
-        var item = _this2.props.boughtProducts[id];
+      for (var i = 0; i < this.props.cart.productIds.length; i++) {
+        var id = this.props.cart.productIds[i];
+        var item = this.props.boughtProducts[id];
 
         if (item) {
           var num = Math.ceil(item.quantity * 100 + 200);
@@ -1242,20 +1247,20 @@ function (_React$Component) {
             className: "save-price"
           }, "\xA0You Save $", saveprice)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
             className: "remove-button",
-            onClick: function onClick() {
-              return _this2.props.deleteItem(item.id);
-            }
+            onClick: this.handleDelete.bind(this)(item.id)
           }, "Remove")))); // { id: 344, productId: 79, quantity: 1, cartId: 192, productName: "Indigo Grill", … }
 
-          orderSummary.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Subtotal: (", item.productName, ")"));
+          orderSummary.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            key: i
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "subtotal-prod-name"
+          }, item.productName), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "subtotal"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Subtotal"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "$", totalprice.toFixed(2)))));
         }
-      };
-
-      for (var i = 0; i < this.props.cart.productIds.length; i++) {
-        _loop(i);
       }
 
-      return result;
+      return [result, orderSummary];
     }
   }, {
     key: "render",
@@ -1265,6 +1270,7 @@ function (_React$Component) {
       }
 
       var result = this.getItems()[0];
+      var orderSummary = this.getItems()[1];
 
       if (!result.length) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1294,14 +1300,45 @@ function (_React$Component) {
       }, "Please check your billing information and item contents before finalizing your order(", this.props.cart.id, ")"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "cart-body"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "cart-left-side"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "cart-items"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
         className: "your-items"
       }, "Your Items"), result), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "cart-items"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+        className: "your-items"
+      }, "Payment Method"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        action: "",
+        className: "payment-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        name: "payment",
+        className: "input-radio",
+        value: "credit-cart",
+        type: "radio"
+      }), " Credit Card ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "far fa-credit-card"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        name: "payment",
+        className: "input-radio",
+        value: "paypal",
+        type: "radio"
+      }), " PayPal ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fab fa-cc-paypal"
+      }))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "order-summary-total"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
         className: "order-summary-title"
-      }, "Order Summary")))));
+      }, "Order Summary"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "order-summary-body"
+      }, orderSummary, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "order-total"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Order Total:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "$38.00")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "order-agree-term"
+      }, "By clicking below I accept the current Terms of Use, Refund Policy and Privacy Statement."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "place-order-button"
+      }, "Place Order"))))));
     }
   }]);
 
@@ -1309,6 +1346,34 @@ function (_React$Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 /* harmony default export */ __webpack_exports__["default"] = (CartShow);
+{
+  /* 
+           <div id="form-container">
+             <div id="sq-ccbox">
+               <form id="nonce-form" noValidate action="PATH/TO/PAYMENT/PROCESSING/PAGE" method="post">
+                 <fieldset>
+                   <span className="label">Card Number</span>
+                   <div id="sq-card-number"></div>
+                      <div className="third">
+                     <span className="label">Expiration</span>
+                     <div id="sq-expiration-date"></div>
+                   </div>
+                      <div className="third">
+                     <span className="label">CVV</span>
+                     <div id="sq-cvv"></div>
+                   </div>
+                      <div className="third">
+                     <span className="label">Postal</span>
+                     <div id="sq-postal-code"></div>
+                   </div>
+                 </fieldset>
+                    <button id="sq-creditcard" className="button-credit-card" >Pay $1.00</button>
+                    <div id="error"></div>
+          <input type="hidden" id="card-nonce" name="nonce"/>
+     </form>
+   </div>        
+  </div> */
+}
 
 /***/ }),
 

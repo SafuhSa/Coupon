@@ -10,10 +10,13 @@ class CartShow extends React.Component {
     // this.props.requestCart(this.props.match.params.cartId);
     this.props.requestCart();
   }
-  // componentDidUpdate() {
-  //   // this.props.requestCart(this.props.match.params.cartId);
-  //   this.props.requestCart();
-  // }
+  
+  handleDelete(id) {
+    return (e) => {
+      e.preventDefault();
+      this.props.deleteItem(id)
+    }
+  }
 
   getItems() {
     let result = []
@@ -48,7 +51,8 @@ class CartShow extends React.Component {
                   &nbsp;You Save ${saveprice}
                 </p>
               </Link>
-              <button className="remove-button" onClick={() => this.props.deleteItem(item.id)}>
+              {/* <button className="remove-button" onClick={() => this.props.deleteItem(item.id)}> */}
+              <button className="remove-button" onClick={this.handleDelete.bind(this)(item.id)}>
                 Remove
               </button>
             </div>
@@ -56,12 +60,18 @@ class CartShow extends React.Component {
           </div>);
 
         // { id: 344, productId: 79, quantity: 1, cartId: 192, productName: "Indigo Grill", … }
-        orderSummary.push(<div>
-         Subtotal: ({item.productName})
-        </div>)
+        orderSummary.push(
+          <div key={i}>
+            <div className='subtotal-prod-name'>{item.productName}</div>
+            <div className="subtotal">
+              <h2>Subtotal</h2>
+              <h2>${totalprice.toFixed(2)}</h2>
+            </div>
+          </div>
+        );
       }
     }
-    return result
+    return [result, orderSummary]
   }
 
   render() {
@@ -69,6 +79,7 @@ class CartShow extends React.Component {
       return null;
     }
     let result = this.getItems()[0]
+    let orderSummary = this.getItems()[1]
     if (!result.length) {
       return(
         <div className='cart-show-container '>
@@ -84,22 +95,87 @@ class CartShow extends React.Component {
 
 
     return (
-      <div className='cart-page' >
+      <div className="cart-page">
         <div className="cart-show-container">
-          <h1 className='cart-header-info'>Is all your information correct?</h1>
-          <h2 className='check-billing-info'>Please check your billing information and item contents before finalizing your order({this.props.cart.id})</h2>
-          <div className='cart-body'>
-            <div className='cart-items'>
-              <h1 className='your-items'>Your Items</h1>
+          <h1 className="cart-header-info">
+            Is all your information correct?
+          </h1>
+          <h2 className="check-billing-info">
+            Please check your billing information and item contents before
+            finalizing your order({this.props.cart.id})
+          </h2>
+          <div className="cart-body">
+            <div className="cart-left-side">
+              <div className="cart-items">
+                <h1 className="your-items">Your Items</h1>
                 {result}
+              </div>
+              <div className="cart-items">
+                <h1 className="your-items">Payment Method</h1>
+                <form action="" className="payment-container">
+                  <div>
+                    <input name='payment' className='input-radio' value="credit-cart" type="radio" /> Credit Card <br /> <i className="far fa-credit-card"></i>
+                  </div>
+                  <div>
+                    <input name='payment' className='input-radio' value="paypal" type="radio" /> PayPal <br/> <i className="fab fa-cc-paypal"></i>
+                  </div>
+                </form>
+              </div>
             </div>
-            <div className='order-summary-total'>
-              <h1 className='order-summary-title'>Order Summary</h1>
+
+            <div className="order-summary-total">
+              <h1 className="order-summary-title">Order Summary</h1>
+              <div className="order-summary-body">
+                {orderSummary}
+                <br />
+                <div className="order-total">
+                  <h2>Order Total:</h2>
+                  <h2>$38.00</h2>
+                </div>
+                <p className="order-agree-term">
+                  By clicking below I accept the current Terms of Use,
+                  Refund Policy and Privacy Statement.
+                </p>
+                <button className="place-order-button">Place Order</button>
+              </div>
             </div>
-          </div>          
+          </div>
         </div>
       </div>
-      )}
-}
+    );}
+  }
+  
+  export default CartShow;
 
-export default CartShow;
+  {/* 
+            <div id="form-container">
+              <div id="sq-ccbox">
+                <form id="nonce-form" noValidate action="PATH/TO/PAYMENT/PROCESSING/PAGE" method="post">
+                  <fieldset>
+                    <span className="label">Card Number</span>
+                    <div id="sq-card-number"></div>
+  
+                    <div className="third">
+                      <span className="label">Expiration</span>
+                      <div id="sq-expiration-date"></div>
+                    </div>
+  
+                    <div className="third">
+                      <span className="label">CVV</span>
+                      <div id="sq-cvv"></div>
+                    </div>
+  
+                    <div className="third">
+                      <span className="label">Postal</span>
+                      <div id="sq-postal-code"></div>
+                    </div>
+                  </fieldset>
+  
+                  <button id="sq-creditcard" className="button-credit-card" >Pay $1.00</button>
+  
+                  <div id="error"></div>
+  
+        <input type="hidden" id="card-nonce" name="nonce"/>
+      </form>
+    </div>        
+  </div> */}
