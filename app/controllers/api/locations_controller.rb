@@ -8,7 +8,7 @@ class Api::LocationsController < ApplicationController
     # handler = IPinfo::create(access_token)
     
 
-    location = Geocoder.search(ip_address)
+    location = Geocoder.search(request.env['REMOTE_ADDR'])
 
     innerhash = location[0].data
 
