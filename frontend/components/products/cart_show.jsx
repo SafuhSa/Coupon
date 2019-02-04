@@ -17,6 +17,7 @@ class CartShow extends React.Component {
 
   getItems() {
     let result = []
+    let orderSummary = []
     for (let i = 0; i < this.props.cart.productIds.length; i++) {
       const id = this.props.cart.productIds[i];
       const item = this.props.boughtProducts[id];
@@ -25,7 +26,6 @@ class CartShow extends React.Component {
         let priceoff = 100 - Math.floor((item.disPrice / item.price) * 100)
         let totalprice = item.quantity * item.disPrice
         let saveprice = (item.price - item.disPrice).toFixed(2);
-
 
         result.push(<div key={i} className="boghtItem">
             <Link to={`/products/${item.productId}`}>
@@ -49,13 +49,16 @@ class CartShow extends React.Component {
                 </p>
               </Link>
               <button className="remove-button" onClick={() => this.props.deleteItem(item.id)}>
-                {" "}
                 Remove
               </button>
             </div>
-            {/* <input type="submit" value='delete' onClick={() => this.props.deleteItem(item.id)}/> */}
             {/* <p>Over {num}+bought</p> */}
           </div>);
+
+        // { id: 344, productId: 79, quantity: 1, cartId: 192, productName: "Indigo Grill", … }
+        orderSummary.push(<div>
+         Subtotal: ({item.productName})
+        </div>)
       }
     }
     return result
@@ -65,7 +68,7 @@ class CartShow extends React.Component {
     if (!this.props.cart) {
       return null;
     }
-    let result = this.getItems()
+    let result = this.getItems()[0]
     if (!result.length) {
       return(
         <div className='cart-show-container '>

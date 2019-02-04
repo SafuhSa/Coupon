@@ -1204,6 +1204,7 @@ function (_React$Component) {
       var _this2 = this;
 
       var result = [];
+      var orderSummary = [];
 
       var _loop = function _loop(i) {
         var id = _this2.props.cart.productIds[i];
@@ -1244,7 +1245,9 @@ function (_React$Component) {
             onClick: function onClick() {
               return _this2.props.deleteItem(item.id);
             }
-          }, " ", "Remove"))));
+          }, "Remove")))); // { id: 344, productId: 79, quantity: 1, cartId: 192, productName: "Indigo Grill", … }
+
+          orderSummary.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Subtotal: (", item.productName, ")"));
         }
       };
 
@@ -1261,7 +1264,7 @@ function (_React$Component) {
         return null;
       }
 
-      var result = this.getItems();
+      var result = this.getItems()[0];
 
       if (!result.length) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
