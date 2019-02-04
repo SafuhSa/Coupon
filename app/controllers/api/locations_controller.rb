@@ -27,7 +27,6 @@ class Api::LocationsController < ApplicationController
     # details = handler.details(ip_address)
     # @city = details.city # Emeryville
     # @loc = details.loc # 37.8342,-122.2900
-    # debugger
 
     render "api/location/show"
   end
