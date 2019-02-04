@@ -25,19 +25,21 @@ class RecentView < ApplicationRecord
         end
 
         def self.get_user_products(userId)
-            recentlyViewed = RecentView.where('user_id = ?', userId).to_a.sort_by(&:count).reverse!
+            recentlyViewed = RecentView.where('user_id = ?', userId).to_a.sort_by(&:count)
             products = []
             recentlyViewed.each do |recent|
+                debugger
                 products << recent.product
             end
             products
         end
 
         def self.get_null_products
-            recentlyViewed = RecentView.where('user_id IS NULL').to_a.sort_by(&:count).reverse!
+            recentlyViewed = RecentView.where('user_id IS NULL').to_a.sort_by(&:count)
             products = []
             recentlyViewed.each do |recent|
-                products << recent.product
+                prod = recent.product
+                products << prod
             end
 
             products
@@ -45,6 +47,14 @@ class RecentView < ApplicationRecord
 
         def self.update_null_count
              recentlyViewed = RecentView.where('user_id IS NULL').to_a
+             recentlyViewed.each do |recent|
+                recent.count += 1
+                recent.save
+             end
+        end
+
+        def self.update_user_rv_count(id)
+             recentlyViewed = RecentView.where('user_id = ?', id).to_a
              recentlyViewed.each do |recent|
                 recent.count += 1
                 recent.save

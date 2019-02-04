@@ -792,8 +792,14 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var mapStateToProps = function mapStateToProps(state, ownprops) {
+  var arr = [];
+
+  if (state.entities.recentView.products) {
+    arr = state.entities.recentView.products;
+  }
+
   return {
-    products: Object.values(state.entities.recentView)
+    products: arr
   };
 };
 

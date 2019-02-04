@@ -10,18 +10,11 @@ class Api::RecentviewsController < ApplicationController
         end
 
       if current_user
-        recentlyview.product_id = product.id
-        currview = current_user.recentviews
-
-        currview.each do |recent|
-          next if recentlyview.product_id == recent.product_id
-          recent.count += 1
-          recent.save
-        end
-
+        RecentView.update_user_rv_count(current_user.id)
+        recentlyview.user_id = current_user.id
+        
         recentlyview.count = 1
         recentlyview.save
-
         @products = RecentView.get_user_products(current_user.id)
       else
         RecentView.update_null_count
@@ -32,19 +25,42 @@ class Api::RecentviewsController < ApplicationController
         @products = RecentView.get_null_products
       end
 
-        # Product.recently_viewed
-        render "api/products/index"
+        # until @products.length < 3
+        #   prod = @products.pop()
+        #   prod.destroy
+        # end
+        # @products.reload
+
+        @products = convert_to_hash(@products)
+        render "api/recentview/index"
       end
 
       
       def index
-
         if current_user
-          @products = RecentView.get_user_products(current_user.id)
+          @produc = RecentView.get_user_products(current_user.id)      
         else
-          @products = RecentView.get_null_products
+          @produc = RecentView.get_null_products
         end
-        render "api/products/index"
+        
+        @products = convert_to_hash(@produc)
+        render "api/recentview/index"
+      end
+
+      def convert_to_hash(products)
+        return nil if products.nil?
+        arr = []
+        products.each do |product|
+
+          hsh = product.attributes
+          if product.photos.attached?
+            hsh['photoUrls'] = product.photos.map { |file| url_for(file) }
+          end
+
+          arr << hsh
+        end
+
+        arr
       end
 
 

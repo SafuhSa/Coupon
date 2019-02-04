@@ -4,8 +4,12 @@ import { withRouter } from "react-router-dom";
 import { requestRecentView } from "../../actions/product_actions";
 
 const mapStateToProps = (state, ownprops) => {
+  let arr = []
+  if (state.entities.recentView.products) {
+    arr = state.entities.recentView.products;
+  } 
   return {
-    products: Object.values(state.entities.recentView)
+    products: arr
   };
 };
 
