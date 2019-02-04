@@ -1,0 +1,2 @@
+class RecentView < ApplicationRecord
+end
