@@ -146,6 +146,7 @@ export const getlocation = () => dispatch => {
   return ProductAPIUtil.getlocation().then(res => {
     localStorage.setItem('city', res.city);
     localStorage.setItem('loc', res.loc);
+    debugger
     dispatch(receivelocation(location));
   })
 };

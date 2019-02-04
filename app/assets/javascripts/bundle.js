@@ -293,6 +293,7 @@ var getlocation = function getlocation() {
     return _util_product_api_util__WEBPACK_IMPORTED_MODULE_0__["getlocation"]().then(function (res) {
       localStorage.setItem('city', res.city);
       localStorage.setItem('loc', res.loc);
+      debugger;
       dispatch(receivelocation(location));
     });
   };
