@@ -25,11 +25,6 @@ class Api::RecentviewsController < ApplicationController
         @products = RecentView.get_null_products
       end
 
-        # until @products.length < 3
-        #   prod = @products.pop()
-        #   prod.destroy
-        # end
-        # @products.reload
 
         @products = convert_to_hash(@products)
         render "api/recentview/index"

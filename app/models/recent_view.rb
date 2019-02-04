@@ -27,8 +27,11 @@ class RecentView < ApplicationRecord
         def self.get_user_products(userId)
             recentlyViewed = RecentView.where('user_id = ?', userId).to_a.sort_by(&:count)
             products = []
+            until recentlyViewed.length < 5
+                recent = recentlyViewed.pop()
+                recent.destroy
+            end 
             recentlyViewed.each do |recent|
-                debugger
                 products << recent.product
             end
             products
@@ -37,6 +40,10 @@ class RecentView < ApplicationRecord
         def self.get_null_products
             recentlyViewed = RecentView.where('user_id IS NULL').to_a.sort_by(&:count)
             products = []
+            until recentlyViewed.length < 5
+                recent = recentlyViewed.pop()
+                recent.destroy
+            end 
             recentlyViewed.each do |recent|
                 prod = recent.product
                 products << prod
