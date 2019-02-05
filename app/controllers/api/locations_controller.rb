@@ -3,19 +3,20 @@
 class Api::LocationsController < ApplicationController
 
   def create
-
-    # ip_address = Net::HTTP.get(URI("https://api.ipify.org"))
-    # access_token = '8ad192f4b825fa'
-    # handler = IPinfo::create(access_token)
     latitude = location_params[:latitude]
     longitude = location_params[:longitude]
     results = Geocoder.search([latitude, longitude])
     
-
-    debugger
-    # location = Geocoder.search(ip_address)
     @city = results.first.city
     @loc = [latitude, longitude, 'saf']
+    
+    render "api/location/show"
+  end
+    # ip_address = Net::HTTP.get(URI("https://api.ipify.org"))
+    # access_token = '8ad192f4b825fa'
+    # handler = IPinfo::create(access_token)
+
+    # location = Geocoder.search(ip_address)
     
     # innerhash = location[0].data
 
@@ -34,8 +35,6 @@ class Api::LocationsController < ApplicationController
     # @city = details.city # Emeryville
     # @loc = details.loc # 37.8342,-122.2900
 
-    render "api/location/show"
-  end
 
   # def show
   #   @location = session[:location]
