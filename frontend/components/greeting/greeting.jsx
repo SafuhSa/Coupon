@@ -3,6 +3,21 @@ import { Link } from 'react-router-dom';
 import SearchContainer from "./search_container";
 
 class Greeting extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = { queryString: ''}
+
+    this.showPosition = this.showPosition.bind(this)
+    this.handlelocation = this.handlelocation.bind(this);
+    this.updateQueryString = this.updateQueryString.bind(this);
+  }
+  // componentWillMount() {
+  //   debugger
+  // }
+
+// componentDidMount() {
+//   this.setState({ queryString: this.props.location.search.split('=')[1] })
+// }
   sessionLinks () {
     return (
         <div className="signin-name">
@@ -20,20 +35,71 @@ class Greeting extends React.Component {
         </div>
       );
    }
+
+  updateQueryString(e) {
+    e.preventDefault();
+    this.setState({ queryString: e.target.value })
+  }
   
    showPosition(position) {
      let location = { latitude: position.coords.latitude, longitude: position.coords.longitude }
-     this.props.getlocation(location);
-     this.props.search('enter')
-   }
+     this.props.getlocation(location).then(() => {
+       location['city'] = this.props.currlocation;
+       let city = this.get_city_db(location);
+      this.props.search(city).then(() => {
+        this.props.history.push(`/city?=${city}`);
+      });
+    });
+  }
+    
 
-handlelocation() {
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(this.showPosition.bind(this));
-  } //else {
-    // x.innerHTML = "Geolocation is not supported by this browser.";
-  // }
-}
+  handlesubmit(e) {
+    e.preventDefault();
+    let city = this.get_city_db({ city: this.state.queryString });
+    if(city) {
+      this.props.search(city).then(() => {
+        this.props.history.push(`/city?=${city}`);
+      })
+    }
+  }
+
+  check_existence(str) {
+    
+    let arr = ["san francisco", "austin", "los angeles", "boston", 'new york'];
+    if (arr.includes(str.toLowerCase())) {
+      return str.toLowerCase();
+    } else {
+      return false
+    } 
+  }
+
+  get_city_db(hash) {
+    if (hash.latitude) {
+     let lat = hash.latitude
+     let lon = hash.longitude
+      if (Math.abs(37.7749 - Math.abs(lat)) < 2 && Math.abs(122.4194 - Math.abs(lon))) {
+        return "san francisco";
+      }
+      return "austin";
+    } else {
+      if (this.check_existence(hash.city)) {
+        return this.check_existence(hash.city);
+      } else {
+        alert('please type one of these cities ("san francisco", "austin", "los angeles", "boston", "new york")')
+        return false
+      }
+    }
+  }
+    
+    handlelocation(e) {
+      e.preventDefault();
+
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(this.showPosition.bind(this));
+      } else {
+        alert("Unable to retrieve your location, Please type in your location!! ");
+      }
+    }
 
 
    render() {
@@ -72,11 +138,12 @@ handlelocation() {
                <SearchContainer />
             
 
-               <form className="location" onSubmit={this.handlelocation.bind(this)} >
+               <form className="location" onSubmit={this.handlesubmit.bind(this)} >
                   <span><i className="fa fa-map-marker"></i></span>
-                    <input className='input-location' type="text"  placeholder=' Near Me' />
-                <button className='button-search'  ><span><i className="fa fa-search search-button" aria-hidden="true"></i></span></button>
+                 <input className='input-location' type="text" placeholder='try San Francisco' onChange={this.updateQueryString.bind(this)}   />
+                {/* <button className='button-search'  ><span><i className="fa fa-search search-button" aria-hidden="true"></i></span></button> */}
                 </form>
+                 <button className='button-search' onClick={this.handlelocation}  ><span><i className="fas fa-search-location search-button" aria-hidden="true"></i></span></button>
                {/* onClick={this.handlelocation.bind(this)} */}
               </div>  
               {result}
@@ -85,7 +152,6 @@ handlelocation() {
        </header>
      )
   }
-
 };
 
 

@@ -30,7 +30,7 @@ const App = () => (
       <Route exact path="/search" component={SearchResultContainer} />
     <Route exact path="/" component={ProductIndexContainer} />
       <Route exact path="/recentViews" component={RecentViewsContainer} />
-      <Route path="/city" component={RecentViewsContainer} />
+      <Route path="/city" component={LocationContainer} />
 
 
     </Switch>

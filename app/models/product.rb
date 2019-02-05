@@ -2,17 +2,17 @@
 #
 # Table name: products
 #
-#  id             :bigint(8)        not null, primary key
-#  seller_id      :integer
-#  product_name   :string
-#  price          :integer
-#  dis_price      :integer
-#  description    :text
-#  quantity       :integer
-#  category       :string
-#  created_at     :datetime         not null
-#  updated_at     :datetime         not null
-#  recentlyviewed :boolean          default(FALSE)
+#  id           :bigint(8)        not null, primary key
+#  seller_id    :integer
+#  product_name :string
+#  price        :integer
+#  dis_price    :integer
+#  description  :text
+#  quantity     :integer
+#  category     :string
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#  city         :string
 #
 
 class Product < ApplicationRecord
@@ -35,10 +35,10 @@ class Product < ApplicationRecord
     def self.search_results(str)
         return Product.all if str == ""
         param = "%" + str.downcase + '%'
-        
+        products_city = Product.where('lower(city) LIKE ?', param).to_a
         products = Product.where('lower(category) LIKE ?', param).to_a
         products_name = Product.where('lower(product_name) LIKE ?', param).to_a
         products_des = Product.where('lower(description) LIKE ?', param).to_a
-        (products + products_name + products_des).slice(0, 10)
+        (products_city + products + products_name + products_des).slice(0, 10)
     end
 end
