@@ -5,8 +5,9 @@ class Locations extends React.Component {
 
   componentDidMount() {
     // this.props.requestProducts();
-
-    let queryString = this.props.location.search.split("=")[1];
+    debugger
+    let queryString = this.props.location.search.split("=")[1].split('%20').join(' ')
+    debugger
     this.props.search(queryString);
     // this.props.requestRecentView();
   }

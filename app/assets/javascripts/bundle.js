@@ -813,7 +813,9 @@ function (_React$Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       // this.props.requestProducts();
-      var queryString = this.props.location.search.split("=")[1];
+      debugger;
+      var queryString = this.props.location.search.split("=")[1].split('%20').join(' ');
+      debugger;
       this.props.search(queryString); // this.props.requestRecentView();
     }
   }, {
