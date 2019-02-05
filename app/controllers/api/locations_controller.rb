@@ -8,7 +8,7 @@ class Api::LocationsController < ApplicationController
     # handler = IPinfo::create(access_token)
     
 
-    location = Geocoder.search(request.env['REMOTE_ADDR'])
+    location = Geocoder.search(ip_address)
 
     innerhash = location[0].data
 
@@ -22,7 +22,7 @@ class Api::LocationsController < ApplicationController
     # area_code = geoloc["area_code"]
 
     
-
+    # debugger
 
     # details = handler.details(ip_address)
     # @city = details.city # Emeryville

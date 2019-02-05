@@ -293,7 +293,6 @@ var getlocation = function getlocation() {
     return _util_product_api_util__WEBPACK_IMPORTED_MODULE_0__["getlocation"]().then(function (res) {
       localStorage.setItem('city', res.city);
       localStorage.setItem('loc', res.loc);
-      debugger;
       dispatch(receivelocation(location));
     });
   };
@@ -1819,6 +1818,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _product_index_item__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./product_index_item */ "./frontend/components/products/product_index_item.jsx");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1840,6 +1840,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var ProductIndex =
 /*#__PURE__*/
 function (_React$Component) {
@@ -1855,11 +1856,21 @@ function (_React$Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       this.props.requestProducts();
+      this.props.requestRecentView();
     }
   }, {
     key: "render",
     value: function render() {
       var _this = this;
+
+      if (!this.props.products.length) return null;
+      var recentview;
+
+      if (this.props.recentViews.length) {
+        recentview = this.props.recentViews[0];
+      } else {
+        recentview = this.props.products[0];
+      }
 
       var products = this.props.products.map(function (product) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_product_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
@@ -1869,9 +1880,37 @@ function (_React$Component) {
           createrecentView: _this.props.createrecentView
         });
       });
+      var product = recentview;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "index-items"
-      }, products);
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "search-item-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+        to: "/products/".concat(product.id)
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "search-item"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "search-pics",
+        src: product.photoUrls[0]
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "search-prod-left"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "searchproductName"
+      }, product.productName), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "searchcategory"
+      }, product.category), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "searchdescription"
+      }, product.description), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "searchview"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "searchviewbutton"
+      }, "View Deal")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "searchprices"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "price"
+      }, "$", product.price, " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "searchdisPrice"
+      }, " $", product.disPrice)))))), products);
     }
   }]);
 
@@ -1899,8 +1938,15 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var mapStateToProps = function mapStateToProps(state) {
+  var arr = [];
+
+  if (state.entities.recentView.products) {
+    arr = state.entities.recentView.products;
+  }
+
   return {
-    products: Object.values(state.entities.products)
+    products: Object.values(state.entities.products),
+    recentViews: arr
   };
 }; // products: Object.keys(state.products).map(id => state.products[id])
 
@@ -1915,6 +1961,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     },
     createrecentView: function createrecentView(product) {
       return dispatch(Object(_actions_product_actions__WEBPACK_IMPORTED_MODULE_2__["createrecentView"])(product));
+    },
+    requestRecentView: function requestRecentView() {
+      return dispatch(Object(_actions_product_actions__WEBPACK_IMPORTED_MODULE_2__["requestRecentView"])());
     }
   };
 };
