@@ -288,9 +288,9 @@ var receivelocation = function receivelocation(payload) {
     payload: payload
   };
 };
-var getlocation = function getlocation() {
+var getlocation = function getlocation(location) {
   return function (dispatch) {
-    return _util_product_api_util__WEBPACK_IMPORTED_MODULE_0__["getlocation"]().then(function (res) {
+    return _util_product_api_util__WEBPACK_IMPORTED_MODULE_0__["getlocation"](location).then(function (res) {
       localStorage.setItem('city', res.city);
       localStorage.setItem('loc', res.loc);
       dispatch(receivelocation(location));
@@ -535,9 +535,23 @@ function (_React$Component) {
       }, "My Stuff"));
     }
   }, {
+    key: "showPosition",
+    value: function showPosition(position) {
+      var location = {
+        latitude: position.coords.latitude,
+        longitude: position.coords.longitude
+      };
+      this.props.getlocation(location);
+    }
+  }, {
     key: "handlelocation",
     value: function handlelocation() {
-      this.props.getlocation();
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(this.showPosition.bind(this));
+      } //else {
+      // x.innerHTML = "Geolocation is not supported by this browser.";
+      // }
+
     }
   }, {
     key: "render",
@@ -641,8 +655,8 @@ var mapStateToProps = function mapStateToProps(_ref) {
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
-    getlocation: function getlocation() {
-      return dispatch(Object(_actions_product_actions__WEBPACK_IMPORTED_MODULE_2__["getlocation"])());
+    getlocation: function getlocation(location) {
+      return dispatch(Object(_actions_product_actions__WEBPACK_IMPORTED_MODULE_2__["getlocation"])(location));
     },
     logout: function logout() {
       return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_1__["logout"])());
@@ -3348,10 +3362,13 @@ var fetchrecentView = function fetchrecentView() {
     url: '/api/recentviews'
   });
 };
-var getlocation = function getlocation() {
+var getlocation = function getlocation(location) {
   return $.ajax({
     method: 'POST',
-    url: '/api/location'
+    url: '/api/location',
+    data: {
+      location: location
+    }
   });
 };
 

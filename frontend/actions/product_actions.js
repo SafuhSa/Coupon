@@ -142,8 +142,8 @@ export const receivelocation = (payload) => ({
   payload
 });
 
-export const getlocation = () => dispatch => {
-  return ProductAPIUtil.getlocation().then(res => {
+export const getlocation = (location) => dispatch => {
+  return ProductAPIUtil.getlocation(location).then(res => {
     localStorage.setItem('city', res.city);
     localStorage.setItem('loc', res.loc);
     dispatch(receivelocation(location));

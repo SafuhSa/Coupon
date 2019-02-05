@@ -20,10 +20,22 @@ class Greeting extends React.Component {
         </div>
       );
    }
-handlelocation() {
-  this.props.getlocation();
-}
+
+   showPosition(position) {
    
+     let location = { latitude: position.coords.latitude, longitude: position.coords.longitude }
+     this.props.getlocation(location);
+   }
+
+handlelocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(this.showPosition.bind(this));
+  } //else {
+    // x.innerHTML = "Geolocation is not supported by this browser.";
+  // }
+}
+
+
    render() {
      let result = '';
      let result2 = '';

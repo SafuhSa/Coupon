@@ -99,11 +99,12 @@ export const fetchrecentView = () => {
   )
 };
 
-export const getlocation = () => {
+export const getlocation = (location) => {
   return (
     $.ajax({
       method: 'POST',
-      url: '/api/location'
+      url: '/api/location',
+      data: {location}
     })
   )
 };

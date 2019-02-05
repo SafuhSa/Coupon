@@ -12,7 +12,7 @@ const mapStateToProps = ({ session, entities: { users } }) => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  getlocation: () => dispatch(getlocation()),
+  getlocation: location => dispatch(getlocation(location)),
   logout: () => dispatch(logout())
 });
 
