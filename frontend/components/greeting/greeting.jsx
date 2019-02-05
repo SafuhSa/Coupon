@@ -20,11 +20,11 @@ class Greeting extends React.Component {
         </div>
       );
    }
-
+  
    showPosition(position) {
-   
      let location = { latitude: position.coords.latitude, longitude: position.coords.longitude }
      this.props.getlocation(location);
+     this.props.search('enter')
    }
 
 handlelocation() {

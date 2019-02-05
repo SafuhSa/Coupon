@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
 import { logout } from '../../actions/session_actions';
-import { getlocation } from "../../actions/product_actions";
+import { getlocation, search } from "../../actions/product_actions";
 import Greeting from './greeting';
 
 const mapStateToProps = ({ session, entities: { users } }) => {
@@ -13,6 +13,7 @@ const mapStateToProps = ({ session, entities: { users } }) => {
 
 const mapDispatchToProps = dispatch => ({
   getlocation: location => dispatch(getlocation(location)),
+  search: str => dispatch(search(str)),
   logout: () => dispatch(logout())
 });
 

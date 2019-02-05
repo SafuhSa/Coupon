@@ -47,7 +47,7 @@ class SearchResult extends React.Component {
       return (
         <div className="search-page">
           <div className="search-header">Sorry, no results found for '{this.props.location.search.split("=")[1]}'</div>
-          <img src='./app/assets/images/Sad_Face.jpg' alt=""/>
+          {/* <img src='./app/assets/images/Sad_Face.jpg' alt=""/> */}
           <Link className="search-homepage" to="/">
             Back to Home page
           </Link>

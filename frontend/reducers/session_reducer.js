@@ -14,8 +14,8 @@ const sessionReducer = (state = _nullUser, action) => {
   switch (action.type) {
     case RECEIVE_CURRENT_USER:
       return merge({}, state, { id: action.currentUser.id });
-    // case RECEIVE_LOCATION:
-    //   return merge { [city]: action.payload} );
+    case RECEIVE_LOCATION:
+      return merge({}, state, action.payload);
     case LOGOUT_CURRENT_USER:
       return merge({}, state, _nullUser);
     default:
