@@ -2133,7 +2133,9 @@ function (_React$Component) {
       var num = Math.ceil(product.quantity / 3 * 2);
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "index-items"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "all-deals-title"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "All Deals")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
         to: "/products/".concat(product.id),
         className: "best-deal-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
@@ -2147,8 +2149,10 @@ function (_React$Component) {
         className: "bsdlcategory"
       }, product.category), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "bstdldescription"
-      }, product.description), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, product.city), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "title-rating"
+      }, product.description), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "bstdl-city-rating"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, product.city), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: ""
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "fa fa-star checked"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
@@ -2159,7 +2163,7 @@ function (_React$Component) {
         className: "fa fa-star checked"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "fa fa-star"
-      }), "(", num, ")"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }), "(", num, ")")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "searchprices"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "price"

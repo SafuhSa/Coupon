@@ -35,6 +35,11 @@ class ProductIndex extends React.Component {
     return (
 
       <div className='index-items'>
+
+        <div className='all-deals-title'>
+        <h1>All Deals</h1>
+        
+      </div>
           {/* <Link to={`/products/${product.id}`}> */}
           <Link to={`/products/${product.id}`} className="best-deal-container">
               <div>
@@ -44,14 +49,16 @@ class ProductIndex extends React.Component {
                 <div className="bstdlproductName">{product.product_name}</div>
                 <div className="bsdlcategory">{product.category}</div>
                 <div className="bstdldescription">{product.description}</div>
+                <div className='bstdl-city-rating'>
                 <div>{product.city}</div>
-                <div className="title-rating">
+                <div className="">
                   <span className="fa fa-star checked" />
                   <span className="fa fa-star checked" />
                   <span className="fa fa-star checked" />
                   <span className="fa fa-star checked" />
                   <span className="fa fa-star" />({num})
               </div>
+                </div>
 
                 <div className="searchprices">
                   <p className="price">${product.price} </p>
