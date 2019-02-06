@@ -9,11 +9,54 @@
   // border: 1px solid red;
     // background-color: grey;
 }
-
 .best-deal-container{
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1px solid  #e6e7e8;
+  margin: 0.6em;
+  padding-bottom: 1em;
+}
+
+.bstdlproductName {
+    font-size: 30px;
+    font-weight: 500;
+    margin-bottom: 2px;
+}
+.bsdlcategory {
+    color: #75787b !important;
+    font-size: 21px;
+}
+.bstdldescription {
+    font-size: 20px;
+    margin-top: 7px;
+    width: 82%;
+    color: #75787b !important;
+}
+
+.bsdlviewdiv {
+    border: 1px solid #53a318;
+    color: #fff;
+    font-size: 21.5px;
+    min-width: 5em;
+    line-height: 1.2rem;
+    padding: .4em 1.6rem;
+    border-radius: 2px;
+    text-align: center;
+    background-color: #53a318;
+}
+
+.bstdlpriceOff-con {
+    justify-content: flex-end;
     display: flex;
-    flex-direction: row;
-    border-bottom: 1px solid  #e6e7e8;
-    margin: 0.6em;
-    padding-bottom: 1em;
+}
+
+.bstdlpriceOff {
+
+    border: 1px solid green;
+    width: fit-content;
+    font-size: 13px;
+    color: green;
+    padding: 0.2em 0.8em;
+    margin: 0.4em;
+    margin-right: 0.8em;
 }

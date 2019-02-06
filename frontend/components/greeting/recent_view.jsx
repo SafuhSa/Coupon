@@ -36,7 +36,7 @@ class RecentView extends React.Component {
                 <img className="search-pics" src={product.photoUrls[0]} />
               </div>
               <div className='search-prod-left'>
-                <div className="searchproductName">{product.productName}</div>
+                <div className="searchproductName">{product.product_name}</div>
                 <div className="searchcategory">{product.category}</div>
                 <div className="searchdescription">{product.description}</div>
 
@@ -46,7 +46,7 @@ class RecentView extends React.Component {
 
                 <div className="searchprices">
                   <p className="price">${product.price} </p>
-                  <p className="searchdisPrice"> ${product.disPrice}</p>
+                  <p className="searchdisPrice"> ${product.dis_price}</p>
                 </div>
               </div>
             </div>

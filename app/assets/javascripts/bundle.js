@@ -989,7 +989,7 @@ function (_React$Component) {
           className: "search-prod-left"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "searchproductName"
-        }, product.productName), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        }, product.product_name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "searchcategory"
         }, product.category), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "searchdescription"
@@ -1003,7 +1003,7 @@ function (_React$Component) {
           className: "price"
         }, "$", product.price, " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
           className: "searchdisPrice"
-        }, " $", product.disPrice))))));
+        }, " $", product.dis_price))))));
       });
       return (/// className='index-items'
         react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -2110,12 +2110,12 @@ function (_React$Component) {
       var _this = this;
 
       if (!this.props.products.length) return null;
-      var recentview;
+      var product;
 
       if (this.props.recentViews.length) {
-        recentview = this.props.recentViews[0];
+        product = this.props.recentViews[0];
       } else {
-        recentview = this.props.products[0];
+        product = this.props.products[0];
       }
 
       var products = this.props.products.map(function (product) {
@@ -2126,7 +2126,11 @@ function (_React$Component) {
           createrecentView: _this.props.createrecentView
         });
       });
-      var product = recentview;
+      {
+        /* let result = arr.map(word => ( word[0].toUpperCase() + word.slice(1).toLowerCase())) */
+      }
+      var priceoff = 100 - Math.floor(product.dis_price / product.price * 100);
+      var num = Math.ceil(product.quantity / 3 * 2);
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "index-items"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
@@ -2138,22 +2142,38 @@ function (_React$Component) {
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "search-prod-left"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "searchproductName"
+        className: "bstdlproductName"
       }, product.product_name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "searchcategory"
+        className: "bsdlcategory"
       }, product.category), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "searchdescription"
-      }, product.description), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "searchview"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "searchviewbutton"
-      }, "View Deal")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "bstdldescription"
+      }, product.description), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, product.city), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "title-rating"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "fa fa-star checked"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "fa fa-star checked"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "fa fa-star checked"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "fa fa-star checked"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "fa fa-star"
+      }), "(", num, ")"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "searchprices"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "price"
       }, "$", product.price, " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "searchdisPrice"
-      }, " $", product.dis_price)))), products);
+      }, " $", product.dis_price)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "bstdlpriceOff-con"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "bstdlpriceOff"
+      }, " ", priceoff, "% OFF")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "searchview"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "bsdlviewdiv"
+      }, "View Deal")))), products);
     }
   }]);
 
