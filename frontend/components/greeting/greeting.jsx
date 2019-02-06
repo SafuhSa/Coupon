@@ -43,9 +43,11 @@ class Greeting extends React.Component {
   
    showPosition(position) {
      let location = { latitude: position.coords.latitude, longitude: position.coords.longitude }
+     debugger
      this.props.getlocation(location).then(() => {
        location['city'] = this.props.currlocation;
        let city = this.get_city_db(location);
+       debugger
       this.props.search(city).then(() => {
         this.props.history.push(`/city?=${city}`);
       });

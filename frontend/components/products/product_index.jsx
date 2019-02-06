@@ -29,19 +29,18 @@ class ProductIndex extends React.Component {
       );
     });
     let product = recentview
-
     return (
 
       <div className='index-items'>
 
-        <div className="search-item-container">
-          <Link to={`/products/${product.id}`}>
-            <div className="search-item">
+
+          {/* <Link to={`/products/${product.id}`}> */}
+          <Link to={`/products/${product.id}`} className="best-deal-container">
               <div>
                 <img className="search-pics" src={product.photoUrls[0]} />
               </div>
               <div className='search-prod-left'>
-                <div className="searchproductName">{product.productName}</div>
+                <div className="searchproductName">{product.product_name}</div>
                 <div className="searchcategory">{product.category}</div>
                 <div className="searchdescription">{product.description}</div>
 
@@ -51,12 +50,11 @@ class ProductIndex extends React.Component {
 
                 <div className="searchprices">
                   <p className="price">${product.price} </p>
-                  <p className="searchdisPrice"> ${product.disPrice}</p>
+                  <p className="searchdisPrice"> ${product.dis_price}</p>
                 </div>
               </div>
-            </div>
-          </Link>
-        </div>
+            </Link>
+          {/* </Link> */}
 
 
           {products}

@@ -2,9 +2,18 @@
 .index-items {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  // justify-content: space-around;
   margin: 0 auto;
-  width: 1065px;
+  width: 1074px;
   padding-top: 10px;
+  // border: 1px solid red;
     // background-color: grey;
+}
+
+.best-deal-container{
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid  #e6e7e8;
+    margin: 0.6em;
+    padding-bottom: 1em;
 }

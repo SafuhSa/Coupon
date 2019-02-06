@@ -571,10 +571,13 @@ function (_React$Component) {
         latitude: position.coords.latitude,
         longitude: position.coords.longitude
       };
+      debugger;
       this.props.getlocation(location).then(function () {
         location['city'] = _this2.props.currlocation;
 
         var city = _this2.get_city_db(location);
+
+        debugger;
 
         _this2.props.search(city).then(function () {
           _this2.props.history.push("/city?=".concat(city));
@@ -813,9 +816,9 @@ function (_React$Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       // this.props.requestProducts();
-      debugger;
-      var queryString = this.props.location.search.split("=")[1].split('%20').join(' ');
-      debugger;
+      // debugger
+      var queryString = this.props.location.search.split("=")[1].split('%20').join(' '); // debugger
+
       this.props.search(queryString); // this.props.requestRecentView();
     }
   }, {
@@ -2126,12 +2129,9 @@ function (_React$Component) {
       var product = recentview;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "index-items"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "search-item-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
-        to: "/products/".concat(product.id)
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "search-item"
+        to: "/products/".concat(product.id),
+        className: "best-deal-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         className: "search-pics",
         src: product.photoUrls[0]
@@ -2139,7 +2139,7 @@ function (_React$Component) {
         className: "search-prod-left"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "searchproductName"
-      }, product.productName), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, product.product_name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "searchcategory"
       }, product.category), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "searchdescription"
@@ -2153,7 +2153,7 @@ function (_React$Component) {
         className: "price"
       }, "$", product.price, " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "searchdisPrice"
-      }, " $", product.disPrice)))))), products);
+      }, " $", product.dis_price)))), products);
     }
   }]);
 
