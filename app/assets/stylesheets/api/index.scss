@@ -15,13 +15,44 @@
   border-bottom: 1px solid  #e6e7e8;
   margin: 0.6em;
   padding-bottom: 1em;
+  width: 100%;
+  
 }
+
+    // font-size: 30px;
+    // font-weight: 500;
+    // width: 84%;
+    // margin-bottom: 2px;
+    // /* max-height: 40px; */
+    // /* overflow: hidden; */
+    // overflow: hidden;
+    // text-overflow: ellipsis;
+    // white-space: nowrap;
+
+
+    // box-sizing: border-box; */
+    // font-size: 20px;
+    // margin-top: 7px;
+    // width: 82%;
+    // color: #75787b !important;
+    // border: 1px solid red;
+    // max-height: 69px;
+    // margin-bottom: 12px;
+    // overflow: -webkit-paged-y;
 
 .bstdlproductName {
     font-size: 30px;
     font-weight: 500;
     margin-bottom: 2px;
+    width: 91%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
+.bstdlproductName:hover {
+  overflow: visible;
+}
+
 .bsdlcategory {
     color: #75787b !important;
     font-size: 21px;
@@ -31,6 +62,17 @@
     margin-top: 7px;
     width: 82%;
     color: #75787b !important;
+    max-height: 72px;
+    overflow: -webkit-paged-y;
+}
+.bstdl-prod-left {
+      width: 584px;
+}
+
+.bstdl-bottom-left {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 1em;
 }
 
 .bsdlviewdiv {
@@ -62,12 +104,44 @@
 }
 
 .bstdl-city-rating {
-      padding-top: 1em;
+      // padding-top: 1em;
     color: #75787b !important;
 }
 
-.all-deals-title {
-    border-bottom: 4px dotted grey;
+.all-deals-container {
+    border-bottom: 3px dotted #75787b;
     width: 100%;
     margin: 0.7em;
+    display: flex;
+    justify-content: space-between;
+}
+
+.all-deals-header {
+  font-weight: 300;
+  margin: 0;
+  padding: 0.4em 0;
+}
+.sort-by-container {
+  padding: 0.4em 0;
+  padding: 0.4em 0;
+  border: 1px solid green;
+  font-size: 1.5em;
+}
+.image-container {
+  position: relative;
+  max-width: fit-content;
+  max-height: fit-content;
+}
+
+.bstdl-recentview {
+  position: absolute;
+  // bottom: 1.25em;
+  bottom: 0;
+  margin: 0;
+  left: 0;  
+  background: blueviolet;
+  color: white;
+  padding: 0.2em 1.5em;
+  font-size: 1em;
+  border-radius: 5px;
 }
