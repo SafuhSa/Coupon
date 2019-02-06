@@ -519,10 +519,7 @@ function (_React$Component) {
     _this.handlelocation = _this.handlelocation.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     _this.updateQueryString = _this.updateQueryString.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     return _this;
-  } // componentWillMount() {
-  //   debugger
-  // }
-  // componentDidMount() {
+  } // componentDidMount() {
   //   this.setState({ queryString: this.props.location.search.split('=')[1] })
   // }
 
@@ -571,13 +568,10 @@ function (_React$Component) {
         latitude: position.coords.latitude,
         longitude: position.coords.longitude
       };
-      debugger;
       this.props.getlocation(location).then(function () {
         location['city'] = _this2.props.currlocation;
 
         var city = _this2.get_city_db(location);
-
-        debugger;
 
         _this2.props.search(city).then(function () {
           _this2.props.history.push("/city?=".concat(city));
@@ -815,11 +809,8 @@ function (_React$Component) {
   _createClass(Locations, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      // this.props.requestProducts();
-      // debugger
-      var queryString = this.props.location.search.split("=")[1].split('%20').join(' '); // debugger
-
-      this.props.search(queryString); // this.props.requestRecentView();
+      var queryString = this.props.location.search.split("=")[1].split('%20').join(' ');
+      this.props.search(queryString);
     }
   }, {
     key: "render",
@@ -975,35 +966,81 @@ function (_React$Component) {
       }
 
       var products = this.props.products.map(function (product, i) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        var priceoff = 100 - Math.floor(product.dis_price / product.price * 100);
+        var num = Math.ceil(product.quantity / 3 * 2);
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
           key: i,
-          className: "search-item-container"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-          to: "/products/".concat(product.id)
+          to: "/products/".concat(product.id),
+          className: "best-deal-container"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "search-item"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          className: "image-container"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+          className: "bstdl-recentview"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+          className: "far fa-eye"
+        }), " \xA0  RECENTLY VIEWED"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
           className: "search-pics",
           src: product.photoUrls[0]
         })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "search-prod-left"
+          className: "bstdl-prod-left"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "searchproductName"
-        }, product.product_name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "searchcategory"
+          className: "bstdlproductName"
+        }, product.product_name, product.productName), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "bsdlcategory"
         }, product.category), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "searchdescription"
+          className: "bstdldescription"
         }, product.description), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "searchview"
+          className: "bstdl-bottom-left"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "searchviewbutton"
-        }, "View Deal")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "bstdl-city-rating"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, product.city), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: ""
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          className: "fa fa-star checked"
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          className: "fa fa-star checked"
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          className: "fa fa-star checked"
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          className: "fa fa-star checked"
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          className: "fa fa-star"
+        }), "(", num, ")")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "searchprices"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
           className: "price"
         }, "$", product.price, " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
           className: "searchdisPrice"
-        }, " $", product.dis_price))))));
+        }, " $", product.dis_price, product.disPrice)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "bstdlpriceOff-con"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          className: "bstdlpriceOff"
+        }, " ", priceoff, "% OFF")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "searchview"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "bsdlviewdiv"
+        }, "View Deal")))))) // <div key={i} className="search-item-container">
+        //   <Link to={`/products/${product.id}`}>
+        //     <div className="search-item">
+        //       <div>
+        //         <img className="search-pics" src={product.photoUrls[0]} />
+        //       </div>
+        //       <div className='search-prod-left'>
+        //         <div className="searchproductName">{product.product_name}</div>
+        //         <div className="searchcategory">{product.category}</div>
+        //         <div className="searchdescription">{product.description}</div>
+        //         <div className='searchview'>
+        //           <div className='searchviewbutton'>View Deal</div>
+        //         </div>
+        //         <div className="searchprices">
+        //           <p className="price">${product.price} </p>
+        //           <p className="searchdisPrice"> ${product.dis_price}</p>
+        //         </div>
+        //       </div>
+        //     </div>
+        //   </Link>
+        // </div>
+        ;
       });
       return (/// className='index-items'
         react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1257,35 +1294,81 @@ function (_React$Component) {
     key: "render",
     value: function render() {
       var products = this.props.products.map(function (product, i) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        var priceoff = 100 - Math.floor(product.disPrice / product.price * 100);
+        var num = Math.ceil(product.quantity / 3 * 2);
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
           key: i,
-          className: "search-item-container"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-          to: "/products/".concat(product.id)
+          to: "/products/".concat(product.id),
+          className: "best-deal-container"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "search-item"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          className: "image-container"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+          className: "bstdl-recentview"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+          className: "fas fa-trophy"
+        }), " \xA0  BEST OF COUPON"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
           className: "search-pics",
           src: product.photoUrls[0]
         })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "search-prod-left"
+          className: "bstdl-prod-left"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "searchproductName"
-        }, product.productName), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "searchcategory"
+          className: "bstdlproductName"
+        }, product.product_name, product.productName), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "bsdlcategory"
         }, product.category), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "searchdescription"
+          className: "bstdldescription"
         }, product.description), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "searchview"
+          className: "bstdl-bottom-left"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "searchviewbutton"
-        }, "View Deal")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "bstdl-city-rating"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, product.city), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: ""
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          className: "fa fa-star checked"
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          className: "fa fa-star checked"
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          className: "fa fa-star checked"
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          className: "fa fa-star checked"
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          className: "fa fa-star"
+        }), "(", num, ")")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "searchprices"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
           className: "price"
         }, "$", product.price, " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
           className: "searchdisPrice"
-        }, " $", product.disPrice))))));
+        }, " $", product.dis_price, product.disPrice)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "bstdlpriceOff-con"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          className: "bstdlpriceOff"
+        }, " ", priceoff, "% OFF")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "searchview"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "bsdlviewdiv"
+        }, "View Deal")))))) // <div key={i} className="search-item-container">
+        //   <Link to={`/products/${product.id}`}>
+        //     <div className="search-item">
+        //       <div>
+        //         <img className="search-pics" src={product.photoUrls[0]} />
+        //       </div>
+        //       <div className='search-prod-left'>
+        //         <div className="searchproductName">{product.productName}</div>
+        //         <div className="searchcategory">{product.category}</div>
+        //         <div className="searchdescription">{product.description}</div>
+        //         <div className='searchview'>
+        //           <div className='searchviewbutton'>View Deal</div>
+        //         </div>
+        //         <div className="searchprices">
+        //           <p className="price">${product.price} </p>
+        //           <p className="searchdisPrice"> ${product.disPrice}</p>
+        //         </div>
+        //       </div>
+        //     </div>
+        //   </Link>
+        // </div>
+        ;
       });
 
       if (!this.props.products.length) {
@@ -2153,7 +2236,7 @@ function (_React$Component) {
         className: "bstdl-prod-left"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "bstdlproductName"
-      }, product.product_name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, product.product_name, product.productName), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "bsdlcategory"
       }, product.category), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "bstdldescription"
@@ -2179,7 +2262,7 @@ function (_React$Component) {
         className: "price"
       }, "$", product.price, " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "searchdisPrice"
-      }, " $", product.dis_price)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, " $", product.dis_price, product.disPrice)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "bstdlpriceOff-con"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "bstdlpriceOff"

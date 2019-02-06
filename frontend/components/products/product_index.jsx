@@ -49,7 +49,7 @@ class ProductIndex extends React.Component {
                 <img className="search-pics" src={product.photoUrls[0]} />
               </div>
               <div className='bstdl-prod-left'>
-                <div className="bstdlproductName">{product.product_name}</div>
+            <div className="bstdlproductName">{product.product_name}{product.productName}</div>
                 <div className="bsdlcategory">{product.category}</div>
                 <div className="bstdldescription">{product.description}</div>
 
@@ -70,7 +70,7 @@ class ProductIndex extends React.Component {
 
                     <div className="searchprices">
                       <p className="price">${product.price} </p>
-                      <p className="searchdisPrice"> ${product.dis_price}</p>
+                      <p className="searchdisPrice"> ${product.dis_price}{product.disPrice}</p>
                     </div>
                     <div className='bstdlpriceOff-con'>
                       <p className="bstdlpriceOff"> {priceoff}% OFF</p>
