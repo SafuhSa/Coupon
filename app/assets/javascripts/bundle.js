@@ -815,8 +815,6 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this = this;
-
       if (!this.props.products.length) return null;
       var recentview;
 
@@ -826,18 +824,93 @@ function (_React$Component) {
         recentview = this.props.products[0];
       }
 
-      var products = this.props.products.map(function (product) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_products_product_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
-          key: product.id,
-          product: product,
-          deleteProduct: _this.props.deleteProduct,
-          createrecentView: _this.props.createrecentView
-        });
+      var products = this.props.products.map(function (product, i) {
+        var priceoff = 100 - Math.floor(product.dis_price / product.price * 100);
+        var num = Math.ceil(product.quantity / 3 * 2);
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+          key: i,
+          to: "/products/".concat(product.id),
+          className: "best-deal-container"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "image-container"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+          className: "bstdl-recentview"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+          className: "fas fa-trophy"
+        }), " \xA0  BEST OF COUPON"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          className: "search-pics",
+          src: product.photoUrls[0]
+        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "bstdl-prod-left"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "bstdlproductName"
+        }, product.product_name, product.productName), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "bsdlcategory"
+        }, product.category), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "bstdldescription"
+        }, product.description), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "bstdl-bottom-left"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "bstdl-city-rating"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, product.city), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: ""
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          className: "fa fa-star checked"
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          className: "fa fa-star checked"
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          className: "fa fa-star checked"
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          className: "fa fa-star checked"
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          className: "fa fa-star"
+        }), "(", num, ")")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "searchprices"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          className: "price"
+        }, "$", product.price, " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          className: "searchdisPrice"
+        }, " $", product.dis_price, product.disPrice)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "bstdlpriceOff-con"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          className: "bstdlpriceOff"
+        }, " ", priceoff, "% OFF")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "searchview"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "bsdlviewdiv"
+        }, "View Deal"))))));
       });
       var product = recentview;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "index-items"
-      }, products);
+        className: "search-page"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "search-header"
+      }, "results for '", this.props.location.search.split("=")[1], "'"), products) // <div className='index-items'>
+
+      /* <div className="search-item-container">
+        <Link to={`/products/${product.id}`}>
+          <div className="search-item">
+            <div>
+              <img className="search-pics" src={product.photoUrls[0]} />
+            </div>
+            <div className='search-prod-left'>
+              <div className="searchproductName">{product.productName}</div>
+              <div className="searchcategory">{product.category}</div>
+              <div className="searchdescription">{product.description}</div>
+               <div className='searchview'>
+                <div className='searchviewbutton'>View Deal</div>
+              </div>
+               <div className="searchprices">
+                <p className="price">${product.price} </p>
+                <p className="searchdisPrice"> ${product.disPrice}</p>
+              </div>
+            </div>
+          </div>
+        </Link>
+      </div> */
+      // {products}
+      // </div>
+      ;
     }
   }]);
 
