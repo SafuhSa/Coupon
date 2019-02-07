@@ -881,33 +881,40 @@ function (_React$Component) {
         }, "View Deal"))))));
       });
       var product = recentview;
+      var arr = this.props.location.search.split("=")[1].split("%20").map(function (word) {
+        return word[0].toUpperCase() + word.slice(1).toLowerCase();
+      }).join(' ');
+      arr = arr.split(' ').map(function (word) {
+        return word[0].toUpperCase() + word.slice(1).toLowerCase();
+      }).join(' ');
+      debugger;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "search-page"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "search-header"
-      }, "results for '", this.props.location.search.split("=")[1], "'"), products) // <div className='index-items'>
+      }, "results in ", arr), products) // <div className='index-items'>
 
       /* <div className="search-item-container">
-        <Link to={`/products/${product.id}`}>
-          <div className="search-item">
-            <div>
-              <img className="search-pics" src={product.photoUrls[0]} />
-            </div>
-            <div className='search-prod-left'>
-              <div className="searchproductName">{product.productName}</div>
-              <div className="searchcategory">{product.category}</div>
-              <div className="searchdescription">{product.description}</div>
-               <div className='searchview'>
-                <div className='searchviewbutton'>View Deal</div>
+          <Link to={`/products/${product.id}`}>
+            <div className="search-item">
+              <div>
+                <img className="search-pics" src={product.photoUrls[0]} />
               </div>
-               <div className="searchprices">
-                <p className="price">${product.price} </p>
-                <p className="searchdisPrice"> ${product.disPrice}</p>
+              <div className='search-prod-left'>
+                <div className="searchproductName">{product.productName}</div>
+                <div className="searchcategory">{product.category}</div>
+                <div className="searchdescription">{product.description}</div>
+                 <div className='searchview'>
+                  <div className='searchviewbutton'>View Deal</div>
+                </div>
+                 <div className="searchprices">
+                  <p className="price">${product.price} </p>
+                  <p className="searchdisPrice"> ${product.disPrice}</p>
+                </div>
               </div>
             </div>
-          </div>
-        </Link>
-      </div> */
+          </Link>
+        </div> */
       // {products}
       // </div>
       ;
