@@ -887,7 +887,6 @@ function (_React$Component) {
       arr = arr.split(' ').map(function (word) {
         return word[0].toUpperCase() + word.slice(1).toLowerCase();
       }).join(' ');
-      debugger;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "search-page"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {

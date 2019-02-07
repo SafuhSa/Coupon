@@ -68,7 +68,6 @@ class Locations extends React.Component {
     let product = recentview
     let arr =  this.props.location.search.split("=")[1].split("%20").map(word => (word[0].toUpperCase() + word.slice(1).toLowerCase())).join(' ')
     arr = arr.split(' ').map(word => (word[0].toUpperCase() + word.slice(1).toLowerCase())).join(' ')
-    debugger
     return (
       <div className="search-page">
         <div className="search-header">
