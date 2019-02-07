@@ -2705,9 +2705,6 @@ function (_React$Component) {
         onClick: this.addItemToCart
       }, "Add item to Cart"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         className: "show-submit",
-        to: "/products/".concat(product.id, "/edit")
-      }, "Edit"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        className: "show-submit",
         to: "/"
       }, "Home page")))));
     }

@@ -145,9 +145,9 @@ updateQuantity(e) {
               <button className="show-submit" onClick={this.addItemToCart}>
                 Add item to Cart
               </button>
-              <Link className="show-submit" to={`/products/${product.id}/edit`}>
+              {/* <Link className="show-submit" to={`/products/${product.id}/edit`}>
                 Edit
-              </Link>
+              </Link> */}
               <Link className="show-submit" to="/">
                 Home page
               </Link>

@@ -84,15 +84,20 @@
 } 
 .button-search {
   border: 2px solid white;
+  margin: auto 0;
   margin-left: 8px;
-  width: 40px;
+  // width: 40px;
   border-radius: 3px;
   text-align: center;
+
+
+    width: 35px;
+    height: 30px;
 }
 
 .fa-search-location.search-button {
   color:rgba(244, 239, 239, 0.97);
-  font-size: 1.3em;
+  font-size: 1.4em;
   padding: 0.09em;
 }
 

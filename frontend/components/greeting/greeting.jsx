@@ -142,7 +142,6 @@ class Greeting extends React.Component {
                 {/* <button className='button-search'  ><span><i className="fa fa-search search-button" aria-hidden="true"></i></span></button> */}
                 </form>
                  <button className='button-search' onClick={this.handlelocation}  ><span><i className="fas fa-search-location search-button" aria-hidden="true"></i></span></button>
-               {/* onClick={this.handlelocation.bind(this)} */}
               </div>  
               {result}
             </div>
