@@ -12,10 +12,13 @@ class ProductIndex extends React.Component {
     if (!this.props.products.length) return null
 
     let product;
+    let disprice;
     if (this.props.recentViews.length) {
       product =  this.props.recentViews[0]
+      disprice = product.dis_price;
     } else {
       product = this.props.products[0]
+      disprice = product.disPrice;
     }
 
     const products = this.props.products.map(product => {
@@ -29,8 +32,7 @@ class ProductIndex extends React.Component {
       );
     });
 
-    {/* let result = arr.map(word => ( word[0].toUpperCase() + word.slice(1).toLowerCase())) */}
-    let priceoff = 100 - Math.floor((product.dis_price / product.price) * 100)
+    let priceoff = 100 - Math.floor((disprice / product.price) * 100)
     let num = Math.ceil((product.quantity / 3) * 2)
     return (
 

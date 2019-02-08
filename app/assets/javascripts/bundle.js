@@ -2273,11 +2273,14 @@ function (_React$Component) {
 
       if (!this.props.products.length) return null;
       var product;
+      var disprice;
 
       if (this.props.recentViews.length) {
         product = this.props.recentViews[0];
+        disprice = product.dis_price;
       } else {
         product = this.props.products[0];
+        disprice = product.disPrice;
       }
 
       var products = this.props.products.map(function (product) {
@@ -2288,10 +2291,7 @@ function (_React$Component) {
           createrecentView: _this.props.createrecentView
         });
       });
-      {
-        /* let result = arr.map(word => ( word[0].toUpperCase() + word.slice(1).toLowerCase())) */
-      }
-      var priceoff = 100 - Math.floor(product.dis_price / product.price * 100);
+      var priceoff = 100 - Math.floor(disprice / product.price * 100);
       var num = Math.ceil(product.quantity / 3 * 2);
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "index-items"
