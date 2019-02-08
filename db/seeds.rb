@@ -180,7 +180,7 @@ product19.save!
 # -------------boston----------
 
 
-product20 = Product.new(product_name: "Shari's Berries", price: 18, dis_price: 18, city: 'Boston', description: 'Make any occasion sweet with gourmet chocolate, dipped strawberries, cake pops, gift baskets, and cookies', quantity: 10000, category: 'Restaurants', seller_id: user.id)
+product20 = Product.new(product_name: "Shari's Berries", price: 40, dis_price: 18, city: 'Boston', description: 'Make any occasion sweet with gourmet chocolate, dipped strawberries, cake pops, gift baskets, and cookies', quantity: 10000, category: 'Restaurants', seller_id: user.id)
 file41 = EzDownload.open('https://s3-us-west-1.amazonaws.com/coupon-div/Boston/ShariBerries.jpg')
 product20.photos.attach(io: file41, filename: 'ShariBerries.jpg')
 file42 = EzDownload.open('https://s3-us-west-1.amazonaws.com/coupon-div/Boston/ShariBerries1.jpg')

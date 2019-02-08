@@ -825,7 +825,7 @@ function (_React$Component) {
       }
 
       var products = this.props.products.map(function (product, i) {
-        var priceoff = 100 - Math.floor(product.dis_price / product.price * 100);
+        var priceoff = 100 - Math.floor(product.disPrice / product.price * 100);
         var num = Math.ceil(product.quantity / 3 * 2);
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
           key: i,

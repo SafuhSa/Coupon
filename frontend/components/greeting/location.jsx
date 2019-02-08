@@ -19,7 +19,7 @@ class Locations extends React.Component {
     }
 
     const products = this.props.products.map((product, i) => {
-      let priceoff = 100 - Math.floor((product.dis_price / product.price) * 100)
+      let priceoff = 100 - Math.floor((product.disPrice / product.price) * 100)
       let num = Math.ceil((product.quantity / 3) * 2)
       return (
         <Link key={i} to={`/products/${product.id}`} className="best-deal-container">
