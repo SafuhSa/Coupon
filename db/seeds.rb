@@ -19,6 +19,15 @@ User.destroy_all
 
 user = User.create(username: 'SafuhSa', password: "password", email:'email@email.com', full_name: "Safuh Saray")
 
+
+
+product = Product.new(product_name: "Repair Stop", price: 20, dis_price: 10, city: 'Los Angeles', description: 'From the merchant: $2 tempered glass screen protector with any iPhone repair service!', quantity: 80, category: 'Electronics', seller_id: user.id)
+file0 = EzDownload.open('https://s3-us-west-1.amazonaws.com/coupon-div/Los+Angeles/RepairStop.jpg')
+product.photos.attach(io: file0, filename: 'RepairStop.jpg')
+file01 = EzDownload.open('https://s3-us-west-1.amazonaws.com/coupon-div/Los+Angeles/RepairStop1.jpg')
+product.photos.attach(io: file01, filename: 'RepairStop1.jpg')
+product.save!
+
 product1 = Product.new(product_name: "John's Incredible Pizza Company", price: 73, dis_price: 26, city: 'Los Angeles', description: 'Visitors can enjoy unlimited food and drinks along with video games and rides like the boogie bump, Air IncrediBear, and more', quantity: 1000, category: 'Entertainment', seller_id: user.id)
 # https://s3-us-west-1.amazonaws.com/coupon-div/Los+Angeles/PizzaCompany1.jpg
 file = EzDownload.open('https://s3-us-west-1.amazonaws.com/coupon-div/Los+Angeles/PizzaCompany1.jpg')
@@ -168,19 +177,101 @@ product19.photos.attach(io: file40, filename: "HitFit2.jpg")
 product19.save!
 
 
+# -------------boston----------
+
+
+product20 = Product.new(product_name: "Shari's Berries", price: 18, dis_price: 18, city: 'Boston', description: 'Make any occasion sweet with gourmet chocolate, dipped strawberries, cake pops, gift baskets, and cookies', quantity: 10000, category: 'Restaurants', seller_id: user.id)
+file41 = EzDownload.open('https://s3-us-west-1.amazonaws.com/coupon-div/Boston/ShariBerries.jpg')
+product20.photos.attach(io: file41, filename: 'ShariBerries.jpg')
+file42 = EzDownload.open('https://s3-us-west-1.amazonaws.com/coupon-div/Boston/ShariBerries1.jpg')
+product20.photos.attach(io: file42, filename: 'ShariBerries1.jpg')
+product20.save!
+
+
+product21 = Product.new(product_name: 'Disney On Ice presents Mickey’s Search Party', price: 27, dis_price: 21, city: 'Boston', description: 'Enter the worlds of Disney/Pixar’s Coco, Disney’s Frozen, Disney’s Moana with Mickey and his pals during this live ice adventure', quantity: 1000, category: 'Restaurants', seller_id: user.id)
+file43 = EzDownload.open('https://s3-us-west-1.amazonaws.com/coupon-div/Boston/DisneyIce.jpg')
+product21.photos.attach(io: file43, filename: 'DisneyIce.jpg')
+file44 = EzDownload.open('https://s3-us-west-1.amazonaws.com/coupon-div/Boston/DisneyIce1.jpg')
+product21.photos.attach(io: file44, filename: 'DisneyIce1.jpg')
+file45 = EzDownload.open('https://s3-us-west-1.amazonaws.com/coupon-div/Boston/DisneyIce2.jpg')
+product21.photos.attach(io: file45, filename: 'DisneyIce2.jpg')
+product21.save!
+
+
+product22 = Product.new(product_name: 'Essex Street Grille', price: 70 , dis_price: 50, city: 'Boston', description: 'Appetizers such as lobster rangoons and coconut shrimp precede entrees of sesame-crusted tuna, eggplant manicotti, or mango chicken', quantity: 170 , category: 'Restaurants', seller_id: user.id)
+file46 = EzDownload.open('https://s3-us-west-1.amazonaws.com/coupon-div/Boston/EssexStreet.jpg')
+product22.photos.attach(io: file46, filename: 'EssexStreet.jpg')
+product22.save!
+
+
+product23 = Product.new(product_name: "BJ's Wholesale Club", price: 55, dis_price: 40, city: 'Boston', description: 'BJ’s Wholesale Club Membership grants access to exclusive deals, plus inventory that includes fresh foods, electronics and everyday supplies', quantity: 5000, category: 'Electronics', seller_id: user.id)
+file47 = EzDownload.open('https://s3-us-west-1.amazonaws.com/coupon-div/Boston/Bj.jpg')
+product23.photos.attach(io: file47, filename: 'Bj.jpg')
+product23.save!
+
+
+product1 = Product.new(product_name: 'Wireless Bluetooth Beanie and Touchscreen Gloves Set', price: 30, dis_price: 12, city: 'Boston', description: 'Stay warm and listen to your favorite tunes wirelessly with this cozy beanie that comes with touchscreen gloves for easy smartphone use', quantity: 820, category: 'Electronics', seller_id: user.id)
+file = EzDownload.open('')
+product1.photos.attach(io: file, filename: 'PizzaCompany1.jpg')
+file = EzDownload.open('')
+product1.photos.attach(io: file, filename: 'PizzaCompany1.jpg')
+product1.save!
 
 
 
-# product1 = Product.new(product_name: '', price: '', dis_price: '', description: '', quantity: '', category: '', seller_id: user.id)
-# file = EzDownload.open('https://s3-us-west-1.amazonaws.com/coupon-div/PizzaCompany1.jpg')
+product1 = Product.new(product_name: 'Slay Fashion', price: 40, dis_price: 20, city: 'Boston', description: 'Shop modern clothing and accessories ranging from crop tops to jumpers as well as intimates and accessories', quantity: 10, category: 'clothing', seller_id: user.id)
+file = EzDownload.open('')
+product1.photos.attach(io: file, filename: 'PizzaCompany1.jpg')
+file = EzDownload.open('')
+product1.photos.attach(io: file, filename: 'PizzaCompany1.jpg')
+product1.save!
+
+
+product1 = Product.new(product_name: 'AMR Clothing ANTOINE RUBINI', price: 1644, dis_price: 625, city: 'Boston', description: 'Two-piece suits made from fine Italian wool flatter figures with European-style tailoring, dress shirts, ties, and cufflinks', quantity: 75, category: 'clothing', seller_id: user.id)
+file = EzDownload.open('')
+product1.photos.attach(io: file, filename: 'PizzaCompany1.jpg')
+file = EzDownload.open('')
+product1.photos.attach(io: file, filename: 'PizzaCompany1.jpg')
+product1.save!
+
+
+
+product1 = Product.new(product_name: "Standup Comedy for Two at Nick's Comedy Stop", price: 50, dis_price: 22, city: 'Boston', description: 'National names and local legends perform at this iconic Boston comedy club, which hosted Seinfeld, Leno, and Burr before their big breaks', quantity: 60, category: 'Entertainment', seller_id: user.id)
+file = EzDownload.open('')
+product1.photos.attach(io: file, filename: 'PizzaCompany1.jpg')
+file = EzDownload.open('')
+product1.photos.attach(io: file, filename: 'PizzaCompany1.jpg')
+product1.save!
+
+
+
+
+product1 = Product.new(product_name: 'Alvin Ailey American Dance Theater', price: 82, dis_price: 40, city: 'Boston', description: 'Globally renowned dance company showcases new works and audience favorites', quantity: 550, category: 'Entertainment', seller_id: user.id)
+file = EzDownload.open('')
+product1.photos.attach(io: file, filename: 'PizzaCompany1.jpg')
+file = EzDownload.open('')
+product1.photos.attach(io: file, filename: 'PizzaCompany1.jpg')
+product1.save!
+
+
+
+
+
+product1 = Product.new(product_name: 'Lyasya Sinkovski', price: 300, dis_price: 180, city: 'Boston', description: 'Comprehensive 7-class beginner watercolor course introducing artists to the tools and basic watercolor techniques', quantity: 120, category: 'Entertainment', seller_id: user.id)
+file = EzDownload.open('')
+product1.photos.attach(io: file, filename: 'PizzaCompany1.jpg')
+file = EzDownload.open('')
+product1.photos.attach(io: file, filename: 'PizzaCompany1.jpg')
+product1.save!
+
+
+
+
+
+# product1 = Product.new(product_name: '', price: , dis_price: , city: 'Boston', description: '', quantity: , category: '', seller_id: user.id)
+# file = EzDownload.open('')
 # product1.photos.attach(io: file, filename: 'PizzaCompany1.jpg')
 # file = EzDownload.open('')
 # product1.photos.attach(io: file, filename: 'PizzaCompany1.jpg')
 # product1.save!
 
-# product1 = Product.new(product_name: '', price: '', dis_price: '', description: '', quantity: '', category: '', seller_id: user.id)
-# file = EzDownload.open('https://s3-us-west-1.amazonaws.com/coupon-div/PizzaCompany1.jpg')
-# product1.photos.attach(io: file, filename: 'PizzaCompany1.jpg')
-# file = EzDownload.open('')
-# product1.photos.attach(io: file, filename: 'PizzaCompany1.jpg')
-# product1.save!
