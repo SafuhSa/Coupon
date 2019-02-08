@@ -210,59 +210,51 @@ product23.photos.attach(io: file47, filename: 'Bj.jpg')
 product23.save!
 
 
-product1 = Product.new(product_name: 'Wireless Bluetooth Beanie and Touchscreen Gloves Set', price: 30, dis_price: 12, city: 'Boston', description: 'Stay warm and listen to your favorite tunes wirelessly with this cozy beanie that comes with touchscreen gloves for easy smartphone use', quantity: 820, category: 'Electronics', seller_id: user.id)
-file = EzDownload.open('')
-product1.photos.attach(io: file, filename: 'PizzaCompany1.jpg')
-file = EzDownload.open('')
-product1.photos.attach(io: file, filename: 'PizzaCompany1.jpg')
-product1.save!
+product24 = Product.new(product_name: 'Wireless Bluetooth Beanie and Touchscreen Gloves Set', price: 30, dis_price: 12, city: 'Boston', description: 'Stay warm and listen to your favorite tunes wirelessly with this cozy beanie that comes with touchscreen gloves for easy smartphone use', quantity: 820, category: 'Electronics', seller_id: user.id)
+file48 = EzDownload.open('https://s3-us-west-1.amazonaws.com/coupon-div/Boston/WirelessBluetoothBeanie.jpg')
+product24.photos.attach(io: file48, filename: 'WirelessBluetoothBeanie.jpg')
+file49 = EzDownload.open('https://s3-us-west-1.amazonaws.com/coupon-div/Boston/+WirelessBluetoothBeanie1.jpg')
+product24.photos.attach(io: file49, filename: 'WirelessBluetoothBeanie1.jpg ')
+product24.save!
 
 
 
-product1 = Product.new(product_name: 'Slay Fashion', price: 40, dis_price: 20, city: 'Boston', description: 'Shop modern clothing and accessories ranging from crop tops to jumpers as well as intimates and accessories', quantity: 10, category: 'clothing', seller_id: user.id)
-file = EzDownload.open('')
-product1.photos.attach(io: file, filename: 'PizzaCompany1.jpg')
-file = EzDownload.open('')
-product1.photos.attach(io: file, filename: 'PizzaCompany1.jpg')
-product1.save!
+product25 = Product.new(product_name: 'Slay Fashion', price: 40, dis_price: 20, city: 'Boston', description: 'Shop modern clothing and accessories ranging from crop tops to jumpers as well as intimates and accessories', quantity: 10, category: 'clothing', seller_id: user.id)
+file50 = EzDownload.open('https://s3-us-west-1.amazonaws.com/coupon-div/Boston/SlayFashion.jpg')
+product25.photos.attach(io: file50, filename: 'SlayFashion.jpg')
+file51 = EzDownload.open('https://s3-us-west-1.amazonaws.com/coupon-div/Boston/SlayFashion1.jpg')
+product25.photos.attach(io: file51, filename: 'SlayFashion1.jpg')
+product25.save!
 
 
-product1 = Product.new(product_name: 'AMR Clothing ANTOINE RUBINI', price: 1644, dis_price: 625, city: 'Boston', description: 'Two-piece suits made from fine Italian wool flatter figures with European-style tailoring, dress shirts, ties, and cufflinks', quantity: 75, category: 'clothing', seller_id: user.id)
-file = EzDownload.open('')
-product1.photos.attach(io: file, filename: 'PizzaCompany1.jpg')
-file = EzDownload.open('')
-product1.photos.attach(io: file, filename: 'PizzaCompany1.jpg')
-product1.save!
+product26 = Product.new(product_name: 'AMR Clothing ANTOINE RUBINI', price: 1644, dis_price: 625, city: 'Boston', description: 'Two-piece suits made from fine Italian wool flatter figures with European-style tailoring, dress shirts, ties, and cufflinks', quantity: 75, category: 'clothing', seller_id: user.id)
+file52 = EzDownload.open('https://s3-us-west-1.amazonaws.com/coupon-div/Boston/AMRClothing.jpg')
+product26.photos.attach(io: file52, filename: 'AMRClothing.jpg')
+product26.save!
 
 
 
-product1 = Product.new(product_name: "Standup Comedy for Two at Nick's Comedy Stop", price: 50, dis_price: 22, city: 'Boston', description: 'National names and local legends perform at this iconic Boston comedy club, which hosted Seinfeld, Leno, and Burr before their big breaks', quantity: 60, category: 'Entertainment', seller_id: user.id)
-file = EzDownload.open('')
-product1.photos.attach(io: file, filename: 'PizzaCompany1.jpg')
-file = EzDownload.open('')
-product1.photos.attach(io: file, filename: 'PizzaCompany1.jpg')
-product1.save!
+product27 = Product.new(product_name: "Standup Comedy for Two at Nick's Comedy Stop", price: 50, dis_price: 22, city: 'Boston', description: 'National names and local legends perform at this iconic Boston comedy club, which hosted Seinfeld, Leno, and Burr before their big breaks', quantity: 60, category: 'Entertainment', seller_id: user.id)
+file53 = EzDownload.open('https://s3-us-west-1.amazonaws.com/coupon-div/Boston/StandupComedy.jpg')
+product27.photos.attach(io: file53, filename: 'StandupComedy.jpg')
+product27.save!
 
 
 
 
-product1 = Product.new(product_name: 'Alvin Ailey American Dance Theater', price: 82, dis_price: 40, city: 'Boston', description: 'Globally renowned dance company showcases new works and audience favorites', quantity: 550, category: 'Entertainment', seller_id: user.id)
-file = EzDownload.open('')
-product1.photos.attach(io: file, filename: 'PizzaCompany1.jpg')
-file = EzDownload.open('')
-product1.photos.attach(io: file, filename: 'PizzaCompany1.jpg')
-product1.save!
+product28 = Product.new(product_name: 'Alvin Ailey American Dance Theater', price: 82, dis_price: 40, city: 'Boston', description: 'Globally renowned dance company showcases new works and audience favorites', quantity: 550, category: 'Entertainment', seller_id: user.id)
+file54 = EzDownload.open('https://s3-us-west-1.amazonaws.com/coupon-div/Boston/AmericanDanceTheater.jpg')
+product28.photos.attach(io: file54, filename: 'AmericanDanceTheater.jpg')
+product28.save!
 
 
 
 
 
-product1 = Product.new(product_name: 'Lyasya Sinkovski', price: 300, dis_price: 180, city: 'Boston', description: 'Comprehensive 7-class beginner watercolor course introducing artists to the tools and basic watercolor techniques', quantity: 120, category: 'Entertainment', seller_id: user.id)
-file = EzDownload.open('')
-product1.photos.attach(io: file, filename: 'PizzaCompany1.jpg')
-file = EzDownload.open('')
-product1.photos.attach(io: file, filename: 'PizzaCompany1.jpg')
-product1.save!
+product29 = Product.new(product_name: 'Lyasya Sinkovski', price: 300, dis_price: 180, city: 'Boston', description: 'Comprehensive 7-class beginner watercolor course introducing artists to the tools and basic watercolor techniques', quantity: 120, category: 'Entertainment', seller_id: user.id)
+file55 = EzDownload.open('https://s3-us-west-1.amazonaws.com/coupon-div/Boston/LyasyaSinkovski1.jpg')
+product29.photos.attach(io: file55, filename: 'LyasyaSinkovski1.jpg')
+product29.save!
 
 
 
