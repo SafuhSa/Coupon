@@ -2279,7 +2279,7 @@ function (_React$Component) {
         product = this.props.recentViews[0];
         disprice = product.dis_price;
       } else {
-        product = this.props.products[0];
+        product = this.props.products[2];
         disprice = product.disPrice;
       }
 
