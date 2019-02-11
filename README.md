@@ -14,12 +14,12 @@
   - [canvas on different screen sizes](#canvas-on-different-screen-sizes)
 
 ## Background and Overview
-  Coupon full stack e-commerce marketplace connecting subscribers with local merchants inspired by Groupon. 
+  Coupon is full stack e-commerce marketplace connecting subscribers with local merchants inspired by Groupon. 
   
 ### Technologies
 
-`Ruby on rails` `activeRecord` backend, JavaScript `react-redux` frontend, and scaling `AWS S3` cloud computing. 
-   also user data such as login and products informations was stored in a `PostgreSQL` database.
+`Ruby on rails` backend including `activeRecord`, JavaScript `react-redux` frontend, and scaling `AWS S3` cloud computing. 
+   and user data such as login and products informations was stored in a `PostgreSQL` database.
    
 ### Features
 * Secure frontend to backend user authentication using BCrypt.
@@ -38,15 +38,23 @@
 
 ### Splash Page
 
-Sinuous is currently work on all modern browsers and Ipads as well .
+Coupon splash page is a clone of the Groupon. It features all deals with the recently clicked product on top with the rest of products under.
 
-![](./images/start.png)
 
-### In Game
+![](./app/assets/images/splashpge.png)
 
-While playing, red dots will flash and they increase speed with time through incrementing the velocity of moving objects.
+### LogIN / SignUp 
+The user auth forms logIn/ SignUp page with colored errors dispalyed if any!! Used BCrypt for password hashing which resulted in a more secure application.
+.
 
-![](./images/ingame.png)
+![Log In / Sign Up page](https://s3-us-west-1.amazonaws.com/coupon-div/ezgif.com-gif-maker.gif)
+![Log In / Sign Up page](./app/assets/images/logIn.gif)
+
+### Sell / List a product 
+
+Improved scalability by utilizing AWS S3 to Implement a multiple photos or files uploading feature, allowing users to list items on the application.
+
+![](./app/assets/images/sell.png)
 
 ### Game Over
 
