@@ -13,7 +13,6 @@ import LocationContainer from "./greeting/location_container";
 
 import { Provider } from 'react-redux';
 import { Route, Redirect, Switch, Link, HashRouter } from 'react-router-dom';
-import greeting_container from './greeting/greeting_container';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 
 const App = () => (
@@ -21,18 +20,16 @@ const App = () => (
       <GreetingContainer />
 
     <Switch> 
-    <AuthRoute exact path="/login" component={LogInFormContainer} />
-    <AuthRoute exact path="/signup" component={SignUpFormContainer} />
-    <ProtectedRoute exact path="/product/new" component={CreateProductContainer} />
-      <Route exact path="/products/:productId" component={ProductShowContainer} />
-    <ProtectedRoute exact path="/cart" component={CartShowContainer} />
-    <ProtectedRoute exact path="/products/:productId/edit" component={EditProductContainer} />
-      <Route exact path="/search" component={SearchResultContainer} />
-    <Route exact path="/" component={ProductIndexContainer} />
-      <Route exact path="/recentViews" component={RecentViewsContainer} />
-      <Route path="/city" component={LocationContainer} />
-
-
+      <AuthRoute exact path="/login" component={LogInFormContainer} />
+      <AuthRoute exact path="/signup" component={SignUpFormContainer} />
+      <ProtectedRoute exact path="/product/new" component={CreateProductContainer} />
+        <Route exact path="/products/:productId" component={ProductShowContainer} />
+      <ProtectedRoute exact path="/cart" component={CartShowContainer} />
+      <ProtectedRoute exact path="/products/:productId/edit" component={EditProductContainer} />
+        <Route exact path="/search" component={SearchResultContainer} />
+      <Route exact path="/" component={ProductIndexContainer} />
+        <Route exact path="/recentViews" component={RecentViewsContainer} />
+        <Route path="/city" component={LocationContainer} />
     </Switch>
   </div>
 );
