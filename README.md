@@ -6,12 +6,12 @@
   - [Demo](#demo)
 - [Site](#site)
   - [Splash Page](#splash-page)
-  - [LogIN SignUp](#login-signup)
-  - [Game Over](#game-over)
-- [Filter listings around user location](#filter-listings-around-user-location)
-  - [Collision Detection](#collision-detection)
-  - [Animate a line in after effects by mouse movement](#animate-a-line-in-after-effects-mouse-movement)
-  - [canvas on different screen sizes](#canvas-on-different-screen-sizes)
+  - [LogIn SignUp](#login-signup)
+  - [Sell List a product](#sell-list-a-product)
+  - [Cart](#cart)
+  - [Search](#search)
+  - [Filter listings around user location](#filter-listings-around-user-location)
+
 
 ## Background and Overview
   Coupon is full stack e-commerce marketplace connecting subscribers with local merchants inspired by Groupon. 
@@ -43,12 +43,12 @@ Coupon splash page is a clone of the Groupon. It features all deals with the rec
 ![](./app/assets/images/splashpge.png)
 
 
-### LogIN SignUp 
+### LogIn SignUp 
 The user auth forms logIn/ SignUp page with colored errors dispalyed if any!! Used BCrypt for password hashing which resulted in a more secure application.
 
 ![Log In / Sign Up page](./app/assets/images/logIn.gif)
 
-### Sell / List a product 
+### Sell List a product 
 
 Improved scalability by utilizing AWS S3 to Implement a multiple photos or files uploading feature, allowing users to list items on the application.
 handleSubmit is triggered when the list form is submitted then formDate is used to shape sending data to AWS and to the backend!!
