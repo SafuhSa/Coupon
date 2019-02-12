@@ -43,11 +43,10 @@ Coupon splash page is a clone of the Groupon. It features all deals with the rec
 
 ![](./app/assets/images/splashpge.png)
 
+
 ### LogIN / SignUp 
 The user auth forms logIn/ SignUp page with colored errors dispalyed if any!! Used BCrypt for password hashing which resulted in a more secure application.
-.
 
-![Log In / Sign Up page](https://s3-us-west-1.amazonaws.com/coupon-div/ezgif.com-gif-maker.gif)
 ![Log In / Sign Up page](./app/assets/images/logIn.gif)
 
 ### Sell / List a product 
