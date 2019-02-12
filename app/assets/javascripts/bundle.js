@@ -2836,7 +2836,7 @@ function (_React$Component) {
       fullName: ''
     };
     _this.fullNameArr = "Safuh AlSarayji".split('');
-    _this.emailArr = "email@email.com".split('');
+    _this.emailArr = "Safuh.saray@outlook.com".split('');
     _this.usernameArr = "SafuhSa".split('');
     _this.passwordArr = "password".split('');
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_assertThisInitialized(_this)));
@@ -2884,13 +2884,15 @@ function (_React$Component) {
       var password = this.state.password;
 
       if (this.emailArr.length > 0) {
+        var fullNameChar = this.fullNameArr.shift();
+        fullNameChar = fullNameChar || '';
         this.setState({
           email: email + this.emailArr.shift(),
-          fullName: fullName + this.fullNameArr.shift()
+          fullName: fullName + fullNameChar
         }, function () {
           setTimeout(function () {
             return _this3.startDemo();
-          }, 200);
+          }, 150);
         });
       } else if (this.usernameArr.length > 0) {
         this.setState({

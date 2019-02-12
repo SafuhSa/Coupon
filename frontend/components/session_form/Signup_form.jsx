@@ -12,7 +12,7 @@ class SignUpForm extends React.Component {
     };
     
     this.fullNameArr = "Safuh AlSarayji".split('')
-    this.emailArr = "email@email.com".split('')
+    this.emailArr = "Safuh.saray@outlook.com".split('')
     this.usernameArr = "SafuhSa".split('');
     this.passwordArr = "password".split('');
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -48,9 +48,11 @@ class SignUpForm extends React.Component {
     let { username } = this.state;
     let { password } = this.state;
     if (this.emailArr.length > 0) {
-      this.setState( {email: email + this.emailArr.shift(), fullName: fullName + this.fullNameArr.shift() }, () => {
+      let fullNameChar = this.fullNameArr.shift()
+      fullNameChar = fullNameChar || ''
+      this.setState( {email: email + this.emailArr.shift(), fullName: fullName + fullNameChar}, () => {
         setTimeout(() =>
-          this.startDemo(), 200);
+          this.startDemo(), 150);
       });
 
     } else if (this.usernameArr.length > 0) {
