@@ -6,7 +6,7 @@
   - [Demo](#demo)
 - [Site](#site)
   - [Splash Page](#splash-page)
-  - [LogIN / SignUp ](#login-signUp)
+  - [LogIN SignUp](#login-signup)
   - [Game Over](#game-over)
 - [Filter listings around user location](#filter-listings-around-user-location)
   - [Collision Detection](#collision-detection)
@@ -43,7 +43,7 @@ Coupon splash page is a clone of the Groupon. It features all deals with the rec
 ![](./app/assets/images/splashpge.png)
 
 
-### LogIN / SignUp 
+### LogIN SignUp 
 The user auth forms logIn/ SignUp page with colored errors dispalyed if any!! Used BCrypt for password hashing which resulted in a more secure application.
 
 ![Log In / Sign Up page](./app/assets/images/logIn.gif)
