@@ -1710,7 +1710,7 @@ function (_React$Component) {
           className: "cart-show-container "
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
           className: "cart-header-empty"
-        }, " Your cart is empty! (", this.props.cart.id, ") "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        }, " Your cart is empty!"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "cart-empty-body"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
           className: "fas fa-shopping-cart icon-goods"
@@ -1730,7 +1730,7 @@ function (_React$Component) {
         className: "cart-header-info"
       }, "Is all your information correct?"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
         className: "check-billing-info"
-      }, "Please check your billing information and item contents before finalizing your order(", this.props.cart.id, ")"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Please check your billing information and item contents before finalizing your order"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "cart-body"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "cart-left-side"

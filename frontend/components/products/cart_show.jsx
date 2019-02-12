@@ -85,7 +85,7 @@ class CartShow extends React.Component {
     if (!result.length) {
       return(
         <div className='cart-show-container '>
-          <h1 className='cart-header-empty'> Your cart is empty! ({this.props.cart.id}) </h1>
+          <h1 className='cart-header-empty'> Your cart is empty!</h1>
           <div className='cart-empty-body'>
             <span><i className="fas fa-shopping-cart icon-goods"></i></span>
             <h2 className='empty-cart-mess'> Please add some items to your cart </h2>
@@ -104,7 +104,7 @@ class CartShow extends React.Component {
           </h1>
           <h2 className="check-billing-info">
             Please check your billing information and item contents before
-            finalizing your order({this.props.cart.id})
+            finalizing your order
           </h2>
           <div className="cart-body">
             <div className="cart-left-side">
