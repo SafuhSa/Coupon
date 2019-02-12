@@ -11,7 +11,7 @@
   - [Cart](#cart)
   - [Search](#search)
   - [Filter listings around user location](#filter-listings-around-user-location)
-
+  - [Recently Viewed](#recently-viewed)
 
 ## Background and Overview
   Coupon is full stack e-commerce marketplace connecting subscribers with local merchants inspired by Groupon. 
@@ -44,9 +44,25 @@ Coupon splash page is a clone of the Groupon. It features all deals with the rec
 
 
 ### LogIn SignUp 
-The user auth forms logIn/ SignUp page with colored errors dispalyed if any!! Used BCrypt for password hashing which resulted in a more secure application.
+The user auth forms logIn/ SignUp page with red errors if any dispalyed at the top of the form!!
 
 ![Log In / Sign Up page](./app/assets/images/logIn.gif)
+
+
+ Utilized BCrypt for password hashing to store in database which resulted in a more secure application. 
+```Ruby
+  def password=(password)
+    @password = password
+    self.password_digest = BCrypt::Password.create(password)
+  end
+
+  def reset_session_token!
+    self.session_token = SecureRandom.urlsafe_base64
+    save!
+    self.session_token
+  end
+```
+
 
 ### Sell List a product 
 
@@ -114,6 +130,17 @@ Implemented dynamic search using activerecord to querying the database with many
 
 ![](./app/assets/images/search.png)
 
+Product modle search methods to query the `PostgreSQL` database using `activeRecord`.
+
+```Ruby
+def self.search_results(str)
+        return Product.all if str == ""
+        param = "%" + str.downcase + '%'
+        
+        products_des = Product.where('lower(description) LIKE ?', param).to_a
+    end
+```
+
 ### Filter listings around user location
 Detected location by geting the user coordinates(latitude, longitude) then sending it to the backend for ruby Geocoder gem to get the closest city to user locations and save it to localStorage to be save for that specific user.
 
@@ -144,6 +171,10 @@ handlelocation get called when a user click on the locating buttom with ask user
   }
 ```
 
+### Recently Viewed
+  Show the last four recently viewed items by the user and display them in ascending order with the last item clicked on top for quik acess
+  
+![](./app/assets/images/recentlyviewed.png)
 
 
 [Back to Top](#)
