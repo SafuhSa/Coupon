@@ -1,14 +1,14 @@
 # Coupon
 # Table of Contents
 - [Background and Overview](#background-and-overview)
-  - [Demo](#demo)
 - [Features](#features)
 - [Technologies](#technologies)
+  - [Demo](#demo)
 - [Site](#site)
   - [Splash Page](#splash-page)
-  - [In-Game](#in-game)
+  - [LogIN / SignUp ](#login-signUp)
   - [Game Over](#game-over)
-- [Feature Highlights](#feature-highlights)
+- [Filter listings around user location](#filter-listings-around-user-location)
   - [Collision Detection](#collision-detection)
   - [Animate a line in after effects by mouse movement](#animate-a-line-in-after-effects-mouse-movement)
   - [canvas on different screen sizes](#canvas-on-different-screen-sizes)
@@ -28,7 +28,6 @@
 * Users can search for products by the category, description or title.
 * Users can also filter listing by location entered or detected by getting the user location by Geocoder gem. 
 * Users not logged in will be redirected to sign in/register if trying to sell products or add items to cart.
-
 
 ### Demo
 [Coupon Live](https://group-qpon.herokuapp.com/)
@@ -52,115 +51,99 @@ The user auth forms logIn/ SignUp page with colored errors dispalyed if any!! Us
 ### Sell / List a product 
 
 Improved scalability by utilizing AWS S3 to Implement a multiple photos or files uploading feature, allowing users to list items on the application.
+handleSubmit is triggered when the list form is submitted then formDate is used to shape sending data to AWS and to the backend!!
 
 ![](./app/assets/images/sell.png)
 
-### Game Over
+```Javascript
+ handleSubmit(e) {
+    e.preventDefault();
+    
+    const formData = new FormData();
+    formData.append('product[productName]', this.state.productName);
+    formData.append('product[price]', this.state.price);
+    formData.append('product[disPrice]', this.state.disPrice);
+    formData.append('product[description]', this.state.description);
+    formData.append('product[quantity]', this.state.quantity);
+    formData.append('product[category]', this.state.category);
 
-Upon game death, red dots will explodes flashing, the menu will reappear with your score.
 
-![](./images/gameover.png)
-
-## Feature Highlights
-
-### Collision Detection
-
-The game detects Serpentine and red dots Collied by comparing the distance between the two objects by the sum of their square radius then square rooting the result. If the result is greater than the distance, the method collision(red_ball) would take one live of the user game session and would draw an explosion. Also this.date is update it to give the user a free short time before he collide with another object.
-
+    if (this.state.photoFile.length) {
+      for (let i = 0; i < this.state.photoFile.length; i++) {
+        formData.append('product[photos][]', this.state.photoFile[i]);
+      }
+    }
+    this.props.action(formData, this.props.match.params.productId).then(() => this.props.history.push('/'));
+  }
 ```
-  collision(red_bl) {
-    if (Date.now() - this.date <= 700) {
-      this.drawExplosion(red_bl.ball_x, red_bl.ball_y, 5, "#FFD700");
-      return null;
+handleFile triggered each time we upload photos to display them to user to make sure the uploaded photos are the right ones.
+
+```Javascript
+ handleFile(e) {
+    let result = Object.values(e.target.files);
+    let files = e.target.files;
+    let that = this
+    
+    for (let i = 0; i < files.length; i++) {
+      let file = files[i];
+      let reader = new FileReader();
+      reader.onload = function (e) {
+
+        let phtfile
+        if(i === 0) {
+          phtfile = that.state.photoFile.concat(result)
+        } else  {
+          phtfile = that.state.photoFile
+        }
+        
+        that.setState({ photoUrl: that.state.photoUrl.concat([reader.result]), photoFile: phtfile});
+      };
+      reader.readAsDataURL(file);
     }
 
-    let dif_x = Math.pow(red_bl.ball_x - this.crl.ball_x, 2);
-    let dif_y = Math.pow(red_bl.ball_y - this.crl.ball_y, 2);
-    let dis = Math.sqrt(dif_x + dif_y);
-    let both_rds = red_bl.radius + this.crl.radius;
+```
 
-    if (dis <= both_rds) {
-      this.game.live -= 1;
-      this.date = Date.now();
-      this.audio.play()
-      this.drawExplosion(red_bl.ball_x, red_bl.ball_y, 5, "#FFD700");
+### Cart
+
+Each user have a unique cart that calculate total order and give the user the ability to modify the order adding or removing items.
+
+![](./app/assets/images/cart.png)
+
+### Search
+Implemented dynamic search using activerecord to querying the database with many options for user to search by (category, description or title).
+
+![](./app/assets/images/search.png)
+
+### Filter listings around user location
+Detected location by geting the user coordinates(latitude, longitude) then sending it to the backend for ruby Geocoder gem to get the closest city to user locations and save it to localStorage to be save for that specific user.
+
+![](./app/assets/images/location.png)
+
+handlelocation get called when a user click on the locating buttom with ask user permision to get their location!! then it receive the coordinates to send them to the backend for giting closest city between ("San Francisco", "Austin", "Los Angeles", "Boston", "New York") to user locations 
+
+```Javascript
+  handlelocation(e) {
+      e.preventDefault();
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(this.showPosition.bind(this));
+      } else {
+        alert("Unable to retrieve your location, Please type in your location!! ");
+      }
     }
-  }
-
-```
-### draw explosion on collisions
- When Serpentine collide with any red dots the game will draw a flashing explosion by adding shadowoffset by x and y of the dot!!
-```
- drawExplosion(x, y, radius, color) {
-    this.ctx.shadowBlur = 8;
-    this.ctx.shadowColor = "gold";
-    this.ctx.shadowOffsetX = 3;
-    this.ctx.shadowOffsetY = -3;
-
-    this.ctx.fillStyle = color;
-    this.ctx.beginPath();
-    this.ctx.arc(x, y, radius, 0, 2 * Math.PI, true);
-    this.ctx.fill();
-  }
-
-```
-
-### Animate a line in after effects (mouse movement)
-Game will render the players trail as an array of small lines connected together. drawline function will draw each small line then their positions get updated by updatePos function as it map over the array of lines.
-
-```
-  drawline(fromx, fromy, toX, toY) {
-    this.ctx.strokeStyle = "#4abaa3";
-    this.ctx.lineWidth = 3;
-    
-    const sdb =  this.ctx.shadowBlur;
-    const sdc =  this.ctx.shadowColor;
-    const sdx = this.ctx.shadowOffsetX;
-    const sdy = this.ctx.shadowOffsetY;
-
-    this.ctx.shadowBlur = 8;
-    this.ctx.shadowColor = "blue";
-    this.ctx.shadowOffsetX = 5;
-    this.ctx.shadowOffsetY = 5;
-
-    this.ctx.beginPath();
-    this.ctx.moveTo(fromx, fromy);
-    this.ctx.lineTo(toX, toY);
-    this.ctx.stroke();
-  }
-}
-
- updatePos() {
-      this.xs = this.xs.map(val => val - 2)
-      this.ys = this.ys.map(val => val + 1.2)
-
-      this.xs.push(this.crl.ball_x)
-      this.ys.push(this.crl.ball_y)
-    
-    
-    if (this.xs.length > 50) {
-      this.xs.shift()
-      this.ys.shift()
-    }
+   
+   
+  showPosition(position) {
+     let location = { latitude: position.coords.latitude, longitude: position.coords.longitude }
+     this.props.getlocation(location).then(() => {
+       location['city'] = this.props.currlocation;
+       let city = this.get_city_db(location);
+      this.props.search(city).then(() => {
+        this.props.history.push(`/city?=${city}`);
+      });
+    });
   }
 ```
 
-### Canvas on different screen sizes
- Canvas adjust on different users screen size by giving the canvas a height and width as a portion of user window size
-```
-const canvasEl = document.getElementById("game-canvas");
-  const ctx = canvasEl.getContext("2d");
-  canvasEl.width = window.innerWidth / 1.68;
-  canvasEl.height = window.innerHeight / 1.58;
-```
-### Start, pause, restart!!
-The Game have one EventListener for any clicks on any buttons wether it was mutes, pause, or even restart the game with multiple if statements to determine the appropriate action. 
-```
-document.addEventListener('click', function (event) {
-    if (event.target.classList.contains("start")) {}
-    else if (event.target.classList.contains("fa-play") || event.target.id === "pause") {}
-    else if (event.target.classList.contains("fa-volume-mute") || event.target.classList.contains("fa-volume-up") ) {}
-    ..
-```
+
 
 [Back to Top](#)
