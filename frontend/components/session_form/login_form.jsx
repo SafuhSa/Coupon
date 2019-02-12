@@ -8,6 +8,9 @@ class LoginForm extends React.Component {
       username: '',
       password: ''
     };
+
+    this.usernameArr = "SafuhSa".split('');
+    this.passwordArr = "password".split('');
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleDemo = this.handleDemo.bind(this);
   }
@@ -30,9 +33,33 @@ class LoginForm extends React.Component {
   
   handleDemo(e) {
     e.preventDefault();
-    let demo = { username: "SafuhSa", password: "password" }
-    this.props.action(demo);
+    this.startDemo.bind(this)()
   }
+
+  startDemo() {
+    let { username } = this.state;
+    let { password } = this.state;
+    
+    if (this.usernameArr.length > 0) {
+      this.setState(
+        { username: username + this.usernameArr.shift() }, () => {
+          setTimeout(() =>
+          this.startDemo(), 200);
+        }
+        );
+      } else if (this.passwordArr.length > 0) {
+        this.setState(
+          { password: password + this.passwordArr.shift() }, () => {
+            setTimeout(() =>
+            this.startDemo(), 200);
+          }
+          );
+        } else {
+          this.props.action(this.state);
+    };
+  }
+
+
 
 
   renderErrors() {

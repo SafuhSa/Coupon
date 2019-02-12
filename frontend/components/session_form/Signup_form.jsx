@@ -10,6 +10,11 @@ class SignUpForm extends React.Component {
       email: '',
       fullName:'',
     };
+    
+    this.fullNameArr = "Safuh AlSarayji".split('')
+    this.emailArr = "email@email.com".split('')
+    this.usernameArr = "SafuhSa".split('');
+    this.passwordArr = "password".split('');
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleDemo = this.handleDemo.bind(this); 
   }
@@ -32,8 +37,39 @@ class SignUpForm extends React.Component {
 
   handleDemo(e) {
     e.preventDefault();
-    let demo = { username: "SafuhSa", password: "password" }
-    this.props.demoAction(demo)
+    // let demo = { username: "SafuhSa", password: "password" }
+    // this.props.demoAction(demo)
+    this.startDemo.bind(this)()
+  }
+  
+  startDemo() {
+    let { email } = this.state;
+    let { fullName } = this.state;
+    let { username } = this.state;
+    let { password } = this.state;
+    if (this.emailArr.length > 0) {
+      this.setState( {email: email + this.emailArr.shift(), fullName: fullName + this.fullNameArr.shift() }, () => {
+        setTimeout(() =>
+          this.startDemo(), 200);
+      });
+
+    } else if (this.usernameArr.length > 0) {
+      this.setState(
+        { username: username + this.usernameArr.shift() }, () => {
+          setTimeout(() =>
+          this.startDemo(), 200);
+        })
+      } else if (this.passwordArr.length > 0) {
+        this.setState(
+          { password: password + this.passwordArr.shift() }, () => {
+            setTimeout(() =>
+            this.startDemo(), 200);
+          })
+        } else {
+          let demo = { username: "SafuhSa", password: "password" }
+          this.props.demoAction(demo)
+          // this.props.action(this.state);
+    };
   }
 
 

@@ -418,7 +418,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 var App = function App() {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_greeting_greeting_container__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_13__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_14__["AuthRoute"], {
     exact: true,
@@ -2836,6 +2835,10 @@ function (_React$Component) {
       email: '',
       fullName: ''
     };
+    _this.fullNameArr = "Safuh AlSarayji".split('');
+    _this.emailArr = "email@email.com".split('');
+    _this.usernameArr = "SafuhSa".split('');
+    _this.passwordArr = "password".split('');
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     _this.handleDemo = _this.handleDemo.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     return _this;
@@ -2865,12 +2868,55 @@ function (_React$Component) {
   }, {
     key: "handleDemo",
     value: function handleDemo(e) {
-      e.preventDefault();
-      var demo = {
-        username: "SafuhSa",
-        password: "password"
-      };
-      this.props.demoAction(demo);
+      e.preventDefault(); // let demo = { username: "SafuhSa", password: "password" }
+      // this.props.demoAction(demo)
+
+      this.startDemo.bind(this)();
+    }
+  }, {
+    key: "startDemo",
+    value: function startDemo() {
+      var _this3 = this;
+
+      var email = this.state.email;
+      var fullName = this.state.fullName;
+      var username = this.state.username;
+      var password = this.state.password;
+
+      if (this.emailArr.length > 0) {
+        this.setState({
+          email: email + this.emailArr.shift(),
+          fullName: fullName + this.fullNameArr.shift()
+        }, function () {
+          setTimeout(function () {
+            return _this3.startDemo();
+          }, 200);
+        });
+      } else if (this.usernameArr.length > 0) {
+        this.setState({
+          username: username + this.usernameArr.shift()
+        }, function () {
+          setTimeout(function () {
+            return _this3.startDemo();
+          }, 200);
+        });
+      } else if (this.passwordArr.length > 0) {
+        this.setState({
+          password: password + this.passwordArr.shift()
+        }, function () {
+          setTimeout(function () {
+            return _this3.startDemo();
+          }, 200);
+        });
+      } else {
+        var demo = {
+          username: "SafuhSa",
+          password: "password"
+        };
+        this.props.demoAction(demo); // this.props.action(this.state);
+      }
+
+      ;
     }
   }, {
     key: "renderErrors",
@@ -2995,6 +3041,8 @@ function (_React$Component) {
       username: '',
       password: ''
     };
+    _this.usernameArr = "SafuhSa".split('');
+    _this.passwordArr = "password".split('');
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     _this.handleDemo = _this.handleDemo.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     return _this;
@@ -3025,11 +3073,37 @@ function (_React$Component) {
     key: "handleDemo",
     value: function handleDemo(e) {
       e.preventDefault();
-      var demo = {
-        username: "SafuhSa",
-        password: "password"
-      };
-      this.props.action(demo);
+      this.startDemo.bind(this)();
+    }
+  }, {
+    key: "startDemo",
+    value: function startDemo() {
+      var _this3 = this;
+
+      var username = this.state.username;
+      var password = this.state.password;
+
+      if (this.usernameArr.length > 0) {
+        this.setState({
+          username: username + this.usernameArr.shift()
+        }, function () {
+          setTimeout(function () {
+            return _this3.startDemo();
+          }, 200);
+        });
+      } else if (this.passwordArr.length > 0) {
+        this.setState({
+          password: password + this.passwordArr.shift()
+        }, function () {
+          setTimeout(function () {
+            return _this3.startDemo();
+          }, 200);
+        });
+      } else {
+        this.props.action(this.state);
+      }
+
+      ;
     }
   }, {
     key: "renderErrors",
