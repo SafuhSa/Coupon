@@ -80,11 +80,13 @@ ActiveRecord::Schema.define(version: 2019_02_15_232500) do
   end
 
   create_table "reviews", force: :cascade do |t|
-    t.string "body"
-    t.integer "business_id"
-    t.integer "user_id"
+    t.string "body", default: "", null: false
+    t.integer "product_id", null: false
+    t.integer "user_id", null: false
+    t.integer "rating", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["product_id", "user_id"], name: "index_reviews_on_product_id_and_user_id", unique: true
   end
 
   create_table "users", force: :cascade do |t|
