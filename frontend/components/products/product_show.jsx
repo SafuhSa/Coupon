@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import ReviewForm from '../review/review_form';
+import ReviewFormContainer from '../review/review_container';
 
 class ProductShow extends React.Component {
   constructor(props) {
@@ -94,7 +94,7 @@ updateQuantity(e) {
             <h3>Customer Reviews</h3>
             <hr />
             <div>
-            <ReviewForm />
+            <ReviewFormContainer />
             </div>
             <div />
           </div>

@@ -14,6 +14,7 @@ Cart.destroy_all
 Product.destroy_all
 RecentView.destroy_all
 User.destroy_all
+Review.destroy_all
 
 
 
