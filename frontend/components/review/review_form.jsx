@@ -4,7 +4,7 @@ class ReviewForm extends React.Component {
   constructor(props) {
     super(props)
 
-    this.state = { mouseHvr: 0, rating: 0 }
+    this.state = { mouseHvr: 0, rating: 0, body: '' }
   }
   starEnter(num) {
     return (e) => {
@@ -19,9 +19,14 @@ class ReviewForm extends React.Component {
       this.setState({ rating: rating })
     }
   }
+  updateBody(e) {
+    this.setState({ body: e.target.value})
+  }
 
   handleSubmit() {
-    
+    let obj = { rating: this.state.rating, body: this.state.body, productId: this.props.productId}
+    debugger
+    this.props.createReview(obj)
   }
 
   startLeave(e) {
@@ -40,7 +45,7 @@ class ReviewForm extends React.Component {
             <span id='star4' onMouseEnter={this.starEnter(4).bind(this)} onMouseLeave={this.startLeave.bind(this)} onClick={this.updateRating(4)} className={this.state.mouseHvr >= 4 ? "fa fa-star checked" : "fa fa-star"} />
             <span id='star5' onMouseEnter={this.starEnter(5).bind(this)} onMouseLeave={this.startLeave.bind(this)} onClick={this.updateRating(5)} className={this.state.mouseHvr >= 5 ? "fa fa-star checked" : "fa fa-star"} />
           </ul>
-          <textarea placeholder="Write a review........" className="review-input" />
+          <textarea onChange={this.updateBody.bind(this)} value={this.state.value} placeholder="Write a review........" className="review-input" />
         </div>
           
         <button onClick={this.handleSubmit.bind(this)}> post review </button>

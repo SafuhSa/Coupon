@@ -2,9 +2,9 @@
 
 export const createReview = (review) => (
   $.ajax({
-    method: 'DELETE',
-    url: 'api/re',
-    review
+    method: 'POST',
+    url: 'api/reviews',
+    data: { review }
   })
 );
 

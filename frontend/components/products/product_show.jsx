@@ -44,6 +44,15 @@ updateQuantity(e) {
     }
   }
  
+  writeReview() {
+    if (this.props.userId) {
+      return <ReviewFormContainer />
+    } else {
+      return (
+        <Link to='/login'>please log in to write a Review</Link>
+      )
+    }
+  }
 
   render() {
     const { product } = this.props;
@@ -94,7 +103,7 @@ updateQuantity(e) {
             <h3>Customer Reviews</h3>
             <hr />
             <div>
-            <ReviewFormContainer />
+            {this.writeReview()}
             </div>
             <div />
           </div>
