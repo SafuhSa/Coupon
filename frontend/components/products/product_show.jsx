@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import ReviewForm from '../review/review_form';
 
 class ProductShow extends React.Component {
   constructor(props) {
@@ -8,6 +9,7 @@ class ProductShow extends React.Component {
     this.addItemToCart = this.addItemToCart.bind(this)
     this.updateQuantity = this.updateQuantity.bind(this)
   }
+
   componentDidMount() {
     this.props.requestProduct(this.props.match.params.productId).then(() => {
       let url = this.props.product.photoUrls[0];
@@ -41,6 +43,7 @@ updateQuantity(e) {
       this.props.history.push("/login");
     }
   }
+ 
 
   render() {
     const { product } = this.props;
@@ -62,9 +65,7 @@ updateQuantity(e) {
       result.push(<ul className='image-show' key={i}><img key={i} src={product.photoUrls[i]} onClick={() => this.setState({ mainImage: < ul className='image-show' ><img  src={product.photoUrls[i]} /></ul>})}/></ul>)
     }
     
-    // if (!this.state.mainImage) {
-    //   this.updateImage()
-    // }
+    
     
     return <div className="show-container">
         <div className="show-title">
@@ -92,7 +93,9 @@ updateQuantity(e) {
             </div>
             <h3>Customer Reviews</h3>
             <hr />
-            <textarea placeholder="Write a review........" className="review-input" />
+            <div>
+            <ReviewForm />
+            </div>
             <div />
           </div>
 
