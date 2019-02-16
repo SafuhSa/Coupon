@@ -2,8 +2,6 @@ class Api::ReviewsController < ApplicationController
 
     def create
         @review = Review.new(review_params)
-        @review.user_id = current_user.id
-        debugger
         if @review.save
             render :show
         else
@@ -33,7 +31,7 @@ class Api::ReviewsController < ApplicationController
     private
     def review_params
         snackcase_params
-        params.require(:review).permit(:rating, :body, :product_id)
+        params.require(:review).permit(:rating, :body, :product_id, :user_id)
     end
 
     def snackcase_params

@@ -26,6 +26,10 @@ class Product < ApplicationRecord
 
     has_many_attached :photos
 
+       has_many :reviews,
+        foreign_key: :product_id,
+        class_name: :Review
+
     def ensure_photos
         unless self.photos.attached?
             errors[:photos] << 'Must be attached'

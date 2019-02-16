@@ -2948,9 +2948,9 @@ function (_React$Component) {
       var obj = {
         rating: this.state.rating,
         body: this.state.body,
-        productId: this.props.productId
+        productId: this.props.productId,
+        userId: this.props.currentUser.id
       };
-      debugger;
       this.props.createReview(obj);
     }
   }, {

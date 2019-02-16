@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     resource :cart, only: [:show]
     resources :search, only: [:index]
     resources :recentviews, only: [:index, :create]
-    resources :reviews, only: [:index, :show, :create, :update, :destroy]
+    resources :reviews, only: [:create, :update, :destroy]
     resource :location, only: [:create]
   end
 end
