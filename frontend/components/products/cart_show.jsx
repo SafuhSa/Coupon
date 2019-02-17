@@ -7,7 +7,6 @@ class CartShow extends React.Component {
     this.getItems = this.getItems.bind(this)
   }
   componentDidMount() {
-    // this.props.requestCart(this.props.match.params.cartId);
     this.props.requestCart();
   }
   

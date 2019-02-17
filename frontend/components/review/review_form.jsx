@@ -25,6 +25,7 @@ class ReviewForm extends React.Component {
 
   handleSubmit() {
     let obj = { rating: this.state.rating, body: this.state.body, productId: this.props.productId, userId: this.props.currentUser.id}
+    debugger
     this.props.createReview(obj).then((result) => {
       this.setState({ mouseHvr: 0, rating: 0, body: '' })
     })

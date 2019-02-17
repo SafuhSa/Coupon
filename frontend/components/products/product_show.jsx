@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import ReviewFormContainer from '../review/review_container';
-import ReviewIndex from '../review/review_index'
+import ReviewIndexContainer from '../review/review_index_container'
 
 class ProductShow extends React.Component {
   constructor(props) {
@@ -107,7 +107,7 @@ updateQuantity(e) {
             {this.writeReview()}
             </div>
             <div>
-            <ReviewIndex userId={userId} review={product.reviews} />
+            <ReviewIndexContainer review={product.reviews} />
             </div>
             <div />
           </div>
