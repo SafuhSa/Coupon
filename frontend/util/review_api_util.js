@@ -1,5 +1,3 @@
-
-
 export const createReview = (review) => (
   $.ajax({
     method: 'POST',
@@ -9,9 +7,17 @@ export const createReview = (review) => (
 );
 
 
-// export const deleteBoughtItem = (id) => (
-//   $.ajax({
-//     method: 'DELETE',
-//     url: `api/boughtitems/${id}`
-//   })
-// );
+export const deleteReview = (id) => (
+  $.ajax({
+    method: 'DELETE',
+    url: `api/reviews/${id}`
+  })
+);
+
+export const updateReview = (review) => (
+  $.ajax({
+    method: 'PATCH',
+    url: `api/reviews/${review.id}`,
+    data: review
+  })
+);

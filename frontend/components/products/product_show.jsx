@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import ReviewFormContainer from '../review/review_container';
+import ReviewIndex from '../review/review_index'
 
 class ProductShow extends React.Component {
   constructor(props) {
@@ -55,7 +56,7 @@ updateQuantity(e) {
   }
 
   render() {
-    const { product } = this.props;
+    const { userId ,product } = this.props;
     if (!product) {
       return <div>Loading...</div>;
     }
@@ -104,6 +105,9 @@ updateQuantity(e) {
             <hr />
             <div>
             {this.writeReview()}
+            </div>
+            <div>
+            <ReviewIndex userId={userId} review={product.reviews} />
             </div>
             <div />
           </div>
