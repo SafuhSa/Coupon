@@ -34,6 +34,7 @@ reviews() {
   let { userId } = this.props; 
 if (this.state.reviews[0]) {
   return this.state.reviews.map((el, i) => {
+    if ((el.userId === undefined)) return <div key={i}>{el}</div>
     let result;
     if (el.userId === userId) {
       result = (

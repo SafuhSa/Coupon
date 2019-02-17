@@ -47,7 +47,7 @@ updateQuantity(e) {
  
   writeReview() {
     if (this.props.userId) {
-      return <ReviewFormContainer />
+      return <ReviewFormContainer productId={this.props.product.id} />
     } else {
       return (
         <Link to='/login'>please log in to write a Review</Link>

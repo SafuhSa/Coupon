@@ -2670,7 +2670,9 @@ function (_React$Component) {
     key: "writeReview",
     value: function writeReview() {
       if (this.props.userId) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_review_review_container__WEBPACK_IMPORTED_MODULE_2__["default"], null);
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_review_review_container__WEBPACK_IMPORTED_MODULE_2__["default"], {
+          productId: this.props.product.id
+        });
       } else {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
           to: "/login"
@@ -2872,7 +2874,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var mapStateToProps = function mapStateToProps(_ref) {
+var mapStateToProps = function mapStateToProps(_ref, ownProps) {
   var session = _ref.session,
       errors = _ref.errors,
       _ref$entities = _ref.entities,
@@ -2881,14 +2883,14 @@ var mapStateToProps = function mapStateToProps(_ref) {
   return {
     currentUser: users[session.id],
     errors: errors.review,
-    productId: Object.values(products)[0].id,
+    productId: ownProps.productId,
     formType: 'Write a new review'
   };
 };
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
-    createReview: function createReview(review) {
+    action: function action(review) {
       return dispatch(Object(_actions_review_actions__WEBPACK_IMPORTED_MODULE_1__["createReview"])(review));
     }
   };
@@ -2949,6 +2951,20 @@ function (_React$Component) {
   }
 
   _createClass(ReviewForm, [{
+    key: "componentDidMount",
+    value: function componentDidMount(prevProps) {
+      if (this.props.review) {
+        var _this$props$review = this.props.review,
+            rating = _this$props$review.rating,
+            body = _this$props$review.body;
+        this.setState({
+          rating: rating,
+          body: body,
+          mouseHvr: rating
+        });
+      }
+    }
+  }, {
     key: "starEnter",
     value: function starEnter(num) {
       var _this2 = this;
@@ -2993,7 +3009,7 @@ function (_React$Component) {
         userId: this.props.currentUser.id
       };
       debugger;
-      this.props.createReview(obj).then(function (result) {
+      this.props.action(obj).then(function (result) {
         _this4.setState({
           mouseHvr: 0,
           rating: 0,
@@ -3163,6 +3179,9 @@ function (_React$Component) {
 
       if (this.state.reviews[0]) {
         return this.state.reviews.map(function (el, i) {
+          if (el.userId === undefined) return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            key: i
+          }, el);
           var result;
 
           if (el.userId === userId) {
@@ -3255,25 +3274,25 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var mapStateToProps = function mapStateToProps(_ref) {
+var mapStateToProps = function mapStateToProps(_ref, ownProps) {
   var session = _ref.session,
       errors = _ref.errors,
       _ref$entities = _ref.entities,
       users = _ref$entities.users,
       products = _ref$entities.products;
-  debugger;
   return {
     currentUser: users[session.id],
     errors: errors.review,
     productId: Object.values(products)[0].id,
-    formType: 'Change a current review'
+    formType: 'Change a current review',
+    review: ownProps.review
   };
 };
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
-    createReview: function createReview(review) {
-      return dispatch(Object(_actions_review_actions__WEBPACK_IMPORTED_MODULE_1__["createReview"])(review));
+    action: function action(review) {
+      return dispatch(Object(_actions_review_actions__WEBPACK_IMPORTED_MODULE_1__["updateReview"])(review));
     }
   };
 };
@@ -4501,7 +4520,9 @@ var updateReview = function updateReview(review) {
   return $.ajax({
     method: 'PATCH',
     url: "api/reviews/".concat(review.id),
-    data: review
+    data: {
+      review: review
+    }
   });
 };
 

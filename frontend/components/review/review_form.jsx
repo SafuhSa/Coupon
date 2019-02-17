@@ -6,6 +6,14 @@ class ReviewForm extends React.Component {
 
     this.state = { mouseHvr: 0, rating: 0, body: '' }
   }
+
+  componentDidMount(prevProps) {
+    if (this.props.review) {
+      const {rating, body }=  this.props.review
+      this.setState({ rating: rating, body: body, mouseHvr: rating });
+    }
+  }
+
   starEnter(num) {
     return (e) => {
       e.preventDefault();
@@ -26,7 +34,7 @@ class ReviewForm extends React.Component {
   handleSubmit() {
     let obj = { rating: this.state.rating, body: this.state.body, productId: this.props.productId, userId: this.props.currentUser.id}
     debugger
-    this.props.createReview(obj).then((result) => {
+    this.props.action(obj).then((result) => {
       this.setState({ mouseHvr: 0, rating: 0, body: '' })
     })
   }

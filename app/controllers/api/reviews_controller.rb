@@ -11,7 +11,7 @@ class Api::ReviewsController < ApplicationController
     end
 
     def update
-        @review = Review.find_by(user_id: params[:review][:user_id], business_id: params[:review][:business_id])
+        @review = Review.find_by(user_id: review_params[:user_id], product_id: review_params[:product_id])
         if @review.update_attributes(review_params)
             render :show
         else
@@ -23,7 +23,6 @@ class Api::ReviewsController < ApplicationController
         @review = Review.find(params[:id])
         if @review.destroy
             render :show
-            #render "api/business/#{@review.business_id}" 
         else 
             render json: @review.errors.full_messages, status: 422
         end

@@ -1,19 +1,20 @@
 import { connect } from 'react-redux';
-import { createReview } from '../../actions/review_actions';
+import { updateReview } from '../../actions/review_actions';
 import ReviewForm from './review_form';
 
-const mapStateToProps = ({ session, errors, entities: { users, products } }) => {
-  debugger
+const mapStateToProps = ({ session, errors, entities: { users, products } }, ownProps) => {
+
   return ({
     currentUser: users[session.id],
     errors: errors.review,
     productId: Object.values(products)[0].id,
-    formType: 'Change a current review'
+    formType: 'Change a current review',
+    review: ownProps.review
   })
 };
 
 const mapDispatchToProps = dispatch => ({
-  createReview: review => dispatch(createReview(review)),
+  action: review => dispatch(updateReview(review)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ReviewForm);
