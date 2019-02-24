@@ -2755,6 +2755,7 @@ function (_React$Component) {
       }, result), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "product_description"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Highlights"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, product.description)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Customer Reviews"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_review_review_index_container__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        productId: product.id,
         review: product.reviews
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.writeReview()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "right-show-container"
@@ -3011,6 +3012,7 @@ function (_React$Component) {
       };
 
       if (this.props.formType === 'update review') {
+        debugger;
         this.props.action(obj);
       } else {
         this.props.action(obj).then(function () {
@@ -3175,6 +3177,7 @@ function (_React$Component) {
       // return () => {
       var reviews = this.state.reviews.slice();
       var updateForm = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_review_update_container__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        productId: this.props.productId,
         review: review
       });
 
@@ -3286,7 +3289,8 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
   return {
     errors: state.errors.review,
     reviews: ownProps.review,
-    userId: state.session.id
+    userId: state.session.id,
+    productId: ownProps.productId
   };
 };
 
@@ -3330,7 +3334,7 @@ var mapStateToProps = function mapStateToProps(_ref, ownProps) {
   return {
     currentUser: users[session.id],
     errors: errors.review,
-    productId: Object.values(products)[0].id,
+    productId: ownProps.productId,
     formType: 'update review',
     review: ownProps.review
   };

@@ -104,7 +104,7 @@ updateQuantity(e) {
             <h3>Customer Reviews</h3>
             <hr />
             <div>
-            <ReviewIndexContainer review={product.reviews} />
+            <ReviewIndexContainer productId={product.id} review={product.reviews} />
             </div>
             <div>
             {this.writeReview()}

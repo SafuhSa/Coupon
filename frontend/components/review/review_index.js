@@ -16,7 +16,7 @@ class ReviewIndex extends React.Component {
   updateReview(review){
     // return () => {
       let reviews = this.state.reviews.slice()
-      let updateForm = <UpdateContainer review={review}/>
+    let updateForm = <UpdateContainer productId={this.props.productId} review={review}/>
       for(let i = 0; i < reviews.length; i++) {
         const el = reviews[i];
         if (el.id === review.id) {

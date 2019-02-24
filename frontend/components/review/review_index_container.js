@@ -6,7 +6,8 @@ const mapStateToProps = (state, ownProps) => {
   return ({
     errors: state.errors.review,
     reviews: ownProps.review,
-    userId: state.session.id
+    userId: state.session.id,
+    productId: ownProps.productId
   });
 }
 
