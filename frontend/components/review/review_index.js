@@ -62,10 +62,10 @@ if (this.state.reviews[0]) {
       </div>
     )
   })
-  return null;
   }
 
-return 'be the first to review';
+  // return <p className='frst-to-review'>Be the first to review this listing </p>;
+  return null;
 }
   render() {
     return (

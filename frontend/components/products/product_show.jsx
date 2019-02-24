@@ -50,7 +50,7 @@ updateQuantity(e) {
       return <ReviewFormContainer productId={this.props.product.id} />
     } else {
       return (
-        <Link to='/login'>please log in to write a Review</Link>
+        <Link className='login-write-review' to='/login'>please log in to write a Review</Link>
       )
     }
   }
@@ -104,10 +104,10 @@ updateQuantity(e) {
             <h3>Customer Reviews</h3>
             <hr />
             <div>
-            {this.writeReview()}
+            <ReviewIndexContainer review={product.reviews} />
             </div>
             <div>
-            <ReviewIndexContainer review={product.reviews} />
+            {this.writeReview()}
             </div>
             <div />
           </div>

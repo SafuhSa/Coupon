@@ -43,8 +43,8 @@ class ReviewForm extends React.Component {
   }
   renderErrs () {
     let result = []
-    this.props.errors.forEach(el => {
-      result.push(<li className='review-err'>{el}</li>)
+    this.props.errors.forEach((el, i) => {
+      result.push(<li  key={i} className='review-err'>{el}</li>)
     });
     return result
   }
@@ -59,7 +59,7 @@ class ReviewForm extends React.Component {
       <div>
         <form className='review-container' >
           <div className='review-body'>
-            
+            <h3 className='write-reve-title'>Write a review!!</h3>
             <ul className='review-errs'>{this.renderErrs.bind(this)()}</ul>
             <ul className='review-stars'> 
               <span id='star1' onMouseEnter={this.starEnter(1).bind(this)} onMouseLeave={this.startLeave.bind(this)} onClick={this.updateRating(1)} className={this.state.mouseHvr >= 1 ? "fa fa-star checked write-review" : "fa fa-star write-review"} />

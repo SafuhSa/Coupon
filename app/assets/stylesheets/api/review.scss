@@ -1,3 +1,23 @@
+.login-write-review {
+  // border: 1px solid;
+  // padding: 0.4em;
+  // margin: 10px;
+  font-size: 20px;
+  border-radius: 3px;
+  border-bottom: 1px solid;
+}
+.login-write-review:hover {
+  color: #53a318;
+}
+
+.frst-to-review {
+  font-size: 2em;
+  padding: 0.4em;
+  padding-left: 0.2em;
+  text-decoration: underline;
+  font-weight: 300;
+}
+
 .review-body {
   display: flex;
   flex-direction: column;
@@ -5,15 +25,21 @@
   border-radius: 10px;
   margin-bottom: 2em;
 }
+.write-reve-title {
+  margin: 0;
+  padding: 0;
+  padding: 0.5em 0 0.3em 0.8em;
+  font-weight: 400;
+}
 .review-errs {
   color: red;
-  padding: 8PX;
-  line-height: 1.4;
+  padding-left: 0.9em;
+  line-height: 1.6;
 }
 .review-stars {
   display: flex;
   padding: 0.5em;
-  padding-top: 0;
+  padding-top: 0.3em;
   padding-left: 0.7em;
 }
 .fa-star.write-review {

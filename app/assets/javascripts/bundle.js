@@ -2675,6 +2675,7 @@ function (_React$Component) {
         });
       } else {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+          className: "login-write-review",
           to: "/login"
         }, "please log in to write a Review");
       }
@@ -2753,9 +2754,9 @@ function (_React$Component) {
         className: "show-images"
       }, result), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "product_description"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Highlights"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, product.description)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Customer Reviews"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.writeReview()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_review_review_index_container__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Highlights"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, product.description)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Customer Reviews"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_review_review_index_container__WEBPACK_IMPORTED_MODULE_3__["default"], {
         review: product.reviews
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.writeReview()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "right-show-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "rating-bought"
@@ -3025,8 +3026,9 @@ function (_React$Component) {
     key: "renderErrs",
     value: function renderErrs() {
       var result = [];
-      this.props.errors.forEach(function (el) {
+      this.props.errors.forEach(function (el, i) {
         result.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          key: i,
           className: "review-err"
         }, el));
       });
@@ -3049,7 +3051,9 @@ function (_React$Component) {
         className: "review-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "review-body"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+        className: "write-reve-title"
+      }, "Write a review!!"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "review-errs"
       }, this.renderErrs.bind(this)()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "review-stars"
@@ -3243,10 +3247,10 @@ function (_React$Component) {
             className: "posted-review-body"
           }, el.body));
         });
-        return null;
-      }
+      } // return <p className='frst-to-review'>Be the first to review this listing </p>;
 
-      return 'be the first to review';
+
+      return null;
     }
   }, {
     key: "render",
