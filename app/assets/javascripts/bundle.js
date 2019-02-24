@@ -3022,6 +3022,17 @@ function (_React$Component) {
       }
     }
   }, {
+    key: "renderErrs",
+    value: function renderErrs() {
+      var result = [];
+      this.props.errors.forEach(function (el) {
+        result.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          className: "review-err"
+        }, el));
+      });
+      return result;
+    }
+  }, {
     key: "startLeave",
     value: function startLeave(e) {
       e.preventDefault();
@@ -3039,45 +3050,48 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "review-body"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        className: "review-errs"
+      }, this.renderErrs.bind(this)()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "review-stars"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         id: "star1",
         onMouseEnter: this.starEnter(1).bind(this),
         onMouseLeave: this.startLeave.bind(this),
         onClick: this.updateRating(1),
-        className: this.state.mouseHvr >= 1 ? "fa fa-star checked" : "fa fa-star"
+        className: this.state.mouseHvr >= 1 ? "fa fa-star checked write-review" : "fa fa-star write-review"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         id: "star2",
         onMouseEnter: this.starEnter(2).bind(this),
         onMouseLeave: this.startLeave.bind(this),
         onClick: this.updateRating(2),
-        className: this.state.mouseHvr >= 2 ? "fa fa-star checked" : "fa fa-star"
+        className: this.state.mouseHvr >= 2 ? "fa fa-star checked write-review" : "fa fa-star write-review"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         id: "star3",
         onMouseEnter: this.starEnter(3).bind(this),
         onMouseLeave: this.startLeave.bind(this),
         onClick: this.updateRating(3),
-        className: this.state.mouseHvr >= 3 ? "fa fa-star checked" : "fa fa-star"
+        className: this.state.mouseHvr >= 3 ? "fa fa-star checked write-review" : "fa fa-star write-review"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         id: "star4",
         onMouseEnter: this.starEnter(4).bind(this),
         onMouseLeave: this.startLeave.bind(this),
         onClick: this.updateRating(4),
-        className: this.state.mouseHvr >= 4 ? "fa fa-star checked" : "fa fa-star"
+        className: this.state.mouseHvr >= 4 ? "fa fa-star checked write-review" : "fa fa-star write-review"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         id: "star5",
         onMouseEnter: this.starEnter(5).bind(this),
         onMouseLeave: this.startLeave.bind(this),
         onClick: this.updateRating(5),
-        className: this.state.mouseHvr >= 5 ? "fa fa-star checked" : "fa fa-star"
+        className: this.state.mouseHvr >= 5 ? "fa fa-star checked write-review" : "fa fa-star write-review"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
         onChange: this.updateBody.bind(this),
         value: this.state.body,
         placeholder: "Write a review........",
         className: "review-input"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "post-review",
         onClick: this.handleSubmit.bind(this)
-      }, " post review ")), this.props.errors);
+      }, " post review "))));
     }
   }]);
 
@@ -4195,7 +4209,6 @@ var reviewErrorsReducer = function reviewErrorsReducer() {
 
   switch (action.type) {
     case _actions_review_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_REVIEW_ERRORS"]:
-      debugger;
       return action.errors;
 
     case _actions_review_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_REVIEW"]:

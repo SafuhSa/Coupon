@@ -41,6 +41,13 @@ class ReviewForm extends React.Component {
       })
     }
   }
+  renderErrs () {
+    let result = []
+    this.props.errors.forEach(el => {
+      result.push(<li className='review-err'>{el}</li>)
+    });
+    return result
+  }
 
   startLeave(e) {
       e.preventDefault();
@@ -52,19 +59,20 @@ class ReviewForm extends React.Component {
       <div>
         <form className='review-container' >
           <div className='review-body'>
+            
+            <ul className='review-errs'>{this.renderErrs.bind(this)()}</ul>
             <ul className='review-stars'> 
-              <span id='star1' onMouseEnter={this.starEnter(1).bind(this)} onMouseLeave={this.startLeave.bind(this)} onClick={this.updateRating(1)} className={this.state.mouseHvr >= 1 ? "fa fa-star checked" : "fa fa-star"} />
-              <span id='star2' onMouseEnter={this.starEnter(2).bind(this)} onMouseLeave={this.startLeave.bind(this)} onClick={this.updateRating(2)} className={this.state.mouseHvr >= 2 ? "fa fa-star checked" : "fa fa-star"} />
-              <span id='star3' onMouseEnter={this.starEnter(3).bind(this)} onMouseLeave={this.startLeave.bind(this)} onClick={this.updateRating(3)} className={this.state.mouseHvr >= 3 ? "fa fa-star checked" : "fa fa-star"} />
-              <span id='star4' onMouseEnter={this.starEnter(4).bind(this)} onMouseLeave={this.startLeave.bind(this)} onClick={this.updateRating(4)} className={this.state.mouseHvr >= 4 ? "fa fa-star checked" : "fa fa-star"} />
-              <span id='star5' onMouseEnter={this.starEnter(5).bind(this)} onMouseLeave={this.startLeave.bind(this)} onClick={this.updateRating(5)} className={this.state.mouseHvr >= 5 ? "fa fa-star checked" : "fa fa-star"} />
+              <span id='star1' onMouseEnter={this.starEnter(1).bind(this)} onMouseLeave={this.startLeave.bind(this)} onClick={this.updateRating(1)} className={this.state.mouseHvr >= 1 ? "fa fa-star checked write-review" : "fa fa-star write-review"} />
+              <span id='star2' onMouseEnter={this.starEnter(2).bind(this)} onMouseLeave={this.startLeave.bind(this)} onClick={this.updateRating(2)} className={this.state.mouseHvr >= 2 ? "fa fa-star checked write-review" : "fa fa-star write-review"} />
+              <span id='star3' onMouseEnter={this.starEnter(3).bind(this)} onMouseLeave={this.startLeave.bind(this)} onClick={this.updateRating(3)} className={this.state.mouseHvr >= 3 ? "fa fa-star checked write-review" : "fa fa-star write-review"} />
+              <span id='star4' onMouseEnter={this.starEnter(4).bind(this)} onMouseLeave={this.startLeave.bind(this)} onClick={this.updateRating(4)} className={this.state.mouseHvr >= 4 ? "fa fa-star checked write-review" : "fa fa-star write-review"} />
+              <span id='star5' onMouseEnter={this.starEnter(5).bind(this)} onMouseLeave={this.startLeave.bind(this)} onClick={this.updateRating(5)} className={this.state.mouseHvr >= 5 ? "fa fa-star checked write-review" : "fa fa-star write-review"} />
             </ul>
             <textarea onChange={this.updateBody.bind(this)} value={this.state.body} placeholder="Write a review........" className="review-input" />
+          <button className='post-review' onClick={this.handleSubmit.bind(this)}> post review </button>
           </div>
             
-          <button onClick={this.handleSubmit.bind(this)}> post review </button>
         </form>
-        {this.props.errors}
       </div>
     )
   }

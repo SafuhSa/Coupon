@@ -1,0 +1,42 @@
+.review-body {
+  display: flex;
+  flex-direction: column;
+  background-color: #f6f7f8;
+  border-radius: 10px;
+}
+.review-errs {
+  color: red;
+  padding: 8PX;
+  line-height: 1.4;
+}
+.review-stars {
+  display: flex;
+  padding: 0.5em;
+  padding-top: 0;
+  padding-left: 0.7em;
+}
+.fa-star.write-review {
+  font-size: 40px;
+}
+.review-input {
+    background-color: white;
+    border-top: 1px solid #d5d8db;
+    border-radius: 5px;
+    min-height: 92px;
+    width: 95%;
+    display: flex;
+    padding-left: 7px;
+    padding-top: 11px;
+    margin-left: 0.7em;
+    margin-bottom: 10px;
+}
+
+.post-review {
+    background-color: #53a318;
+    color: white;
+    width: fit-content;
+    padding: 5px;
+    border-radius: 5px;
+    margin: 0.6em;
+    font-size: 22px;
+}
