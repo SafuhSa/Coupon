@@ -134,11 +134,12 @@ Product modle search methods to query the `PostgreSQL` database using `activeRec
 
 ```Ruby
 def self.search_results(str)
-        return Product.all if str == ""
         param = "%" + str.downcase + '%'
         
         products_des = Product.where('lower(description) LIKE ?', param).to_a
-    end
+        ...
+        ..
+end
 ```
 
 ### Filter listings around user location
@@ -164,11 +165,11 @@ handlelocation get called when a user click on the locating buttom with ask user
      this.props.getlocation(location).then(() => {
        location['city'] = this.props.currlocation;
        let city = this.get_city_db(location);
-      this.props.search(city).then(() => {
-        this.props.history.push(`/city?=${city}`);
+        this.props.search(city).then(() => {
+          this.props.history.push(`/city?=${city}`);
+        });
       });
-    });
-  }
+    }
 ```
 
 ### Recently Viewed
