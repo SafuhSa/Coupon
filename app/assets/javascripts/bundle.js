@@ -2884,7 +2884,7 @@ var mapStateToProps = function mapStateToProps(_ref, ownProps) {
     currentUser: users[session.id],
     errors: errors.review,
     productId: ownProps.productId,
-    formType: 'Write a new review'
+    formType: 'post review'
   };
 };
 
@@ -3009,7 +3009,7 @@ function (_React$Component) {
         userId: this.props.currentUser.id
       };
 
-      if (this.props.formType === 'Change a current review') {
+      if (this.props.formType === 'update review') {
         this.props.action(obj);
       } else {
         this.props.action(obj).then(function () {
@@ -3091,7 +3091,7 @@ function (_React$Component) {
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "post-review",
         onClick: this.handleSubmit.bind(this)
-      }, " post review "))));
+      }, this.props.formType))));
     }
   }]);
 
@@ -3202,20 +3202,46 @@ function (_React$Component) {
           var result;
 
           if (el.userId === userId) {
-            result = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+            result = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+              className: "indxrev-butns"
+            }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+              className: "indxrev-butn",
               onClick: function onClick() {
                 return _this2.props.deleteReview(el.id);
               }
-            }, "Delete this review"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+            }, "Delete"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+              className: "indxrev-butn",
               onClick: function onClick() {
                 return _this2.updateReview.bind(_this2)(el);
               }
-            }, "Change this review"));
+            }, "Update"));
           }
 
+          var name = el.author.split(' ').map(function (el) {
+            return el[0].toUpperCase() + el.slice(1).toLowerCase();
+          }).join(' ');
           return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-            key: i
-          }, result, el.body);
+            key: i,
+            className: "posted-review"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "review-auth-btns"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+            className: "review-author"
+          }, name), result), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+            className: "review-stars"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+            className: el.rating >= 1 ? "fa fa-star checked posted-star" : "fa fa-star posted-star"
+          }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+            className: el.rating >= 2 ? "fa fa-star checked posted-star" : "fa fa-star posted-star"
+          }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+            className: el.rating >= 3 ? "fa fa-star checked posted-star" : "fa fa-star posted-star"
+          }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+            className: el.rating >= 4 ? "fa fa-star checked posted-star" : "fa fa-star posted-star"
+          }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+            className: el.rating >= 5 ? "fa fa-star checked posted-star" : "fa fa-star posted-star"
+          })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+            className: "posted-review-body"
+          }, el.body));
         });
         return null;
       }
@@ -3301,7 +3327,7 @@ var mapStateToProps = function mapStateToProps(_ref, ownProps) {
     currentUser: users[session.id],
     errors: errors.review,
     productId: Object.values(products)[0].id,
-    formType: 'Change a current review',
+    formType: 'update review',
     review: ownProps.review
   };
 };

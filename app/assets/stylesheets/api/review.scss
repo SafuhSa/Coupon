@@ -1,8 +1,9 @@
 .review-body {
   display: flex;
   flex-direction: column;
-  background-color: #f6f7f8;
+  background-color: #dee1e5;
   border-radius: 10px;
+  margin-bottom: 2em;
 }
 .review-errs {
   color: red;
@@ -39,4 +40,40 @@
     border-radius: 5px;
     margin: 0.6em;
     font-size: 22px;
+}
+
+// -----------posted-review--------
+.posted-review {
+  // border: 1px solid red;
+  margin: 0.6em 0;
+}
+.review-auth-btns {
+  display: flex;
+  justify-content: space-between;
+}
+.indxrev-butns {
+  display: flex;
+  justify-content: flex-end;
+  width: fit-content;
+}
+
+.review-author {
+padding: 0;
+margin: 0;
+padding-left: 0.7em;
+}
+.indxrev-butn {
+    background-color: #53a318;
+    color: white;
+    width: fit-content;
+    padding: 5px;
+    border-radius: 5px;
+    margin: 0 0.6em;
+}
+.fa-star.posted-star {
+  font-size: 25px;
+}
+.posted-review-body {
+  padding: 0.7em;
+  padding-top: 0;
 }

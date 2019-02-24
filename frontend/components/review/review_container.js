@@ -7,7 +7,7 @@ const mapStateToProps = ({ session, errors, entities: { users, products } }, own
     currentUser: users[session.id],
     errors: errors.review,
     productId: ownProps.productId,
-    formType: 'Write a new review'
+    formType: 'post review'
 
   })
 };

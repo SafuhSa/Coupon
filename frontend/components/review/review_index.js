@@ -36,16 +36,29 @@ if (this.state.reviews[0]) {
     let result;
     if (el.userId === userId) {
       result = (
-      <div>
-          <button onClick={() => this.props.deleteReview(el.id)} >Delete this review</button>
-          <button onClick={() => this.updateReview.bind(this)(el)} >Change this review</button>
+        <div className='indxrev-butns'>
+          <button className='indxrev-butn' onClick={() => this.props.deleteReview(el.id)} >Delete</button>
+          <button className='indxrev-butn' onClick={() => this.updateReview.bind(this)(el)} >Update</button>
       </div>
       )
     }
+    let name = el.author.split(' ').map(el => (el[0].toUpperCase() + el.slice(1).toLowerCase())).join(' ')
     return(
-      <div key={i}>
+      <div key={i} className='posted-review'>
+
+        <div className='review-auth-btns'>
+          <h3 className='review-author'>{name}</h3>
         {result}
-        {el.body}
+        </div>
+
+        <ul className='review-stars'> 
+              <span className={el.rating >= 1 ? "fa fa-star checked posted-star" : "fa fa-star posted-star"} />
+              <span className={el.rating >= 2 ? "fa fa-star checked posted-star" : "fa fa-star posted-star"} />
+              <span className={el.rating >= 3 ? "fa fa-star checked posted-star" : "fa fa-star posted-star"} />
+              <span className={el.rating >= 4 ? "fa fa-star checked posted-star" : "fa fa-star posted-star"} />
+              <span className={el.rating >= 5 ? "fa fa-star checked posted-star" : "fa fa-star posted-star"} />
+            </ul>
+            <p className='posted-review-body'>{el.body}</p>
       </div>
     )
   })

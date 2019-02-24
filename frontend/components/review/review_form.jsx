@@ -33,7 +33,7 @@ class ReviewForm extends React.Component {
 
   handleSubmit() {
     let obj = { rating: this.state.rating, body: this.state.body, productId: this.props.productId, userId: this.props.currentUser.id}
-    if (this.props.formType === 'Change a current review') {
+    if (this.props.formType === 'update review') {
       this.props.action(obj)
     } else {
       this.props.action(obj).then(() => {
@@ -69,7 +69,7 @@ class ReviewForm extends React.Component {
               <span id='star5' onMouseEnter={this.starEnter(5).bind(this)} onMouseLeave={this.startLeave.bind(this)} onClick={this.updateRating(5)} className={this.state.mouseHvr >= 5 ? "fa fa-star checked write-review" : "fa fa-star write-review"} />
             </ul>
             <textarea onChange={this.updateBody.bind(this)} value={this.state.body} placeholder="Write a review........" className="review-input" />
-          <button className='post-review' onClick={this.handleSubmit.bind(this)}> post review </button>
+          <button className='post-review' onClick={this.handleSubmit.bind(this)}>{this.props.formType}</button>
           </div>
             
         </form>

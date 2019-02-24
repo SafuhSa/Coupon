@@ -8,7 +8,7 @@ const mapStateToProps = ({ session, errors, entities: { users, products } }, own
     currentUser: users[session.id],
     errors: errors.review,
     productId: Object.values(products)[0].id,
-    formType: 'Change a current review',
+    formType: 'update review',
     review: ownProps.review
   })
 };
