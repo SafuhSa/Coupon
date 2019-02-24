@@ -15,7 +15,7 @@ class ReviewIndex extends React.Component {
 
   updateReview(review){
     // return () => {
-      let reviews = this.state.reviews
+      let reviews = this.state.reviews.slice()
       let updateForm = <UpdateContainer review={review}/>
       for(let i = 0; i < reviews.length; i++) {
         const el = reviews[i];
@@ -24,8 +24,6 @@ class ReviewIndex extends React.Component {
         }
       }
       this.setState({ reviews: reviews })
-    // }
-    // this.props.updateReview()
   }
 
 

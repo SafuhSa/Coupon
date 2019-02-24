@@ -3008,14 +3008,18 @@ function (_React$Component) {
         productId: this.props.productId,
         userId: this.props.currentUser.id
       };
-      debugger;
-      this.props.action(obj).then(function (result) {
-        _this4.setState({
-          mouseHvr: 0,
-          rating: 0,
-          body: ''
+
+      if (this.props.formType === 'Change a current review') {
+        this.props.action(obj);
+      } else {
+        this.props.action(obj).then(function () {
+          _this4.setState({
+            mouseHvr: 0,
+            rating: 0,
+            body: ''
+          });
         });
-      });
+      }
     }
   }, {
     key: "startLeave",
@@ -3151,7 +3155,7 @@ function (_React$Component) {
     key: "updateReview",
     value: function updateReview(review) {
       // return () => {
-      var reviews = this.state.reviews;
+      var reviews = this.state.reviews.slice();
       var updateForm = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_review_update_container__WEBPACK_IMPORTED_MODULE_1__["default"], {
         review: review
       });
@@ -3166,8 +3170,7 @@ function (_React$Component) {
 
       this.setState({
         reviews: reviews
-      }); // }
-      // this.props.updateReview()
+      });
     }
   }, {
     key: "reviews",
@@ -4087,6 +4090,12 @@ var productsReducer = function productsReducer() {
       newState[action.review.productId].reviews.unshift(action.review);
       return newState;
 
+    case _actions_review_actions__WEBPACK_IMPORTED_MODULE_2__["UPDATE_REVIEW"]:
+      var newState2 = lodash_merge__WEBPACK_IMPORTED_MODULE_0___default()({}, state);
+      var arrr = newState2[action.review.productId].reviews;
+      newState2[action.review.productId].reviews = updateEl(arrr, action.review);
+      return newState2;
+
     case _actions_review_actions__WEBPACK_IMPORTED_MODULE_2__["REMOVE_REVIEW"]:
       var newState1 = lodash_merge__WEBPACK_IMPORTED_MODULE_0___default()({}, state);
       var arr = newState1[action.review.productId].reviews;
@@ -4114,6 +4123,18 @@ function removeEl(arr, target) {
 
     if (el.id === target.id) {
       arr.splice(i, 1);
+    }
+  }
+
+  return arr;
+}
+
+function updateEl(arr, target) {
+  for (var i = 0; i < arr.length; i++) {
+    var el = arr[i];
+
+    if (el.id === target.id) {
+      arr.splice(i, 1, target);
     }
   }
 
@@ -4174,6 +4195,7 @@ var reviewErrorsReducer = function reviewErrorsReducer() {
 
   switch (action.type) {
     case _actions_review_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_REVIEW_ERRORS"]:
+      debugger;
       return action.errors;
 
     case _actions_review_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_REVIEW"]:

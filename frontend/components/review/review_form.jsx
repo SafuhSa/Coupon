@@ -9,7 +9,7 @@ class ReviewForm extends React.Component {
 
   componentDidMount(prevProps) {
     if (this.props.review) {
-      const {rating, body }=  this.props.review
+      const {rating, body } =  this.props.review
       this.setState({ rating: rating, body: body, mouseHvr: rating });
     }
   }
@@ -33,10 +33,13 @@ class ReviewForm extends React.Component {
 
   handleSubmit() {
     let obj = { rating: this.state.rating, body: this.state.body, productId: this.props.productId, userId: this.props.currentUser.id}
-    debugger
-    this.props.action(obj).then((result) => {
-      this.setState({ mouseHvr: 0, rating: 0, body: '' })
-    })
+    if (this.props.formType === 'Change a current review') {
+      this.props.action(obj)
+    } else {
+      this.props.action(obj).then(() => {
+        this.setState({ mouseHvr: 0, rating: 0, body: '' })
+      })
+    }
   }
 
   startLeave(e) {

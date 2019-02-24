@@ -13,7 +13,8 @@
 
 class Review < ApplicationRecord
     validates :body, :rating, presence: true
-    validates :rating, inclusion: { in: (1..5) }
+    validates :rating, inclusion: { in: (1..5) } 
+    validates :user_id, uniqueness: { scope: :product_id, message: "sorry, Only one review per listing" }
 
     belongs_to :product,
         primary_key: :id,
