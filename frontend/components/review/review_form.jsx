@@ -34,7 +34,6 @@ class ReviewForm extends React.Component {
   handleSubmit() {
     let obj = { rating: this.state.rating, body: this.state.body, productId: this.props.productId, userId: this.props.currentUser.id}
     if (this.props.formType === 'update review') {
-      debugger
       this.props.action(obj)
     } else {
       this.props.action(obj).then(() => {

@@ -3012,7 +3012,6 @@ function (_React$Component) {
       };
 
       if (this.props.formType === 'update review') {
-        debugger;
         this.props.action(obj);
       } else {
         this.props.action(obj).then(function () {
