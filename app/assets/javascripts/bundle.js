@@ -3050,13 +3050,7 @@ function (_React$Component) {
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         className: "review-container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "review-body"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
-        className: "write-reve-title"
-      }, "Write a review!!"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-        className: "review-errs"
-      }, this.renderErrs.bind(this)()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "review-stars"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         id: "star1",
@@ -3088,15 +3082,21 @@ function (_React$Component) {
         onMouseLeave: this.startLeave.bind(this),
         onClick: this.updateRating(5),
         className: this.state.mouseHvr >= 5 ? "fa fa-star checked write-review" : "fa fa-star write-review"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "review-body"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+        className: "write-reve-title"
+      }, "Write a review!!"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        className: "review-errs"
+      }, this.renderErrs.bind(this)()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
         onChange: this.updateBody.bind(this),
         value: this.state.body,
         placeholder: "Write a review........",
         className: "review-input"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "post-review",
         onClick: this.handleSubmit.bind(this)
-      }, this.props.formType))));
+      }, this.props.formType)));
     }
   }]);
 
