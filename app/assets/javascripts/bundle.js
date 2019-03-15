@@ -2703,6 +2703,7 @@ function (_React$Component) {
 
       var num = Math.ceil(product.quantity / 3 * 2);
       var priceoff = 100 - Math.floor(product.disPrice / product.price * 100);
+      if (!priceoff) priceoff = 0;
       var result = [];
 
       var _loop = function _loop(i) {

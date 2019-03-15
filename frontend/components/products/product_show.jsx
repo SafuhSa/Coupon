@@ -69,6 +69,7 @@ updateQuantity(e) {
 
     let num = Math.ceil((product.quantity /3) * 2)
     let priceoff = 100 - Math.floor((product.disPrice /product.price) * 100)
+    if(!priceoff) priceoff = 0;
     let result = []
     
     for (let i = 0; i < product.photoUrls.length; i++) {
