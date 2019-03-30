@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-
 const ProductIndexItem = ({ product, deleteProduct, createrecentView }) => {
   return (
     <div className="index-item-container">
@@ -19,7 +18,6 @@ const ProductIndexItem = ({ product, deleteProduct, createrecentView }) => {
             </div>
             <div className="description">{product.description}</div>
           </div>
-
           {/* <button onClick={() => deleteProduct(product.id).then(() => this.props.history.push('/login')())}>Delete</button> */}
         </div>
       </Link>

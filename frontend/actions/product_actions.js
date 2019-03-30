@@ -109,8 +109,8 @@ export const deleteBoughtItem = (id) => dispatch => {
 
 //--------------search-------
 export const search = (str) => dispatch => {
-  return ProductAPIUtil.search(str).then(product =>
-    dispatch(receiveProducts(product))
+  return ProductAPIUtil.search(str).then(products =>
+    dispatch(receiveProducts(products))
   );
 };
 

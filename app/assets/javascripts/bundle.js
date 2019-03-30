@@ -255,8 +255,8 @@ var deleteBoughtItem = function deleteBoughtItem(id) {
 
 var search = function search(str) {
   return function (dispatch) {
-    return _util_product_api_util__WEBPACK_IMPORTED_MODULE_0__["search"](str).then(function (product) {
-      return dispatch(receiveProducts(product));
+    return _util_product_api_util__WEBPACK_IMPORTED_MODULE_0__["search"](str).then(function (products) {
+      return dispatch(receiveProducts(products));
     });
   };
 }; //----------------recentview-----------
@@ -2314,6 +2314,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _product_index_item__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./product_index_item */ "./frontend/components/products/product_index_item.jsx");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
+/* harmony import */ var _product_index_first__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./product_index_first */ "./frontend/components/products/product_index_first.jsx");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -2331,6 +2332,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -2378,65 +2380,16 @@ function (_React$Component) {
           createrecentView: _this.props.createrecentView
         });
       });
-      var priceoff = 100 - Math.floor(disprice / product.price * 100);
-      var num = Math.ceil(product.quantity / 3 * 2);
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "index-items"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "all-deals-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
         className: "all-deals-header"
-      }, "All Deals")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
-        to: "/products/".concat(product.id),
-        className: "best-deal-container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "image-container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
-        className: "bstdl-recentview"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fas fa-chart-line"
-      }), " \xA0  TRENDING"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        className: "search-pics",
-        src: product.photoUrls[0]
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "bstdl-prod-left"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "bstdlproductName"
-      }, product.product_name, product.productName), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "bsdlcategory"
-      }, product.category), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "bstdldescription"
-      }, product.description), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "bstdl-bottom-left"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "bstdl-city-rating"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, product.city), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: ""
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "fa fa-star checked"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "fa fa-star checked"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "fa fa-star checked"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "fa fa-star checked"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "fa fa-star"
-      }), "(", num, ")")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "searchprices"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-        className: "price"
-      }, "$", product.price, " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-        className: "searchdisPrice"
-      }, " $", product.dis_price, product.disPrice)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "bstdlpriceOff-con"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-        className: "bstdlpriceOff"
-      }, " ", priceoff, "% OFF")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "searchview"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "bsdlviewdiv"
-      }, "View Deal")))))), products);
+      }, "All Deals")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_product_index_first__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        product: product,
+        disprice: disprice
+      }), products);
     }
   }]);
 
@@ -2495,6 +2448,83 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(_product_index__WEBPACK_IMPORTED_MODULE_1__["default"]));
+
+/***/ }),
+
+/***/ "./frontend/components/products/product_index_first.jsx":
+/*!**************************************************************!*\
+  !*** ./frontend/components/products/product_index_first.jsx ***!
+  \**************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
+
+
+
+var ProductFirst = function ProductFirst(_ref) {
+  var product = _ref.product,
+      disprice = _ref.disprice;
+  var priceoff = 100 - Math.floor(disprice / product.price * 100);
+  var num = Math.ceil(product.quantity / 3 * 2);
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+    to: "/products/".concat(product.id),
+    className: "best-deal-container"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "image-container"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+    className: "bstdl-recentview"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "fas fa-chart-line"
+  }), " \xA0 TRENDING"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    className: "search-pics",
+    src: product.photoUrls[0]
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "bstdl-prod-left"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "bstdlproductName"
+  }, product.product_name, product.productName), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "bsdlcategory"
+  }, product.category), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "bstdldescription"
+  }, product.description), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "bstdl-bottom-left"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "bstdl-city-rating"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, product.city), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: ""
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "fa fa-star checked"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "fa fa-star checked"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "fa fa-star checked"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "fa fa-star checked"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "fa fa-star"
+  }), "(", num, ")")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "searchprices"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "price"
+  }, "$", product.price, " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "searchdisPrice"
+  }, " ", "$", product.dis_price, product.disPrice)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "bstdlpriceOff-con"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "bstdlpriceOff"
+  }, " ", priceoff, "% OFF")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "searchview"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "bsdlviewdiv"
+  }, "View Deal"))))));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (ProductFirst);
 
 /***/ }),
 
@@ -4431,7 +4461,8 @@ __webpack_require__.r(__webpack_exports__);
 
 var configureStore = function configureStore() {
   var preloadedState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-  return Object(redux__WEBPACK_IMPORTED_MODULE_0__["createStore"])(_reducers_root_reducer__WEBPACK_IMPORTED_MODULE_3__["default"], preloadedState, Object(redux__WEBPACK_IMPORTED_MODULE_0__["applyMiddleware"])(redux_thunk__WEBPACK_IMPORTED_MODULE_2__["default"], redux_logger__WEBPACK_IMPORTED_MODULE_1___default.a));
+  return Object(redux__WEBPACK_IMPORTED_MODULE_0__["createStore"])(_reducers_root_reducer__WEBPACK_IMPORTED_MODULE_3__["default"], preloadedState, Object(redux__WEBPACK_IMPORTED_MODULE_0__["applyMiddleware"])(redux_thunk__WEBPACK_IMPORTED_MODULE_2__["default"], redux_logger__WEBPACK_IMPORTED_MODULE_1___default.a) // applyMiddleware(thunk)
+  );
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (configureStore);
