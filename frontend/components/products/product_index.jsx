@@ -1,6 +1,5 @@
 import React from 'react';
 import ProductIndexItem from './product_index_item';
-import { Link } from "react-router-dom";
 import ProductFirst from "./product_index_first";
 class ProductIndex extends React.Component {
 
