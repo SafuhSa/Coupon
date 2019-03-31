@@ -12,6 +12,8 @@ class ProductShow extends React.Component {
   }
 
   componentDidMount() {
+
+    
     this.props.requestProduct(this.props.match.params.productId).then(() => {
       let url = this.props.product.photoUrls[0];
       this.setState({ mainImage: <ul className='image-show'><img src={url} /></ul>})
