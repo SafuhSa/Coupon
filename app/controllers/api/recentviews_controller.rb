@@ -57,6 +57,4 @@ class Api::RecentviewsController < ApplicationController
 
         arr
       end
-
-
 end

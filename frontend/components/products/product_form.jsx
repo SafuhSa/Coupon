@@ -68,28 +68,9 @@ class ProductForm extends React.Component {
     }
 
 
-    // const files = e.target.files;
-    // const reader = new FileReader();
-
-    // reader.onloadend = () => {
-    //   if (this.state.photoFile) {
-    //     this.setState({ photoUrl: this.state.photoUrl.concat([reader.result]), photoFile: this.state.photoFile.concat(result)});
-    //   } else {
-    //     this.setState({ photoUrl: [reader.result], photoFile: result })
-    //   }
-    // }
-
-
-    // if (files) {
-    //   for (let i = 0; i < files.length; i++) {
-    //     reader.readAsDataURL(files[i]);
-    //   }}
-    // } else {
-    //   this.setState({ photoUrl: "", photoFile: null });
-    // }
   }
-
-
+  
+  
   renderErrors() {
     
     return (
@@ -102,12 +83,12 @@ class ProductForm extends React.Component {
       </ul>
     );
   }
-
+  
   render() {
     if (!this.state) {
       return null
     }
-     
+    
     let preview = [];
     if (this.state.photoUrl) {
       for (let i = 0; i < this.state.photoUrl.length; i++) {
@@ -115,7 +96,7 @@ class ProductForm extends React.Component {
         preview.push(<ul className='image-preview' key={i}><img  src={el} /></ul> )
       }
     }
-
+    
     return (
       <div className='create-edit-product-container'>
         <h1>Generate more sales list your products</h1>
@@ -168,5 +149,25 @@ class ProductForm extends React.Component {
   }
 }
 
-// export default ProductForm;
 export default withRouter(ProductForm);
+
+
+// const files = e.target.files;
+// const reader = new FileReader();
+
+// reader.onloadend = () => {
+//   if (this.state.photoFile) {
+//     this.setState({ photoUrl: this.state.photoUrl.concat([reader.result]), photoFile: this.state.photoFile.concat(result)});
+//   } else {
+//     this.setState({ photoUrl: [reader.result], photoFile: result })
+//   }
+// }
+
+
+// if (files) {
+//   for (let i = 0; i < files.length; i++) {
+//     reader.readAsDataURL(files[i]);
+//   }}
+// } else {
+//   this.setState({ photoUrl: "", photoFile: null });
+// }

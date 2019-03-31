@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const ProductFirst = ({ product, disprice }) => {
-
   let priceoff = 100 - Math.floor((disprice / product.price) * 100);
   let num = Math.ceil((product.quantity / 3) * 2);
 

@@ -15,7 +15,6 @@ class Search extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-
     this.props.search(this.state.queryString)
     .then( () => {
       this.props.history.push(`/search?=${this.state.queryString}`);

@@ -77,9 +77,9 @@ class CartShow extends React.Component {
     if (!this.props.cart) {
       return null;
     }
-    let result;// = this.getItems()[0]
-    let orderSummary;// = this.getItems()[1]
-    let total;// = this.getItems()[2]
+    let result;
+    let orderSummary;
+    let total;
     [result, orderSummary, total] = this.getItems()
     if (!result.length) {
       return(
@@ -147,36 +147,3 @@ class CartShow extends React.Component {
   }
   
   export default CartShow;
-
-  {/* 
-            <div id="form-container">
-              <div id="sq-ccbox">
-                <form id="nonce-form" noValidate action="PATH/TO/PAYMENT/PROCESSING/PAGE" method="post">
-                  <fieldset>
-                    <span className="label">Card Number</span>
-                    <div id="sq-card-number"></div>
-  
-                    <div className="third">
-                      <span className="label">Expiration</span>
-                      <div id="sq-expiration-date"></div>
-                    </div>
-  
-                    <div className="third">
-                      <span className="label">CVV</span>
-                      <div id="sq-cvv"></div>
-                    </div>
-  
-                    <div className="third">
-                      <span className="label">Postal</span>
-                      <div id="sq-postal-code"></div>
-                    </div>
-                  </fieldset>
-  
-                  <button id="sq-creditcard" className="button-credit-card" >Pay $1.00</button>
-  
-                  <div id="error"></div>
-  
-        <input type="hidden" id="card-nonce" name="nonce"/>
-      </form>
-    </div>        
-  </div> */}

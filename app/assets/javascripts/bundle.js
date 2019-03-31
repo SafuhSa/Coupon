@@ -1779,11 +1779,9 @@ function (_React$Component) {
         return null;
       }
 
-      var result; // = this.getItems()[0]
-
-      var orderSummary; // = this.getItems()[1]
-
-      var total; // = this.getItems()[2]
+      var result;
+      var orderSummary;
+      var total;
 
       var _this$getItems = this.getItems();
 
@@ -1866,34 +1864,6 @@ function (_React$Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 /* harmony default export */ __webpack_exports__["default"] = (CartShow);
-{
-  /* 
-           <div id="form-container">
-             <div id="sq-ccbox">
-               <form id="nonce-form" noValidate action="PATH/TO/PAYMENT/PROCESSING/PAGE" method="post">
-                 <fieldset>
-                   <span className="label">Card Number</span>
-                   <div id="sq-card-number"></div>
-                      <div className="third">
-                     <span className="label">Expiration</span>
-                     <div id="sq-expiration-date"></div>
-                   </div>
-                      <div className="third">
-                     <span className="label">CVV</span>
-                     <div id="sq-cvv"></div>
-                   </div>
-                      <div className="third">
-                     <span className="label">Postal</span>
-                     <div id="sq-postal-code"></div>
-                   </div>
-                 </fieldset>
-                    <button id="sq-creditcard" className="button-credit-card" >Pay $1.00</button>
-                    <div id="error"></div>
-          <input type="hidden" id="card-nonce" name="nonce"/>
-     </form>
-   </div>        
-  </div> */
-}
 
 /***/ }),
 
@@ -2167,23 +2137,7 @@ function (_React$Component) {
 
       for (var i = 0; i < files.length; i++) {
         _loop(i);
-      } // const files = e.target.files;
-      // const reader = new FileReader();
-      // reader.onloadend = () => {
-      //   if (this.state.photoFile) {
-      //     this.setState({ photoUrl: this.state.photoUrl.concat([reader.result]), photoFile: this.state.photoFile.concat(result)});
-      //   } else {
-      //     this.setState({ photoUrl: [reader.result], photoFile: result })
-      //   }
-      // }
-      // if (files) {
-      //   for (let i = 0; i < files.length; i++) {
-      //     reader.readAsDataURL(files[i]);
-      //   }}
-      // } else {
-      //   this.setState({ photoUrl: "", photoFile: null });
-      // }
-
+      }
     }
   }, {
     key: "renderErrors",
@@ -2294,10 +2248,24 @@ function (_React$Component) {
   }]);
 
   return ProductForm;
-}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component); // export default ProductForm;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["withRouter"])(ProductForm));
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["withRouter"])(ProductForm)); // const files = e.target.files;
+// const reader = new FileReader();
+// reader.onloadend = () => {
+//   if (this.state.photoFile) {
+//     this.setState({ photoUrl: this.state.photoUrl.concat([reader.result]), photoFile: this.state.photoFile.concat(result)});
+//   } else {
+//     this.setState({ photoUrl: [reader.result], photoFile: result })
+//   }
+// }
+// if (files) {
+//   for (let i = 0; i < files.length; i++) {
+//     reader.readAsDataURL(files[i]);
+//   }}
+// } else {
+//   this.setState({ photoUrl: "", photoFile: null });
+// }
 
 /***/ }),
 
@@ -2678,22 +2646,16 @@ function (_React$Component) {
         quantity: e.target.value,
         purchasePrice: total
       });
-    }
-  }, {
-    key: "addItemToCart",
-    value: function addItemToCart(e) {
-      e.preventDefault();
+    } // addItemToCart(e) {
+    //   e.preventDefault();
+    //   if (this.props.userId) {
+    //     let item = {productId: this.props.product.id, quantity: this.state.quantity}
+    //     this.props.createBoughtItem(item).then(this.props.history.push('/cart'));
+    //   } else {
+    //     this.props.history.push("/login");
+    //   }
+    // }
 
-      if (this.props.userId) {
-        var item = {
-          productId: this.props.product.id,
-          quantity: this.state.quantity
-        };
-        this.props.createBoughtItem(item).then(this.props.history.push('/cart'));
-      } else {
-        this.props.history.push("/login");
-      }
-    }
   }, {
     key: "writeReview",
     value: function writeReview() {
@@ -2786,60 +2748,7 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Highlights"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, product.description)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Customer Reviews"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_review_review_index_container__WEBPACK_IMPORTED_MODULE_3__["default"], {
         productId: product.id,
         review: product.reviews
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.writeReview()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "right-show-container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "rating-bought"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "clc-eye-star"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "far fa-clock"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Limited Time Remaining!")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "clc-eye-star"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "far fa-eye"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, product.quantity, "+ viewed")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "clc-eye-star"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "fa fa-star checked"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "fa fa-star checked"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "fa fa-star checked"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "fa fa-star checked"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "fa fa-star"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, num, " ratings"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "quantity-prices"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        htmlFor: ""
-      }, "Quantity", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        min: "1",
-        type: "number",
-        defaultValue: this.state.quantity,
-        onChange: this.updateQuantity
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "prices"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-        className: "price"
-      }, "$", product.price), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-        className: "disPrice"
-      }, "$", product.disPrice)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-        className: "price-off"
-      }, " ", priceoff, "% OFF"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "show-buttons"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "purchasePrice-container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Total Purchase Price:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "statepurchasePrice"
-      }, "$", purchasePrice)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "show-submit",
-        onClick: this.addItemToCart
-      }, "Add item to Cart"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        className: "show-submit",
-        to: "/"
-      }, "Home page")))));
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.writeReview()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null))));
     }
   }]);
 

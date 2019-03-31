@@ -34,16 +34,16 @@ updateQuantity(e) {
   this.setState({ quantity: e.target.value, purchasePrice: total })
 }
 
-  addItemToCart(e) {
-    e.preventDefault();
-    if (this.props.userId) {
+  // addItemToCart(e) {
+  //   e.preventDefault();
+  //   if (this.props.userId) {
 
-      let item = {productId: this.props.product.id, quantity: this.state.quantity}
-      this.props.createBoughtItem(item).then(this.props.history.push('/cart'));
-    } else {
-      this.props.history.push("/login");
-    }
-  }
+  //     let item = {productId: this.props.product.id, quantity: this.state.quantity}
+  //     this.props.createBoughtItem(item).then(this.props.history.push('/cart'));
+  //   } else {
+  //     this.props.history.push("/login");
+  //   }
+  // }
  
   writeReview() {
     if (this.props.userId) {
@@ -113,7 +113,7 @@ updateQuantity(e) {
             <div />
           </div>
 
-          <div className="right-show-container">
+          {/* <div className="right-show-container">
             <div className="rating-bought">
               <div className="clc-eye-star">
                 <i className="far fa-clock" />
@@ -165,11 +165,11 @@ updateQuantity(e) {
               {/* <Link className="show-submit" to={`/products/${product.id}/edit`}>
                 Edit
               </Link> */}
-              <Link className="show-submit" to="/">
-                Home page
-              </Link>
-            </div>
-          </div>
+              {/* <Link className="show-submit" to="/">
+                Home page */}
+              {/* </Link> */}
+            {/* </div> */}
+          {/* </div>  */}
         </div>
       </div>;
   }
