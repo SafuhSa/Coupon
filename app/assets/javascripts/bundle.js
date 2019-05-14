@@ -605,6 +605,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
+/* harmony import */ var _getboughtItems__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./getboughtItems */ "./frontend/components/cart/getboughtItems.jsx");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
@@ -634,6 +635,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 
 
 
+
 var CartShow =
 /*#__PURE__*/
 function (_React$Component) {
@@ -645,7 +647,7 @@ function (_React$Component) {
     _classCallCheck(this, CartShow);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(CartShow).call(this, props));
-    _this.getItems = _this.getItems.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    _this.handleDelete = _this.handleDelete.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     return _this;
   }
 
@@ -666,83 +668,18 @@ function (_React$Component) {
       };
     }
   }, {
-    key: "getItems",
-    value: function getItems() {
-      var result = [];
-      var orderSummary = [];
-      var total = 0;
-
-      for (var i = 0; i < this.props.cart.productIds.length; i++) {
-        var id = this.props.cart.productIds[i];
-        var item = this.props.boughtProducts[id];
-
-        if (item) {
-          var num = Math.ceil(item.quantity * 100 + 200);
-          var priceoff = 100 - Math.floor(item.disPrice / item.price * 100);
-          var totalprice = item.quantity * item.disPrice;
-          var saveprice = (item.price - item.disPrice).toFixed(2);
-          total += totalprice;
-          result.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-            key: i,
-            className: "boghtItem"
-          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-            to: "/products/".concat(item.productId)
-          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-            className: "cart-item-image",
-            src: item.photoUrls[0],
-            alt: ""
-          })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-            className: "cart-item-description"
-          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-            to: "/products/".concat(item.productId)
-          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
-            className: "cart-description"
-          }, item.description)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Qty: ", item.quantity), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-            className: "price-end"
-          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-            to: "/products/".concat(item.productId),
-            className: "realPrice"
-          }, "$", item.disPrice.toFixed(2)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-            to: "/products/".concat(item.productId),
-            className: "org-save-price"
-          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-            className: "price"
-          }, "$", item.price.toFixed(2)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-            className: "save-price"
-          }, "\xA0You Save $", saveprice)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-            className: "remove-button",
-            onClick: this.handleDelete.bind(this)(item.id)
-          }, "Remove"))));
-          orderSummary.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-            key: i
-          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-            className: "subtotal-prod-name"
-          }, item.productName), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-            className: "subtotal"
-          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Subtotal"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "$", totalprice.toFixed(2)))));
-        }
-      }
-
-      return [result, orderSummary, total];
-    }
-  }, {
     key: "render",
     value: function render() {
-      if (!this.props.cart) {
-        return null;
-      }
+      var _this$props = this.props,
+          cart = _this$props.cart,
+          boughtProducts = _this$props.boughtProducts;
+      if (!cart) return null;
 
-      var result;
-      var orderSummary;
-      var total;
-
-      var _this$getItems = this.getItems();
-
-      var _this$getItems2 = _slicedToArray(_this$getItems, 3);
-
-      result = _this$getItems2[0];
-      orderSummary = _this$getItems2[1];
-      total = _this$getItems2[2];
+      var _getItems = Object(_getboughtItems__WEBPACK_IMPORTED_MODULE_2__["default"])(cart, boughtProducts, this.handleDelete),
+          _getItems2 = _slicedToArray(_getItems, 3),
+          result = _getItems2[0],
+          orderSummary = _getItems2[1],
+          total = _getItems2[2];
 
       if (!result.length) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -817,6 +754,83 @@ function (_React$Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 /* harmony default export */ __webpack_exports__["default"] = (CartShow);
+
+/***/ }),
+
+/***/ "./frontend/components/cart/getboughtItems.jsx":
+/*!*****************************************************!*\
+  !*** ./frontend/components/cart/getboughtItems.jsx ***!
+  \*****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
+
+
+
+var getItems = function getItems(cart, boughtProducts, handleDelete) {
+  // let { cart, boughtProducts } = this.props;
+  var result = [];
+  var orderSummary = [];
+  var total = 0;
+
+  for (var i = 0; i < cart.productIds.length; i++) {
+    var id = cart.productIds[i];
+    var item = boughtProducts[id];
+
+    if (item) {
+      var totalprice = item.quantity * item.disPrice;
+      var saveprice = (item.price - item.disPrice).toFixed(2);
+      total += totalprice;
+      result.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        key: i,
+        className: "boghtItem"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: "/products/".concat(item.productId)
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "cart-item-image",
+        src: item.photoUrls[0],
+        alt: ""
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "cart-item-description"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: "/products/".concat(item.productId)
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+        className: "cart-description"
+      }, item.description)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Qty: ", item.quantity), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "price-end"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: "/products/".concat(item.productId),
+        className: "realPrice"
+      }, "$", item.disPrice.toFixed(2)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: "/products/".concat(item.productId),
+        className: "org-save-price"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "price"
+      }, "$", item.price.toFixed(2)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "save-price"
+      }, "\xA0You Save $", saveprice)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "remove-button",
+        onClick: handleDelete(item.id)
+      }, "Remove"))));
+      orderSummary.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        key: i
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "subtotal-prod-name"
+      }, item.productName), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "subtotal"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Subtotal"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "$", totalprice.toFixed(2)))));
+    }
+  }
+
+  return [result, orderSummary, total];
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (getItems);
 
 /***/ }),
 

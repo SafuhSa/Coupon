@@ -1,10 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import getItems from './getboughtItems';
 
 class CartShow extends React.Component {
   constructor(props) {
     super(props)
-    this.getItems = this.getItems.bind(this)
+    this.handleDelete = this.handleDelete.bind(this);
   }
   componentDidMount() {
     this.props.requestCart();
@@ -16,70 +17,11 @@ class CartShow extends React.Component {
       this.props.deleteItem(id)
     }
   }
-
-  getItems() {
-    let result = []
-    let orderSummary = []
-    let total = 0;
-    for (let i = 0; i < this.props.cart.productIds.length; i++) {
-      const id = this.props.cart.productIds[i];
-      const item = this.props.boughtProducts[id];
-      if (item) {
-        let num = Math.ceil((item.quantity * 100) + 200)
-        let priceoff = 100 - Math.floor((item.disPrice / item.price) * 100)
-        let totalprice = item.quantity * item.disPrice
-        let saveprice = (item.price - item.disPrice).toFixed(2);
-        total += totalprice
-        result.push(<div key={i} className="boghtItem">
-            <Link to={`/products/${item.productId}`}>
-              <img className="cart-item-image" src={item.photoUrls[0]} alt="" />
-            </Link>
-            <div className="cart-item-description">
-              <Link to={`/products/${item.productId}`}>
-                <h2 className="cart-description">{item.description}</h2>
-              </Link>
-              <br />
-              Qty: {item.quantity}
-            </div>
-            <div className="price-end">
-              <Link to={`/products/${item.productId}`} className="realPrice">
-                ${item.disPrice.toFixed(2)}
-              </Link>
-            <Link to={`/products/${item.productId}`} className="org-save-price">
-                <p className="price">${item.price.toFixed(2)}</p>
-                <p className="save-price">
-                  &nbsp;You Save ${saveprice}
-                </p>
-              </Link>
-              <button className="remove-button" onClick={this.handleDelete.bind(this)(item.id)}>
-                Remove
-              </button>
-            </div>
-            {/* <p>Over {num}+bought</p> */}
-          </div>);
-
-        orderSummary.push(
-          <div key={i}>
-            <div className='subtotal-prod-name'>{item.productName}</div>
-            <div className="subtotal">
-              <h2>Subtotal</h2>
-              <h2>${totalprice.toFixed(2)}</h2>
-            </div>
-          </div>
-        );
-      }
-    }
-    return [result, orderSummary, total];
-  }
-
   render() {
-    if (!this.props.cart) {
-      return null;
-    }
-    let result;
-    let orderSummary;
-    let total;
-    [result, orderSummary, total] = this.getItems()
+    let { cart, boughtProducts } = this.props;
+    if (!cart) return null; 
+
+    let [result, orderSummary, total] = getItems(cart, boughtProducts, this.handleDelete)
     if (!result.length) {
       return(
         <div className='cart-show-container '>
@@ -146,4 +88,3 @@ class CartShow extends React.Component {
   }
   
   export default CartShow;
-
