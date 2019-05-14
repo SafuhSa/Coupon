@@ -1,7 +1,5 @@
 import merge from 'lodash/merge';
-
 import { RECEIVE_CART, RECEIVE_BOUGHT_PRODUCT, REMOVE_BOUGHT_PRODUCT } from '../actions/product_actions';
-
 
 const boughtitemsReducer = (state = {}, action) => {
   Object.freeze(state);

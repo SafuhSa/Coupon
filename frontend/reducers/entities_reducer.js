@@ -5,12 +5,7 @@ import boughtProducts from './bought_items_reducer';
 import cart from './cart_reducer';
 import recentView from "./recent_view_reducer";
 
-// import benches from './benches_reducer';
-// import reviews from './reviews_reducer';
-
 export default combineReducers({
-  // benches,
-  // reviews,
   users,
   products,
   boughtProducts,

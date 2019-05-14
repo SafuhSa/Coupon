@@ -58,10 +58,7 @@ class LoginForm extends React.Component {
           this.props.action(this.state);
     };
   }
-
-
-
-
+  
   renderErrors() {
     return (
       <ul>

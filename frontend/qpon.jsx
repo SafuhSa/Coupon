@@ -32,7 +32,3 @@ document.addEventListener('DOMContentLoaded', () => {
   const root = document.getElementById('root');
   ReactDOM.render(<Root store={store} />, root);
 });
-
-
-
-// npm install --save webpack webpack-cli react react-dom react-router-dom redux react-redux  redux-logger @babel/core @babel/preset-react @babel/preset-env babel-loader lodash

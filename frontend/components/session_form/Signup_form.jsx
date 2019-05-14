@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 class SignUpForm extends React.Component {
   constructor(props) {
     super(props);
@@ -37,8 +36,6 @@ class SignUpForm extends React.Component {
 
   handleDemo(e) {
     e.preventDefault();
-    // let demo = { username: "SafuhSa", password: "password" }
-    // this.props.demoAction(demo)
     this.startDemo.bind(this)()
   }
   
@@ -70,11 +67,8 @@ class SignUpForm extends React.Component {
         } else {
           let demo = { username: "SafuhSa", password: "password" }
           this.props.demoAction(demo)
-          // this.props.action(this.state);
     };
   }
-
-
 
   renderErrors() {
     return (

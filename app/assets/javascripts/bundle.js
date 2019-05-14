@@ -1025,8 +1025,8 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(ProductForm).call(this, props));
     _this.state = _this.props.product;
-    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     _this.photos = [];
+    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     return _this;
   }
 
@@ -1118,10 +1118,7 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      if (!this.state) {
-        return null;
-      }
-
+      if (!this.state) return null;
       var preview = [];
 
       if (this.state.photoUrl) {
@@ -1206,7 +1203,7 @@ function (_React$Component) {
         multiple: true
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "images-preview-container"
-      }, preview), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }, " ", preview, " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "submit",
         className: "session-submit",
         value: this.props.formType
@@ -1217,22 +1214,7 @@ function (_React$Component) {
   return ProductForm;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["withRouter"])(ProductForm)); // const files = e.target.files;
-// const reader = new FileReader();
-// reader.onloadend = () => {
-//   if (this.state.photoFile) {
-//     this.setState({ photoUrl: this.state.photoUrl.concat([reader.result]), photoFile: this.state.photoFile.concat(result)});
-//   } else {
-//     this.setState({ photoUrl: [reader.result], photoFile: result })
-//   }
-// }
-// if (files) {
-//   for (let i = 0; i < files.length; i++) {
-//     reader.readAsDataURL(files[i]);
-//   }}
-// } else {
-//   this.setState({ photoUrl: "", photoFile: null });
-// }
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["withRouter"])(ProductForm));
 
 /***/ }),
 
@@ -2907,11 +2889,6 @@ function (_React$Component) {
 
 ;
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["withRouter"])(AddToCart));
-{
-  /* <Link className="show-submit" to={`/products/${product.id}/edit`}>
-   Edit
-  </Link>  */
-}
 
 /***/ }),
 
@@ -3558,9 +3535,7 @@ function (_React$Component) {
   }, {
     key: "handleDemo",
     value: function handleDemo(e) {
-      e.preventDefault(); // let demo = { username: "SafuhSa", password: "password" }
-      // this.props.demoAction(demo)
-
+      e.preventDefault();
       this.startDemo.bind(this)();
     }
   }, {
@@ -3605,7 +3580,7 @@ function (_React$Component) {
           username: "SafuhSa",
           password: "password"
         };
-        this.props.demoAction(demo); // this.props.action(this.state);
+        this.props.demoAction(demo);
       }
 
       ;
@@ -4016,7 +3991,7 @@ document.addEventListener('DOMContentLoaded', function () {
   react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_root__WEBPACK_IMPORTED_MODULE_3__["default"], {
     store: store
   }), root);
-}); // npm install --save webpack webpack-cli react react-dom react-router-dom redux react-redux  redux-logger @babel/core @babel/preset-react @babel/preset-env babel-loader lodash
+});
 
 /***/ }),
 
@@ -4119,12 +4094,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
- // import benches from './benches_reducer';
-// import reviews from './reviews_reducer';
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
-  // benches,
-  // reviews,
   users: _users_reducer__WEBPACK_IMPORTED_MODULE_1__["default"],
   products: _products_reducer__WEBPACK_IMPORTED_MODULE_2__["default"],
   boughtProducts: _bought_items_reducer__WEBPACK_IMPORTED_MODULE_3__["default"],
@@ -4370,14 +4341,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _session_reducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./session_reducer */ "./frontend/reducers/session_reducer.js");
 /* harmony import */ var _errors_reducer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./errors_reducer */ "./frontend/reducers/errors_reducer.js");
 
- // import ui from './ui_reducer';
 
 
 
 var rootReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
   entities: _entities_reducer__WEBPACK_IMPORTED_MODULE_1__["default"],
   session: _session_reducer__WEBPACK_IMPORTED_MODULE_2__["default"],
-  // ui,
   errors: _errors_reducer__WEBPACK_IMPORTED_MODULE_3__["default"]
 });
 /* harmony default export */ __webpack_exports__["default"] = (rootReducer);
@@ -4479,7 +4448,7 @@ __webpack_require__.r(__webpack_exports__);
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
- // import { RECEIVE_REVIEW, RECEIVE_BENCH } from '../actions/bench_actions';
+
 
 var usersReducer = function usersReducer() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
@@ -4489,10 +4458,6 @@ var usersReducer = function usersReducer() {
   switch (action.type) {
     case _actions_session_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_CURRENT_USER"]:
       return lodash_merge__WEBPACK_IMPORTED_MODULE_0___default()({}, state, _defineProperty({}, action.currentUser.id, action.currentUser));
-    // case RECEIVE_REVIEW:
-    //   return merge({}, state, { [action.author.id]: action.author });
-    // case RECEIVE_BENCH:
-    //   return merge({}, state, action.authors);
 
     default:
       return state;

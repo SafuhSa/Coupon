@@ -1,5 +1,4 @@
 import merge from 'lodash/merge';
-
 import { RECEIVE_PRODUCTS, RECEIVE_PRODUCT, REMOVE_PRODUCT } from '../actions/product_actions';
 import { RECEIVE_REVIEW, REMOVE_REVIEW, UPDATE_REVIEW } from "../actions/review_actions";
 import { EWOULDBLOCK } from 'constants';

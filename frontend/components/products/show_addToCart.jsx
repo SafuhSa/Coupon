@@ -96,7 +96,3 @@ class AddToCart extends React.Component {
 };
 
 export default withRouter(AddToCart);
-
-{/* <Link className="show-submit" to={`/products/${product.id}/edit`}>
-  Edit
-</Link>  */}

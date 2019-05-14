@@ -5,8 +5,8 @@ class ProductForm extends React.Component {
   constructor(props) {
     super(props)
     this.state = this.props.product;
+    this.photos = [];
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.photos = []
   }
 
     componentDidUpdate(prevProps) {
@@ -32,10 +32,8 @@ class ProductForm extends React.Component {
     formData.append('product[quantity]', this.state.quantity);
     formData.append('product[category]', this.state.category);
 
-
     if (this.state.photoFile.length) {
       // formData.append('product[photo]', this.state.photoFile);
-
       for (let i = 0; i < this.state.photoFile.length; i++) {
         formData.append('product[photos][]', this.state.photoFile[i]);
       }
@@ -66,13 +64,9 @@ class ProductForm extends React.Component {
       };
       reader.readAsDataURL(file);
     }
-
-
   }
   
-  
   renderErrors() {
-    
     return (
       <ul>
         {this.props.errors.map((error, i) => (
@@ -85,9 +79,7 @@ class ProductForm extends React.Component {
   }
   
   render() {
-    if (!this.state) {
-      return null
-    }
+    if (!this.state) return null;
     
     let preview = [];
     if (this.state.photoUrl) {
@@ -111,7 +103,6 @@ class ProductForm extends React.Component {
           <label className='product-label'><h3 >DIS Price:</h3>
           <input className="product-create-edit-input" onChange={this.update('disPrice')} value={this.state.disPrice} type="text" />
           </label>
-  
           <label className='product-label'><h3>Quantity Aval:</h3>
           <input className="product-create-edit-input" onChange={this.update('quantity')} value={this.state.quantity} type="text" />
           </label>
@@ -130,18 +121,12 @@ class ProductForm extends React.Component {
           </label>
 
           <label className='product-label'><h3>Images:</h3>
-
             <label htmlFor="file" className='images-label'>&nbsp; Choose a file
             <input className='images-input' type="file" onChange={this.handleFile.bind(this)} multiple />
              </label>
-
           </label>
 
-          <div className='images-preview-container'>
-
-            {preview}
-
-          </div>
+          <div className='images-preview-container'> {preview} </div>
           <input type="submit" className="session-submit" value={this.props.formType} />
         </form>
       </div>
@@ -150,24 +135,3 @@ class ProductForm extends React.Component {
 }
 
 export default withRouter(ProductForm);
-
-
-// const files = e.target.files;
-// const reader = new FileReader();
-
-// reader.onloadend = () => {
-//   if (this.state.photoFile) {
-//     this.setState({ photoUrl: this.state.photoUrl.concat([reader.result]), photoFile: this.state.photoFile.concat(result)});
-//   } else {
-//     this.setState({ photoUrl: [reader.result], photoFile: result })
-//   }
-// }
-
-
-// if (files) {
-//   for (let i = 0; i < files.length; i++) {
-//     reader.readAsDataURL(files[i]);
-//   }}
-// } else {
-//   this.setState({ photoUrl: "", photoFile: null });
-// }
