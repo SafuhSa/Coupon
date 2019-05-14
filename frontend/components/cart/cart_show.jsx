@@ -34,7 +34,7 @@ class CartShow extends React.Component {
             <Link to={`/products/${item.productId}`}>
               <img className="cart-item-image" src={item.photoUrls[0]} alt="" />
             </Link>
-            <div>
+            <div className="cart-item-description">
               <Link to={`/products/${item.productId}`}>
                 <h2 className="cart-description">{item.description}</h2>
               </Link>
@@ -51,7 +51,6 @@ class CartShow extends React.Component {
                   &nbsp;You Save ${saveprice}
                 </p>
               </Link>
-              {/* <button className="remove-button" onClick={() => this.props.deleteItem(item.id)}> */}
               <button className="remove-button" onClick={this.handleDelete.bind(this)(item.id)}>
                 Remove
               </button>
@@ -147,3 +146,4 @@ class CartShow extends React.Component {
   }
   
   export default CartShow;
+

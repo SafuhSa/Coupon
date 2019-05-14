@@ -691,7 +691,9 @@ function (_React$Component) {
             className: "cart-item-image",
             src: item.photoUrls[0],
             alt: ""
-          })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+          })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "cart-item-description"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
             to: "/products/".concat(item.productId)
           }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
             className: "cart-description"
