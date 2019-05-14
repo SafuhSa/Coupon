@@ -15,7 +15,4 @@ const mapDispatchToProps = dispatch => ({
   createBoughtItem: item => dispatch(createBoughtItem(item))
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(ProductShow);
+export default connect(mapStateToProps, mapDispatchToProps)(ProductShow);

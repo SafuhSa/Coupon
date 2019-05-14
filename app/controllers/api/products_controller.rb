@@ -13,6 +13,7 @@ class Api::ProductsController < ApplicationController
     unless current_user
       return render json: ["You mush Sign In to list a product"], status: 401
     end
+    
     @product.seller_id = current_user.id
     if @product.save
       render :show
