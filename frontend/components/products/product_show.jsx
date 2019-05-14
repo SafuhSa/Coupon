@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import ReviewFormContainer from '../review/review_container';
 import ReviewIndexContainer from '../review/review_index_container';
-import AddItemToCartContainer from './show_right';
+import AddToCart from './show_addToCart';
 
 class ProductShow extends React.Component {
   constructor(props) {
@@ -77,7 +77,7 @@ class ProductShow extends React.Component {
             </div>
             <div />
           </div>
-        <AddItemToCartContainer createBoughtItem={createBoughtItem} userId={userId} product={product} />
+        <AddToCart createBoughtItem={createBoughtItem} userId={userId} product={product} />
         </div>
       </div>;
   }

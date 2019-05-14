@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { withRouter } from "react-router-dom";
 
-class AddItemToCartContainer extends React.Component {
+class AddToCart extends React.Component {
   constructor(props) {
     super(props)
     this.state = { quantity: 1, purchasePrice: 0 }
@@ -95,7 +95,7 @@ class AddItemToCartContainer extends React.Component {
   }
 };
 
-export default withRouter(AddItemToCartContainer);
+export default withRouter(AddToCart);
 
 {/* <Link className="show-submit" to={`/products/${product.id}/edit`}>
   Edit

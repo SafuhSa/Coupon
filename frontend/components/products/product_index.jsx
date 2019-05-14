@@ -22,7 +22,6 @@ class ProductIndex extends React.Component {
     }
 
     const products = this.props.products.map(product => {
-     
       return (
         <ProductIndexItem
           key={product.id}
